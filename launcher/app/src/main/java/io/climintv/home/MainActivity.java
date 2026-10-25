@@ -19,6 +19,7 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
 import android.provider.Settings;
+import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.animation.DecelerateInterpolator;
@@ -38,19 +39,24 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Collections;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Locale;
+import java.util.Map;
 import java.util.Set;
 
 import io.climintv.home.adapter.AppGridAdapter;
 import io.climintv.home.adapter.DockAdapter;
+import io.climintv.home.adapter.SuperModeAdapter;
 import io.climintv.home.model.AppEntry;
+import io.climintv.home.model.MediaItem;
 import io.climintv.home.model.TvInputEntry;
 import io.climintv.home.theme.AdaptiveColorEngine;
 import io.climintv.home.theme.ThemeManager;
 import io.climintv.home.tif.TvInputHelper;
 import io.climintv.home.util.AppPreferences;
 import io.climintv.home.util.FocusAnimator;
+import io.climintv.home.util.TmdbRepository;
 import io.climintv.home.util.WeatherRepository;
 
 public class MainActivity extends Activity {
@@ -80,11 +86,22 @@ public class MainActivity extends Activity {
     private ImageView icCircleBluetooth;
     private ImageView icCircleTvSettings;
 
+    // Super Mode TMDB Recommendations Carousel
+    private LinearLayout superModeContainer;
+    private TextView labelSuperMode;
+    private RecyclerView recyclerSuperMode;
+    private SuperModeAdapter superModeAdapter;
+
     // App Cards Carousel (Icon-Only, 340x200 px / 170x100 dp)
     private RecyclerView recyclerAppsMenu;
     private DockAdapter appsMenuAdapter;
     private final List<AppEntry> allApps = new ArrayList<>();
     private final List<AppEntry> featuredApps = new ArrayList<>();
+
+    // Reorder / Move Mode state
+    private boolean isReordering = false;
+    private int reorderPosition = -1;
+    private List<AppEntry> reorderOriginalList = null;
 
     // Inputs & Shortcuts (120 px / 60 dp high)
     private View chipInputHdmi1;
@@ -151,6 +168,7 @@ public class MainActivity extends Activity {
         setupAdapters();
         setupListeners();
         loadInstalledApps();
+        updateLayoutMode();
         refreshWeather();
 
         // Listen for package changes
@@ -165,9 +183,70 @@ public class MainActivity extends Activity {
     @Override
     protected void onResume() {
         super.onResume();
-        handler.post(clockRunnable);
         applyMaterial3Theme();
+        updateClockDisplay();
+        handler.post(clockRunnable);
         refreshWeather();
+    }
+
+    @Override
+    public void onBackPressed() {
+        if (isReordering) {
+            cancelReorder();
+            return;
+        }
+        // A TV launcher should never exit/finish on Back!
+        if (recyclerAppsMenu != null) {
+            recyclerAppsMenu.requestFocus();
+            recyclerAppsMenu.smoothScrollToPosition(0);
+        }
+    }
+
+    @Override
+    public boolean onKeyDown(int keyCode, KeyEvent event) {
+        if (isReordering) {
+            if (keyCode == KeyEvent.KEYCODE_DPAD_LEFT) {
+                if (reorderPosition > 0) {
+                    Collections.swap(featuredApps, reorderPosition, reorderPosition - 1);
+                    appsMenuAdapter.notifyItemMoved(reorderPosition, reorderPosition - 1);
+                    reorderPosition--;
+                    appsMenuAdapter.setReordering(true, reorderPosition);
+                    recyclerAppsMenu.smoothScrollToPosition(reorderPosition);
+                }
+                return true;
+            } else if (keyCode == KeyEvent.KEYCODE_DPAD_RIGHT) {
+                if (reorderPosition < featuredApps.size() - 1) {
+                    Collections.swap(featuredApps, reorderPosition, reorderPosition + 1);
+                    appsMenuAdapter.notifyItemMoved(reorderPosition, reorderPosition + 1);
+                    reorderPosition++;
+                    appsMenuAdapter.setReordering(true, reorderPosition);
+                    recyclerAppsMenu.smoothScrollToPosition(reorderPosition);
+                }
+                return true;
+            } else if (keyCode == KeyEvent.KEYCODE_DPAD_CENTER || keyCode == KeyEvent.KEYCODE_ENTER) {
+                dropReorder();
+                return true;
+            } else if (keyCode == KeyEvent.KEYCODE_BACK) {
+                cancelReorder();
+                return true;
+            }
+        }
+
+        if (keyCode == KeyEvent.KEYCODE_BACK) {
+            onBackPressed();
+            return true;
+        }
+        if (keyCode == KeyEvent.KEYCODE_HOME) {
+            if (isReordering) {
+                cancelReorder();
+            }
+            if (recyclerAppsMenu != null) {
+                recyclerAppsMenu.requestFocus();
+                recyclerAppsMenu.smoothScrollToPosition(0);
+            }
+            return true;
+        }
+        return super.onKeyDown(keyCode, event);
     }
 
     @Override
@@ -211,6 +290,11 @@ public class MainActivity extends Activity {
         FocusAnimator.attachCircleButton(btnCircleWifi, icCircleWifi);
         FocusAnimator.attachCircleButton(btnCircleBluetooth, icCircleBluetooth);
         FocusAnimator.attachCircleButton(btnCircleTvSettings, icCircleTvSettings);
+
+        // Super Mode Container & Recycler
+        superModeContainer = findViewById(R.id.super_mode_container);
+        labelSuperMode = findViewById(R.id.label_super_mode);
+        recyclerSuperMode = findViewById(R.id.recycler_super_mode);
 
         // App Carousel (Icon-Only wide rounded tiles)
         recyclerAppsMenu = findViewById(R.id.recycler_apps_menu);
@@ -297,15 +381,32 @@ public class MainActivity extends Activity {
     }
 
     private void setupAdapters() {
+        // 1. Super Mode Adapter
+        superModeAdapter = new SuperModeAdapter(item -> item.launch(this));
+        if (recyclerSuperMode != null) {
+            LinearLayoutManager superLm = new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false);
+            recyclerSuperMode.setLayoutManager(superLm);
+            recyclerSuperMode.setAdapter(superModeAdapter);
+        }
+
+        // 2. Apps Menu Adapter (Icon-only tiles with Drag/Reorder on hold OK)
         appsMenuAdapter = new DockAdapter(new DockAdapter.OnAppClickListener() {
             @Override
             public void onAppClick(AppEntry app) {
+                if (isReordering) {
+                    dropReorder();
+                    return;
+                }
                 launchApp(app);
             }
 
             @Override
-            public void onAppLongClick(AppEntry app, View view) {
-                showAppContextDialog(app);
+            public void onAppLongClick(AppEntry app, View view, int position) {
+                if (isReordering) {
+                    dropReorder();
+                } else {
+                    startReorder(position);
+                }
             }
 
             @Override
@@ -338,6 +439,46 @@ public class MainActivity extends Activity {
         recyclerAppsMenu.setAdapter(appsMenuAdapter);
     }
 
+    private void startReorder(int position) {
+        if (position < 0 || position >= featuredApps.size()) return;
+        isReordering = true;
+        reorderPosition = position;
+        reorderOriginalList = new ArrayList<>(featuredApps);
+        appsMenuAdapter.setReordering(true, position);
+        Toast.makeText(this, "Move Mode: Press ◄ / ► to move, OK to save, Back to cancel", Toast.LENGTH_SHORT).show();
+        if (recyclerAppsMenu != null) {
+            recyclerAppsMenu.smoothScrollToPosition(position);
+        }
+    }
+
+    private void dropReorder() {
+        if (!isReordering) return;
+        isReordering = false;
+        appsMenuAdapter.setReordering(false, -1);
+        reorderOriginalList = null;
+
+        // Persist new order to Preferences
+        List<String> pinned = new ArrayList<>();
+        for (AppEntry e : featuredApps) {
+            pinned.add(e.getPackageName());
+        }
+        prefs.setPinnedPackages(pinned);
+        Toast.makeText(this, "App position saved", Toast.LENGTH_SHORT).show();
+    }
+
+    private void cancelReorder() {
+        if (!isReordering) return;
+        isReordering = false;
+        if (reorderOriginalList != null) {
+            featuredApps.clear();
+            featuredApps.addAll(reorderOriginalList);
+            reorderOriginalList = null;
+        }
+        appsMenuAdapter.setReordering(false, -1);
+        appsMenuAdapter.setItems(featuredApps);
+        Toast.makeText(this, "Reorder cancelled", Toast.LENGTH_SHORT).show();
+    }
+
     private void setupListeners() {
         // 1. Inputs: Jump to HDMI 1
         btnCircleInputs.setOnClickListener(v -> {
@@ -353,10 +494,10 @@ public class MainActivity extends Activity {
             return true;
         });
 
-        // 3. Wi-Fi (With OEM fallbacks)
+        // 3. Wi-Fi
         btnCircleWifi.setOnClickListener(v -> launchSafeSettings(Settings.ACTION_WIFI_SETTINGS));
 
-        // 4. Bluetooth (With OEM fallbacks)
+        // 4. Bluetooth
         btnCircleBluetooth.setOnClickListener(v -> launchSafeSettings(Settings.ACTION_BLUETOOTH_SETTINGS));
 
         // 5. Android TV Settings
@@ -392,6 +533,20 @@ public class MainActivity extends Activity {
             prefs.setCelsius(!prefs.isCelsius());
             renderWeatherDisplay();
         });
+    }
+
+    private void updateLayoutMode() {
+        boolean isSuper = AppPreferences.LAYOUT_SUPER.equals(prefs.getHomeLayout());
+        if (superModeContainer != null) {
+            superModeContainer.setVisibility(isSuper ? View.VISIBLE : View.GONE);
+        }
+        if (isSuper) {
+            TmdbRepository.fetchRecommendations(this, items -> {
+                if (superModeAdapter != null && items != null && !items.isEmpty()) {
+                    superModeAdapter.setItems(items);
+                }
+            });
+        }
     }
 
     private void launchSafeSettings(String action) {
@@ -524,6 +679,7 @@ public class MainActivity extends Activity {
 
         List<String> pinned = prefs.getPinnedPackages();
         Set<String> hidden = prefs.getHiddenPackages();
+        Map<String, AppEntry> appMap = new HashMap<>();
 
         for (ResolveInfo info : resolveInfos) {
             String pkg = info.activityInfo.packageName;
@@ -542,17 +698,25 @@ public class MainActivity extends Activity {
             AppEntry entry = new AppEntry(pkg, info.activityInfo.name, label, icon, banner, isLeanback);
             entry.setPinned(pinned.contains(pkg));
             allApps.add(entry);
+            appMap.put(pkg, entry);
+        }
 
-            if (entry.isPinned()) {
+        // Populate featuredApps preserving custom user order from pinned list
+        for (String pkg : pinned) {
+            AppEntry entry = appMap.get(pkg);
+            if (entry != null && !featuredApps.contains(entry)) {
                 featuredApps.add(entry);
             }
         }
 
+        // If pinned list was empty or none matched, add first available apps
         if (featuredApps.isEmpty()) {
-            featuredApps.addAll(allApps);
+            for (int i = 0; i < Math.min(8, allApps.size()); i++) {
+                featuredApps.add(allApps.get(i));
+            }
         }
 
-        Collections.sort(featuredApps, (a, b) -> String.valueOf(a.getLabel()).compareToIgnoreCase(String.valueOf(b.getLabel())));
+        // Sort allApps alphabetically for All Apps dialog
         Collections.sort(allApps, (a, b) -> String.valueOf(a.getLabel()).compareToIgnoreCase(String.valueOf(b.getLabel())));
 
         appsMenuAdapter.setItems(featuredApps);
@@ -575,39 +739,6 @@ public class MainActivity extends Activity {
         }
     }
 
-    private void showAppContextDialog(AppEntry app) {
-        String[] options = {
-                app.isPinned() ? "Unpin from Favorites" : "Pin to Favorites",
-                "App Info",
-                "Hide Application"
-        };
-
-        new AlertDialog.Builder(this)
-                .setTitle(app.getLabel())
-                .setItems(options, (dialog, which) -> {
-                    if (which == 0) {
-                        if (app.isPinned()) {
-                            prefs.unpinPackage(app.getPackageName());
-                        } else {
-                            prefs.pinPackage(app.getPackageName());
-                        }
-                        loadInstalledApps();
-                    } else if (which == 1) {
-                        try {
-                            Intent intent = new Intent(Settings.ACTION_APPLICATION_DETAILS_SETTINGS);
-                            intent.setData(Uri.parse("package:" + app.getPackageName()));
-                            startActivity(intent);
-                        } catch (Exception e) {
-                            Toast.makeText(this, "App details unavailable", Toast.LENGTH_SHORT).show();
-                        }
-                    } else if (which == 2) {
-                        prefs.setHidden(app.getPackageName(), true);
-                        loadInstalledApps();
-                    }
-                })
-                .show();
-    }
-
     private void showAllAppsDialog() {
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
         View dialogView = LayoutInflater.from(this).inflate(R.layout.dialog_m3_all_apps, null);
@@ -617,22 +748,70 @@ public class MainActivity extends Activity {
         RecyclerView recycler = dialogView.findViewById(R.id.dialog_recycler_all_apps);
         recycler.setLayoutManager(new GridLayoutManager(this, 4));
 
+        final AppGridAdapter[] adapterHolder = new AppGridAdapter[1];
         AppGridAdapter adapter = new AppGridAdapter(new AppGridAdapter.OnAppActionListener() {
             @Override
             public void onAppClick(AppEntry app) {
-                dialog.dismiss();
-                launchApp(app);
+                boolean isPinned = prefs.isPinned(app.getPackageName());
+                String[] actions = {
+                        "Open " + app.getLabel(),
+                        isPinned ? "Remove from Home Selector" : "Add to Home Selector",
+                        "App Info"
+                };
+
+                new AlertDialog.Builder(MainActivity.this)
+                        .setTitle(app.getLabel())
+                        .setItems(actions, (d, which) -> {
+                            if (which == 0) {
+                                dialog.dismiss();
+                                launchApp(app);
+                            } else if (which == 1) {
+                                if (isPinned) {
+                                    prefs.unpinPackage(app.getPackageName());
+                                    Toast.makeText(MainActivity.this, "Removed " + app.getLabel() + " from Home selector", Toast.LENGTH_SHORT).show();
+                                } else {
+                                    prefs.pinPackage(app.getPackageName());
+                                    Toast.makeText(MainActivity.this, "Added " + app.getLabel() + " to Home selector", Toast.LENGTH_SHORT).show();
+                                }
+                                if (adapterHolder[0] != null) {
+                                    adapterHolder[0].setPinnedPackages(prefs.getPinnedPackages());
+                                }
+                                loadInstalledApps();
+                            } else if (which == 2) {
+                                try {
+                                    Intent intent = new Intent(Settings.ACTION_APPLICATION_DETAILS_SETTINGS);
+                                    intent.setData(Uri.parse("package:" + app.getPackageName()));
+                                    startActivity(intent);
+                                } catch (Exception e) {
+                                    Toast.makeText(MainActivity.this, "App details unavailable", Toast.LENGTH_SHORT).show();
+                                }
+                            }
+                        })
+                        .show();
             }
 
             @Override
             public void onAppLongClick(AppEntry app, View view) {
-                dialog.dismiss();
-                showAppContextDialog(app);
+                // Quick Toggle: Holding OK directly moves app to/from Home selector
+                boolean isPinned = prefs.isPinned(app.getPackageName());
+                if (isPinned) {
+                    prefs.unpinPackage(app.getPackageName());
+                    Toast.makeText(MainActivity.this, "Removed " + app.getLabel() + " from Home selector", Toast.LENGTH_SHORT).show();
+                } else {
+                    prefs.pinPackage(app.getPackageName());
+                    Toast.makeText(MainActivity.this, "Added " + app.getLabel() + " to Home selector", Toast.LENGTH_SHORT).show();
+                }
+                if (adapterHolder[0] != null) {
+                    adapterHolder[0].setPinnedPackages(prefs.getPinnedPackages());
+                }
+                loadInstalledApps();
             }
         });
+        adapterHolder[0] = adapter;
 
         recycler.setAdapter(adapter);
         adapter.setItems(allApps);
+        adapter.setPinnedPackages(prefs.getPinnedPackages());
 
         View btnClose = dialogView.findViewById(R.id.btn_close_all_apps);
         if (btnClose != null) {
@@ -648,7 +827,27 @@ public class MainActivity extends Activity {
         builder.setView(dialogView);
         AlertDialog dialog = builder.create();
 
-        // 1. Dark Mode
+        // 1. Home Layout: Minimal vs Super Mode
+        Switch switchHomeLayout = dialogView.findViewById(R.id.switch_home_layout);
+        TextView textHomeLayoutLabel = dialogView.findViewById(R.id.text_home_layout_label);
+        boolean isSuper = AppPreferences.LAYOUT_SUPER.equals(prefs.getHomeLayout());
+        if (switchHomeLayout != null) {
+            switchHomeLayout.setChecked(isSuper);
+        }
+        if (textHomeLayoutLabel != null) {
+            textHomeLayoutLabel.setText("Home Screen: " + (isSuper ? "Super Mode (TMDB)" : "Minimal Mode"));
+        }
+        dialogView.findViewById(R.id.row_toggle_home_layout).setOnClickListener(v -> {
+            boolean nextSuper = !switchHomeLayout.isChecked();
+            switchHomeLayout.setChecked(nextSuper);
+            String nextMode = nextSuper ? AppPreferences.LAYOUT_SUPER : AppPreferences.LAYOUT_MINIMAL;
+            prefs.setHomeLayout(nextMode);
+            textHomeLayoutLabel.setText("Home Screen: " + (nextSuper ? "Super Mode (TMDB)" : "Minimal Mode"));
+            updateLayoutMode();
+            Toast.makeText(this, "Switched to " + (nextSuper ? "Super Mode" : "Minimal Mode"), Toast.LENGTH_SHORT).show();
+        });
+
+        // 2. Dark Mode Switch
         Switch switchDark = dialogView.findViewById(R.id.switch_dark_mode);
         switchDark.setChecked(prefs.isDarkMode());
         dialogView.findViewById(R.id.row_toggle_dark_mode).setOnClickListener(v -> {
@@ -656,9 +855,10 @@ public class MainActivity extends Activity {
             switchDark.setChecked(next);
             prefs.setDarkMode(next);
             applyMaterial3Theme();
+            Toast.makeText(this, next ? "Dark Theme Active" : "Light Theme Active", Toast.LENGTH_SHORT).show();
         });
 
-        // 2. Adaptive Color (Section 8)
+        // 3. Dynamic Adaptive Color Switch
         Switch switchAdaptive = dialogView.findViewById(R.id.switch_adaptive_color);
         switchAdaptive.setChecked(prefs.isAdaptiveColor());
         dialogView.findViewById(R.id.row_toggle_adaptive_color).setOnClickListener(v -> {
@@ -668,27 +868,35 @@ public class MainActivity extends Activity {
             if (!next) {
                 applyMaterial3Theme();
             }
+            Toast.makeText(this, next ? "Adaptive Colors Enabled" : "Adaptive Colors Disabled", Toast.LENGTH_SHORT).show();
         });
 
-        // 3. Home Layout (Minimal vs Super) (Section 9)
-        TextView textLayoutLabel = dialogView.findViewById(R.id.text_home_layout_label);
-        textLayoutLabel.setText("Home Layout: " + (AppPreferences.LAYOUT_SUPER.equals(prefs.getHomeLayout()) ? "Super Mode" : "Minimal Mode"));
-        dialogView.findViewById(R.id.row_toggle_home_layout).setOnClickListener(v -> {
-            boolean isSuper = AppPreferences.LAYOUT_SUPER.equals(prefs.getHomeLayout());
-            String nextLayout = isSuper ? AppPreferences.LAYOUT_MINIMAL : AppPreferences.LAYOUT_SUPER;
-            prefs.setHomeLayout(nextLayout);
-            textLayoutLabel.setText("Home Layout: " + (AppPreferences.LAYOUT_SUPER.equals(nextLayout) ? "Super Mode" : "Minimal Mode"));
-            Toast.makeText(this, "Layout set to " + (isSuper ? "Minimal" : "Super"), Toast.LENGTH_SHORT).show();
+        // 4. Reorder Info Row
+        dialogView.findViewById(R.id.row_reorder_info).setOnClickListener(v -> {
+            Toast.makeText(this, "Focus any app on Home and hold OK to drag and change position", Toast.LENGTH_LONG).show();
         });
 
-        // 4. Weather City Picker
-        TextView textCityLabel = dialogView.findViewById(R.id.text_city_label);
-        textCityLabel.setText("Weather City: " + prefs.getCity());
-        dialogView.findViewById(R.id.row_weather_city).setOnClickListener(v -> {
-            showCityPickerDialog(dialog, textCityLabel);
+        // 5. Reset Home Apps Button
+        dialogView.findViewById(R.id.row_reset_home_apps).setOnClickListener(v -> {
+            new AlertDialog.Builder(this)
+                    .setTitle("Reset Home Apps")
+                    .setMessage("Restore default streaming applications to the Home carousel?")
+                    .setPositiveButton("Reset", (d, which) -> {
+                        prefs.setPinnedPackages(new ArrayList<>(java.util.Arrays.asList(
+                                "com.google.android.youtube.tv",
+                                "com.netflix.ninja",
+                                "com.amazon.amazonvideo.livingroom",
+                                "com.disney.disneyplus",
+                                "org.videolan.vlc"
+                        )));
+                        loadInstalledApps();
+                        Toast.makeText(this, "Home apps reset to default", Toast.LENGTH_SHORT).show();
+                    })
+                    .setNegativeButton("Cancel", null)
+                    .show();
         });
 
-        // 5. 24H Clock Toggle
+        // 6. 24H Clock Toggle
         Switch switchClock = dialogView.findViewById(R.id.switch_24h_clock);
         switchClock.setChecked(prefs.isClock24h());
         dialogView.findViewById(R.id.row_toggle_clock).setOnClickListener(v -> {
@@ -698,19 +906,44 @@ public class MainActivity extends Activity {
             updateClockDisplay();
         });
 
-        // 6. Weather Unit Toggle
+        // 7. Weather Temperature Unit Toggle
         Switch switchWeather = dialogView.findViewById(R.id.switch_weather_temp);
+        TextView textWeatherUnit = dialogView.findViewById(R.id.text_weather_unit_title);
         switchWeather.setChecked(prefs.isCelsius());
+        if (textWeatherUnit != null) {
+            textWeatherUnit.setText("Weather Unit: " + (prefs.isCelsius() ? "Celsius (°C)" : "Fahrenheit (°F)"));
+        }
         dialogView.findViewById(R.id.row_toggle_weather_temp).setOnClickListener(v -> {
             boolean next = !switchWeather.isChecked();
             switchWeather.setChecked(next);
             prefs.setCelsius(next);
+            if (textWeatherUnit != null) {
+                textWeatherUnit.setText("Weather Unit: " + (next ? "Celsius (°C)" : "Fahrenheit (°F)"));
+            }
             renderWeatherDisplay();
         });
 
+        // 8. Weather City Picker
+        TextView textCityLabel = dialogView.findViewById(R.id.text_city_label);
+        textCityLabel.setText("Weather City: " + prefs.getCity());
+        dialogView.findViewById(R.id.row_weather_city).setOnClickListener(v -> {
+            showCityPickerDialog(dialog, textCityLabel);
+        });
+
+        // 9. Hardware & System Buttons
         dialogView.findViewById(R.id.btn_open_system_settings).setOnClickListener(v -> {
             dialog.dismiss();
             launchSafeSettings(Settings.ACTION_SETTINGS);
+        });
+
+        dialogView.findViewById(R.id.btn_open_wifi_settings).setOnClickListener(v -> {
+            dialog.dismiss();
+            launchSafeSettings(Settings.ACTION_WIFI_SETTINGS);
+        });
+
+        dialogView.findViewById(R.id.btn_open_bluetooth_settings).setOnClickListener(v -> {
+            dialog.dismiss();
+            launchSafeSettings(Settings.ACTION_BLUETOOTH_SETTINGS);
         });
 
         dialogView.findViewById(R.id.btn_close_settings).setOnClickListener(v -> dialog.dismiss());
@@ -763,6 +996,11 @@ public class MainActivity extends Activity {
             if (circleIcons[i] != null) {
                 circleIcons[i].setColorFilter(p.onbg);
             }
+        }
+
+        // Super Mode Label
+        if (labelSuperMode != null) {
+            labelSuperMode.setTextColor(p.onbg);
         }
 
         // Inputs & Shortcuts Pills

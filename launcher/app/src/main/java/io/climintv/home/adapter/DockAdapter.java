@@ -6,6 +6,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -22,12 +23,14 @@ public class DockAdapter extends RecyclerView.Adapter<DockAdapter.ViewHolder> {
 
     public interface OnAppClickListener {
         void onAppClick(AppEntry app);
-        void onAppLongClick(AppEntry app, View view);
+        void onAppLongClick(AppEntry app, View view, int position);
         void onAppFocused(AppEntry app, View view);
     }
 
     private final List<AppEntry> items = new ArrayList<>();
     private final OnAppClickListener listener;
+    private boolean isReordering = false;
+    private int reorderingPosition = -1;
 
     public DockAdapter(OnAppClickListener listener) {
         this.listener = listener;
@@ -41,6 +44,20 @@ public class DockAdapter extends RecyclerView.Adapter<DockAdapter.ViewHolder> {
         notifyDataSetChanged();
     }
 
+    public void setReordering(boolean reordering, int position) {
+        this.isReordering = reordering;
+        this.reorderingPosition = position;
+        notifyDataSetChanged();
+    }
+
+    public boolean isReordering() {
+        return isReordering;
+    }
+
+    public int getReorderingPosition() {
+        return reorderingPosition;
+    }
+
     @NonNull
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
@@ -52,7 +69,7 @@ public class DockAdapter extends RecyclerView.Adapter<DockAdapter.ViewHolder> {
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         AppEntry app = items.get(position);
-        holder.bind(app, position, listener);
+        holder.bind(app, position, isReordering, reorderingPosition, listener);
     }
 
     @Override
@@ -63,16 +80,18 @@ public class DockAdapter extends RecyclerView.Adapter<DockAdapter.ViewHolder> {
     public static class ViewHolder extends RecyclerView.ViewHolder {
         private final ImageView iconView;
         private final View iconTileContainer;
+        private final TextView badgeReorder;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
             iconView = itemView.findViewById(R.id.app_icon);
             iconTileContainer = itemView.findViewById(R.id.icon_tile_container);
+            badgeReorder = itemView.findViewById(R.id.badge_reorder);
 
             FocusAnimator.attach(itemView, FocusAnimator.APP_CARD_FOCUS_SCALE);
         }
 
-        public void bind(AppEntry app, int position, OnAppClickListener listener) {
+        public void bind(AppEntry app, int position, boolean isReordering, int reorderingPosition, OnAppClickListener listener) {
             if (app.getIcon() != null) {
                 iconView.setImageDrawable(app.getIcon());
             } else if (app.getBanner() != null) {
@@ -84,25 +103,33 @@ public class DockAdapter extends RecyclerView.Adapter<DockAdapter.ViewHolder> {
             // No visible text - content description for TalkBack
             itemView.setContentDescription(app.getLabel());
 
+            boolean isCurrentMovingItem = isReordering && (position == reorderingPosition);
+
+            if (badgeReorder != null) {
+                badgeReorder.setVisibility(isCurrentMovingItem ? View.VISIBLE : View.GONE);
+            }
+
             itemView.setOnClickListener(v -> {
                 if (listener != null) listener.onAppClick(app);
             });
 
             itemView.setOnLongClickListener(v -> {
                 if (listener != null) {
-                    listener.onAppLongClick(app, v);
+                    listener.onAppLongClick(app, v, position);
                     return true;
                 }
                 return false;
             });
 
-            updateCardFocus(itemView.hasFocus(), position);
+            updateCardFocus(itemView.hasFocus() || isCurrentMovingItem, position, isCurrentMovingItem);
 
             itemView.setOnFocusChangeListener((v, hasFocus) -> {
-                FocusAnimator.animateSpringScale(v, hasFocus ? FocusAnimator.APP_CARD_FOCUS_SCALE : 1.0f, 0.6f);
+                float targetScale = isCurrentMovingItem ? 1.15f : (hasFocus ? FocusAnimator.APP_CARD_FOCUS_SCALE : 1.0f);
+                FocusAnimator.animateSpringScale(v, targetScale, 0.6f);
                 float density = v.getResources().getDisplayMetrics().density;
-                v.animate().translationZ(hasFocus ? 10f * density : 0f).setDuration(160).start();
-                updateCardFocus(hasFocus, position);
+                float targetZ = isCurrentMovingItem ? (20f * density) : (hasFocus ? 10f * density : 0f);
+                v.animate().translationZ(targetZ).setDuration(160).start();
+                updateCardFocus(hasFocus || isCurrentMovingItem, position, isCurrentMovingItem);
 
                 if (hasFocus && listener != null) {
                     listener.onAppFocused(app, v);
@@ -110,7 +137,7 @@ public class DockAdapter extends RecyclerView.Adapter<DockAdapter.ViewHolder> {
             });
         }
 
-        private void updateCardFocus(boolean hasFocus, int position) {
+        private void updateCardFocus(boolean hasFocus, int position, boolean isMoving) {
             ThemeManager.ExpressivePalette p = ThemeManager.getCurrentPalette(itemView.getContext());
             float density = itemView.getResources().getDisplayMetrics().density;
 
@@ -119,7 +146,10 @@ public class DockAdapter extends RecyclerView.Adapter<DockAdapter.ViewHolder> {
             float cardRadius = hasFocus ? (26f * density) : (15f * density);
             cardBg.setCornerRadius(cardRadius);
             cardBg.setColor(hasFocus ? p.pc : p.sch);
-            if (hasFocus) {
+
+            if (isMoving) {
+                cardBg.setStroke((int) (3.5f * density), p.pri);
+            } else if (hasFocus) {
                 cardBg.setStroke((int) (3f * density), p.pri);
             }
             itemView.setBackground(cardBg);

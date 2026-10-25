@@ -10,7 +10,9 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 import io.climintv.home.R;
 import io.climintv.home.model.AppEntry;
@@ -24,6 +26,7 @@ public class AppGridAdapter extends RecyclerView.Adapter<AppGridAdapter.ViewHold
     }
 
     private final List<AppEntry> items = new ArrayList<>();
+    private final Set<String> pinnedPackages = new HashSet<>();
     private final OnAppActionListener listener;
 
     public AppGridAdapter(OnAppActionListener listener) {
@@ -34,6 +37,14 @@ public class AppGridAdapter extends RecyclerView.Adapter<AppGridAdapter.ViewHold
         items.clear();
         if (newItems != null) {
             items.addAll(newItems);
+        }
+        notifyDataSetChanged();
+    }
+
+    public void setPinnedPackages(List<String> pinnedList) {
+        pinnedPackages.clear();
+        if (pinnedList != null) {
+            pinnedPackages.addAll(pinnedList);
         }
         notifyDataSetChanged();
     }
@@ -49,7 +60,8 @@ public class AppGridAdapter extends RecyclerView.Adapter<AppGridAdapter.ViewHold
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         AppEntry app = items.get(position);
-        holder.bind(app, listener);
+        boolean isPinned = pinnedPackages.contains(app.getPackageName());
+        holder.bind(app, isPinned, listener);
     }
 
     @Override
@@ -60,15 +72,17 @@ public class AppGridAdapter extends RecyclerView.Adapter<AppGridAdapter.ViewHold
     public static class ViewHolder extends RecyclerView.ViewHolder {
         private final ImageView iconView;
         private final TextView titleView;
+        private final TextView badgeHomeShelf;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
             iconView = itemView.findViewById(R.id.app_icon);
             titleView = itemView.findViewById(R.id.app_title);
+            badgeHomeShelf = itemView.findViewById(R.id.badge_home_shelf);
             FocusAnimator.attach(itemView, 1.10f);
         }
 
-        public void bind(AppEntry app, OnAppActionListener listener) {
+        public void bind(AppEntry app, boolean isPinned, OnAppActionListener listener) {
             if (app.getIcon() != null) {
                 iconView.setImageDrawable(app.getIcon());
             } else if (app.getBanner() != null) {
@@ -78,6 +92,10 @@ public class AppGridAdapter extends RecyclerView.Adapter<AppGridAdapter.ViewHold
             }
 
             titleView.setText(app.getLabel());
+
+            if (badgeHomeShelf != null) {
+                badgeHomeShelf.setVisibility(isPinned ? View.VISIBLE : View.GONE);
+            }
 
             itemView.setOnClickListener(v -> {
                 if (listener != null) listener.onAppClick(app);

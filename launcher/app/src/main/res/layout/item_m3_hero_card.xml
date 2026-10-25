@@ -27,4 +27,22 @@
             android:scaleType="fitCenter" />
     </FrameLayout>
 
+    <!-- Visual Indicator for Reorder Mode (Holding OK) -->
+    <TextView
+        android:id="@+id/badge_reorder"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|center_horizontal"
+        android:layout_marginBottom="6dp"
+        android:background="@drawable/bg_m3_pill_chip"
+        android:fontFamily="@font/outfit_medium"
+        android:paddingStart="8dp"
+        android:paddingEnd="8dp"
+        android:paddingTop="2dp"
+        android:paddingBottom="2dp"
+        android:text="◀ MOVE ▶"
+        android:textColor="@color/m3_dark_pri"
+        android:textSize="10sp"
+        android:visibility="gone" />
+
 </FrameLayout>

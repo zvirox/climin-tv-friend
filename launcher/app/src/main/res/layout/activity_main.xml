@@ -9,12 +9,12 @@
     android:clipToPadding="false"
     android:orientation="vertical"
     android:paddingStart="32dp"
-    android:paddingTop="24dp"
+    android:paddingTop="22dp"
     android:paddingEnd="32dp"
-    android:paddingBottom="20dp">
+    android:paddingBottom="18dp">
 
     <!-- ======================================================== -->
-    <!-- 1. TOP HEADER: BIG CLOCK (LEFT) & 5 CIRCULAR ICONS (RIGHT)-->
+    <!-- 1. TOP HEADER: BIG LIVE CLOCK (LEFT) & 5 CIRCULAR ICONS   -->
     <!-- ======================================================== -->
     <LinearLayout
         android:id="@+id/top_header_row"
@@ -47,7 +47,7 @@
                     android:letterSpacing="-0.04"
                     android:lineSpacingMultiplier="0.85"
                     android:textColor="@color/m3_dark_onbg"
-                    android:textSize="76sp"
+                    android:textSize="72sp"
                     tools:text="1:39" />
 
                 <!-- Seconds in Primary Color Beside AM/PM -->
@@ -56,10 +56,10 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="4dp"
-                    android:layout_marginBottom="12dp"
+                    android:layout_marginBottom="11dp"
                     android:fontFamily="@font/outfit_medium"
                     android:textColor="@color/m3_dark_pri"
-                    android:textSize="30sp"
+                    android:textSize="28sp"
                     tools:text=":24" />
 
                 <!-- AM / PM Chip -->
@@ -68,10 +68,10 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="8dp"
-                    android:layout_marginBottom="14dp"
+                    android:layout_marginBottom="13dp"
                     android:fontFamily="@font/outfit_medium"
                     android:textColor="@color/m3_dark_pri"
-                    android:textSize="22sp"
+                    android:textSize="20sp"
                     tools:text="PM" />
             </LinearLayout>
 
@@ -83,7 +83,7 @@
                 android:layout_marginTop="1dp"
                 android:fontFamily="@font/outfit_regular"
                 android:textColor="@color/m3_dark_osv"
-                android:textSize="16sp"
+                android:textSize="15sp"
                 tools:text="Sunday, 25 October 2026" />
         </LinearLayout>
 
@@ -194,9 +194,46 @@
         </LinearLayout>
     </LinearLayout>
 
-    <Space
+    <!-- ======================================================== -->
+    <!-- SUPER MODE: TMDB STREAMING RECOMMENDATIONS CAROUSEL       -->
+    <!-- ======================================================== -->
+    <LinearLayout
+        android:id="@+id/super_mode_container"
         android:layout_width="match_parent"
-        android:layout_height="10dp" />
+        android:layout_height="wrap_content"
+        android:clipChildren="false"
+        android:clipToPadding="false"
+        android:orientation="vertical"
+        android:visibility="gone">
+
+        <TextView
+            android:id="@+id/label_super_mode"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:layout_marginBottom="4dp"
+            android:fontFamily="@font/outfit_medium"
+            android:text="Trending &amp; Popular on Streaming"
+            android:textColor="@color/m3_dark_onbg"
+            android:textSize="14sp" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recycler_super_mode"
+            android:layout_width="match_parent"
+            android:layout_height="146dp"
+            android:clipChildren="false"
+            android:clipToPadding="false"
+            android:descendantFocusability="afterDescendants"
+            android:nestedScrollingEnabled="false"
+            android:orientation="horizontal"
+            android:paddingTop="2dp"
+            android:paddingBottom="2dp" />
+    </LinearLayout>
+
+    <Space
+        android:id="@+id/spacer_app_row"
+        android:layout_width="match_parent"
+        android:layout_height="8dp" />
 
     <!-- ======================================================== -->
     <!-- 2. ICON-ONLY APP CARDS ROW (SPRING MOTION SCROLLING)     -->
@@ -204,18 +241,18 @@
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recycler_apps_menu"
         android:layout_width="match_parent"
-        android:layout_height="110dp"
+        android:layout_height="106dp"
         android:clipChildren="false"
         android:clipToPadding="false"
         android:descendantFocusability="afterDescendants"
         android:nestedScrollingEnabled="false"
         android:orientation="horizontal"
-        android:paddingTop="4dp"
-        android:paddingBottom="4dp" />
+        android:paddingTop="3dp"
+        android:paddingBottom="3dp" />
 
     <Space
         android:layout_width="match_parent"
-        android:layout_height="10dp" />
+        android:layout_height="8dp" />
 
     <!-- ======================================================== -->
     <!-- 3. INPUTS & SHORTCUTS ROW (120px / 60dp)                 -->
@@ -223,7 +260,7 @@
     <LinearLayout
         android:id="@+id/inputs_shortcuts_row"
         android:layout_width="match_parent"
-        android:layout_height="62dp"
+        android:layout_height="58dp"
         android:clipChildren="false"
         android:clipToPadding="false"
         android:gravity="center_vertical"
@@ -232,8 +269,8 @@
         <!-- HDMI 1 -->
         <LinearLayout
             android:id="@+id/chip_input_hdmi1"
-            android:layout_width="68dp"
-            android:layout_height="56dp"
+            android:layout_width="66dp"
+            android:layout_height="54dp"
             android:layout_marginEnd="8dp"
             android:background="@drawable/bg_m3_shortcut_chip"
             android:clickable="true"
@@ -243,8 +280,8 @@
 
             <ImageView
                 android:id="@+id/ic_hdmi1"
-                android:layout_width="20dp"
-                android:layout_height="20dp"
+                android:layout_width="18dp"
+                android:layout_height="18dp"
                 android:contentDescription="@null"
                 android:src="@drawable/ic_input" />
 
@@ -262,8 +299,8 @@
         <!-- HDMI 2 -->
         <LinearLayout
             android:id="@+id/chip_input_hdmi2"
-            android:layout_width="68dp"
-            android:layout_height="56dp"
+            android:layout_width="66dp"
+            android:layout_height="54dp"
             android:layout_marginEnd="8dp"
             android:background="@drawable/bg_m3_shortcut_chip"
             android:clickable="true"
@@ -273,8 +310,8 @@
 
             <ImageView
                 android:id="@+id/ic_hdmi2"
-                android:layout_width="20dp"
-                android:layout_height="20dp"
+                android:layout_width="18dp"
+                android:layout_height="18dp"
                 android:contentDescription="@null"
                 android:src="@drawable/ic_input" />
 
@@ -292,8 +329,8 @@
         <!-- HDMI 3 -->
         <LinearLayout
             android:id="@+id/chip_input_hdmi3"
-            android:layout_width="68dp"
-            android:layout_height="56dp"
+            android:layout_width="66dp"
+            android:layout_height="54dp"
             android:layout_marginEnd="8dp"
             android:background="@drawable/bg_m3_shortcut_chip"
             android:clickable="true"
@@ -303,8 +340,8 @@
 
             <ImageView
                 android:id="@+id/ic_hdmi3"
-                android:layout_width="20dp"
-                android:layout_height="20dp"
+                android:layout_width="18dp"
+                android:layout_height="18dp"
                 android:contentDescription="@null"
                 android:src="@drawable/ic_input" />
 
@@ -322,8 +359,8 @@
         <!-- USB -->
         <LinearLayout
             android:id="@+id/chip_input_usb"
-            android:layout_width="68dp"
-            android:layout_height="56dp"
+            android:layout_width="66dp"
+            android:layout_height="54dp"
             android:layout_marginEnd="8dp"
             android:background="@drawable/bg_m3_shortcut_chip"
             android:clickable="true"
@@ -333,8 +370,8 @@
 
             <ImageView
                 android:id="@+id/ic_usb"
-                android:layout_width="20dp"
-                android:layout_height="20dp"
+                android:layout_width="18dp"
+                android:layout_height="18dp"
                 android:contentDescription="@null"
                 android:src="@drawable/ic_usb" />
 
@@ -352,8 +389,8 @@
         <!-- AV -->
         <LinearLayout
             android:id="@+id/chip_input_av"
-            android:layout_width="68dp"
-            android:layout_height="56dp"
+            android:layout_width="66dp"
+            android:layout_height="54dp"
             android:layout_marginEnd="12dp"
             android:background="@drawable/bg_m3_shortcut_chip"
             android:clickable="true"
@@ -363,8 +400,8 @@
 
             <ImageView
                 android:id="@+id/ic_av"
-                android:layout_width="20dp"
-                android:layout_height="20dp"
+                android:layout_width="18dp"
+                android:layout_height="18dp"
                 android:contentDescription="@null"
                 android:src="@drawable/ic_av" />
 
@@ -383,15 +420,15 @@
         <View
             android:id="@+id/inputs_divider"
             android:layout_width="2dp"
-            android:layout_height="32dp"
+            android:layout_height="30dp"
             android:layout_marginEnd="12dp"
             android:background="@color/m3_dark_sc" />
 
         <!-- All Apps -->
         <LinearLayout
             android:id="@+id/chip_shortcut_all_apps"
-            android:layout_width="68dp"
-            android:layout_height="56dp"
+            android:layout_width="66dp"
+            android:layout_height="54dp"
             android:layout_marginEnd="8dp"
             android:background="@drawable/bg_m3_shortcut_chip"
             android:clickable="true"
@@ -401,8 +438,8 @@
 
             <ImageView
                 android:id="@+id/ic_all_apps"
-                android:layout_width="20dp"
-                android:layout_height="20dp"
+                android:layout_width="18dp"
+                android:layout_height="18dp"
                 android:contentDescription="@null"
                 android:src="@drawable/ic_apps" />
 
@@ -420,8 +457,8 @@
         <!-- UI Theme -->
         <LinearLayout
             android:id="@+id/chip_shortcut_ui_settings"
-            android:layout_width="68dp"
-            android:layout_height="56dp"
+            android:layout_width="66dp"
+            android:layout_height="54dp"
             android:layout_marginEnd="8dp"
             android:background="@drawable/bg_m3_shortcut_chip"
             android:clickable="true"
@@ -431,8 +468,8 @@
 
             <ImageView
                 android:id="@+id/ic_ui_settings"
-                android:layout_width="20dp"
-                android:layout_height="20dp"
+                android:layout_width="18dp"
+                android:layout_height="18dp"
                 android:contentDescription="@null"
                 android:src="@drawable/ic_palette" />
 
@@ -450,8 +487,8 @@
         <!-- TV Settings -->
         <LinearLayout
             android:id="@+id/chip_shortcut_tv_settings"
-            android:layout_width="68dp"
-            android:layout_height="56dp"
+            android:layout_width="66dp"
+            android:layout_height="54dp"
             android:layout_marginEnd="8dp"
             android:background="@drawable/bg_m3_shortcut_chip"
             android:clickable="true"
@@ -461,8 +498,8 @@
 
             <ImageView
                 android:id="@+id/ic_tv_settings"
-                android:layout_width="20dp"
-                android:layout_height="20dp"
+                android:layout_width="18dp"
+                android:layout_height="18dp"
                 android:contentDescription="@null"
                 android:src="@drawable/ic_settings" />
 
@@ -480,8 +517,8 @@
         <!-- Search -->
         <LinearLayout
             android:id="@+id/chip_shortcut_search"
-            android:layout_width="68dp"
-            android:layout_height="56dp"
+            android:layout_width="66dp"
+            android:layout_height="54dp"
             android:background="@drawable/bg_m3_shortcut_chip"
             android:clickable="true"
             android:focusable="true"
@@ -490,8 +527,8 @@
 
             <ImageView
                 android:id="@+id/ic_search"
-                android:layout_width="20dp"
-                android:layout_height="20dp"
+                android:layout_width="18dp"
+                android:layout_height="18dp"
                 android:contentDescription="@null"
                 android:src="@drawable/ic_search" />
 
@@ -508,8 +545,9 @@
     </LinearLayout>
 
     <Space
+        android:id="@+id/spacer_weather"
         android:layout_width="match_parent"
-        android:layout_height="10dp" />
+        android:layout_height="8dp" />
 
     <!-- ======================================================== -->
     <!-- 4. WEATHER WIDGET (184px / 92dp, WITH 6-SLOT HOURLY STRIP) -->
@@ -517,7 +555,7 @@
     <LinearLayout
         android:id="@+id/weather_widget_card"
         android:layout_width="match_parent"
-        android:layout_height="92dp"
+        android:layout_height="88dp"
         android:background="@drawable/bg_m3_weather_card"
         android:clipChildren="false"
         android:clipToPadding="false"
@@ -529,14 +567,14 @@
         <!-- Weather Circular Badge (60dp / 120px in tertiaryContainer) -->
         <FrameLayout
             android:id="@+id/weather_badge_container"
-            android:layout_width="56dp"
-            android:layout_height="56dp"
+            android:layout_width="54dp"
+            android:layout_height="54dp"
             android:background="@drawable/bg_m3_circle_button">
 
             <ImageView
                 android:id="@+id/weather_icon"
-                android:layout_width="32dp"
-                android:layout_height="32dp"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
                 android:layout_gravity="center"
                 android:contentDescription="Weather Icon"
                 android:src="@drawable/ic_weather_sun" />
@@ -547,18 +585,18 @@
             android:id="@+id/text_weather_temp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="14dp"
+            android:layout_marginStart="12dp"
             android:fontFamily="@font/outfit_light"
             android:letterSpacing="-0.03"
             android:textColor="@color/m3_dark_onbg"
-            android:textSize="48sp"
+            android:textSize="44sp"
             tools:text="31°" />
 
         <!-- Condition & Forecast Info -->
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="14dp"
+            android:layout_marginStart="12dp"
             android:orientation="vertical">
 
             <TextView
@@ -568,7 +606,7 @@
                 android:fontFamily="@font/outfit_medium"
                 android:text="Partly cloudy"
                 android:textColor="@color/m3_dark_onbg"
-                android:textSize="16sp" />
+                android:textSize="15sp" />
 
             <TextView
                 android:id="@+id/text_weather_details"
@@ -607,8 +645,8 @@
             <!-- Slot 1: Now -->
             <LinearLayout
                 android:id="@+id/forecast_chip_1"
-                android:layout_width="66dp"
-                android:layout_height="58dp"
+                android:layout_width="64dp"
+                android:layout_height="56dp"
                 android:layout_marginEnd="6dp"
                 android:background="@drawable/bg_m3_pill_chip"
                 android:gravity="center"
@@ -625,16 +663,16 @@
 
                 <ImageView
                     android:id="@+id/ic_forecast_1"
-                    android:layout_width="16dp"
-                    android:layout_height="16dp"
-                    android:layout_marginTop="2dp"
+                    android:layout_width="15dp"
+                    android:layout_height="15dp"
+                    android:layout_marginTop="1dp"
                     android:src="@drawable/ic_weather_cloud_sun" />
 
                 <TextView
                     android:id="@+id/text_forecast_temp_1"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="2dp"
+                    android:layout_marginTop="1dp"
                     android:fontFamily="@font/outfit_medium"
                     android:text="31°"
                     android:textColor="@color/m3_dark_onpri"
@@ -644,8 +682,8 @@
             <!-- Slot 2: 2 PM -->
             <LinearLayout
                 android:id="@+id/forecast_chip_2"
-                android:layout_width="66dp"
-                android:layout_height="58dp"
+                android:layout_width="64dp"
+                android:layout_height="56dp"
                 android:layout_marginEnd="6dp"
                 android:background="@drawable/bg_m3_pill_chip"
                 android:gravity="center"
@@ -662,16 +700,16 @@
 
                 <ImageView
                     android:id="@+id/ic_forecast_2"
-                    android:layout_width="16dp"
-                    android:layout_height="16dp"
-                    android:layout_marginTop="2dp"
+                    android:layout_width="15dp"
+                    android:layout_height="15dp"
+                    android:layout_marginTop="1dp"
                     android:src="@drawable/ic_weather_sun" />
 
                 <TextView
                     android:id="@+id/text_forecast_temp_2"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="2dp"
+                    android:layout_marginTop="1dp"
                     android:fontFamily="@font/outfit_medium"
                     android:text="32°"
                     android:textColor="@color/m3_dark_onbg"
@@ -681,8 +719,8 @@
             <!-- Slot 3: 3 PM -->
             <LinearLayout
                 android:id="@+id/forecast_chip_3"
-                android:layout_width="66dp"
-                android:layout_height="58dp"
+                android:layout_width="64dp"
+                android:layout_height="56dp"
                 android:layout_marginEnd="6dp"
                 android:background="@drawable/bg_m3_pill_chip"
                 android:gravity="center"
@@ -699,16 +737,16 @@
 
                 <ImageView
                     android:id="@+id/ic_forecast_3"
-                    android:layout_width="16dp"
-                    android:layout_height="16dp"
-                    android:layout_marginTop="2dp"
+                    android:layout_width="15dp"
+                    android:layout_height="15dp"
+                    android:layout_marginTop="1dp"
                     android:src="@drawable/ic_weather_sun" />
 
                 <TextView
                     android:id="@+id/text_forecast_temp_3"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="2dp"
+                    android:layout_marginTop="1dp"
                     android:fontFamily="@font/outfit_medium"
                     android:text="32°"
                     android:textColor="@color/m3_dark_onbg"
@@ -718,8 +756,8 @@
             <!-- Slot 4: 4 PM -->
             <LinearLayout
                 android:id="@+id/forecast_chip_4"
-                android:layout_width="66dp"
-                android:layout_height="58dp"
+                android:layout_width="64dp"
+                android:layout_height="56dp"
                 android:layout_marginEnd="6dp"
                 android:background="@drawable/bg_m3_pill_chip"
                 android:gravity="center"
@@ -736,16 +774,16 @@
 
                 <ImageView
                     android:id="@+id/ic_forecast_4"
-                    android:layout_width="16dp"
-                    android:layout_height="16dp"
-                    android:layout_marginTop="2dp"
+                    android:layout_width="15dp"
+                    android:layout_height="15dp"
+                    android:layout_marginTop="1dp"
                     android:src="@drawable/ic_weather_cloud_sun" />
 
                 <TextView
                     android:id="@+id/text_forecast_temp_4"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="2dp"
+                    android:layout_marginTop="1dp"
                     android:fontFamily="@font/outfit_medium"
                     android:text="30°"
                     android:textColor="@color/m3_dark_onbg"
@@ -755,8 +793,8 @@
             <!-- Slot 5: 5 PM -->
             <LinearLayout
                 android:id="@+id/forecast_chip_5"
-                android:layout_width="66dp"
-                android:layout_height="58dp"
+                android:layout_width="64dp"
+                android:layout_height="56dp"
                 android:layout_marginEnd="6dp"
                 android:background="@drawable/bg_m3_pill_chip"
                 android:gravity="center"
@@ -773,16 +811,16 @@
 
                 <ImageView
                     android:id="@+id/ic_forecast_5"
-                    android:layout_width="16dp"
-                    android:layout_height="16dp"
-                    android:layout_marginTop="2dp"
+                    android:layout_width="15dp"
+                    android:layout_height="15dp"
+                    android:layout_marginTop="1dp"
                     android:src="@drawable/ic_weather_cloud_sun" />
 
                 <TextView
                     android:id="@+id/text_forecast_temp_5"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="2dp"
+                    android:layout_marginTop="1dp"
                     android:fontFamily="@font/outfit_medium"
                     android:text="28°"
                     android:textColor="@color/m3_dark_onbg"
@@ -792,8 +830,8 @@
             <!-- Slot 6: 6 PM -->
             <LinearLayout
                 android:id="@+id/forecast_chip_6"
-                android:layout_width="66dp"
-                android:layout_height="58dp"
+                android:layout_width="64dp"
+                android:layout_height="56dp"
                 android:background="@drawable/bg_m3_pill_chip"
                 android:gravity="center"
                 android:orientation="vertical">
@@ -809,16 +847,16 @@
 
                 <ImageView
                     android:id="@+id/ic_forecast_6"
-                    android:layout_width="16dp"
-                    android:layout_height="16dp"
-                    android:layout_marginTop="2dp"
+                    android:layout_width="15dp"
+                    android:layout_height="15dp"
+                    android:layout_marginTop="1dp"
                     android:src="@drawable/ic_weather_cloud_sun" />
 
                 <TextView
                     android:id="@+id/text_forecast_temp_6"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="2dp"
+                    android:layout_marginTop="1dp"
                     android:fontFamily="@font/outfit_medium"
                     android:text="26°"
                     android:textColor="@color/m3_dark_onbg"
