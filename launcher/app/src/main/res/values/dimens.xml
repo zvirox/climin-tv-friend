@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Material 3 Expressive Corner Radii -->
+    <dimen name="m3_corner_pill">999dp</dimen>
+    <dimen name="m3_corner_hero">24dp</dimen>
+    <dimen name="m3_corner_grid">18dp</dimen>
+    <dimen name="m3_corner_chip">14dp</dimen>
+    <dimen name="m3_corner_dialog">28dp</dimen>
+
+    <!-- Top Bar Dimensions -->
+    <dimen name="top_bar_height">64dp</dimen>
+    <dimen name="top_bar_chip_height">38dp</dimen>
+    <dimen name="clock_time_text_size">38sp</dimen>
+    <dimen name="clock_am_pm_text_size">14sp</dimen>
+    <dimen name="clock_date_text_size">14sp</dimen>
+
+    <!-- Hero Dock (Favorites) Card Dimensions -->
+    <dimen name="hero_dock_card_width">210dp</dimen>
+    <dimen name="hero_dock_card_height">120dp</dimen>
+    <dimen name="hero_dock_icon_size">52dp</dimen>
+    <dimen name="hero_dock_title_size">15sp</dimen>
+
+    <!-- App Library Grid Dimensions -->
+    <dimen name="app_grid_card_width">136dp</dimen>
+    <dimen name="app_grid_card_height">136dp</dimen>
+    <dimen name="app_grid_icon_size">56dp</dimen>
+    <dimen name="app_grid_title_size">13sp</dimen>
+
+    <!-- Focus Indicator Metrics -->
+    <dimen name="m3_focus_stroke_width">3dp</dimen>
+    <dimen name="m3_focus_elevation">12dp</dimen>
+
+    <!-- Section Margins & Padding -->
+    <dimen name="screen_padding_horizontal">48dp</dimen>
+    <dimen name="section_title_text_size">18sp</dimen>
+    <dimen name="section_spacing">24dp</dimen>
+</resources>

@@ -1,0 +1,22 @@
+# Gradle & Android
+.gradle/
+build/
+launcher/.gradle/
+launcher/build/
+launcher/app/build/
+launcher/local.properties
+*.apk
+*.aab
+
+# Python
+__pycache__/
+*.py[cod]
+tools/venv/
+.venv/
+tools/adbkey/
+
+# State & Logs
+state/*.json
+!state/latest.json
+.DS_Store
+*.log

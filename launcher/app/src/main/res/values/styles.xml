@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Base Material 3 Expressive TV Theme -->
+    <style name="Theme.CliminTv.Expressive" parent="@android:style/Theme.NoTitleBar.Fullscreen">
+        <item name="android:windowBackground">@color/m3_surface_container_lowest</item>
+        <item name="android:colorBackground">@color/m3_surface_container_lowest</item>
+        <item name="android:textColor">@color/m3_on_surface</item>
+        <item name="android:textColorSecondary">@color/m3_on_surface_variant</item>
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:windowFullscreen">true</item>
+        <item name="android:windowOverscan">true</item>
+        <item name="android:windowAnimationStyle">@null</item>
+    </style>
+
+    <!-- Base Typography -->
+    <style name="M3Text">
+        <item name="android:fontFamily">sans-serif</item>
+        <item name="android:textColor">@color/m3_on_surface</item>
+    </style>
+
+    <!-- Expressive Typography -->
+    <style name="M3Text.DisplayLarge">
+        <item name="android:textSize">38sp</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textColor">@color/m3_on_surface</item>
+        <item name="android:includeFontPadding">false</item>
+    </style>
+
+    <style name="M3Text.TitleMedium">
+        <item name="android:textSize">18sp</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textColor">@color/m3_on_surface</item>
+        <item name="android:includeFontPadding">false</item>
+    </style>
+
+    <style name="M3Text.BodyMedium">
+        <item name="android:textSize">14sp</item>
+        <item name="android:textColor">@color/m3_on_surface_variant</item>
+        <item name="android:includeFontPadding">false</item>
+    </style>
+
+    <style name="M3Text.LabelSmall">
+        <item name="android:textSize">12sp</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textColor">@color/m3_on_surface_dim</item>
+        <item name="android:includeFontPadding">false</item>
+    </style>
+
+    <!-- Dialog Style -->
+    <style name="M3Dialog_Expressive" parent="@android:style/Theme.Dialog">
+        <item name="android:windowBackground">@drawable/bg_m3_dialog</item>
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:windowIsFloating">true</item>
+        <item name="android:windowContentOverlay">@null</item>
+    </style>
+</resources>

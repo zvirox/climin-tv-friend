@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">CliminTV</string>
+    <string name="launcher_title">CliminTV Home</string>
+    <string name="hero_dock_title">Favorites</string>
+    <string name="app_grid_title">All Applications</string>
+    <string name="inputs_title">Inputs</string>
+    <string name="dream_name">Climin Ambient Clock</string>
+    <string name="home_key_name">CliminTV Home Button Helper</string>
+    <string name="home_key_description">Intercepts Xiaomi and OEM remote Home keycodes to return to CliminTV Home.</string>
+    <string name="input_key_name">CliminTV Input Button Helper</string>
+    <string name="input_key_service_description">Opens the TV Input switcher when the remote TV or Input button is pressed.</string>
+
+    <!-- Greetings -->
+    <string name="greeting_morning">Good morning</string>
+    <string name="greeting_afternoon">Good afternoon</string>
+    <string name="greeting_evening">Good evening</string>
+    <string name="greeting_night">Good night</string>
+
+    <!-- Inputs -->
+    <string name="input_hdmi_1">HDMI 1</string>
+    <string name="input_hdmi_2">HDMI 2</string>
+    <string name="input_hdmi_3">HDMI 3</string>
+    <string name="input_av">AV</string>
+    <string name="input_tuner">Live TV</string>
+    <string name="input_connecting">Connecting input…</string>
+
+    <!-- Network -->
+    <string name="network_connected">Connected</string>
+    <string name="network_disconnected">No Network</string>
+    <string name="network_ethernet">Ethernet</string>
+
+    <!-- Action Menu / Dialog -->
+    <string name="action_pin">Pin to Favorites</string>
+    <string name="action_unpin">Remove from Favorites</string>
+    <string name="action_app_info">Application Info</string>
+    <string name="action_hide">Hide from Launcher</string>
+    <string name="action_uninstall">Uninstall</string>
+    <string name="action_settings">Settings</string>
+
+    <!-- Settings Sheet -->
+    <string name="settings_title">Launcher Customization</string>
+    <string name="settings_theme_label">Material 3 Expressive Accent</string>
+    <string name="settings_clock_label">24-Hour Clock Format</string>
+    <string name="settings_inputs_bar_label">Show Inputs Bar</string>
+    <string name="settings_accessibility_status">Remote Home Key Interceptor</string>
+    <string name="settings_accessibility_enabled">Active (Xiaomi / OEM Remotes Protected)</string>
+    <string name="settings_accessibility_disabled">Disabled in System Settings</string>
+    <string name="settings_open_system_settings">Open System Settings</string>
+    <string name="settings_close">Done</string>
+
+    <!-- Themes -->
+    <string name="theme_name_coral">Expressive Coral</string>
+    <string name="theme_name_indigo">Electric Indigo</string>
+    <string name="theme_name_emerald">Cyber Emerald</string>
+    <string name="theme_name_ocean">Vivid Ocean</string>
+    <string name="theme_name_amber">Radiant Amber</string>
+    <string name="theme_name_violet">Cosmic Violet</string>
+</resources>

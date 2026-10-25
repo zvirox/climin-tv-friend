@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Material 3 Expressive Dark Palette Tokens (Default) -->
+    <color name="m3_dark_bg">#141218</color>
+    <color name="m3_dark_onbg">#E6E0E9</color>
+    <color name="m3_dark_osv">#CAC4D0</color>
+    <color name="m3_dark_pri">#D0BCFF</color>
+    <color name="m3_dark_onpri">#381E72</color>
+    <color name="m3_dark_pc">#4F378B</color>
+    <color name="m3_dark_onpc">#EADDFF</color>
+    <color name="m3_dark_sc">#4A4458</color>
+    <color name="m3_dark_onsc">#E8DEF8</color>
+    <color name="m3_dark_tc">#633B48</color>
+    <color name="m3_dark_ontc">#FFD8E4</color>
+    <color name="m3_dark_scl">#211F26</color>
+    <color name="m3_dark_sch">#2B2930</color>
+
+    <!-- Material 3 Expressive Light Palette Tokens -->
+    <color name="m3_light_bg">#FEF7FF</color>
+    <color name="m3_light_onbg">#1D1B20</color>
+    <color name="m3_light_osv">#49454F</color>
+    <color name="m3_light_pri">#6750A4</color>
+    <color name="m3_light_onpri">#FFFFFF</color>
+    <color name="m3_light_pc">#EADDFF</color>
+    <color name="m3_light_onpc">#21005D</color>
+    <color name="m3_light_sc">#E8DEF8</color>
+    <color name="m3_light_onsc">#1D192B</color>
+    <color name="m3_light_tc">#FFD8E4</color>
+    <color name="m3_light_ontc">#31111D</color>
+    <color name="m3_light_scl">#F3EDF7</color>
+    <color name="m3_light_sch">#ECE6F0</color>
+
+    <!-- General Semantic Fallbacks -->
+    <color name="m3_surface_container_lowest">#141218</color>
+    <color name="m3_surface_container_low">#211F26</color>
+    <color name="m3_surface_container">#2B2930</color>
+    <color name="m3_surface_container_high">#36343B</color>
+    <color name="m3_surface_container_highest">#4F378B</color>
+
+    <color name="m3_on_surface">#E6E0E9</color>
+    <color name="m3_on_surface_variant">#CAC4D0</color>
+    <color name="m3_on_surface_dim">#79747E</color>
+    <color name="m3_outline">#49454F</color>
+    <color name="m3_outline_focused">#FFFFFF</color>
+
+    <color name="m3_primary">#D0BCFF</color>
+    <color name="m3_primary_container">#4F378B</color>
+    <color name="m3_on_primary">#381E72</color>
+    <color name="m3_on_primary_container">#EADDFF</color>
+
+    <color name="m3_secondary">#CCC2DC</color>
+    <color name="m3_secondary_container">#4A4458</color>
+    <color name="m3_on_secondary_container">#E8DEF8</color>
+
+    <color name="m3_tertiary">#EFB8C8</color>
+    <color name="m3_tertiary_container">#633B48</color>
+
+    <color name="m3_status_online">#34D399</color>
+    <color name="m3_status_offline">#F87171</color>
+    <color name="m3_chip_bg">#2B2930</color>
+    <color name="m3_chip_bg_focused">#4F378B</color>
+    <color name="m3_focus_ring">#D0BCFF</color>
+    <color name="m3_card_focused_stroke">#D0BCFF</color>
+
+    <!-- Preset Accent Themes -->
+    <color name="theme_coral_primary">#FF7062</color>
+    <color name="theme_coral_container">#4E1B17</color>
+    <color name="theme_indigo_primary">#818CF8</color>
+    <color name="theme_indigo_container">#312E81</color>
+    <color name="theme_emerald_primary">#34D399</color>
+    <color name="theme_emerald_container">#064E3B</color>
+    <color name="theme_ocean_primary">#38BDF8</color>
+    <color name="theme_ocean_container">#0C4A6E</color>
+    <color name="theme_amber_primary">#FBBF24</color>
+    <color name="theme_amber_container">#78350F</color>
+    <color name="theme_violet_primary">#C084FC</color>
+    <color name="theme_violet_container">#581C87</color>
+</resources>
