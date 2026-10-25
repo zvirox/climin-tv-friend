@@ -6,7 +6,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
-import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -24,6 +23,7 @@ public class DockAdapter extends RecyclerView.Adapter<DockAdapter.ViewHolder> {
     public interface OnAppClickListener {
         void onAppClick(AppEntry app);
         void onAppLongClick(AppEntry app, View view);
+        void onAppFocused(AppEntry app, View view);
     }
 
     private final List<AppEntry> items = new ArrayList<>();
@@ -62,17 +62,11 @@ public class DockAdapter extends RecyclerView.Adapter<DockAdapter.ViewHolder> {
 
     public static class ViewHolder extends RecyclerView.ViewHolder {
         private final ImageView iconView;
-        private final TextView titleView;
-        private final TextView subtitleView;
-        private final TextView badgeOpen;
         private final View iconTileContainer;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
             iconView = itemView.findViewById(R.id.app_icon);
-            titleView = itemView.findViewById(R.id.app_title);
-            subtitleView = itemView.findViewById(R.id.app_subtitle);
-            badgeOpen = itemView.findViewById(R.id.badge_open);
             iconTileContainer = itemView.findViewById(R.id.icon_tile_container);
 
             FocusAnimator.attach(itemView, FocusAnimator.APP_CARD_FOCUS_SCALE);
@@ -87,8 +81,8 @@ public class DockAdapter extends RecyclerView.Adapter<DockAdapter.ViewHolder> {
                 iconView.setImageResource(R.drawable.ic_default_app);
             }
 
-            titleView.setText(app.getLabel());
-            subtitleView.setText(app.getPackageName());
+            // No visible text - content description for TalkBack
+            itemView.setContentDescription(app.getLabel());
 
             itemView.setOnClickListener(v -> {
                 if (listener != null) listener.onAppClick(app);
@@ -102,7 +96,6 @@ public class DockAdapter extends RecyclerView.Adapter<DockAdapter.ViewHolder> {
                 return false;
             });
 
-            // Initial visual styling
             updateCardFocus(itemView.hasFocus(), position);
 
             itemView.setOnFocusChangeListener((v, hasFocus) -> {
@@ -110,6 +103,10 @@ public class DockAdapter extends RecyclerView.Adapter<DockAdapter.ViewHolder> {
                 float density = v.getResources().getDisplayMetrics().density;
                 v.animate().translationZ(hasFocus ? 10f * density : 0f).setDuration(160).start();
                 updateCardFocus(hasFocus, position);
+
+                if (hasFocus && listener != null) {
+                    listener.onAppFocused(app, v);
+                }
             });
         }
 
@@ -117,23 +114,23 @@ public class DockAdapter extends RecyclerView.Adapter<DockAdapter.ViewHolder> {
             ThemeManager.ExpressivePalette p = ThemeManager.getCurrentPalette(itemView.getContext());
             float density = itemView.getResources().getDisplayMetrics().density;
 
-            // Card background morph
+            // Card background morph (radius 15dp -> 26dp)
             GradientDrawable cardBg = new GradientDrawable();
             float cardRadius = hasFocus ? (26f * density) : (15f * density);
             cardBg.setCornerRadius(cardRadius);
             cardBg.setColor(hasFocus ? p.pc : p.sch);
             if (hasFocus) {
-                cardBg.setStroke((int) (2.5f * density), p.pri);
+                cardBg.setStroke((int) (3f * density), p.pri);
             }
             itemView.setBackground(cardBg);
 
             // Icon tile container morph & rotation
             if (iconTileContainer != null) {
                 GradientDrawable tileBg = new GradientDrawable();
-                float tileRadius = hasFocus ? (14f * density) : (21f * density);
+                // circle (25dp radius) -> rounded square (14dp radius)
+                float tileRadius = hasFocus ? (14f * density) : (25f * density);
                 tileBg.setCornerRadius(tileRadius);
 
-                // Cycling accents for unfocused: secondary, tertiary, primary containers
                 int[] accents = {p.sc, p.tc, p.pc};
                 tileBg.setColor(hasFocus ? p.pri : accents[position % accents.length]);
                 iconTileContainer.setBackground(tileBg);
@@ -142,26 +139,6 @@ public class DockAdapter extends RecyclerView.Adapter<DockAdapter.ViewHolder> {
                         .rotation(hasFocus ? -8f : 0f)
                         .setDuration(220)
                         .start();
-            }
-
-            // Open badge
-            if (badgeOpen != null) {
-                badgeOpen.setVisibility(hasFocus ? View.VISIBLE : View.GONE);
-                if (hasFocus) {
-                    GradientDrawable openBg = new GradientDrawable();
-                    openBg.setCornerRadius(10f * density);
-                    openBg.setColor(p.pri);
-                    badgeOpen.setBackground(openBg);
-                    badgeOpen.setTextColor(p.onpri);
-                }
-            }
-
-            // Text colors
-            if (titleView != null) {
-                titleView.setTextColor(hasFocus ? p.onpc : p.onbg);
-            }
-            if (subtitleView != null) {
-                subtitleView.setTextColor(hasFocus ? p.onpc : p.osv);
             }
         }
     }

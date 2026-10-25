@@ -9,9 +9,9 @@
     android:clipToPadding="false"
     android:orientation="vertical"
     android:paddingStart="32dp"
-    android:paddingTop="26dp"
+    android:paddingTop="24dp"
     android:paddingEnd="32dp"
-    android:paddingBottom="22dp">
+    android:paddingBottom="20dp">
 
     <!-- ======================================================== -->
     <!-- 1. TOP HEADER: BIG CLOCK (LEFT) & 5 CIRCULAR ICONS (RIGHT)-->
@@ -25,7 +25,7 @@
         android:gravity="center_vertical"
         android:orientation="horizontal">
 
-        <!-- BIG CLOCK (LEFT SIDE) -->
+        <!-- BIG LIVE CLOCK (LEFT SIDE) -->
         <LinearLayout
             android:id="@+id/clock_container"
             android:layout_width="0dp"
@@ -45,34 +45,49 @@
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/outfit_medium"
                     android:letterSpacing="-0.04"
-                    android:lineSpacingMultiplier="0.9"
+                    android:lineSpacingMultiplier="0.85"
                     android:textColor="@color/m3_dark_onbg"
-                    android:textSize="80sp"
+                    android:textSize="76sp"
                     tools:text="1:39" />
 
+                <!-- Seconds in Primary Color Beside AM/PM -->
+                <TextView
+                    android:id="@+id/text_clock_seconds"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="4dp"
+                    android:layout_marginBottom="12dp"
+                    android:fontFamily="@font/outfit_medium"
+                    android:textColor="@color/m3_dark_pri"
+                    android:textSize="30sp"
+                    tools:text=":24" />
+
+                <!-- AM / PM Chip -->
                 <TextView
                     android:id="@+id/text_clock_am_pm"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="8dp"
-                    android:layout_marginBottom="12dp"
+                    android:layout_marginBottom="14dp"
                     android:fontFamily="@font/outfit_medium"
                     android:textColor="@color/m3_dark_pri"
-                    android:textSize="24sp"
+                    android:textSize="22sp"
                     tools:text="PM" />
             </LinearLayout>
 
+            <!-- Full Date (Weekday, Day, Month, Year) -->
             <TextView
                 android:id="@+id/text_clock_date"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="1dp"
                 android:fontFamily="@font/outfit_regular"
                 android:textColor="@color/m3_dark_osv"
                 android:textSize="16sp"
-                tools:text="Sunday, 25 October" />
+                tools:text="Sunday, 25 October 2026" />
         </LinearLayout>
 
-        <!-- 5 SMALL CIRCULAR ICONS (RIGHT SIDE) -->
+        <!-- 5 SMALL CIRCULAR ICONS (RIGHT SIDE, 96px / 48dp) -->
         <LinearLayout
             android:id="@+id/circular_controls_row"
             android:layout_width="wrap_content"
@@ -101,7 +116,7 @@
                     android:src="@drawable/ic_input" />
             </FrameLayout>
 
-            <!-- 2. UI Settings (Click to switch Light / Dark theme) -->
+            <!-- 2. UI Settings (Click to switch Light / Dark theme, long-press for settings) -->
             <FrameLayout
                 android:id="@+id/btn_circle_ui_settings"
                 android:layout_width="48dp"
@@ -116,7 +131,7 @@
                     android:layout_width="22dp"
                     android:layout_height="22dp"
                     android:layout_gravity="center"
-                    android:contentDescription="UI Theme Settings"
+                    android:contentDescription="UI Settings"
                     android:src="@drawable/ic_palette" />
             </FrameLayout>
 
@@ -181,15 +196,15 @@
 
     <Space
         android:layout_width="match_parent"
-        android:layout_height="12dp" />
+        android:layout_height="10dp" />
 
     <!-- ======================================================== -->
-    <!-- 2. APP CARDS CAROUSEL (SPRING MOTION SCROLLING)          -->
+    <!-- 2. ICON-ONLY APP CARDS ROW (SPRING MOTION SCROLLING)     -->
     <!-- ======================================================== -->
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recycler_apps_menu"
         android:layout_width="match_parent"
-        android:layout_height="126dp"
+        android:layout_height="110dp"
         android:clipChildren="false"
         android:clipToPadding="false"
         android:descendantFocusability="afterDescendants"
@@ -200,15 +215,15 @@
 
     <Space
         android:layout_width="match_parent"
-        android:layout_height="12dp" />
+        android:layout_height="10dp" />
 
     <!-- ======================================================== -->
-    <!-- 3. INPUTS & SHORTCUTS ROW                                -->
+    <!-- 3. INPUTS & SHORTCUTS ROW (120px / 60dp)                 -->
     <!-- ======================================================== -->
     <LinearLayout
         android:id="@+id/inputs_shortcuts_row"
         android:layout_width="match_parent"
-        android:layout_height="66dp"
+        android:layout_height="62dp"
         android:clipChildren="false"
         android:clipToPadding="false"
         android:gravity="center_vertical"
@@ -218,7 +233,7 @@
         <LinearLayout
             android:id="@+id/chip_input_hdmi1"
             android:layout_width="68dp"
-            android:layout_height="58dp"
+            android:layout_height="56dp"
             android:layout_marginEnd="8dp"
             android:background="@drawable/bg_m3_shortcut_chip"
             android:clickable="true"
@@ -237,7 +252,7 @@
                 android:id="@+id/text_hdmi1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="3dp"
+                android:layout_marginTop="2dp"
                 android:fontFamily="@font/outfit_medium"
                 android:text="HDMI 1"
                 android:textColor="@color/m3_dark_onbg"
@@ -248,7 +263,7 @@
         <LinearLayout
             android:id="@+id/chip_input_hdmi2"
             android:layout_width="68dp"
-            android:layout_height="58dp"
+            android:layout_height="56dp"
             android:layout_marginEnd="8dp"
             android:background="@drawable/bg_m3_shortcut_chip"
             android:clickable="true"
@@ -267,7 +282,7 @@
                 android:id="@+id/text_hdmi2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="3dp"
+                android:layout_marginTop="2dp"
                 android:fontFamily="@font/outfit_medium"
                 android:text="HDMI 2"
                 android:textColor="@color/m3_dark_onbg"
@@ -278,7 +293,7 @@
         <LinearLayout
             android:id="@+id/chip_input_hdmi3"
             android:layout_width="68dp"
-            android:layout_height="58dp"
+            android:layout_height="56dp"
             android:layout_marginEnd="8dp"
             android:background="@drawable/bg_m3_shortcut_chip"
             android:clickable="true"
@@ -297,7 +312,7 @@
                 android:id="@+id/text_hdmi3"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="3dp"
+                android:layout_marginTop="2dp"
                 android:fontFamily="@font/outfit_medium"
                 android:text="HDMI 3"
                 android:textColor="@color/m3_dark_onbg"
@@ -308,7 +323,7 @@
         <LinearLayout
             android:id="@+id/chip_input_usb"
             android:layout_width="68dp"
-            android:layout_height="58dp"
+            android:layout_height="56dp"
             android:layout_marginEnd="8dp"
             android:background="@drawable/bg_m3_shortcut_chip"
             android:clickable="true"
@@ -327,7 +342,7 @@
                 android:id="@+id/text_usb"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="3dp"
+                android:layout_marginTop="2dp"
                 android:fontFamily="@font/outfit_medium"
                 android:text="USB"
                 android:textColor="@color/m3_dark_onbg"
@@ -338,7 +353,7 @@
         <LinearLayout
             android:id="@+id/chip_input_av"
             android:layout_width="68dp"
-            android:layout_height="58dp"
+            android:layout_height="56dp"
             android:layout_marginEnd="12dp"
             android:background="@drawable/bg_m3_shortcut_chip"
             android:clickable="true"
@@ -357,14 +372,14 @@
                 android:id="@+id/text_av"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="3dp"
+                android:layout_marginTop="2dp"
                 android:fontFamily="@font/outfit_medium"
                 android:text="AV"
                 android:textColor="@color/m3_dark_onbg"
                 android:textSize="10sp" />
         </LinearLayout>
 
-        <!-- Vertical Divider -->
+        <!-- Vertical Divider (64px / 32dp in secondaryContainer) -->
         <View
             android:id="@+id/inputs_divider"
             android:layout_width="2dp"
@@ -376,7 +391,7 @@
         <LinearLayout
             android:id="@+id/chip_shortcut_all_apps"
             android:layout_width="68dp"
-            android:layout_height="58dp"
+            android:layout_height="56dp"
             android:layout_marginEnd="8dp"
             android:background="@drawable/bg_m3_shortcut_chip"
             android:clickable="true"
@@ -395,7 +410,7 @@
                 android:id="@+id/text_all_apps"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="3dp"
+                android:layout_marginTop="2dp"
                 android:fontFamily="@font/outfit_medium"
                 android:text="All apps"
                 android:textColor="@color/m3_dark_onbg"
@@ -406,7 +421,7 @@
         <LinearLayout
             android:id="@+id/chip_shortcut_ui_settings"
             android:layout_width="68dp"
-            android:layout_height="58dp"
+            android:layout_height="56dp"
             android:layout_marginEnd="8dp"
             android:background="@drawable/bg_m3_shortcut_chip"
             android:clickable="true"
@@ -425,7 +440,7 @@
                 android:id="@+id/text_ui_settings"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="3dp"
+                android:layout_marginTop="2dp"
                 android:fontFamily="@font/outfit_medium"
                 android:text="UI theme"
                 android:textColor="@color/m3_dark_onbg"
@@ -436,7 +451,7 @@
         <LinearLayout
             android:id="@+id/chip_shortcut_tv_settings"
             android:layout_width="68dp"
-            android:layout_height="58dp"
+            android:layout_height="56dp"
             android:layout_marginEnd="8dp"
             android:background="@drawable/bg_m3_shortcut_chip"
             android:clickable="true"
@@ -455,7 +470,7 @@
                 android:id="@+id/text_tv_settings"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="3dp"
+                android:layout_marginTop="2dp"
                 android:fontFamily="@font/outfit_medium"
                 android:text="TV settings"
                 android:textColor="@color/m3_dark_onbg"
@@ -466,7 +481,7 @@
         <LinearLayout
             android:id="@+id/chip_shortcut_search"
             android:layout_width="68dp"
-            android:layout_height="58dp"
+            android:layout_height="56dp"
             android:background="@drawable/bg_m3_shortcut_chip"
             android:clickable="true"
             android:focusable="true"
@@ -484,7 +499,7 @@
                 android:id="@+id/text_search"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="3dp"
+                android:layout_marginTop="2dp"
                 android:fontFamily="@font/outfit_medium"
                 android:text="Search"
                 android:textColor="@color/m3_dark_onbg"
@@ -494,10 +509,10 @@
 
     <Space
         android:layout_width="match_parent"
-        android:layout_height="12dp" />
+        android:layout_height="10dp" />
 
     <!-- ======================================================== -->
-    <!-- 4. WEATHER WIDGET (OFFLINE PRIVACY SAFE)                 -->
+    <!-- 4. WEATHER WIDGET (184px / 92dp, WITH 6-SLOT HOURLY STRIP) -->
     <!-- ======================================================== -->
     <LinearLayout
         android:id="@+id/weather_widget_card"
@@ -508,10 +523,10 @@
         android:clipToPadding="false"
         android:gravity="center_vertical"
         android:orientation="horizontal"
-        android:paddingStart="18dp"
-        android:paddingEnd="18dp">
+        android:paddingStart="16dp"
+        android:paddingEnd="16dp">
 
-        <!-- Weather circular badge -->
+        <!-- Weather Circular Badge (60dp / 120px in tertiaryContainer) -->
         <FrameLayout
             android:id="@+id/weather_badge_container"
             android:layout_width="56dp"
@@ -561,7 +576,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="1dp"
                 android:fontFamily="@font/outfit_regular"
-                android:text="Feels like 33° · Humidity 48%"
+                android:text="Feels like 33° · Humidity 48% · Wind 8 km/h"
                 android:textColor="@color/m3_dark_osv"
                 android:textSize="10sp" />
 
@@ -581,7 +596,7 @@
             android:layout_height="1dp"
             android:layout_weight="1" />
 
-        <!-- 5 Hourly Forecast Chips -->
+        <!-- 6 HOURLY FORECAST SLOTS (Section 4) -->
         <LinearLayout
             android:id="@+id/mini_forecast_row"
             android:layout_width="wrap_content"
@@ -589,12 +604,12 @@
             android:gravity="center_vertical"
             android:orientation="horizontal">
 
-            <!-- Now -->
+            <!-- Slot 1: Now -->
             <LinearLayout
                 android:id="@+id/forecast_chip_1"
-                android:layout_width="72dp"
-                android:layout_height="60dp"
-                android:layout_marginEnd="8dp"
+                android:layout_width="66dp"
+                android:layout_height="58dp"
+                android:layout_marginEnd="6dp"
                 android:background="@drawable/bg_m3_pill_chip"
                 android:gravity="center"
                 android:orientation="vertical">
@@ -623,15 +638,15 @@
                     android:fontFamily="@font/outfit_medium"
                     android:text="31°"
                     android:textColor="@color/m3_dark_onpri"
-                    android:textSize="14sp" />
+                    android:textSize="13sp" />
             </LinearLayout>
 
-            <!-- 2 PM -->
+            <!-- Slot 2: 2 PM -->
             <LinearLayout
                 android:id="@+id/forecast_chip_2"
-                android:layout_width="72dp"
-                android:layout_height="60dp"
-                android:layout_marginEnd="8dp"
+                android:layout_width="66dp"
+                android:layout_height="58dp"
+                android:layout_marginEnd="6dp"
                 android:background="@drawable/bg_m3_pill_chip"
                 android:gravity="center"
                 android:orientation="vertical">
@@ -660,15 +675,15 @@
                     android:fontFamily="@font/outfit_medium"
                     android:text="32°"
                     android:textColor="@color/m3_dark_onbg"
-                    android:textSize="14sp" />
+                    android:textSize="13sp" />
             </LinearLayout>
 
-            <!-- 3 PM -->
+            <!-- Slot 3: 3 PM -->
             <LinearLayout
                 android:id="@+id/forecast_chip_3"
-                android:layout_width="72dp"
-                android:layout_height="60dp"
-                android:layout_marginEnd="8dp"
+                android:layout_width="66dp"
+                android:layout_height="58dp"
+                android:layout_marginEnd="6dp"
                 android:background="@drawable/bg_m3_pill_chip"
                 android:gravity="center"
                 android:orientation="vertical">
@@ -697,15 +712,15 @@
                     android:fontFamily="@font/outfit_medium"
                     android:text="32°"
                     android:textColor="@color/m3_dark_onbg"
-                    android:textSize="14sp" />
+                    android:textSize="13sp" />
             </LinearLayout>
 
-            <!-- 4 PM -->
+            <!-- Slot 4: 4 PM -->
             <LinearLayout
                 android:id="@+id/forecast_chip_4"
-                android:layout_width="72dp"
-                android:layout_height="60dp"
-                android:layout_marginEnd="8dp"
+                android:layout_width="66dp"
+                android:layout_height="58dp"
+                android:layout_marginEnd="6dp"
                 android:background="@drawable/bg_m3_pill_chip"
                 android:gravity="center"
                 android:orientation="vertical">
@@ -734,14 +749,15 @@
                     android:fontFamily="@font/outfit_medium"
                     android:text="30°"
                     android:textColor="@color/m3_dark_onbg"
-                    android:textSize="14sp" />
+                    android:textSize="13sp" />
             </LinearLayout>
 
-            <!-- 5 PM -->
+            <!-- Slot 5: 5 PM -->
             <LinearLayout
                 android:id="@+id/forecast_chip_5"
-                android:layout_width="72dp"
-                android:layout_height="60dp"
+                android:layout_width="66dp"
+                android:layout_height="58dp"
+                android:layout_marginEnd="6dp"
                 android:background="@drawable/bg_m3_pill_chip"
                 android:gravity="center"
                 android:orientation="vertical">
@@ -770,7 +786,43 @@
                     android:fontFamily="@font/outfit_medium"
                     android:text="28°"
                     android:textColor="@color/m3_dark_onbg"
-                    android:textSize="14sp" />
+                    android:textSize="13sp" />
+            </LinearLayout>
+
+            <!-- Slot 6: 6 PM -->
+            <LinearLayout
+                android:id="@+id/forecast_chip_6"
+                android:layout_width="66dp"
+                android:layout_height="58dp"
+                android:background="@drawable/bg_m3_pill_chip"
+                android:gravity="center"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/text_forecast_time_6"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/outfit_regular"
+                    android:text="6 PM"
+                    android:textColor="@color/m3_dark_osv"
+                    android:textSize="10sp" />
+
+                <ImageView
+                    android:id="@+id/ic_forecast_6"
+                    android:layout_width="16dp"
+                    android:layout_height="16dp"
+                    android:layout_marginTop="2dp"
+                    android:src="@drawable/ic_weather_cloud_sun" />
+
+                <TextView
+                    android:id="@+id/text_forecast_temp_6"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="2dp"
+                    android:fontFamily="@font/outfit_medium"
+                    android:text="26°"
+                    android:textColor="@color/m3_dark_onbg"
+                    android:textSize="13sp" />
             </LinearLayout>
         </LinearLayout>
     </LinearLayout>

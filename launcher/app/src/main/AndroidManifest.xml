@@ -7,8 +7,8 @@
     <uses-feature android:name="android.hardware.touchscreen" android:required="false" />
     <uses-feature android:name="android.hardware.wifi" android:required="false" />
 
-    <!-- Strict Zero-Network Policy: NO android.permission.INTERNET -->
-    <!-- Local State and TV Hardware Query Permissions -->
+    <!-- Network query permissions for Open-Meteo weather refresh (Section 3 & 4) -->
+    <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"

@@ -18,6 +18,10 @@ public class AppPreferences {
     private static final String KEY_THEME = "theme_accent";
     private static final String KEY_DARK_MODE = "dark_mode";
     private static final String KEY_WEATHER_TEMP = "weather_temp";
+    private static final String KEY_CITY = "weather_city";
+    private static final String KEY_ADAPTIVE_COLOR = "adaptive_color";
+    private static final String KEY_HOME_LAYOUT = "home_layout";
+    private static final String KEY_WEATHER_CACHE = "weather_cache";
 
     public static final String THEME_CORAL = "coral";
     public static final String THEME_INDIGO = "indigo";
@@ -25,6 +29,9 @@ public class AppPreferences {
     public static final String THEME_OCEAN = "ocean";
     public static final String THEME_AMBER = "amber";
     public static final String THEME_VIOLET = "violet";
+
+    public static final String LAYOUT_MINIMAL = "minimal";
+    public static final String LAYOUT_SUPER = "super";
 
     private final SharedPreferences prefs;
 
@@ -35,7 +42,6 @@ public class AppPreferences {
     public List<String> getPinnedPackages() {
         String raw = prefs.getString(KEY_PINNED, "");
         if (raw.isEmpty()) {
-            // Default default popular streaming & media apps if present
             return new ArrayList<>(Arrays.asList(
                     "com.google.android.youtube.tv",
                     "com.netflix.ninja",
@@ -127,5 +133,37 @@ public class AppPreferences {
 
     public void setCelsius(boolean celsius) {
         prefs.edit().putBoolean(KEY_WEATHER_TEMP, celsius).apply();
+    }
+
+    public String getCity() {
+        return prefs.getString(KEY_CITY, "New York");
+    }
+
+    public void setCity(String city) {
+        prefs.edit().putString(KEY_CITY, city).apply();
+    }
+
+    public boolean isAdaptiveColor() {
+        return prefs.getBoolean(KEY_ADAPTIVE_COLOR, false);
+    }
+
+    public void setAdaptiveColor(boolean adaptive) {
+        prefs.edit().putBoolean(KEY_ADAPTIVE_COLOR, adaptive).apply();
+    }
+
+    public String getHomeLayout() {
+        return prefs.getString(KEY_HOME_LAYOUT, LAYOUT_MINIMAL);
+    }
+
+    public void setHomeLayout(String layout) {
+        prefs.edit().putString(KEY_HOME_LAYOUT, layout).apply();
+    }
+
+    public String getWeatherCache() {
+        return prefs.getString(KEY_WEATHER_CACHE, "");
+    }
+
+    public void setWeatherCache(String json) {
+        prefs.edit().putString(KEY_WEATHER_CACHE, json).apply();
     }
 }
