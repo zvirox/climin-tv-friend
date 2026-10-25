@@ -1,6 +1,6 @@
 package io.climintv.home.adapter;
 
-import android.graphics.Color;
+import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.GradientDrawable;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -78,29 +78,58 @@ public class DockAdapter extends RecyclerView.Adapter<DockAdapter.ViewHolder> {
     }
 
     public static class ViewHolder extends RecyclerView.ViewHolder {
+        private final ImageView bannerView;
         private final ImageView iconView;
-        private final View iconTileContainer;
         private final TextView badgeReorder;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
+            bannerView = itemView.findViewById(R.id.app_banner);
             iconView = itemView.findViewById(R.id.app_icon);
-            iconTileContainer = itemView.findViewById(R.id.icon_tile_container);
             badgeReorder = itemView.findViewById(R.id.badge_reorder);
 
+            if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.LOLLIPOP) {
+                itemView.setClipToOutline(true);
+            }
             FocusAnimator.attach(itemView, FocusAnimator.APP_CARD_FOCUS_SCALE);
         }
 
         public void bind(AppEntry app, int position, boolean isReordering, int reorderingPosition, OnAppClickListener listener) {
-            if (app.getIcon() != null) {
-                iconView.setImageDrawable(app.getIcon());
-            } else if (app.getBanner() != null) {
-                iconView.setImageDrawable(app.getBanner());
+            if (app.getBanner() != null) {
+                if (bannerView != null) {
+                    bannerView.setVisibility(View.VISIBLE);
+                    bannerView.setImageDrawable(app.getBanner());
+                    if (app.getBanner() instanceof BitmapDrawable) {
+                        ((BitmapDrawable) app.getBanner()).setAntiAlias(true);
+                        ((BitmapDrawable) app.getBanner()).setFilterBitmap(true);
+                    }
+                }
+                if (iconView != null) {
+                    iconView.setVisibility(View.GONE);
+                }
+            } else if (app.getIcon() != null) {
+                if (bannerView != null) {
+                    bannerView.setVisibility(View.GONE);
+                }
+                if (iconView != null) {
+                    iconView.setVisibility(View.VISIBLE);
+                    iconView.setImageDrawable(app.getIcon());
+                    if (app.getIcon() instanceof BitmapDrawable) {
+                        ((BitmapDrawable) app.getIcon()).setAntiAlias(true);
+                        ((BitmapDrawable) app.getIcon()).setFilterBitmap(true);
+                    }
+                }
             } else {
-                iconView.setImageResource(R.drawable.ic_default_app);
+                if (bannerView != null) {
+                    bannerView.setVisibility(View.GONE);
+                }
+                if (iconView != null) {
+                    iconView.setVisibility(View.VISIBLE);
+                    iconView.setImageResource(R.drawable.ic_default_app);
+                }
             }
 
-            // No visible text - content description for TalkBack
+            // No visible text on home cards - full accessible content description for TalkBack
             itemView.setContentDescription(app.getLabel());
 
             boolean isCurrentMovingItem = isReordering && (position == reorderingPosition);
@@ -121,15 +150,15 @@ public class DockAdapter extends RecyclerView.Adapter<DockAdapter.ViewHolder> {
                 return false;
             });
 
-            updateCardFocus(itemView.hasFocus() || isCurrentMovingItem, position, isCurrentMovingItem);
+            updateCardFocus(itemView.hasFocus() || isCurrentMovingItem, isCurrentMovingItem);
 
             itemView.setOnFocusChangeListener((v, hasFocus) -> {
-                float targetScale = isCurrentMovingItem ? 1.15f : (hasFocus ? FocusAnimator.APP_CARD_FOCUS_SCALE : 1.0f);
+                float targetScale = isCurrentMovingItem ? 1.08f : (hasFocus ? FocusAnimator.APP_CARD_FOCUS_SCALE : 1.0f);
                 FocusAnimator.animateSpringScale(v, targetScale, 0.6f);
                 float density = v.getResources().getDisplayMetrics().density;
-                float targetZ = isCurrentMovingItem ? (20f * density) : (hasFocus ? 10f * density : 0f);
+                float targetZ = isCurrentMovingItem ? (10f * density) : (hasFocus ? 4f * density : 0f);
                 v.animate().translationZ(targetZ).setDuration(160).start();
-                updateCardFocus(hasFocus || isCurrentMovingItem, position, isCurrentMovingItem);
+                updateCardFocus(hasFocus || isCurrentMovingItem, isCurrentMovingItem);
 
                 if (hasFocus && listener != null) {
                     listener.onAppFocused(app, v);
@@ -137,39 +166,33 @@ public class DockAdapter extends RecyclerView.Adapter<DockAdapter.ViewHolder> {
             });
         }
 
-        private void updateCardFocus(boolean hasFocus, int position, boolean isMoving) {
+        private void updateCardFocus(boolean hasFocus, boolean isMoving) {
             ThemeManager.ExpressivePalette p = ThemeManager.getCurrentPalette(itemView.getContext());
             float density = itemView.getResources().getDisplayMetrics().density;
 
-            // Card background morph (radius 15dp -> 26dp)
+            // Card background morph
             GradientDrawable cardBg = new GradientDrawable();
-            float cardRadius = hasFocus ? (26f * density) : (15f * density);
+            float cardRadius = hasFocus ? (15f * density) : (12f * density);
             cardBg.setCornerRadius(cardRadius);
             cardBg.setColor(hasFocus ? p.pc : p.sch);
 
             if (isMoving) {
-                cardBg.setStroke((int) (3.5f * density), p.pri);
+                cardBg.setStroke((int) (2.5f * density), p.pri);
             } else if (hasFocus) {
-                cardBg.setStroke((int) (3f * density), p.pri);
+                cardBg.setStroke((int) (2f * density), p.pri);
             }
             itemView.setBackground(cardBg);
 
-            // Icon tile container morph & rotation
-            if (iconTileContainer != null) {
-                GradientDrawable tileBg = new GradientDrawable();
-                // circle (25dp radius) -> rounded square (14dp radius)
-                float tileRadius = hasFocus ? (14f * density) : (25f * density);
-                tileBg.setCornerRadius(tileRadius);
-
-                int[] accents = {p.sc, p.tc, p.pc};
-                tileBg.setColor(hasFocus ? p.pri : accents[position % accents.length]);
-                iconTileContainer.setBackground(tileBg);
-
-                iconTileContainer.animate()
-                        .rotation(hasFocus ? -8f : 0f)
-                        .setDuration(220)
-                        .start();
+            // High-contrast foreground stroke on focus so border is visible on top of full banners
+            GradientDrawable border = new GradientDrawable();
+            border.setCornerRadius(cardRadius);
+            border.setColor(android.graphics.Color.TRANSPARENT);
+            if (isMoving) {
+                border.setStroke((int) (2.5f * density), p.pri);
+            } else if (hasFocus) {
+                border.setStroke((int) (2f * density), p.pri);
             }
+            itemView.setForeground(border);
         }
     }
 }

@@ -1,167 +1,224 @@
-# CliminTV: Android TV Debloater & Material 3 Expressive Launcher
+# Climin TV Friend: Android TV Debloater & Climin UI Launcher
 
-A lightweight, non-destructive Android TV debloating system and custom native launcher designed with **Google's Material 3 Expressive UI**.
+[![License](https://img.shields.io/badge/License-Apache_2.0-blue.svg)](LICENSE)
+[![APK Size](https://img.shields.io/badge/APK_Size-248_KB-success.svg)](launcher/app/build/outputs/apk/release/app-release.apk)
+[![Target SDK](https://img.shields.io/badge/Target_SDK-34_(Android_14)-orange.svg)](launcher/app/build.gradle)
+[![Min SDK](https://img.shields.io/badge/Min_SDK-26_(Android_8.0)-purple.svg)](launcher/app/build.gradle)
+[![RAM Footprint](https://img.shields.io/badge/RAM_Footprint-<35_MB-brightgreen.svg)](docs/architecture.md)
+[![Design System](https://img.shields.io/badge/Design_System-Material_3_Expressive-indigo.svg)](docs/architecture.md)
 
-Based on the systems architecture of [CleanYourTV](https://github.com/Gathin23/cleanyourtv), CliminTV provides the **exact same robust functionality, strict non-destructive safety invariants, and security protocol**, while replacing the traditional glassmorphic/Apple TV UI with a **Material 3 Expressive TV design system**.
+A lightweight, non-destructive Android TV debloating system and custom native television launcher designed with **Google's Material 3 Expressive UI**.
+
+Based on the systems architecture of CleanYourTV, **Climin TV Friend** provides the exact same non-destructive safety invariants and security protocol, paired with **Climin UI**—a clean, tactile, razor-sharp TV launcher calibrated for physical 1080p and 4K displays.
 
 ---
 
-## 1. Architectural Highlights
+## 1. System Topology
 
 ```
 ┌────────────────────────────────────────────────────────────────────────┐
-│                        CLIMINTV SYSTEM TOPOLOGY                        │
+│                        CLIMIN TV FRIEND TOPOLOGY                       │
 └────────────────────────────────────────────────────────────────────────┘
                                      │
-            ┌────────────────────────┴────────────────────────┐
-            ▼                                                 ▼
-┌──────────────────────────────────────┐  ┌──────────────────────────────────────┐
-│           DEBLOAT SUBSYSTEM          │  │       MATERIAL 3 EXPRESSIVE HOME     │
-│               (tools/)               │  │              (launcher/)             │
-├──────────────────────────────────────┤  ├──────────────────────────────────────┤
-│ • Pure-Python ADB Client (tv.py)     │  │ • Package: io.climintv.home          │
-│ • State Snapshot & Recovery Ledger   │  │ • M3 Expressive Tonal Hierarchy      │
-│ • Home Guard & Wi-Fi Protection Gate │  │ • Spring Physics Focus Animation     │
-│ • Core Android Invariant Enforcement │  │ • Native TV Input Framework (TIF)    │
-│ • 48 KB Base64 Binary Stream Pipeline│  │ • Remote Key Interception (284 Key)  │
-│ • Zero-Port Security Hardening Audit │  │ • Zero Network Permission (Offline)  │
-└──────────────────────────────────────┘  └──────────────────────────────────────┘
+           ┌─────────────────────────┴─────────────────────────┐
+           ▼                                                   ▼
+┌───────────────────────────────────────┐   ┌───────────────────────────────────────┐
+│           DEBLOAT SUBSYSTEM           │   │               CLIMIN UI               │
+│               (tools/)                │   │              (launcher/)              │
+├───────────────────────────────────────┤   ├───────────────────────────────────────┤
+│ • Pure-Python ADB Client (tv.py)      │   │ • Package: io.climintv.home           │
+│ • State Snapshot Ledger (recovery.py) │   │ • Material 3 Expressive Tonal Tokens  │
+│ • Home Guard Invariant Enforcement    │   │ • Interior.dev Tactile Spring Physics │
+│ • Setupwraith Wi-Fi Drop Protector    │   │ • High-DPI (XXHIGH) 480dpi Assets     │
+│ • 48 KB Base64 Binary Streamer        │   │ • Native TV Input Framework (TIF)     │
+│ • Zero-Port Security Hardening Audit  │   │ • TMDB Super Mode Recommendation Row  │
+│ • 290+ Curated OEM Device Trees       │   │ • Open-Meteo Zero-Key Weather Hub     │
+└───────────────────────────────────────┘   │ • Custom M3Switch & TvScrollView      │
+                                            └───────────────────────────────────────┘
 ```
 
 ---
 
-## 2. Material 3 Expressive Design System
+## 2. Key Features
 
-CliminTV Home departs from translucent glass blurs in favor of Material 3 Expressive's bold, tactile visual language:
+### Climin UI: Material 3 Expressive Launcher
+- **Compact & Calibrated Scaling (~1.33× – 1.5× Reduction)**:
+  - Specially calibrated for physical 42"+ 1080p and 4K television screens where 720p framebuffers typically create an oversized, bloated appearance.
+- **High-DPI Sharpness & 32-Bit Framebuffer**:
+  - Extracts native uncompressed 480 dpi (`DENSITY_XXHIGH`) vector drawables and banners.
+  - Enforces `PixelFormat.RGBA_8888` on the Activity window, eliminating 16-bit color banding, blurry text, and jagged card borders.
+- **Full 16:9 Widescreen App Carousel with Tactile Drag & Reorder**:
+  - Full-bleed widescreen app cards with banner-priority fallback.
+  - **Hold OK button** on any app card on Home to engage tactile reorder mode (`◀ MOVE ▶`), shift positions with D-pad Left/Right, and drop.
+- **Full-Screen All Applications Screen**:
+  - Clean 5-column grid replacing cramped square popup dialogs.
+  - **Hold OK button** on any app in the grid to pin or unpin it from the Home shelf, marked with visible `★ HOME` badges.
+- **TMDB Super Mode (Streaming Recommendations)**:
+  - Streaming content recommendations powered by The Movie Database (TMDB) API.
+  - Displays movie/show backdrop art, TMDb rating, release year, streaming provider pills (Netflix, Prime Video, YouTube, Hotstar, etc.), and deep links.
+  - Alternating wide 16:9 and square card geometry.
+- **Zero-Key Live Weather Hub**:
+  - Real-time weather powered by the Open-Meteo REST API (no private API key required).
+  - Displays current temperature, weather conditions, feels-like temperature, humidity, wind speed, high/low, and a 6-slot hourly forecast.
+  - Built-in city selector and Celsius (°C) / Fahrenheit (°F) units toggle.
+- **Tactile Material 3 Settings Menu**:
+  - Apple TV-style split view with categorized controls.
+  - Custom animated toggle switches (`M3Switch`), completely eliminating the black-on-black unstyled switch text bug common on Android TV.
+- **Hardware Integrations (TIF & Accessibility Key Interception)**:
+  - Native Android TV Input Framework (TIF) passthrough for HDMI 1, HDMI 2, HDMI 3, AV, and USB inputs.
+  - `HomeKeyService` intercepts remote `KEYCODE_ALL_APPS` ($284$) on Xiaomi PatchWall remotes to reliably return to Climin UI.
+- **Ultra-Lean Resource Budget**:
+  - Release APK size: **248 KB** (well within the strict 512 KB budget).
+  - RAM usage: **under 35 MB active RSS**.
 
-| Design Dimension | Traditional Glass UI (CleanYourTV) | CliminTV Material 3 Expressive UI |
-| :--- | :--- | :--- |
-| **Containers** | Translucent frosted glass rects, blur shaders | **Tactile Tonal Containers** (`surfaceContainerLowest` to `surfaceContainerHighest`) |
-| **Geometry** | Rigid rounded rectangles | **Dynamic Radii & Pill Geometry** (24dp squircle Hero cards, 18dp grid tiles, 999dp pill chips) |
-| **Focus Physics** | Subtle border glow | **Dynamic Spring Overshoot** (`FocusAnimator` 1.08x–1.1x scaling + tactile elevation + vivid accent outline) |
-| **Color Theming** | Static dark glass tint | **Dynamic Expressive Palettes** (Coral, Electric Indigo, Cyber Emerald, Vivid Ocean, Radiant Amber, Cosmic Violet) |
-| **Header Bar** | Minimal monochrome clock | **Expressive Status Hub** (Greeting chip, Big Display clock with AM/PM pill, live TIF HDMI chips, Wi-Fi pill) |
-| **App Dock** | Standard horizontal row | **Expressive Hero Dock** with elevated icon containers and dual-line typography |
+### Debloating Subsystem (`tools/`)
+- **100% Non-Destructive**: Employs `pm disable-user --user 0`; never deletes files on `/system` or `/vendor`.
+- **Immutable Safety Gate (`CORE_RE`)**: Hardcoded regex barrier protecting critical system services from being disabled.
+- **Setupwraith Wi-Fi Drop Prevention**: Protects Google TV provisioning packages that hold saved network credentials.
+- **Home Guard**: Prohibits disabling stock launchers until Climin UI is verified installed and answering the Home intent.
+- **Instant Rollback**: Every operation is logged to a recovery ledger for single-command restoration.
 
 ---
 
-## 3. Core Safety & Security Invariants
+## 3. Minimum Requirements
 
-CliminTV strictly executes non-destructive user-space package manager primitives (`pm disable-user --user 0`). System packages on `/system` or `/vendor` are never deleted, ensuring **100% reversible recovery** via `tools/restore.sh`.
+| Component | Minimum Requirement | Recommended |
+|---|---|---|
+| **Operating System** | Android TV / Google TV 8.0 (API 26) | Android TV 9.0 – 14.0 (API 28 – 34) |
+| **Hardware** | 1.0 GHz Quad-Core SoC (Amlogic, MediaTek, Realtek) | Quad-Core 1.5 GHz+ |
+| **RAM** | 1 GB RAM (Climin UI uses $< 35\text{ MB}$) | 1.5 GB – 2 GB RAM |
+| **Free Storage** | 10 MB free space (APK is only 248 KB) | 50 MB+ |
+| **Display Panel** | 720p / 1080p / 4K Ultra HD | 1080p / 4K @ 60 Hz |
+| **Remote Control** | Standard 5-way D-Pad remote control | Standard Bluetooth / IR TV Remote |
+| **Host PC (for ADB)** | Linux, macOS, or Windows 10/11 with Python 3.8+ | Python 3.10+ & Android Debug Bridge (`adb`) |
 
-### 3.1 Immutable Core Safety Gate (`CORE_RE`)
-Disabling low-level system services bricks Android TV into an unrecoverable bootloop. `tools/disable.sh` enforces an immutable regular expression barrier:
-```bash
-CORE_RE='^(android|com\.android\.systemui|com\.android\.shell|com\.android\.phone|com\.android\.settings|com\.android\.tv\.settings|com\.(google\.)?android\.(permissioncontroller|packageinstaller|ext\.services|ext\.shared|modulemetadata)|com\.google\.android\.overlay\.modules.*|com\.android\.providers\..*)$'
-CORE_OK='^com\.android\.providers\.(calendar|contacts|userdictionary|blockednumber)$'
+---
+
+## 4. Installation Guide
+
+### Method 1: Automated Installation via AI Agent (Recommended)
+If you are using an AI coding assistant (such as **Antigravity**, **Claude Code**, **Cursor**, or **Cline**), you can prompt the agent to handle the installation and verification automatically.
+
+Copy and paste this prompt to your AI assistant:
+
+```text
+Connect to my Android TV over ADB at <TV_IP_ADDRESS>:5555, compile the Climin UI release APK in launcher/, install it as a normal test application, launch io.climintv.home/.MainActivity, and take a screenshot to verify that D-pad navigation, the live clock, and streaming carousels are working correctly. Do not alter TV system settings or set default launcher without my explicit confirmation.
 ```
 
-### 3.2 Setupwraith Wi-Fi Drop Trap
-On Google TV devices, the initial setup wizard (`com.google.android.tungsten.setupwraith`) owns the Wi-Fi credentials saved during device provisioning. Disabling `setupwraith` flushes the credentials, immediately killing Wi-Fi and severing remote ADB TCP access. CliminTV inspects `dumpsys wifi` for `cname` ownership and safely skips `setupwraith` unless explicitly overridden.
-
-### 3.3 The Home Guard Mechanism
-Before touching stock OEM launchers (`tvlauncher`, `launcherx`, `mitv.tvhome`), `tools/disable.sh` verifies that a functional launcher (`io.climintv.home`) is already compiled, installed, and answering the `android.intent.category.HOME` intent query.
-
-### 3.4 Zero-Network & Low Memory Constraint
-- **No `android.permission.INTERNET`**: CliminTV Home has no network stacks or telemetry; it cannot send or receive remote data.
-- **Resource Budget**: Runs with a memory footprint under **35 MB RAM** (ideal for budget 1 GB RAM sticks/boxes).
+The AI agent will:
+1. Connect to the TV via ADB.
+2. Build the release APK (`./gradlew assembleRelease`).
+3. Stream the APK to the TV (`adb install -r launcher/app/build/outputs/apk/release/app-release.apk`).
+4. Start the launcher activity.
+5. Capture and verify a live screenshot.
 
 ---
 
-## 4. Hardware Integrations
+### Method 2: Manual Installation via ADB (Normal App Mode for Testing)
 
-### 4.1 Native TV Input Framework (TIF) Passthrough
-Bypasses vendor-bloated input apps:
-- Enumerates hardware inputs via `TvInputManager.getTvInputList()`.
-- Identifies HDMI 1, HDMI 2, HDMI 3, AV, and system Tuner.
-- Generates channel URIs via `TvContract.buildChannelUriForPassthroughInput(inputId)`.
-- Dispatches `ACTION_VIEW` directly to the display engine surface.
+To test Climin UI on your TV without modifying your stock home launcher or system settings:
 
-### 4.2 Remote Key Interception (`HomeKeyService`)
-On devices like Xiaomi Mi TV Stick / Mi Box, the remote Home button emits `KEYCODE_ALL_APPS` ($284$), which Android TV 9 routes exclusively to PatchWall. CliminTV's accessibility service intercepts `KEYCODE_ALL_APPS` and instantly routes the user back to CliminTV Home.
+#### Step 1: Enable Developer Options & USB Debugging on TV
+1. On your TV, navigate to **Settings → Device Preferences → About**.
+2. Scroll to **Build** and click the remote **OK** button **7 times** until you see *"You are now a developer!"*.
+3. Go back to **Device Preferences → Developer Options**.
+4. Enable **USB Debugging**.
+5. Note your TV's IP address in **Settings → Network & Internet → [Your Wi-Fi network]** (e.g. `192.168.1.50`).
 
----
+#### Step 2: Build & Install Climin UI
+From your computer terminal:
 
-## 5. Quick Start & Usage
-
-### 5.1 Prerequisites
-- Python 3.8+ (with `cryptography` installed)
-- Android TV / Google TV on the same Wi-Fi or Ethernet network
-- Developer Options & USB Debugging enabled on TV
-
-### 5.2 Build & Install CliminTV Home
 ```bash
-# Build release APK and install over ADB
-TV_HOST=192.168.1.50 ./launcher/build-and-install.sh
+# 1. Clone the repository
+git clone https://github.com/zvirox/climin-tv-friend.git
+cd climin-tv-friend
+
+# 2. Connect to your TV over ADB
+adb connect <YOUR_TV_IP>:5555
+# (Accept the USB debugging prompt on your TV screen)
+
+# 3. Compile the release APK
+cd launcher
+./gradlew assembleRelease
+
+# 4. Install Climin UI onto your TV
+adb -s <YOUR_TV_IP>:5555 install -r app/build/outputs/apk/release/app-release.apk
+
+# 5. Launch Climin UI
+adb -s <YOUR_TV_IP>:5555 shell am start -n io.climintv.home/.MainActivity
 ```
 
-### 5.3 Non-Destructive Debloating
-Choose your device profile from `examples/` (e.g. Xiaomi, TCL, Sony, Onn):
+---
+
+### Method 3: Full Debloat & Default Home Launcher Installation
+
+To debloat OEM telemetry, disable stock recommendation bloat, and establish Climin UI as the primary launcher:
+
 ```bash
-# Verify debloat list against safety rules
+# 1. Verify safety rules for your device profile
 python3 tools/check.py examples/xiaomi-mitv-aetp0-dofus/debloat.txt
 
-# Run debloater
-TV_HOST=192.168.1.50 ./tools/disable.sh examples/xiaomi-mitv-aetp0-dofus/debloat.txt
-```
+# 2. Build and install Climin UI as default launcher
+TV_HOST=<YOUR_TV_IP> ./launcher/build-and-install.sh
 
-### 5.4 Instant Rollback & Recovery
-```bash
-# Re-enable all packages back to their original state
-TV_HOST=192.168.1.50 ./tools/restore.sh examples/xiaomi-mitv-aetp0-dofus/debloat.txt
-```
+# 3. Execute non-destructive debloater
+TV_HOST=<YOUR_TV_IP> ./tools/disable.sh examples/xiaomi-mitv-aetp0-dofus/debloat.txt
 
-### 5.5 Post-Install Security Hardening
-After completing installation:
-1. On the TV, navigate to **Settings → Device Preferences → Developer options**.
-2. Toggle **USB debugging** to **OFF**.
-3. Select **Revoke USB debugging authorizations**.
-4. Run the security verification script:
-```bash
-python3 tools/adb-closed.py 192.168.1.50
-# Returns exit code 0 when port 5555 is closed and secured.
+# 4. Instant rollback (if ever needed)
+TV_HOST=<YOUR_TV_IP> ./tools/restore.sh examples/xiaomi-mitv-aetp0-dofus/debloat.txt
 ```
 
 ---
 
-## 6. Project Structure
+### Method 4: Sideloading via USB Drive / File Transfer
+1. Download `app-release.apk` from the [GitHub Releases](https://github.com/zvirox/climin-tv-friend/releases) page or copy `launcher/app/build/outputs/apk/release/app-release.apk` to a USB flash drive.
+2. Plug the USB drive into your TV.
+3. Open any TV File Manager (e.g. AnExplorer, FX File Explorer) and select `app-release.apk` to install.
+4. Launch **Climin UI** from your TV's app drawer.
 
-```
-climin-tv-friend/
-├── Makefile                     # Operational CLI automation
-├── README.md                    # Project documentation
-├── examples/                    # 290+ Curated OEM TV device trees (debloat.txt, tv.json)
-├── tools/                       # Pure-Python ADB debloat subsystem
-│   ├── tv.py                    # TCP socket & ADB protocol client
-│   ├── disable.sh               # Non-destructive debloat executor
-│   ├── restore.sh               # Reversible state rollback executor
-│   ├── check.py                 # Safety invariant auditor
-│   ├── b64push.py               # 48 KB chunked binary sideload pipeline
-│   ├── recovery.py              # Snapshot transaction ledger manager
-│   ├── adb-closed.py            # Port 5555 security verifier
-│   └── lib/
-│       ├── adb_client.py        # Protocol transport implementation
-│       ├── invariants.py        # CORE_RE & setupwraith safety rules
-│       └── ledger.py            # Transaction history logger
-└── launcher/                    # Native Android TV Launcher (Material 3 Expressive)
-    ├── build-and-install.sh     # Automated build & TV deployment script
-    └── app/
-        ├── build.gradle         # R8 Proguard stripping & Leanback config
-        └── src/main/
-            ├── AndroidManifest.xml # Zero-network & package visibility
-            ├── res/             # M3 Expressive colors, layouts, drawables
-            └── java/io/climintv/home/
-                ├── MainActivity.java
-                ├── ClockDream.java
-                ├── adapter/     # Dock, App Grid & Input Chip adapters
-                ├── model/       # App & TV Input models
-                ├── service/     # HomeKeyService & InputKeyService
-                ├── theme/       # Dynamic M3 Expressive color palettes
-                ├── tif/         # Native TvInputManager helper
-                └── util/        # FocusAnimator (Spring physics) & Prefs
+---
+
+## 5. TV Remote Controls Reference
+
+| Button | Action in Climin UI |
+|---|---|
+| **D-Pad UP / DOWN** | Seamlessly navigates between Header, Super Mode, App Carousel, Inputs, and Weather |
+| **D-Pad LEFT / RIGHT** | Scrolls carousels horizontally / shifts apps in reorder mode |
+| **OK / Center Click** | Launches focused application, streaming item, or input source |
+| **Hold OK (App Carousel)** | Enters drag-to-reorder mode (`◀ MOVE ▶`); press Left/Right to shift, OK to drop |
+| **Hold OK (All Apps)** | Pins / unpins application to Home shelf (updates `★ HOME` badge) |
+| **BACK Button** | Closes full-screen dialogs (All Apps, Settings) / returns to Home |
+
+---
+
+## 6. Testing & Quality Verification
+
+Run automated D-pad navigation and visual sanity tests:
+
+```bash
+# Automated D-pad remote navigation verification
+bash docs/testing.md
+
+# Capture TV screenshot for sharpness inspection
+adb -s <YOUR_TV_IP>:5555 shell screencap -p /sdcard/tv_test.png
+adb -s <YOUR_TV_IP>:5555 pull /sdcard/tv_test.png ./tv_test.png
 ```
 
 ---
 
-## 7. License
-Licensed under the Apache License 2.0. Compatible with open-source Android TV projects.
+## 7. Documentation Directory
+
+Detailed architectural specifications, testing runbooks, prompt templates, and roadmaps are organized in the `docs/` folder:
+
+- [`docs/prompt.md`](docs/prompt.md): Master AI agent system prompt directives, invariants, and task history.
+- [`docs/changelog.md`](docs/changelog.md): Detailed versioned changelog tracking releases, bug fixes, and improvements.
+- [`docs/architecture.md`](docs/architecture.md): In-depth system topology, focus navigation graph, and high-DPI pipeline.
+- [`docs/testing.md`](docs/testing.md): Remote navigation test scripts, D-pad test matrix, and ADB runbooks.
+- [`docs/roadmap.md`](docs/roadmap.md): Upcoming features, multi-category tabs, and future milestones.
+
+---
+
+## 8. License
+
+Licensed under the **Apache License 2.0**. See the [LICENSE](LICENSE) file for details.
+Compatible with open-source Android TV and Leanback ecosystems.

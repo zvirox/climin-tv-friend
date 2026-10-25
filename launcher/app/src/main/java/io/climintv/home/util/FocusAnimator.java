@@ -20,12 +20,12 @@ import io.climintv.home.theme.ThemeManager;
  * and fluid spring overshoot transitions across all UI elements.
  */
 public class FocusAnimator {
-    public static final float CIRCLE_FOCUS_SCALE = 1.16f;
-    public static final float APP_CARD_FOCUS_SCALE = 1.10f;
-    public static final float PILL_FOCUS_SCALE = 1.08f;
-    public static final float BTN_SQUISH_PRESS_SCALE = 0.92f;
-    public static final float PILL_SQUISH_PRESS_SCALE = 0.94f;
-    public static final float CARD_SQUISH_PRESS_SCALE = 0.95f;
+    public static final float CIRCLE_FOCUS_SCALE = 1.08f;
+    public static final float APP_CARD_FOCUS_SCALE = 1.05f;
+    public static final float PILL_FOCUS_SCALE = 1.04f;
+    public static final float BTN_SQUISH_PRESS_SCALE = 0.94f;
+    public static final float PILL_SQUISH_PRESS_SCALE = 0.96f;
+    public static final float CARD_SQUISH_PRESS_SCALE = 0.96f;
     public static final float UNFOCUS_SCALE = 1.0f;
 
     public static void attach(View view) {
@@ -38,7 +38,7 @@ public class FocusAnimator {
         view.setOnFocusChangeListener((v, hasFocus) -> {
             animateSpringScale(v, hasFocus ? targetScale : UNFOCUS_SCALE, SpringForce.DAMPING_RATIO_MEDIUM_BOUNCY);
             float density = v.getResources().getDisplayMetrics().density;
-            float targetElev = hasFocus ? (8f * density) : 0f;
+            float targetElev = hasFocus ? (4f * density) : 0f;
             v.animate()
                     .translationZ(targetElev)
                     .setDuration(180)
@@ -78,16 +78,16 @@ public class FocusAnimator {
         view.setOnFocusChangeListener((v, hasFocus) -> {
             animateSpringScale(v, hasFocus ? CIRCLE_FOCUS_SCALE : UNFOCUS_SCALE, SpringForce.DAMPING_RATIO_MEDIUM_BOUNCY);
             float density = v.getResources().getDisplayMetrics().density;
-            v.animate().translationZ(hasFocus ? 10f * density : 0f).setDuration(160).start();
+            v.animate().translationZ(hasFocus ? 4f * density : 0f).setDuration(160).start();
 
             ThemeManager.ExpressivePalette p = ThemeManager.getCurrentPalette(v.getContext());
             GradientDrawable gd = new GradientDrawable();
-            // Morph between circle (24dp) and squircle (17dp) on focus!
-            float radius = hasFocus ? (17f * density) : (24f * density);
+            // Morph between circle (20dp) and squircle (14dp) on focus!
+            float radius = hasFocus ? (14f * density) : (20f * density);
             gd.setCornerRadius(radius);
             gd.setColor(hasFocus ? p.pc : p.sch);
             if (hasFocus) {
-                gd.setStroke((int) (2.5f * density), p.pri);
+                gd.setStroke((int) (2f * density), p.pri);
             }
             v.setBackground(gd);
 
@@ -104,16 +104,16 @@ public class FocusAnimator {
         view.setOnFocusChangeListener((v, hasFocus) -> {
             animateSpringScale(v, hasFocus ? PILL_FOCUS_SCALE : UNFOCUS_SCALE, SpringForce.DAMPING_RATIO_MEDIUM_BOUNCY);
             float density = v.getResources().getDisplayMetrics().density;
-            v.animate().translationZ(hasFocus ? 8f * density : 0f).setDuration(160).start();
+            v.animate().translationZ(hasFocus ? 4f * density : 0f).setDuration(160).start();
 
             ThemeManager.ExpressivePalette p = ThemeManager.getCurrentPalette(v.getContext());
             GradientDrawable gd = new GradientDrawable();
-            // Morph radius from 18dp to 29dp on focus!
-            float radius = hasFocus ? (29f * density) : (18f * density);
+            // Morph radius on focus!
+            float radius = hasFocus ? (20f * density) : (17f * density);
             gd.setCornerRadius(radius);
             gd.setColor(hasFocus ? p.pc : p.sch);
             if (hasFocus) {
-                gd.setStroke((int) (2.5f * density), p.pri);
+                gd.setStroke((int) (2f * density), p.pri);
             }
             v.setBackground(gd);
 

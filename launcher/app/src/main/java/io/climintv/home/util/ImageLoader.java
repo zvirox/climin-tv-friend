@@ -89,7 +89,10 @@ public class ImageLoader {
 
             if (conn.getResponseCode() == 200) {
                 InputStream is = conn.getInputStream();
-                Bitmap bmp = BitmapFactory.decodeStream(is);
+                BitmapFactory.Options opts = new BitmapFactory.Options();
+                opts.inPreferredConfig = Bitmap.Config.ARGB_8888;
+                opts.inDither = true;
+                Bitmap bmp = BitmapFactory.decodeStream(is, null, opts);
                 is.close();
                 return bmp;
             }
@@ -110,7 +113,10 @@ public class ImageLoader {
         try {
             File file = getDiskFile(context, urlString);
             if (file.exists()) {
-                return BitmapFactory.decodeFile(file.getAbsolutePath());
+                BitmapFactory.Options opts = new BitmapFactory.Options();
+                opts.inPreferredConfig = Bitmap.Config.ARGB_8888;
+                opts.inDither = true;
+                return BitmapFactory.decodeFile(file.getAbsolutePath(), opts);
             }
         } catch (Exception ignored) {}
         return null;
@@ -120,7 +126,7 @@ public class ImageLoader {
         try {
             File file = getDiskFile(context, urlString);
             FileOutputStream fos = new FileOutputStream(file);
-            bitmap.compress(Bitmap.CompressFormat.JPEG, 85, fos);
+            bitmap.compress(Bitmap.CompressFormat.JPEG, 95, fos);
             fos.close();
         } catch (Exception ignored) {}
     }

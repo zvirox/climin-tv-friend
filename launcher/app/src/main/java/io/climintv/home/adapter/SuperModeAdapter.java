@@ -28,11 +28,20 @@ public class SuperModeAdapter extends RecyclerView.Adapter<SuperModeAdapter.View
         void onMediaClick(MediaItem item);
     }
 
+    public interface OnMediaFocusedListener {
+        void onMediaFocused(MediaItem item, View view, int position);
+    }
+
     private final List<MediaItem> items = new ArrayList<>();
     private final OnMediaClickListener listener;
+    private OnMediaFocusedListener focusedListener;
 
     public SuperModeAdapter(OnMediaClickListener listener) {
         this.listener = listener;
+    }
+
+    public void setOnMediaFocusedListener(OnMediaFocusedListener focusedListener) {
+        this.focusedListener = focusedListener;
     }
 
     public void setItems(List<MediaItem> newItems) {
@@ -54,7 +63,7 @@ public class SuperModeAdapter extends RecyclerView.Adapter<SuperModeAdapter.View
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         MediaItem item = items.get(position);
-        holder.bind(item, listener);
+        holder.bind(item, position, listener, focusedListener);
     }
 
     @Override
@@ -79,17 +88,17 @@ public class SuperModeAdapter extends RecyclerView.Adapter<SuperModeAdapter.View
             providerBadge = itemView.findViewById(R.id.badge_provider);
             ratingBadge = itemView.findViewById(R.id.badge_rating);
 
-            FocusAnimator.attach(itemView, 1.08f);
+            FocusAnimator.attach(itemView, 1.05f);
         }
 
-        public void bind(MediaItem item, OnMediaClickListener listener) {
+        public void bind(MediaItem item, int position, OnMediaClickListener listener, OnMediaFocusedListener focusedListener) {
             Context context = itemView.getContext();
             float density = context.getResources().getDisplayMetrics().density;
 
-            // Configure width: Wide cards (240dp) vs Square cards (140dp)
+            // Configure width: Wide cards (180dp) vs Square cards (110dp)
             ViewGroup.LayoutParams lp = cardRoot.getLayoutParams();
             if (lp != null) {
-                lp.width = (int) ((item.isWide() ? 240f : 140f) * density);
+                lp.width = (int) ((item.isWide() ? 180f : 110f) * density);
                 cardRoot.setLayoutParams(lp);
             }
 
@@ -108,26 +117,30 @@ public class SuperModeAdapter extends RecyclerView.Adapter<SuperModeAdapter.View
 
             // Focus morphing styling
             itemView.setOnFocusChangeListener((v, hasFocus) -> {
-                FocusAnimator.animateSpringScale(v, hasFocus ? 1.08f : 1.0f, 0.6f);
-                v.animate().translationZ(hasFocus ? (10f * density) : 0f).setDuration(160).start();
+                FocusAnimator.animateSpringScale(v, hasFocus ? 1.05f : 1.0f, 0.6f);
+                v.animate().translationZ(hasFocus ? (4f * density) : 0f).setDuration(160).start();
 
                 ThemeManager.ExpressivePalette p = ThemeManager.getCurrentPalette(context);
-                cardRoot.setRadius(hasFocus ? (26f * density) : (16f * density));
+                cardRoot.setRadius(hasFocus ? (15f * density) : (12f * density));
 
                 GradientDrawable border = new GradientDrawable();
-                border.setCornerRadius(hasFocus ? (26f * density) : (16f * density));
+                border.setCornerRadius(hasFocus ? (15f * density) : (12f * density));
                 border.setColor(Color.TRANSPARENT);
                 if (hasFocus) {
-                    border.setStroke((int) (3f * density), p.pri);
+                    border.setStroke((int) (2f * density), p.pri);
                 }
                 cardRoot.setForeground(border);
 
                 // Provider badge highlight on focus
                 GradientDrawable pBg = new GradientDrawable();
-                pBg.setCornerRadius(10f * density);
+                pBg.setCornerRadius(8f * density);
                 pBg.setColor(hasFocus ? p.pri : p.pc);
                 providerBadge.setBackground(pBg);
                 providerBadge.setTextColor(hasFocus ? p.onpri : p.onpc);
+
+                if (hasFocus && focusedListener != null) {
+                    focusedListener.onMediaFocused(item, v, position);
+                }
             });
         }
     }

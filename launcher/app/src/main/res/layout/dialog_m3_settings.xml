@@ -1,562 +1,594 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="660dp"
-    android:layout_height="540dp"
-    android:background="@drawable/bg_m3_dialog"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/m3_dark_bg"
+    android:clipChildren="false"
     android:clipToPadding="false"
-    android:padding="26dp"
-    android:scrollbars="vertical">
+    android:orientation="horizontal"
+    android:paddingStart="36dp"
+    android:paddingTop="20dp"
+    android:paddingEnd="36dp"
+    android:paddingBottom="20dp">
 
+    <!-- LEFT PANEL: Brand, Status & Contextual Information (Apple TV Style) -->
     <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical">
+        android:layout_width="240dp"
+        android:layout_height="match_parent"
+        android:gravity="top"
+        android:orientation="vertical"
+        android:paddingEnd="24dp">
 
-        <!-- Header -->
-        <LinearLayout
-            android:layout_width="match_parent"
+        <ImageView
+            android:layout_width="36dp"
+            android:layout_height="36dp"
+            android:contentDescription="@null"
+            android:src="@drawable/ic_settings"
+            android:tint="@color/m3_primary" />
+
+        <TextView
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:gravity="center_vertical"
-            android:orientation="horizontal">
+            android:layout_marginTop="12dp"
+            android:fontFamily="@font/outfit_bold"
+            android:text="Settings"
+            android:textColor="@color/m3_on_surface"
+            android:textSize="20sp" />
 
-            <LinearLayout
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:orientation="vertical">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="2dp"
+            android:fontFamily="@font/outfit_medium"
+            android:text="Climin UI"
+            android:textColor="@color/m3_primary"
+            android:textSize="12sp" />
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:fontFamily="@font/outfit_bold"
-                    android:text="@string/settings_title"
-                    android:textColor="@color/m3_on_surface"
-                    android:textSize="24sp" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="2dp"
-                    android:fontFamily="@font/outfit_regular"
-                    android:text="Material 3 Expressive UI &amp; Super Mode Engine"
-                    android:textColor="@color/m3_on_surface_variant"
-                    android:textSize="13sp" />
-            </LinearLayout>
-
-            <Button
-                android:id="@+id/btn_close_settings"
-                android:layout_width="wrap_content"
-                android:layout_height="36dp"
-                android:background="@drawable/bg_m3_pill_chip"
-                android:fontFamily="@font/outfit_medium"
-                android:paddingStart="16dp"
-                android:paddingEnd="16dp"
-                android:text="@string/settings_close"
-                android:textColor="@color/m3_on_surface"
-                android:textSize="12sp" />
-        </LinearLayout>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:fontFamily="@font/outfit_regular"
+            android:lineSpacingMultiplier="1.2"
+            android:text="Customize your Android TV launcher experience with Material 3 Expressive solid tokens, live seconds clock, TMDB streaming suggestions, and tactile D-pad motion."
+            android:textColor="@color/m3_on_surface_variant"
+            android:textSize="10.5sp" />
 
         <View
             android:layout_width="match_parent"
-            android:layout_height="1dp"
-            android:layout_marginTop="14dp"
-            android:layout_marginBottom="14dp"
-            android:background="@color/m3_outline" />
+            android:layout_height="0dp"
+            android:layout_weight="1" />
 
-        <!-- ============================================== -->
-        <!-- SECTION 1: DISPLAY & EXPERIENCE                -->
-        <!-- ============================================== -->
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="8dp"
-            android:fontFamily="@font/outfit_bold"
-            android:letterSpacing="0.06"
-            android:text="DISPLAY &amp; EXPERIENCE"
-            android:textColor="@color/m3_primary"
-            android:textSize="11sp" />
-
-        <!-- 1. Home Layout: Minimal vs Super Mode -->
+        <!-- TV System Info Box -->
         <LinearLayout
-            android:id="@+id/row_toggle_home_layout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="8dp"
             android:background="@drawable/bg_m3_pill_chip"
-            android:clickable="true"
-            android:focusable="true"
-            android:gravity="center_vertical"
-            android:orientation="horizontal"
-            android:paddingStart="16dp"
-            android:paddingTop="10dp"
-            android:paddingEnd="16dp"
-            android:paddingBottom="10dp">
-
-            <LinearLayout
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:orientation="vertical">
-
-                <TextView
-                    android:id="@+id/text_home_layout_label"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:fontFamily="@font/outfit_medium"
-                    android:text="Home Screen: Super Mode (TMDB)"
-                    android:textColor="@color/m3_on_surface"
-                    android:textSize="15sp" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="2dp"
-                    android:fontFamily="@font/outfit_regular"
-                    android:text="Stream recommendations, posters, trailers &amp; watch providers"
-                    android:textColor="@color/m3_on_surface_variant"
-                    android:textSize="12sp" />
-            </LinearLayout>
-
-            <Switch
-                android:id="@+id/switch_home_layout"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:clickable="false"
-                android:focusable="false" />
-        </LinearLayout>
-
-        <!-- 2. Dark Mode Switch -->
-        <LinearLayout
-            android:id="@+id/row_toggle_dark_mode"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="8dp"
-            android:background="@drawable/bg_m3_pill_chip"
-            android:clickable="true"
-            android:focusable="true"
-            android:gravity="center_vertical"
-            android:orientation="horizontal"
-            android:paddingStart="16dp"
-            android:paddingTop="10dp"
-            android:paddingEnd="16dp"
-            android:paddingBottom="10dp">
-
-            <LinearLayout
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:orientation="vertical">
-
-                <TextView
-                    android:id="@+id/text_dark_mode_label"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:fontFamily="@font/outfit_medium"
-                    android:text="Dark Mode (Solid Colors)"
-                    android:textColor="@color/m3_on_surface"
-                    android:textSize="15sp" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="2dp"
-                    android:fontFamily="@font/outfit_regular"
-                    android:text="Switch between Dark (#141218) and Light (#FEF7FF) M3 Expressive"
-                    android:textColor="@color/m3_on_surface_variant"
-                    android:textSize="12sp" />
-            </LinearLayout>
-
-            <Switch
-                android:id="@+id/switch_dark_mode"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:clickable="false"
-                android:focusable="false" />
-        </LinearLayout>
-
-        <!-- 3. Dynamic Adaptive Color Switch -->
-        <LinearLayout
-            android:id="@+id/row_toggle_adaptive_color"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="8dp"
-            android:background="@drawable/bg_m3_pill_chip"
-            android:clickable="true"
-            android:focusable="true"
-            android:gravity="center_vertical"
-            android:orientation="horizontal"
-            android:paddingStart="16dp"
-            android:paddingTop="10dp"
-            android:paddingEnd="16dp"
-            android:paddingBottom="10dp">
-
-            <LinearLayout
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:orientation="vertical">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:fontFamily="@font/outfit_medium"
-                    android:text="Adaptive Dynamic Color Engine"
-                    android:textColor="@color/m3_on_surface"
-                    android:textSize="15sp" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="2dp"
-                    android:fontFamily="@font/outfit_regular"
-                    android:text="Extract seed color from focused app icon to recolor launcher"
-                    android:textColor="@color/m3_on_surface_variant"
-                    android:textSize="12sp" />
-            </LinearLayout>
-
-            <Switch
-                android:id="@+id/switch_adaptive_color"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:clickable="false"
-                android:focusable="false" />
-        </LinearLayout>
-
-        <!-- ============================================== -->
-        <!-- SECTION 2: APP SELECTOR & HOME SHELF           -->
-        <!-- ============================================== -->
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:layout_marginBottom="8dp"
-            android:fontFamily="@font/outfit_bold"
-            android:letterSpacing="0.06"
-            android:text="APP SELECTOR &amp; HOME SHELF"
-            android:textColor="@color/m3_primary"
-            android:textSize="11sp" />
-
-        <!-- 4. Drag & Reorder Instruction Card -->
-        <LinearLayout
-            android:id="@+id/row_reorder_info"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="8dp"
-            android:background="@drawable/bg_m3_pill_chip"
-            android:clickable="true"
-            android:focusable="true"
-            android:gravity="center_vertical"
-            android:orientation="horizontal"
-            android:paddingStart="16dp"
-            android:paddingTop="10dp"
-            android:paddingEnd="16dp"
-            android:paddingBottom="10dp">
-
-            <LinearLayout
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:orientation="vertical">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:fontFamily="@font/outfit_medium"
-                    android:text="Reorder Apps on Home Carousel"
-                    android:textColor="@color/m3_on_surface"
-                    android:textSize="15sp" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="2dp"
-                    android:fontFamily="@font/outfit_regular"
-                    android:text="Hold OK button on any app tile to enter Drag/Move mode"
-                    android:textColor="@color/m3_on_surface_variant"
-                    android:textSize="12sp" />
-            </LinearLayout>
+            android:orientation="vertical"
+            android:padding="10dp">
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:background="@drawable/bg_m3_circle_button"
                 android:fontFamily="@font/outfit_bold"
-                android:paddingStart="10dp"
-                android:paddingTop="4dp"
-                android:paddingEnd="10dp"
-                android:paddingBottom="4dp"
-                android:text="HOLD OK"
+                android:text="SYSTEM STATUS"
                 android:textColor="@color/m3_primary"
-                android:textSize="11sp" />
-        </LinearLayout>
-
-        <!-- 5. Reset Home Apps Button -->
-        <LinearLayout
-            android:id="@+id/row_reset_home_apps"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="8dp"
-            android:background="@drawable/bg_m3_pill_chip"
-            android:clickable="true"
-            android:focusable="true"
-            android:gravity="center_vertical"
-            android:orientation="horizontal"
-            android:paddingStart="16dp"
-            android:paddingTop="10dp"
-            android:paddingEnd="16dp"
-            android:paddingBottom="10dp">
-
-            <LinearLayout
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:orientation="vertical">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:fontFamily="@font/outfit_medium"
-                    android:text="Reset Home App Selector"
-                    android:textColor="@color/m3_on_surface"
-                    android:textSize="15sp" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="2dp"
-                    android:fontFamily="@font/outfit_regular"
-                    android:text="Restore default streaming applications (YouTube, Netflix, etc.)"
-                    android:textColor="@color/m3_on_surface_variant"
-                    android:textSize="12sp" />
-            </LinearLayout>
+                android:textSize="9.5sp" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:fontFamily="@font/outfit_medium"
-                android:text="Reset"
-                android:textColor="@color/m3_primary"
-                android:textSize="13sp" />
+                android:layout_marginTop="2dp"
+                android:fontFamily="@font/outfit_regular"
+                android:text="Memory: Lean (245 KB APK)\nTMDB Super Mode: Active\nZero-Key Weather: Open-Meteo"
+                android:textColor="@color/m3_on_surface_variant"
+                android:textSize="10sp" />
         </LinearLayout>
 
-        <!-- ============================================== -->
-        <!-- SECTION 3: CLOCK & WEATHER                     -->
-        <!-- ============================================== -->
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:layout_marginBottom="8dp"
-            android:fontFamily="@font/outfit_bold"
-            android:letterSpacing="0.06"
-            android:text="CLOCK &amp; WEATHER"
-            android:textColor="@color/m3_primary"
-            android:textSize="11sp" />
-
-        <!-- 6. 24-Hour Clock Toggle -->
-        <LinearLayout
-            android:id="@+id/row_toggle_clock"
+        <Button
+            android:id="@+id/btn_close_settings"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="8dp"
+            android:layout_height="36dp"
+            android:layout_marginTop="12dp"
             android:background="@drawable/bg_m3_pill_chip"
-            android:clickable="true"
-            android:focusable="true"
-            android:gravity="center_vertical"
-            android:orientation="horizontal"
-            android:paddingStart="16dp"
-            android:paddingTop="10dp"
-            android:paddingEnd="16dp"
-            android:paddingBottom="10dp">
-
-            <LinearLayout
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:orientation="vertical">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:fontFamily="@font/outfit_medium"
-                    android:text="24-Hour Time Format"
-                    android:textColor="@color/m3_on_surface"
-                    android:textSize="15sp" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="2dp"
-                    android:fontFamily="@font/outfit_regular"
-                    android:text="Display time as 14:35:10 instead of 2:35:10 PM"
-                    android:textColor="@color/m3_on_surface_variant"
-                    android:textSize="12sp" />
-            </LinearLayout>
-
-            <Switch
-                android:id="@+id/switch_24h_clock"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:clickable="false"
-                android:focusable="false" />
-        </LinearLayout>
-
-        <!-- 7. Weather Temperature Unit -->
-        <LinearLayout
-            android:id="@+id/row_toggle_weather_temp"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="8dp"
-            android:background="@drawable/bg_m3_pill_chip"
-            android:clickable="true"
-            android:focusable="true"
-            android:gravity="center_vertical"
-            android:orientation="horizontal"
-            android:paddingStart="16dp"
-            android:paddingTop="10dp"
-            android:paddingEnd="16dp"
-            android:paddingBottom="10dp">
-
-            <LinearLayout
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:orientation="vertical">
-
-                <TextView
-                    android:id="@+id/text_weather_unit_title"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:fontFamily="@font/outfit_medium"
-                    android:text="Weather Unit: Celsius (°C)"
-                    android:textColor="@color/m3_on_surface"
-                    android:textSize="15sp" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="2dp"
-                    android:fontFamily="@font/outfit_regular"
-                    android:text="Switch between Celsius (°C) and Fahrenheit (°F)"
-                    android:textColor="@color/m3_on_surface_variant"
-                    android:textSize="12sp" />
-            </LinearLayout>
-
-            <Switch
-                android:id="@+id/switch_weather_temp"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:clickable="false"
-                android:focusable="false" />
-        </LinearLayout>
-
-        <!-- 8. Weather City Picker -->
-        <LinearLayout
-            android:id="@+id/row_weather_city"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="8dp"
-            android:background="@drawable/bg_m3_pill_chip"
-            android:clickable="true"
-            android:focusable="true"
-            android:gravity="center_vertical"
-            android:orientation="horizontal"
-            android:paddingStart="16dp"
-            android:paddingTop="10dp"
-            android:paddingEnd="16dp"
-            android:paddingBottom="10dp">
-
-            <LinearLayout
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:orientation="vertical">
-
-                <TextView
-                    android:id="@+id/text_city_label"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:fontFamily="@font/outfit_medium"
-                    android:text="Weather City: New York"
-                    android:textColor="@color/m3_on_surface"
-                    android:textSize="15sp" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="2dp"
-                    android:fontFamily="@font/outfit_regular"
-                    android:text="Zero-key Open-Meteo accurate geocoding and 6-slot forecast"
-                    android:textColor="@color/m3_on_surface_variant"
-                    android:textSize="12sp" />
-            </LinearLayout>
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:fontFamily="@font/outfit_medium"
-                android:text="Change"
-                android:textColor="@color/m3_primary"
-                android:textSize="13sp" />
-        </LinearLayout>
-
-        <!-- ============================================== -->
-        <!-- SECTION 4: SYSTEM & HARDWARE                   -->
-        <!-- ============================================== -->
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:layout_marginBottom="8dp"
-            android:fontFamily="@font/outfit_bold"
-            android:letterSpacing="0.06"
-            android:text="SYSTEM &amp; CONNECTIVITY"
-            android:textColor="@color/m3_primary"
-            android:textSize="11sp" />
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
-
-            <Button
-                android:id="@+id/btn_open_system_settings"
-                android:layout_width="0dp"
-                android:layout_height="44dp"
-                android:layout_marginEnd="6dp"
-                android:layout_weight="1"
-                android:background="@drawable/bg_m3_pill_chip"
-                android:fontFamily="@font/outfit_medium"
-                android:text="Android TV Settings"
-                android:textColor="@color/m3_on_surface"
-                android:textSize="12sp" />
-
-            <Button
-                android:id="@+id/btn_open_wifi_settings"
-                android:layout_width="0dp"
-                android:layout_height="44dp"
-                android:layout_marginStart="3dp"
-                android:layout_marginEnd="3dp"
-                android:layout_weight="1"
-                android:background="@drawable/bg_m3_pill_chip"
-                android:fontFamily="@font/outfit_medium"
-                android:text="Wi-Fi Settings"
-                android:textColor="@color/m3_on_surface"
-                android:textSize="12sp" />
-
-            <Button
-                android:id="@+id/btn_open_bluetooth_settings"
-                android:layout_width="0dp"
-                android:layout_height="44dp"
-                android:layout_marginStart="6dp"
-                android:layout_weight="1"
-                android:background="@drawable/bg_m3_pill_chip"
-                android:fontFamily="@font/outfit_medium"
-                android:text="Bluetooth Settings"
-                android:textColor="@color/m3_on_surface"
-                android:textSize="12sp" />
-        </LinearLayout>
-
+            android:fontFamily="@font/outfit_medium"
+            android:text="Back to Home"
+            android:textColor="@color/m3_on_surface"
+            android:textSize="11.5sp" />
     </LinearLayout>
 
-</ScrollView>
+    <View
+        android:layout_width="1dp"
+        android:layout_height="match_parent"
+        android:background="@color/m3_outline" />
+
+    <!-- RIGHT PANEL: Categorized Preferences List with Custom M3 Switches -->
+    <ScrollView
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:clipChildren="false"
+        android:clipToPadding="false"
+        android:paddingStart="24dp"
+        android:scrollbars="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:paddingBottom="48dp">
+
+            <!-- 1. DISPLAY & EXPERIENCE -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/outfit_bold"
+                android:letterSpacing="0.06"
+                android:text="DISPLAY &amp; EXPERIENCE"
+                android:textColor="@color/m3_primary"
+                android:textSize="11sp" />
+
+            <!-- Super Mode Switch Row -->
+            <LinearLayout
+                android:id="@+id/row_toggle_home_layout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:layout_marginBottom="8dp"
+                android:background="@drawable/bg_m3_pill_chip"
+                android:clickable="true"
+                android:focusable="true"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:paddingStart="18dp"
+                android:paddingTop="12dp"
+                android:paddingEnd="18dp"
+                android:paddingBottom="12dp">
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/text_home_layout_label"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/outfit_medium"
+                        android:text="Super Mode (TMDB Recommendations)"
+                        android:textColor="@color/m3_on_surface"
+                        android:textSize="15sp" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="2dp"
+                        android:fontFamily="@font/outfit_regular"
+                        android:text="Streaming content suggestions with posters, ratings &amp; providers"
+                        android:textColor="@color/m3_on_surface_variant"
+                        android:textSize="12sp" />
+                </LinearLayout>
+
+                <io.climintv.home.view.M3Switch
+                    android:id="@+id/switch_home_layout"
+                    android:layout_width="58dp"
+                    android:layout_height="32dp" />
+            </LinearLayout>
+
+            <!-- Dark Mode Switch Row -->
+            <LinearLayout
+                android:id="@+id/row_toggle_dark_mode"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="8dp"
+                android:background="@drawable/bg_m3_pill_chip"
+                android:clickable="true"
+                android:focusable="true"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:paddingStart="18dp"
+                android:paddingTop="12dp"
+                android:paddingEnd="18dp"
+                android:paddingBottom="12dp">
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/outfit_medium"
+                        android:text="Dark Mode (Solid Colors)"
+                        android:textColor="@color/m3_on_surface"
+                        android:textSize="15sp" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="2dp"
+                        android:fontFamily="@font/outfit_regular"
+                        android:text="Switch between Solid Dark (#141218) and Light (#FEF7FF) theme"
+                        android:textColor="@color/m3_on_surface_variant"
+                        android:textSize="12sp" />
+                </LinearLayout>
+
+                <io.climintv.home.view.M3Switch
+                    android:id="@+id/switch_dark_mode"
+                    android:layout_width="58dp"
+                    android:layout_height="32dp" />
+            </LinearLayout>
+
+            <!-- Adaptive Colors Switch Row -->
+            <LinearLayout
+                android:id="@+id/row_toggle_adaptive_color"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="8dp"
+                android:background="@drawable/bg_m3_pill_chip"
+                android:clickable="true"
+                android:focusable="true"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:paddingStart="18dp"
+                android:paddingTop="12dp"
+                android:paddingEnd="18dp"
+                android:paddingBottom="12dp">
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/outfit_medium"
+                        android:text="Adaptive Dynamic Color Engine"
+                        android:textColor="@color/m3_on_surface"
+                        android:textSize="15sp" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="2dp"
+                        android:fontFamily="@font/outfit_regular"
+                        android:text="Extract seed color from focused app icon to dynamically tint UI"
+                        android:textColor="@color/m3_on_surface_variant"
+                        android:textSize="12sp" />
+                </LinearLayout>
+
+                <io.climintv.home.view.M3Switch
+                    android:id="@+id/switch_adaptive_color"
+                    android:layout_width="58dp"
+                    android:layout_height="32dp" />
+            </LinearLayout>
+
+            <!-- 2. APP SELECTOR & HOME SHELF -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:fontFamily="@font/outfit_bold"
+                android:letterSpacing="0.06"
+                android:text="APP SELECTOR &amp; HOME SHELF"
+                android:textColor="@color/m3_primary"
+                android:textSize="11sp" />
+
+            <LinearLayout
+                android:id="@+id/row_reorder_info"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:layout_marginBottom="8dp"
+                android:background="@drawable/bg_m3_pill_chip"
+                android:clickable="true"
+                android:focusable="true"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:paddingStart="18dp"
+                android:paddingTop="12dp"
+                android:paddingEnd="18dp"
+                android:paddingBottom="12dp">
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/outfit_medium"
+                        android:text="Reorder Apps on Home Carousel"
+                        android:textColor="@color/m3_on_surface"
+                        android:textSize="15sp" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="2dp"
+                        android:fontFamily="@font/outfit_regular"
+                        android:text="Hold remote OK button on any card on Home to drag &amp; reorder"
+                        android:textColor="@color/m3_on_surface_variant"
+                        android:textSize="12sp" />
+                </LinearLayout>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/bg_m3_circle_button"
+                    android:fontFamily="@font/outfit_bold"
+                    android:paddingStart="12dp"
+                    android:paddingTop="6dp"
+                    android:paddingEnd="12dp"
+                    android:paddingBottom="6dp"
+                    android:text="HOLD OK"
+                    android:textColor="@color/m3_primary"
+                    android:textSize="11sp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/row_reset_home_apps"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="8dp"
+                android:background="@drawable/bg_m3_pill_chip"
+                android:clickable="true"
+                android:focusable="true"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:paddingStart="18dp"
+                android:paddingTop="12dp"
+                android:paddingEnd="18dp"
+                android:paddingBottom="12dp">
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/outfit_medium"
+                        android:text="Reset Home App Selector"
+                        android:textColor="@color/m3_on_surface"
+                        android:textSize="15sp" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="2dp"
+                        android:fontFamily="@font/outfit_regular"
+                        android:text="Restore default installed streaming apps to carousel"
+                        android:textColor="@color/m3_on_surface_variant"
+                        android:textSize="12sp" />
+                </LinearLayout>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/outfit_medium"
+                    android:text="Reset"
+                    android:textColor="@color/m3_primary"
+                    android:textSize="13sp" />
+            </LinearLayout>
+
+            <!-- 3. CLOCK & WEATHER -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:fontFamily="@font/outfit_bold"
+                android:letterSpacing="0.06"
+                android:text="CLOCK &amp; WEATHER"
+                android:textColor="@color/m3_primary"
+                android:textSize="11sp" />
+
+            <LinearLayout
+                android:id="@+id/row_toggle_clock"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:layout_marginBottom="8dp"
+                android:background="@drawable/bg_m3_pill_chip"
+                android:clickable="true"
+                android:focusable="true"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:paddingStart="18dp"
+                android:paddingTop="12dp"
+                android:paddingEnd="18dp"
+                android:paddingBottom="12dp">
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/outfit_medium"
+                        android:text="24-Hour Time Format"
+                        android:textColor="@color/m3_on_surface"
+                        android:textSize="15sp" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="2dp"
+                        android:fontFamily="@font/outfit_regular"
+                        android:text="Display time as 14:35:10 instead of 2:35:10 PM"
+                        android:textColor="@color/m3_on_surface_variant"
+                        android:textSize="12sp" />
+                </LinearLayout>
+
+                <io.climintv.home.view.M3Switch
+                    android:id="@+id/switch_24h_clock"
+                    android:layout_width="58dp"
+                    android:layout_height="32dp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/row_toggle_weather_temp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="8dp"
+                android:background="@drawable/bg_m3_pill_chip"
+                android:clickable="true"
+                android:focusable="true"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:paddingStart="18dp"
+                android:paddingTop="12dp"
+                android:paddingEnd="18dp"
+                android:paddingBottom="12dp">
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/text_weather_unit_title"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/outfit_medium"
+                        android:text="Weather Unit: Celsius (°C)"
+                        android:textColor="@color/m3_on_surface"
+                        android:textSize="15sp" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="2dp"
+                        android:fontFamily="@font/outfit_regular"
+                        android:text="Switch between Celsius (°C) and Fahrenheit (°F)"
+                        android:textColor="@color/m3_on_surface_variant"
+                        android:textSize="12sp" />
+                </LinearLayout>
+
+                <io.climintv.home.view.M3Switch
+                    android:id="@+id/switch_weather_temp"
+                    android:layout_width="58dp"
+                    android:layout_height="32dp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/row_weather_city"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="8dp"
+                android:background="@drawable/bg_m3_pill_chip"
+                android:clickable="true"
+                android:focusable="true"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:paddingStart="18dp"
+                android:paddingTop="12dp"
+                android:paddingEnd="18dp"
+                android:paddingBottom="12dp">
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/text_city_label"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/outfit_medium"
+                        android:text="Weather City: New York"
+                        android:textColor="@color/m3_on_surface"
+                        android:textSize="15sp" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="2dp"
+                        android:fontFamily="@font/outfit_regular"
+                        android:text="Zero-key Open-Meteo accurate geocoding and 6-slot forecast"
+                        android:textColor="@color/m3_on_surface_variant"
+                        android:textSize="12sp" />
+                </LinearLayout>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/outfit_medium"
+                    android:text="Change"
+                    android:textColor="@color/m3_primary"
+                    android:textSize="13sp" />
+            </LinearLayout>
+
+            <!-- 4. SYSTEM & HARDWARE -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:fontFamily="@font/outfit_bold"
+                android:letterSpacing="0.06"
+                android:text="SYSTEM &amp; CONNECTIVITY"
+                android:textColor="@color/m3_primary"
+                android:textSize="11sp" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:orientation="horizontal">
+
+                <Button
+                    android:id="@+id/btn_open_system_settings"
+                    android:layout_width="0dp"
+                    android:layout_height="44dp"
+                    android:layout_marginEnd="6dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/bg_m3_pill_chip"
+                    android:fontFamily="@font/outfit_medium"
+                    android:text="Android TV Settings"
+                    android:textColor="@color/m3_on_surface"
+                    android:textSize="12sp" />
+
+                <Button
+                    android:id="@+id/btn_open_wifi_settings"
+                    android:layout_width="0dp"
+                    android:layout_height="44dp"
+                    android:layout_marginStart="3dp"
+                    android:layout_marginEnd="3dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/bg_m3_pill_chip"
+                    android:fontFamily="@font/outfit_medium"
+                    android:text="Wi-Fi Settings"
+                    android:textColor="@color/m3_on_surface"
+                    android:textSize="12sp" />
+
+                <Button
+                    android:id="@+id/btn_open_bluetooth_settings"
+                    android:layout_width="0dp"
+                    android:layout_height="44dp"
+                    android:layout_marginStart="6dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/bg_m3_pill_chip"
+                    android:fontFamily="@font/outfit_medium"
+                    android:text="Bluetooth Settings"
+                    android:textColor="@color/m3_on_surface"
+                    android:textSize="12sp" />
+            </LinearLayout>
+
+        </LinearLayout>
+    </ScrollView>
+
+</LinearLayout>

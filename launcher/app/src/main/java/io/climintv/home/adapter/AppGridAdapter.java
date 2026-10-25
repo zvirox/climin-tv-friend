@@ -1,5 +1,7 @@
 package io.climintv.home.adapter;
 
+import android.graphics.drawable.BitmapDrawable;
+import android.graphics.drawable.Drawable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -79,14 +81,17 @@ public class AppGridAdapter extends RecyclerView.Adapter<AppGridAdapter.ViewHold
             iconView = itemView.findViewById(R.id.app_icon);
             titleView = itemView.findViewById(R.id.app_title);
             badgeHomeShelf = itemView.findViewById(R.id.badge_home_shelf);
-            FocusAnimator.attach(itemView, 1.10f);
+            FocusAnimator.attach(itemView, 1.05f);
         }
 
         public void bind(AppEntry app, boolean isPinned, OnAppActionListener listener) {
-            if (app.getIcon() != null) {
-                iconView.setImageDrawable(app.getIcon());
-            } else if (app.getBanner() != null) {
-                iconView.setImageDrawable(app.getBanner());
+            Drawable d = app.getIcon() != null ? app.getIcon() : app.getBanner();
+            if (d != null) {
+                if (d instanceof BitmapDrawable) {
+                    ((BitmapDrawable) d).setAntiAlias(true);
+                    ((BitmapDrawable) d).setFilterBitmap(true);
+                }
+                iconView.setImageDrawable(d);
             } else {
                 iconView.setImageResource(R.drawable.ic_default_app);
             }

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">CliminTV</string>
-    <string name="launcher_title">CliminTV Home</string>
+    <string name="app_name">Climin UI</string>
+    <string name="launcher_title">Climin UI</string>
     <string name="hero_dock_title">Favorites</string>
     <string name="app_grid_title">All Applications</string>
     <string name="inputs_title">Inputs</string>

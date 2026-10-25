@@ -1,31 +1,34 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/card_root"
-    android:layout_width="170dp"
-    android:layout_height="100dp"
-    android:layout_marginEnd="16dp"
+    android:layout_width="144dp"
+    android:layout_height="86dp"
+    android:layout_marginEnd="12dp"
     android:layout_marginTop="4dp"
     android:layout_marginBottom="4dp"
     android:background="@drawable/bg_m3_hero_card"
     android:clickable="true"
+    android:clipChildren="true"
+    android:clipToPadding="true"
     android:focusable="true">
 
-    <!-- Icon Tile Centered Inside Wide Rounded Tile (Icon-Only, No Text) -->
-    <FrameLayout
-        android:id="@+id/icon_tile_container"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
-        android:layout_gravity="center"
-        android:background="@drawable/bg_m3_circle_button">
+    <!-- 16:9 Full TV Banner (When Available) -->
+    <ImageView
+        android:id="@+id/app_banner"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:contentDescription="@null"
+        android:scaleType="centerCrop"
+        android:visibility="gone" />
 
-        <ImageView
-            android:id="@+id/app_icon"
-            android:layout_width="32dp"
-            android:layout_height="32dp"
-            android:layout_gravity="center"
-            android:contentDescription="@null"
-            android:scaleType="fitCenter" />
-    </FrameLayout>
+    <!-- Centered Full-Size App Icon (When Banner Not Available, 48x48dp - sharp & refined) -->
+    <ImageView
+        android:id="@+id/app_icon"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:layout_gravity="center"
+        android:contentDescription="@null"
+        android:scaleType="fitCenter" />
 
     <!-- Visual Indicator for Reorder Mode (Holding OK) -->
     <TextView
@@ -33,16 +36,16 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="bottom|center_horizontal"
-        android:layout_marginBottom="6dp"
+        android:layout_marginBottom="4dp"
         android:background="@drawable/bg_m3_pill_chip"
-        android:fontFamily="@font/outfit_medium"
+        android:fontFamily="@font/outfit_bold"
         android:paddingStart="8dp"
         android:paddingEnd="8dp"
         android:paddingTop="2dp"
         android:paddingBottom="2dp"
         android:text="◀ MOVE ▶"
         android:textColor="@color/m3_dark_pri"
-        android:textSize="10sp"
+        android:textSize="9.5sp"
         android:visibility="gone" />
 
 </FrameLayout>
