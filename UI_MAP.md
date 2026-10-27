@@ -293,62 +293,96 @@ Opens from `Shortcuts › All Apps` (or a remote's All Apps button, `EXTRA_ALL_A
 
 ## 6. SETTINGS — Home Settings app (`SettingsActivity`)
 
-Same coordinate system (`k = w / 1920`). Two fixed regions:
+Same coordinate system (`k = w / 1920`). Full-page glass: the home screen's own backdrop, two glass
+panels, a menu on the left and that item's settings on the right.
+
+### SETTINGS.BACKDROP — behind the panels
+- The home screen's current photo: the newest file in `cacheDir/recs`, cropped 16:9 and downscaled to
+  `Backdrop.FW × FH` (192 × 108), drawn full screen (softly blurred by the upscale).
+- Day: whitened `0x66` white; night: `0x9E` black. No photo → the launcher's own gradient
+  (`#F5F5F7→#E2E2E7` day, `#1C1C1E→#0B0B0D` night).
+- The panels' glass refracts the same photo, upscaled once to `Backdrop.GW × GH` and passed to
+  `scene.setGlassImage()`: whitened 0.55 by day, darkened 0.56 at night (the home shelf's recipe).
 
 | Region | Box | Contents |
 |---|---|---|
-| `SETTINGS.SHELL.LEFT` | centre x **500** | `sparkles` 150 px at y 400; "Climin UI" 50 px baseline **612**; subtitle 26 px **660**; version 21 px **704** |
-| `SETTINGS.SHELL.LIST` | x **1000 → 1824**, top **186** | screen-specific rows, focus box spans the full row width |
+| `SETTINGS.RAIL` | x **80 → 560**, y **120 → 960**, radius 30 | wordmark + version, then the nine menu rows |
+| `SETTINGS.PANE` | x **600 → 1840**, y **120 → 960**, radius 30 | heading, that screen's rows, hints/status at the foot |
 
-Background: the live scene shader (`scene.drawBackground`), not the home screen's blur.
+- Panels: `scene.liquid(...)` white glass (day) / `SMOKE` (night), 26–30 px band, shadow 16 px below;
+  day shadow `0x26`, night `0x4D`.
+- Focus model: two zones. `Z_RAIL` at start; ↑ ↓ move the menu **and swap the right panel at once**;
+  → / OK enter the panel; Back in the panel returns to the menu; Back on the menu leaves the app.
+  Inside a panel ← → keep their old meaning (adjust value / reorder); a panel with no adjustment uses
+  ← to return to the menu.
+- TalkBack ids: 1–9 the menu, 10+ the panel's visible rows. A panel the TV can't use exposes no rows.
 
-### SETTINGS.MAIN — root list
-- 8 rows, `MAIN_TOP = 140`, row height **53.75**, gap **4** (pitch 57.75) → y 140 → 598.
-- Rows: Home Screen, Screensaver (preview), Home Settings, Shelf, Top Buttons, Remote Buttons,
-  Sleep Timer, TV Settings.
-- Below the rows (`y ≈ 622`): sections **RECOMMENDATIONS** (TMDB status, link to Watchmode),
-  **COMPARISON**, **NOTICES**, plus any error text.
-- 720p: rows start y 93, pitch 38.
+### SETTINGS.RAIL — the menu
+- Wordmark "Climin UI" 28 px baseline **178** at x **128**; the number alone (`v0.0.1`) right-aligned
+  at **536**; hairline at **202**.
+- Rows: top **252**, height **68**, gap **4** (pitch 72), full width 104 → 536; label 28 px at x 128.
+- Order: Home Settings, Greetings, Home Screen, Screensaver, Shelf, Top Buttons, Remote Buttons,
+  Sleep Timer, TV Settings. Unavailable items (Remote Buttons, Sleep Timer) stay listed at 45 % and
+  their panel shows the reason in words instead of rows.
+- Focused row: white pill (scale 1.02, 8 px lift, 16 px radius) with a 28 % / 34 % shadow; the label
+  turns ink. With the focus in the panel, the chosen menu row is a faint fill (`0x14` ink by day,
+  `0x2E` white at night).
 
-### SETTINGS.HOME_CHOICE — Home Screen picker
-- Two 104-high cards from `LIST_TOP + 20` (206): "Climin UI" / "Original", each with a
-  2-line description; hint under them. Picking starts the mode switch (screen blinks).
+### SETTINGS.PANE — shared layout
+- Heading 36 px at x **670**, baseline **190** (`PANE_HEAD`), in the ink of the theme.
+- Rows: top **256** (`LIST_TOP + 20`), height **64**, gap **6** (pitch 70), x **640 → 1800**; label
+  29 px at +30; value 27 px right-aligned at −30.
+- Focused row: white pill, scale 1.02, 10 px lift, 18 px radius, 40 % shadow; label and value turn ink.
+- Hints sit at the panel's foot, baseline **900** (`PANEL_BOTTOM − 60`); the mode-switch spinner /
+  error takes that place instead (`drawStatus()`), and the hints hide while it does.
 
-### SETTINGS.PREFS — Home Settings
-- Heading "Home Settings" baseline **162** (LIST_TOP − 24), 34 px.
-- Rows: top **206**, height **68**, gap **6** (pitch 74), **10 visible** → 206 → 940.
-- Order: Language, Temperature, Theme, My Photos, Navigation sounds, Weather widget, City,
-  Forecast, Quotes widget, Bitcoin, Ethereum, Solana, Dollar (BRL only).
-- Right-aligned value, 30 px inset; locked rows render "Unavailable" at 45 % opacity;
-  a hint line sits below the last row (`LIST_TOP + 20 + rows·74 + 36`).
-- **Frozen:** row set/order, semantics, persistence. Note: this list is the *only* supported way
-  to change home appearance — do not add hidden defaults elsewhere.
+### SETTINGS.HOME_SETTINGS — Home Settings panel
+- Rows (**8 visible**, `SETTINGS_VISIBLE`): Language, Temperature, Theme, My Photos, Navigation sounds,
+  Weather widget, City, Forecast, Quotes widget, Bitcoin, Ethereum, Solana, Dollar (BRL only) — the
+  list scrolls, footer "n / total · OK or the arrows change the value."
+- Locked rows render "Unavailable" at 35 % opacity. **Frozen:** row set/order, semantics, persistence.
+
+### SETTINGS.GREETINGS — placeholder
+- Heading "Greetings", one line "Coming soon." at `LIST_TOP + 64`; no rows (the menu can't enter it).
+  Reserved for the greetings feature.
+
+### SETTINGS.HOME_CHOICE — Home Screen panel
+- Two 104-high cards from `LIST_TOP + 20` (256): "Climin UI" / "Original", each with a 2-line
+  description and a check on the one in use; hint under them at y **520**. Picking starts the mode
+  switch (screen blinks).
+
+### SETTINGS.SCREENSAVER — one action
+- Heading "Screensaver", one row "Preview" with a chevron; OK runs the screensaver preview and
+  Back returns to the panel.
 
 ### SETTINGS.SHELF — edit the shelf
-- Heading "Shelf" baseline 162. Rows 68 high, gap 6, **9 visible**.
-- Each row: app name (520 px max), right value = `#place` when on the shelf (with a check) or
-  "Off", "Unavailable" for uninstalled apps.
-- OK toggles membership, ← → moves one place. Hint: "OK adds or removes (up to N). ← → change the order."
-- `SETTINGS.TOP_BUTTONS` reuses the same screen (`editingTop`): heading "Top Buttons", the
-  five candidates (Inputs, Wi-Fi, Theme, Home Settings, TV Settings), same OK/← → semantics,
-  hint "OK adds or removes a button."
+- Heading "Shelf", rows 64 high, gap 6, **8 visible**.
+- Each row: app name (520 px max), right value = `#place` when on the shelf (with a check) or "Off",
+  "Unavailable" for uninstalled apps.
+- OK toggles membership, ← → moves one place. Footer: "OK adds or removes (up to N). ← → change the
+  order.", plus the low-memory note above it when the TV keeps a shorter shelf.
+- `SETTINGS.TOP_BUTTONS` reuses the same panel (`editingTop`): heading "Top Buttons", the five
+  candidates (HDMI Inputs, Wi-Fi, Theme, Home Settings, TV Settings), same OK/← → semantics, footer
+  "OK adds or removes a button."
 
-### SETTINGS.PICKER — long-list picker
+### SETTINGS.PICKER — long-list panel
 - Heading = context: **City**, **Language**, **Sleep Timer**, **Position**, or the remote-button name.
-- Rows 68 high, gap 6, **9 visible**; current value gets a check on the right; unavailable rows
-  greyed; footer shows "n / total · OK picks, Back cancels."
+- Rows 64 high, gap 6, **8 visible** (`PICK_VISIBLE`); the current value gets a check on the right;
+  unavailable rows greyed; footer "n / total · OK picks, Back cancels."
 
 ### SETTINGS.REMOTE_KEYS — remote buttons
-- Heading "Remote Buttons"; row set depends on the TV brand (`RemoteKeys`, `keyLabels()`), e.g.
-  Xiaomi: Mi, Okko, VK, Rutube, KION, Wink, IVI. Rows 68 high, all visible; a brand-specific
-  hint is printed under the list.
+- Heading "Remote Buttons"; row set depends on the TV brand (`RemoteKeys`, `keyLabels()`); all rows
+  visible, a brand-specific hint at the foot. On a TV without known app buttons the panel shows
+  "This TV's remote has no app buttons that Climin UI knows." instead of rows.
 
 ### SETTINGS.POWER — Sleep Timer
 - Heading "Sleep Timer"; 2–3 rows: Sleep Timer (duration), Show Time Left, Position (when shown).
-- Values change with ← → or OK (opens `PICKER` for duration / placement).
+- Values change with ← → or OK (opens `PICKER` for duration / placement). Needs Climin UI mode; when
+  off, the panel explains it and the menu won't enter.
 
-### SETTINGS.TV_SETTINGS
-- Leaves the app: `Settings.ACTION_SETTINGS` (the TV's own settings). No UI of ours.
+### SETTINGS.TV_SETTINGS — one action
+- Heading "TV Settings", one row "Settings" with a chevron; OK leaves the app for the TV's own
+  settings (`Settings.ACTION_SETTINGS`). No UI of ours.
 
 ---
 
@@ -384,7 +418,7 @@ Background: the live scene shader (`scene.drawBackground`), not the home screen'
 | Sheet grid | `COLUMNS`, `GRID_W/H/GAP/ROW/TOP`, `GRID_RADIUS` |
 | Scrim opacity | `drawSheet()` first line `0xA8000000` |
 | Toast look | `drawToast()` |
-| Settings type/layout | `SettingsActivity` paints + `LIST_X/LIST_R/LIST_TOP/ROW_H/…` |
+| Settings type/layout | `SettingsActivity` paints + `RAIL_*` / `PANE_*` / `LIST_*` constants |
 
 Anything **not** in this table is either data (preferences, app list, TMDB) or frozen motion.
 

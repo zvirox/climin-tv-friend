@@ -1,1 +1,3 @@
-{"0": "Flamechart Drawing & Rendering", "1": "Benchmarking & System Uptime", "2": "Wallpapers & Scene Math", "3": "Package Management & Addons", "4": "Base64 Push & Payload Transfer", "5": "TV Environment Sanity Checks", "6": "ADB Connection State & Fallback", "7": "Table Generation & Adoption Metrics", "8": "Perfetto & Trace Tooling Guides", "9": "ADB Device Client Connection", "10": "ADB Shell & Python RSA Auth", "11": "Privacy Audit & Data Sanitization", "12": "Bash Theme Deployment", "13": "Package Disabling Shell Helpers", "14": "PowerShell Theme Staging", "15": "Restore Script MSYS Handlers", "16": "PowerShell App Disabler", "17": "PowerShell Environment Restore"}
+{
+  "8": "Perfetto & Trace Tooling Guides"
+}
