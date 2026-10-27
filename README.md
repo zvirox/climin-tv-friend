@@ -323,7 +323,28 @@ tools/venv/bin/python tools/screendiff.py before.png after.png
 
 ---
 
-## 9. License
+## 9. Legal
+
+Climin TV Friend and Climin UI are independent open-source projects. They are not affiliated with,
+endorsed by or sponsored by any TV maker, platform or streaming service. Brand, model, service and
+app names are used only to say which TV a list was tested on or what the launcher works with, and
+remain the trademarks of their owners.
+
+The debloat tools work only through settings the TV itself offers to its owner: Developer options,
+ADB debugging and Android's own `pm disable-user`, the same switch as Settings › Apps › Disable. They
+do not root the TV, flash firmware, or bypass any lock, DRM or copy protection, and the repo contains
+no manufacturer software, firmware or APKs.
+
+Nothing on the TV is uninstalled: the debloat tools only disable packages, and `tools/restore.sh`
+replays the record it made, so undo means undo. Climin UI is installed as a normal app and is removed
+the same way. You run this on a TV you own, at your own risk, and changing a TV's software may
+affect its warranty or support.
+
+Everything here is provided as is, without warranty of any kind, under the MIT licence below.
+
+---
+
+## 10. License
 
 Licensed under the **MIT License**. See the [LICENSE](LICENSE) file for details.
 Compatible with open-source Android TV and Leanback ecosystems.
