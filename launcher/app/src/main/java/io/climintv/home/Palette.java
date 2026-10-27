@@ -51,8 +51,10 @@ final class Palette {
     Pair inkOpaque;
     /** Titles over a photo. */
     Pair onPhoto;
-    /** The shelf's focus rim. */
+    /** The shelf's focus rim and a surface's hairline. */
     Pair rim;
+    /** The look's signature colour: the focus ring, and the small marks. */
+    Pair accent;
     /** The empty card placeholder. */
     Pair cardBack;
     /** Hairlines inside a card. */
@@ -97,6 +99,7 @@ final class Palette {
         p.inkOpaque = new Pair(0xFF1D1D1F, 0xFFFFFFFF);
         p.onPhoto = new Pair(0xFF1D1D1F, 0xEBFFFFFF);
         p.rim = new Pair(0xFF3A3A3C, 0xFFFFFFFF);
+        p.accent = new Pair(0xFF1D1D1F, 0xFFFFFFFF);   // never drawn: Glass UI has no focus ring
         p.cardBack = new Pair(0xFFDADADF, 0xFF2C2C2E);
         p.divider = new Pair(0x1A000000, 0x24FFFFFF);
         p.up = new Pair(0xFF248A3D, 0xFF30D158);
@@ -139,6 +142,7 @@ final class Palette {
         p.inkOpaque = new Pair(0xFF1D1B20, 0xFFE6E0E9);
         p.onPhoto = new Pair(0xFF1D1B20, 0xFFE6E0E9);
         p.rim = new Pair(0xFF79747E, 0xFF938F99);
+        p.accent = new Pair(0xFF6750A4, 0xFFD0BCFF);
         p.cardBack = new Pair(0xFFE7E0EC, 0xFF2B2930);
         p.divider = new Pair(0xFFCAC4D0, 0xFF49454F);
         p.up = new Pair(0xFF146C2E, 0xFF6DD58C);
@@ -157,6 +161,49 @@ final class Palette {
         p.focusBackPanel = new Pair(0xFFEADDFF, 0xFF4F378B);
         p.focusInk = new Pair(0xFF1D192B, 0xFFE8DEF8);
         p.focusInkPanel = new Pair(0xFF1D192B, 0xFFE8DEF8);
+        return p;
+    }
+
+    /**
+     * Win UI (Fluent): mica layers, a thin stroke instead of a shadow, Segoe blue as the accent, and a rectangular
+     * focus. Day is the light theme, night the dark one.
+     */
+    static Palette winui() {
+        Palette p = new Palette();
+        p.surface = new Pair(0xFFF3F3F3, 0xFF202020);
+        p.ink = new Pair(0xFF1A1A1A, 0xFFFFFFFF);
+        p.tab = new Pair(0xFF5D5D5D, 0xFFC7C7C7);
+        p.dim = new Pair(0xFF5D5D5D, 0xFFC7C7C7);
+        p.faint = new Pair(0xFF757575, 0xFFA0A0A0);
+        p.faintStale = new Pair(0xFF757575, 0xFFA0A0A0);
+        p.drawerRow = new Pair(0xFF5D5D5D, 0xFFC7C7C7);
+        p.drawerDim = new Pair(0xFF5D5D5D, 0xFFC7C7C7);
+        p.drawerFaint = new Pair(0xFF757575, 0xFFA0A0A0);
+        p.coinGlyph = new Pair(0xFF0078D4, 0xFF4CC2FF);
+        p.quotesCoin = new Pair(0xFF5D5D5D, 0xFFC7C7C7);
+        p.mark = new Pair(0x99000000, 0xCCFFFFFF);
+        p.inkOpaque = new Pair(0xFF1A1A1A, 0xFFFFFFFF);
+        p.onPhoto = new Pair(0xFF1A1A1A, 0xFFFFFFFF);
+        p.rim = new Pair(0x0F000000, 0x14FFFFFF);
+        p.accent = new Pair(0xFF0078D4, 0xFF4CC2FF);
+        p.cardBack = new Pair(0xFFE5E5E5, 0xFF2C2C2C);
+        p.divider = new Pair(0x14000000, 0x1AFFFFFF);
+        p.up = new Pair(0xFF0F7B0F, 0xFF6CCB5F);
+        p.down = new Pair(0xFFC42B1C, 0xFFFF99A4);
+        p.neutral = new Pair(0xFFFFFFFF, 0xFF2C2C2C);
+        p.platterShadow = new Pair(0x14000000, 0x4D000000);
+        p.panelShadow = new Pair(0x14000000, 0x4D000000);
+        p.rowOn = new Pair(0xFF1A1A1A, 0xFFFFFFFF);
+        p.rowOff = new Pair(0xFF5D5D5D, 0xFFA0A0A0);
+        p.rowFill = new Pair(0x0A000000, 0x0FFFFFFF);
+        p.rowFillAlt = new Pair(0x12000000, 0x17FFFFFF);
+        p.inkBase = new Pair(0x001A1A1A, 0x00FFFFFF);
+        p.valueInk = new Pair(0x991A1A1A, 0x99FFFFFF);
+        p.focusBack = new Pair(0xFFFFFFFF, 0xFF2C2C2C);
+        p.focusBackSoft = new Pair(0xFFFFFFFF, 0xFF2C2C2C);
+        p.focusBackPanel = new Pair(0xFFFFFFFF, 0xFF2C2C2C);
+        p.focusInk = new Pair(0xFF1A1A1A, 0xFFFFFFFF);
+        p.focusInkPanel = new Pair(0xFF1A1A1A, 0xFFFFFFFF);
         return p;
     }
 

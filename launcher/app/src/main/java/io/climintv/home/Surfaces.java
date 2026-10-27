@@ -28,6 +28,11 @@ final class Surfaces {
             tonal(c, look.palette, r, radius, look.palette.neutral.at(dark), alpha, dark);
             return;
         }
+        if (look.surface == Look.SURFACE_ACRYLIC) {
+            // Win UI: a mica layer over the desktop, frosted rather than liquid, with its own thin rim.
+            scene.glass(c, r, radius, tint, Math.max(0.55f, tintAlpha), 0, 0, 0.03f, 1, alpha);
+            return;
+        }
         scene.liquid(c, r, radius, tint, tintAlpha, sheen, refraction, band, specular, alpha);
     }
 
@@ -41,6 +46,11 @@ final class Surfaces {
         if (look.surface == Look.SURFACE_GLASS) {
             if (dark < 0.999f) scene.glass(c, r, radius, dayTint, dayAlpha, 0, 0, 0.02f, 1, 1 - dark);
             if (dark > 0.001f) scene.glass(c, r, radius, nightTint, nightAlpha, 0, 0, 0.02f, 1, dark);
+            return;
+        }
+        if (look.surface == Look.SURFACE_ACRYLIC) {
+            // One layer, not two: the light and dark layers are the same card at different columns.
+            scene.glass(c, r, radius, look.palette.neutral.at(dark), dark > 0.5f ? 0.5f : 0.7f, 0, 0, 0.02f, 1);
             return;
         }
         tonal(c, look.palette, r, radius, look.palette.neutral.at(dark), 1, dark);
@@ -64,16 +74,18 @@ final class Surfaces {
      */
     static void focus(Canvas c, RectF r, float radius, int fill, float amount, float dark) {
         if (amount <= 0.01f) return;
+        Look look = Look.current();
+        // Win UI's focus is a rectangle with the accent hairline, not a pill.
+        if (look.surface == Look.SURFACE_ACRYLIC) radius = Math.min(radius, 8f);
         PAINT.setStyle(Paint.Style.FILL);
         PAINT.setColor(Ui.alpha(fill, amount));
         c.drawRoundRect(r, radius, radius, PAINT);
-        Look look = Look.current();
         if (look.surface == Look.SURFACE_GLASS) return;
         RING.set(r);
         RING.inset(1f, 1f);
         PAINT.setStyle(Paint.Style.STROKE);
         PAINT.setStrokeWidth(2f);
-        PAINT.setColor(Ui.alpha(look.palette.rim.at(dark), amount));
+        PAINT.setColor(Ui.alpha(look.palette.accent.at(dark), amount));
         c.drawRoundRect(RING, Math.max(0, radius - 1f), Math.max(0, radius - 1f), PAINT);
     }
 
@@ -87,7 +99,7 @@ final class Surfaces {
         if (look.surface == Look.SURFACE_GLASS) return;
         PAINT.setStyle(Paint.Style.STROKE);
         PAINT.setStrokeWidth(2f);
-        PAINT.setColor(Ui.alpha(look.palette.rim.at(dark), amount));
+        PAINT.setColor(Ui.alpha(look.palette.accent.at(dark), amount));
         c.drawCircle(cx, cy, Math.max(0, radius - 1f), PAINT);
     }
 

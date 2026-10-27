@@ -23,9 +23,11 @@ final class Look {
     static final Look GLASS = new Look("glass", "Glass UI", SURFACE_GLASS, Palette.glass());
     /** Material 3 Expressive: tonal surfaces, the default purple seed, an accent-tinted focus. */
     static final Look MATERIAL = new Look("material", "Material 3", SURFACE_TONAL, Palette.material());
+    /** Win UI: mica and acrylic layers, a thin stroke, Segoe blue, a rectangular focus. */
+    static final Look WINUI = new Look("winui", "Win UI", SURFACE_ACRYLIC, Palette.winui());
 
     /** Every look, in the order the Theme pane cycles them. */
-    static final Look[] ALL = {GLASS, MATERIAL};
+    static final Look[] ALL = {GLASS, MATERIAL, WINUI};
 
     final String key, name;
     /** How this look draws a panel: glass, acrylic, tonal, neon or flat. */

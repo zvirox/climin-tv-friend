@@ -401,7 +401,7 @@ Two axes, never mixed: **Mode** (`Prefs.theme`: automatic / light / dark) picks 
 
 | Concern | Where | Day / Night |
 |---|---|---|
-| Palette | `Palette.java`: 29 slots (`ink`, `dim`, `surface`, `rowFill`, `focusBack`…), one `Pair` per slot | `Pair.at(night)` blends the two columns |
+| Palette | `Palette.java`: 30 slots (`ink`, `dim`, `surface`, `rowFill`, `focusBack`…), one `Pair` per slot | `Pair.at(night)` blends the two columns |
 | Styles | `Look.java`: key, brand name, surface kind, palette; `ALL` is the cycle order | Glass UI is the default |
 | Surfaces | `Surfaces.java`: `panel()` (platter, rail, pane, round buttons), `card()` (drawer, quotes, weather), `toast()`, `focus()`/`focusCircle()` | `SURFACE_GLASS` replays `Scene.liquid`/`Scene.glass` verbatim; `SURFACE_TONAL` is an opaque fill + 1 px outline |
 | Ink | `pal.ink`, `pal.dim`, `pal.faint` | previously `L_INK` / `WHITE`, `L_DIM`, `L_FAINT` |
@@ -420,6 +420,16 @@ Material 3 Expressive (day / dark), contrast on its container `#F3EDF7` / `#211F
 | `focusInk` on focus fill | 13.28:1 | 7.21:1 |
 | accent on container | 5.60:1 | 9.56:1 |
 | `up` / `down` | 5.68:1 / 5.62:1 | 8.96:1 / 9.60:1 |
+
+Win UI (Fluent), contrast on its mica `#F3F3F3` / `#202020`:
+
+| Pair | Day | Dark |
+|---|---|---|
+| `ink` on mica | 15.68:1 | 16.29:1 |
+| `dim` on mica | 5.93:1 | 9.64:1 |
+| `focusInk` on focus fill | 17.40:1 | 13.97:1 |
+| accent ring on mica (UI component, 3:1) | 4.08:1 | 8.12:1 |
+| `up` / `down` | 4.90:1 / 5.10:1 | 8.0:1 / 6.9:1 |
 
 ---
 
