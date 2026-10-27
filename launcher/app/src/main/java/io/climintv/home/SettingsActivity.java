@@ -474,13 +474,16 @@ public class SettingsActivity extends Activity {
         /** The two glass panels: the menu on the left, what it holds on the right. */
         private void drawPanels(Canvas c) {
             float radius = PANEL_RADIUS * k;
-            shadow.setColor(col(pal.panelShadow));
-            tmp.set(railRect);
-            tmp.offset(0, 16 * k);
-            c.drawRoundRect(tmp, radius, radius, shadow);
-            tmp.set(paneRect);
-            tmp.offset(0, 16 * k);
-            c.drawRoundRect(tmp, radius, radius, shadow);
+            if (Surfaces.softShadow()) {
+                shadow.setColor(col(pal.panelShadow));
+                float shadowRadius = Surfaces.shape(radius);
+                tmp.set(railRect);
+                tmp.offset(0, 16 * k);
+                c.drawRoundRect(tmp, shadowRadius, shadowRadius, shadow);
+                tmp.set(paneRect);
+                tmp.offset(0, 16 * k);
+                c.drawRoundRect(tmp, shadowRadius, shadowRadius, shadow);
+            }
             Surfaces.panel(c, scene, railRect, radius, col(pal.surface), tone(0.24f, 0.12f), tone(0.03f, 0.08f),
                     tone(26, 30) * k, tone(20, 26) * k, tone(0.6f, 0.9f), 1, night ? 1 : 0);
             Surfaces.panel(c, scene, paneRect, radius, col(pal.surface), tone(0.20f, 0.10f), tone(0.03f, 0.08f),
@@ -504,15 +507,19 @@ public class SettingsActivity extends Activity {
                     float s = 1 + 0.02f * f, rr = 16 * k * s;
                     tmp.set(r.centerX() - r.width() * s / 2, r.centerY() - r.height() * s / 2,
                             r.centerX() + r.width() * s / 2, r.centerY() + r.height() * s / 2);
-                    tmp.offset(0, 8 * k * f);
-                    shadow.setColor(Ui.alpha(0xFF000000, tone(0.28f, 0.34f) * f));
-                    c.drawRoundRect(tmp, rr, rr, shadow);
-                    tmp.offset(0, -8 * k * f);
+                    if (Surfaces.softShadow()) {
+                        tmp.offset(0, 8 * k * f);
+                        shadow.setColor(Ui.alpha(0xFF000000, tone(0.28f, 0.34f) * f));
+                        float shadowRadius = Surfaces.shape(rr);
+                        c.drawRoundRect(tmp, shadowRadius, shadowRadius, shadow);
+                        tmp.offset(0, -8 * k * f);
+                    }
                     Surfaces.focus(c, tmp, rr, col(pal.focusBackPanel), f, night ? 1 : 0);
                     r = tmp;
                 } else if (chosen) {
                     fill.setColor(col(pal.rowFillAlt));
-                    c.drawRoundRect(r, 16 * k, 16 * k, fill);
+                    float chosenRadius = Surfaces.shape(16 * k);
+                    c.drawRoundRect(r, chosenRadius, chosenRadius, fill);
                 }
                 boolean off = railUnavailable(i) != null;
                 railLabel.setColor(off ? inkFade(0x73, f) : blend(inkBase(0xD9), col(pal.focusInkPanel), f));
@@ -671,10 +678,13 @@ public class SettingsActivity extends Activity {
                 float cx = rowRect.centerX(), cy = rowRect.centerY();
                 tmp.set(cx - rowRect.width() * s / 2, cy - rowRect.height() * s / 2, cx + rowRect.width() * s / 2, cy + rowRect.height() * s / 2);
                 float r = 18 * k * s;
-                tmp.offset(0, 10 * k * f);
-                shadow.setColor(Ui.alpha(0xFF000000, 0.4f * f));
-                c.drawRoundRect(tmp, r, r, shadow);
-                tmp.offset(0, -10 * k * f);
+                if (Surfaces.softShadow()) {
+                    tmp.offset(0, 10 * k * f);
+                    shadow.setColor(Ui.alpha(0xFF000000, 0.4f * f));
+                    float shadowRadius = Surfaces.shape(r);
+                    c.drawRoundRect(tmp, shadowRadius, shadowRadius, shadow);
+                    tmp.offset(0, -10 * k * f);
+                }
                 Surfaces.focus(c, tmp, r, col(pal.focusBackPanel), f, night ? 1 : 0);
                 rowRect.set(tmp);
             }

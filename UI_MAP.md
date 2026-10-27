@@ -397,13 +397,13 @@ panels, a menu on the left and that item's settings on the right.
 ## 7. Cross-cutting tokens
 
 Two axes, never mixed: **Mode** (`Prefs.theme`: automatic / light / dark) picks a column; **Style**
-(`Prefs.look`: glass / material / winui / cyberpunk / retro) picks the palette and surface recipe.
+(`Prefs.look`: glass / material / winui / cyberpunk) picks the palette and surface recipe.
 
 | Concern | Where | Day / Night |
 |---|---|---|
 | Palette | `Palette.java`: 30 slots (`ink`, `dim`, `surface`, `rowFill`, `focusBack`…), one `Pair` per slot | `Pair.at(night)` blends the two columns |
 | Styles | `Look.java`: key, brand name, surface kind, palette; `ALL` is the cycle order | Glass UI is the default |
-| Surfaces | `Surfaces.java`: `panel()` (platter, rail, pane, round buttons), `card()` (drawer, quotes, weather), `toast()`, `focus()`/`focusCircle()` | `SURFACE_GLASS` replays `Scene.liquid`/`Scene.glass` verbatim; `SURFACE_TONAL` is an opaque fill + 1 px outline |
+| Surfaces | `Surfaces.java`: `panel()` (platter, rail, pane, round buttons), `card()` (drawer, quotes, weather), `toast()`, `focus()`/`focusCircle()`, `shape()`/`softShadow()` for the shadows and rims that follow a panel | `SURFACE_GLASS` replays `Scene.liquid`/`Scene.glass` verbatim; `SURFACE_TONAL` is an opaque fill + 1 px outline; `SURFACE_ACRYLIC` one frosted layer; `SURFACE_NEON` a near-black fill + glow stroke; `SURFACE_FLAT` a solid fill + 2 px border + hard offset block |
 | Ink | `pal.ink`, `pal.dim`, `pal.faint` | previously `L_INK` / `WHITE`, `L_DIM`, `L_FAINT` |
 | Smoked glass | `SMOKE` `0xFF111113` via `Surfaces.card`/`toast` | drawer/platter/buttons |
 | Focus | `pal.focusBack` (drawer), `focusBackSoft` (tabs, round buttons), `focusBackPanel` (settings), `pal.focusInk`/`focusInkPanel` | Glass UI keeps the white pill and ink |
@@ -430,6 +430,17 @@ Win UI (Fluent), contrast on its mica `#F3F3F3` / `#202020`:
 | `focusInk` on focus fill | 17.40:1 | 13.97:1 |
 | accent ring on mica (UI component, 3:1) | 4.08:1 | 8.12:1 |
 | `up` / `down` | 4.90:1 / 5.10:1 | 8.0:1 / 6.9:1 |
+
+Cyberpunk, contrast on its container `#C9D9E6` / `#0F1119` (the focus block is the container
+plus the 12 % accent wash, `#B1CCDA` / `#0D2A35`):
+
+| Pair | Day | Dark |
+|---|---|---|
+| `ink` on container | 12.25:1 | 17.15:1 |
+| `dim` on container | 5.42:1 | 7.66:1 |
+| `focusInk` on focus block | 5.44:1 | 9.75:1 |
+| accent (ring, coin glyph) on container | 4.11:1 | 12.25:1 |
+| `up` / `down` | 5.54:1 / 4.71:1 | 14.33:1 / 5.21:1 |
 
 ---
 

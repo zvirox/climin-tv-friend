@@ -23,17 +23,21 @@ final class Surfaces {
     static void panel(Canvas c, Scene scene, RectF r, float radius, int tint, float tintAlpha, float sheen,
                       float refraction, float band, float specular, float alpha, float dark) {
         Look look = Look.current();
-        if (look.surface == Look.SURFACE_TONAL) {
-            // Material 3: a container is opaque, raised by its tone and a hairline, never by blur.
-            tonal(c, look.palette, r, radius, look.palette.neutral.at(dark), alpha, dark);
-            return;
+        switch (look.surface) {
+            case Look.SURFACE_TONAL:
+                // Material 3: a container is opaque, raised by its tone and a hairline, never by blur.
+                tonal(c, look.palette, r, radius, look.palette.neutral.at(dark), alpha, dark);
+                return;
+            case Look.SURFACE_ACRYLIC:
+                // Win UI: a mica layer over the desktop, frosted rather than liquid, with its own thin rim.
+                scene.glass(c, r, radius, tint, Math.max(0.55f, tintAlpha), 0, 0, 0.03f, 1, alpha);
+                return;
+            case Look.SURFACE_NEON:
+                neon(c, look.palette, r, radius, look.palette.neutral.at(dark), alpha, dark);
+                return;
+            default:
+                scene.liquid(c, r, radius, tint, tintAlpha, sheen, refraction, band, specular, alpha);
         }
-        if (look.surface == Look.SURFACE_ACRYLIC) {
-            // Win UI: a mica layer over the desktop, frosted rather than liquid, with its own thin rim.
-            scene.glass(c, r, radius, tint, Math.max(0.55f, tintAlpha), 0, 0, 0.03f, 1, alpha);
-            return;
-        }
-        scene.liquid(c, r, radius, tint, tintAlpha, sheen, refraction, band, specular, alpha);
     }
 
     /**
@@ -43,17 +47,21 @@ final class Surfaces {
     static void card(Canvas c, Scene scene, RectF r, float radius, int dayTint, float dayAlpha,
                      int nightTint, float nightAlpha, float dark) {
         Look look = Look.current();
-        if (look.surface == Look.SURFACE_GLASS) {
-            if (dark < 0.999f) scene.glass(c, r, radius, dayTint, dayAlpha, 0, 0, 0.02f, 1, 1 - dark);
-            if (dark > 0.001f) scene.glass(c, r, radius, nightTint, nightAlpha, 0, 0, 0.02f, 1, dark);
-            return;
+        switch (look.surface) {
+            case Look.SURFACE_GLASS:
+                if (dark < 0.999f) scene.glass(c, r, radius, dayTint, dayAlpha, 0, 0, 0.02f, 1, 1 - dark);
+                if (dark > 0.001f) scene.glass(c, r, radius, nightTint, nightAlpha, 0, 0, 0.02f, 1, dark);
+                return;
+            case Look.SURFACE_ACRYLIC:
+                // One layer, not two: the light and dark layers are the same card at different columns.
+                scene.glass(c, r, radius, look.palette.neutral.at(dark), dark > 0.5f ? 0.5f : 0.7f, 0, 0, 0.02f, 1);
+                return;
+            case Look.SURFACE_NEON:
+                neon(c, look.palette, r, radius, look.palette.neutral.at(dark), 1, dark);
+                return;
+            default:
+                tonal(c, look.palette, r, radius, look.palette.neutral.at(dark), 1, dark);
         }
-        if (look.surface == Look.SURFACE_ACRYLIC) {
-            // One layer, not two: the light and dark layers are the same card at different columns.
-            scene.glass(c, r, radius, look.palette.neutral.at(dark), dark > 0.5f ? 0.5f : 0.7f, 0, 0, 0.02f, 1);
-            return;
-        }
-        tonal(c, look.palette, r, radius, look.palette.neutral.at(dark), 1, dark);
     }
 
     /** The toast: smoked glass in Glass UI, a dark chip in the other looks so its white text always reads. */
@@ -65,18 +73,19 @@ final class Surfaces {
         }
         PAINT.setStyle(Paint.Style.FILL);
         PAINT.setColor(Ui.alpha(look.palette.surface.night, 0.96f));
-        c.drawRoundRect(r, radius, radius, PAINT);
+        float rr = shape(look, radius);
+        c.drawRoundRect(r, rr, rr, PAINT);
     }
 
     /**
-     * The focused pill. Glass UI draws the white pill it always did; the other looks add a hairline ring so the focus
-     * stays visible on a container of the same tone.
+     * The focused pill. Glass UI draws the white pill it always did; Material 3 adds an accent ring; Win UI is a
+     * rectangle; Cyberpunk is sharp with a glowing rim; Retro is an inverted block.
      */
     static void focus(Canvas c, RectF r, float radius, int fill, float amount, float dark) {
         if (amount <= 0.01f) return;
         Look look = Look.current();
-        // Win UI's focus is a rectangle with the accent hairline, not a pill.
-        if (look.surface == Look.SURFACE_ACRYLIC) radius = Math.min(radius, 8f);
+        radius = shape(look, radius);
+        base(c, look, r, radius, amount, dark, false);
         PAINT.setStyle(Paint.Style.FILL);
         PAINT.setColor(Ui.alpha(fill, amount));
         c.drawRoundRect(r, radius, radius, PAINT);
@@ -84,23 +93,37 @@ final class Surfaces {
         RING.set(r);
         RING.inset(1f, 1f);
         PAINT.setStyle(Paint.Style.STROKE);
-        PAINT.setStrokeWidth(2f);
+        PAINT.setStrokeWidth(look.surface == Look.SURFACE_NEON ? 1.5f : 2f);
         PAINT.setColor(Ui.alpha(look.palette.accent.at(dark), amount));
         c.drawRoundRect(RING, Math.max(0, radius - 1f), Math.max(0, radius - 1f), PAINT);
     }
 
     /** The focused circle (the round top buttons): the same rule as {@link #focus}, round. */
     static void focusCircle(Canvas c, float cx, float cy, float radius, int fill, float amount, float dark) {
+        Look look = Look.current();
         if (amount <= 0.01f) return;
+        RING.set(cx - radius, cy - radius, cx + radius, cy + radius);
+        base(c, look, RING, radius, amount, dark, true);
         PAINT.setStyle(Paint.Style.FILL);
         PAINT.setColor(Ui.alpha(fill, amount));
         c.drawCircle(cx, cy, radius, PAINT);
-        Look look = Look.current();
         if (look.surface == Look.SURFACE_GLASS) return;
         PAINT.setStyle(Paint.Style.STROKE);
-        PAINT.setStrokeWidth(2f);
+        PAINT.setStrokeWidth(look.surface == Look.SURFACE_NEON ? 1.5f : 2f);
         PAINT.setColor(Ui.alpha(look.palette.accent.at(dark), amount));
         c.drawCircle(cx, cy, Math.max(0, radius - 1f), PAINT);
+    }
+
+    /**
+     * The body a translucent focus needs something to sit on: a tinted focus over the raw shadow reads as a smudge,
+     * so the non-glass looks paint the container first (Glass UI's focus pill is opaque and needs nothing).
+     */
+    private static void base(Canvas c, Look look, RectF r, float radius, float amount, float dark, boolean circle) {
+        if (look.surface == Look.SURFACE_GLASS || ((look.palette.focusBack.at(dark) >>> 24) & 255) >= 200) return;
+        PAINT.setStyle(Paint.Style.FILL);
+        PAINT.setColor(Ui.alpha(look.palette.neutral.at(dark), amount));
+        if (circle) c.drawCircle(r.centerX(), r.centerY(), radius, PAINT);
+        else c.drawRoundRect(r, radius, radius, PAINT);
     }
 
     /** An opaque rounded container with a 1 px outline (Material 3's tonal surface). */
@@ -115,5 +138,45 @@ final class Surfaces {
         PAINT.setStrokeWidth(1f);
         PAINT.setColor(Ui.alpha(p.rim.at(dark), 0.55f * alpha));
         c.drawRoundRect(RING, Math.max(0, radius - 0.5f), Math.max(0, radius - 0.5f), PAINT);
+    }
+
+    /** A near-black panel with a cyan hairline and a two-pass glow (Cyberpunk). */
+    private static void neon(Canvas c, Palette p, RectF r, float radius, int fill, float alpha, float dark) {
+        if (alpha <= 0.004f) return;
+        float rr = Math.min(radius, 2f);
+        PAINT.setStyle(Paint.Style.FILL);
+        PAINT.setColor(Ui.alpha(fill, alpha));
+        c.drawRoundRect(r, rr, rr, PAINT);
+        RING.set(r);
+        RING.inset(0.5f, 0.5f);
+        PAINT.setStyle(Paint.Style.STROKE);
+        // The glow is two stacked strokes: no blur filter, so it stays cheap on the oldest TV.
+        PAINT.setStrokeWidth(8f);
+        PAINT.setColor(Ui.alpha(p.accent.at(dark), 0.10f * alpha));
+        c.drawRoundRect(RING, rr, rr, PAINT);
+        PAINT.setStrokeWidth(1.5f);
+        PAINT.setColor(Ui.alpha(p.accent.at(dark), 0.85f * alpha));
+        c.drawRoundRect(RING, rr, rr, PAINT);
+    }
+
+    /**
+     * The corner radius a look draws a shape with: a look may sharpen what the layout asked for, never round it more.
+     * Every shadow and rim that follows a panel asks for this, so the depth matches the shape.
+     */
+    static float shape(float radius) {
+        return shape(Look.current(), radius);
+    }
+
+    /** False for Retro (a flat block carries its own hard offset); no look uses that recipe yet. */
+    static boolean softShadow() {
+        return Look.current().surface != Look.SURFACE_FLAT;
+    }
+
+    private static float shape(Look look, float radius) {
+        switch (look.surface) {
+            case Look.SURFACE_ACRYLIC: return Math.min(radius, 8f);
+            case Look.SURFACE_NEON: return Math.min(radius, 2f);
+            default: return radius;
+        }
     }
 }

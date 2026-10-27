@@ -207,6 +207,49 @@ final class Palette {
         return p;
     }
 
+    /**
+     * Cyberpunk: a near-black night and a desaturated "daylight neon" day, cyan as the signature, sharp corners and
+     * a glowing hairline instead of a shadow.
+     */
+    static Palette cyber() {
+        Palette p = new Palette();
+        p.surface = new Pair(0xFFDCE7F0, 0xFF0A0A0F);
+        p.ink = new Pair(0xFF0B1A24, 0xFFE6F7FF);
+        p.tab = new Pair(0xFF3C5566, 0xFF8FA9B8);
+        p.dim = new Pair(0xFF3C5566, 0xFF8FA9B8);
+        p.faint = new Pair(0xFF5C7484, 0xFF6F8A9B);
+        p.faintStale = new Pair(0xFF5C7484, 0xFF6F8A9B);
+        p.drawerRow = new Pair(0xFF3C5566, 0xFF8FA9B8);
+        p.drawerDim = new Pair(0xFF3C5566, 0xFF8FA9B8);
+        p.drawerFaint = new Pair(0xFF5C7484, 0xFF6F8A9B);
+        p.coinGlyph = new Pair(0xFF006E7F, 0xFF00E5FF);
+        p.quotesCoin = new Pair(0xFF3C5566, 0xFF8FA9B8);
+        p.mark = new Pair(0xB30B1A24, 0xCCE6F7FF);
+        p.inkOpaque = new Pair(0xFF0B1A24, 0xFFE6F7FF);
+        p.onPhoto = new Pair(0xFF0B1A24, 0xFFE6F7FF);
+        p.rim = new Pair(0xFF006E7F, 0xFF00E5FF);
+        p.accent = new Pair(0xFF006E7F, 0xFF00E5FF);
+        p.cardBack = new Pair(0xFFC9D9E6, 0xFF0F1119);
+        p.divider = new Pair(0x1F0B1A24, 0x24E6F7FF);
+        p.up = new Pair(0xFF0A5C43, 0xFF2BFFA8);
+        p.down = new Pair(0xFFB3143F, 0xFFFF2A6D);
+        p.neutral = new Pair(0xFFC9D9E6, 0xFF0F1119);
+        p.platterShadow = new Pair(0x1A000000, 0x99000000);
+        p.panelShadow = new Pair(0x1A000000, 0x99000000);
+        p.rowOn = new Pair(0xFF0B1A24, 0xFFE6F7FF);
+        p.rowOff = new Pair(0xFF3C5566, 0xFF8FA9B8);
+        p.rowFill = new Pair(0x14006E7F, 0x1400E5FF);
+        p.rowFillAlt = new Pair(0x24006E7F, 0x2400E5FF);
+        p.inkBase = new Pair(0x000B1A24, 0x00E6F7FF);
+        p.valueInk = new Pair(0x993C5566, 0x99E6F7FF);
+        p.focusBack = new Pair(0x1F006E7F, 0x1F00E5FF);
+        p.focusBackSoft = new Pair(0x1F006E7F, 0x1F00E5FF);
+        p.focusBackPanel = new Pair(0x1F006E7F, 0x1F00E5FF);
+        p.focusInk = new Pair(0xFF00505C, 0xFF00E5FF);
+        p.focusInkPanel = new Pair(0xFF00505C, 0xFF00E5FF);
+        return p;
+    }
+
     /** The same blend the screens have always used: per channel, rounded, alpha included. */
     static int blend(int a, int b, float f) {
         int aa = a >>> 24, ar = (a >> 16) & 255, ag = (a >> 8) & 255, ab = a & 255;

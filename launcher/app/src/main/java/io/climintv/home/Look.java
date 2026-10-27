@@ -26,8 +26,10 @@ final class Look {
     /** Win UI: mica and acrylic layers, a thin stroke, Segoe blue, a rectangular focus. */
     static final Look WINUI = new Look("winui", "Win UI", SURFACE_ACRYLIC, Palette.winui());
 
+    /** Cyberpunk: a near-black panel with a glowing cyan hairline. */
+    static final Look CYBERPUNK = new Look("cyberpunk", "Cyberpunk", SURFACE_NEON, Palette.cyber());
     /** Every look, in the order the Theme pane cycles them. */
-    static final Look[] ALL = {GLASS, MATERIAL, WINUI};
+    static final Look[] ALL = {GLASS, MATERIAL, WINUI, CYBERPUNK};
 
     final String key, name;
     /** How this look draws a panel: glass, acrylic, tonal, neon or flat. */

@@ -1241,10 +1241,12 @@ final class HomeView extends ViewGroup implements Choreographer.FrameCallback, H
     private void drawPlatter(Canvas c) {
         if (shelf.isEmpty()) return;
         float radius = (TILE_RADIUS + SHELF_PAD) * k;
-        tmp.set(platterRect);
-        tmp.offset(0, 18 * k);
-        shadow.setColor(pal.platterShadow.at(night));
-        shadows.draw(c, tmp, radius, SHADOW_BLUR * k, shadow);
+        if (Surfaces.softShadow()) {
+            tmp.set(platterRect);
+            tmp.offset(0, 18 * k);
+            shadow.setColor(pal.platterShadow.at(night));
+            shadows.draw(c, tmp, Surfaces.shape(radius), SHADOW_BLUR * k, shadow);
+        }
         // White glass by day; smoked glass at night.
         Surfaces.panel(c, scene, platterRect, radius, pal.surface.at(night), tone(0.42f, 0.12f), tone(0.03f, 0.08f),
                 tone(30, 34) * k, tone(22, 28) * k, tone(0.65f, 0.95f), 1, night);
@@ -1350,7 +1352,7 @@ final class HomeView extends ViewGroup implements Choreographer.FrameCallback, H
         // The whole shelf shows it has the focus too: a rim just outside its glass (dark by day: white wouldn't show on
         // white glass). Here and not on the glass's layer, which only changes with the background.
         if (shelfOn > 0.01f && !shelf.isEmpty()) {
-            float out = 6 * k, radius = (TILE_RADIUS + SHELF_PAD) * k + out;
+            float out = 6 * k, radius = Surfaces.shape((TILE_RADIUS + SHELF_PAD) * k + out);
             tmp.set(platterRect.left - out, platterRect.top - out, platterRect.right + out, platterRect.bottom + out);
             rim.setShader(null);
             rim.setColor(Ui.alpha(pal.rim.at(night), tone(0.45f, 0.8f) * shelfOn));
@@ -1620,11 +1622,11 @@ final class HomeView extends ViewGroup implements Choreographer.FrameCallback, H
     /** Glass for a drawer card or button: white by day, smoked at night (both during the transition). */
     private void drawerGlass(Canvas c, RectF r, float radius, float lightTint, int shadowColor, float drop) {
         float dk = dark();
-        if (dk < 0.999f) {
+        if (dk < 0.999f && Surfaces.softShadow()) {
             tmp.set(r);
             tmp.offset(0, drop);
             shadow.setColor(Ui.alpha(shadowColor, 1 - dk));
-            shadows.draw(c, tmp, radius, SHADOW_BLUR * k, shadow);
+            shadows.draw(c, tmp, Surfaces.shape(radius), SHADOW_BLUR * k, shadow);
         }
         Surfaces.card(c, scene, r, radius, 0xFFFFFFFF, lightTint, SMOKE, 0.4f, dk);
     }
@@ -1664,11 +1666,11 @@ final class HomeView extends ViewGroup implements Choreographer.FrameCallback, H
         float cx = base.centerX(), cy = base.centerY();
         cell.set(cx - base.width() * s / 2, cy - base.height() * s / 2, cx + base.width() * s / 2, cy + base.height() * s / 2);
         float r = 20 * k * s;
-        if (f > 0.01f) {
+        if (f > 0.01f && Surfaces.softShadow()) {
             tmp.set(cell);
             tmp.offset(0, 12 * k * f);
             shadow.setColor(Ui.alpha(0xFF000000, 0.45f * f));
-            shadows.draw(c, tmp, r, SHADOW_BLUR * k, shadow);
+            shadows.draw(c, tmp, Surfaces.shape(r), SHADOW_BLUR * k, shadow);
         }
         if (f < 0.99f) drawerGlass(c, cell, r, 0.7f, 0x14000000, 6 * k);
         Surfaces.focus(c, cell, r, pal.focusBack.at(night), f, night);
@@ -1846,7 +1848,8 @@ final class HomeView extends ViewGroup implements Choreographer.FrameCallback, H
             tmp.set(right - 108 * k, mid - 17 * k, right, mid + 17 * k);
             fill.setShader(null);
             fill.setColor(Ui.alpha(color, 0.2f));
-            c.drawRoundRect(tmp, 17 * k, 17 * k, fill);
+            float chipRadius = Surfaces.shape(17 * k);
+            c.drawRoundRect(tmp, chipRadius, chipRadius, fill);
             changePaint.setColor(color);
             c.drawText(changeText[i], tmp.centerX(), mid + Ui.halfCap(changePaint), changePaint);
         }
@@ -2999,11 +3002,11 @@ final class HomeView extends ViewGroup implements Choreographer.FrameCallback, H
                 cell.set(r.centerX() - r.width() * s / 2, r.centerY() - r.height() * s / 2,
                         r.centerX() + r.width() * s / 2, r.centerY() + r.height() * s / 2);
                 float rr = cell.height() / 2;
-                if (focus > 0.01f) {
+                if (focus > 0.01f && Surfaces.softShadow()) {
                     tmp.set(cell);
                     tmp.offset(0, 8 * k * focus);
                     shadow.setColor(Ui.alpha(0xFF000000, tone(0.22f, 0.4f) * focus));
-                    shadows.draw(c, tmp, rr, SHADOW_BLUR * k, shadow);
+                    shadows.draw(c, tmp, Surfaces.shape(rr), SHADOW_BLUR * k, shadow);
                 }
                 Surfaces.focus(c, cell, rr, pal.focusBackSoft.at(night), focus, night);
             }
@@ -3120,10 +3123,12 @@ final class HomeView extends ViewGroup implements Choreographer.FrameCallback, H
             RectF r = topRects[3 + i];
             float f = Ui.clamp(topFocus[3 + i].value), s = 1 + 0.1f * f, rad = r.width() / 2 * s;
             cell.set(r.centerX() - rad, r.centerY() - rad, r.centerX() + rad, r.centerY() + rad);
-            tmp.set(cell);
-            tmp.offset(0, (6 + 8 * f) * k);
-            shadow.setColor(Ui.alpha(0xFF000000, tone(0.1f, 0.3f) + tone(0.14f, 0.2f) * f));
-            shadows.draw(c, tmp, rad, SHADOW_BLUR * k, shadow);
+            if (Surfaces.softShadow()) {
+                tmp.set(cell);
+                tmp.offset(0, (6 + 8 * f) * k);
+                shadow.setColor(Ui.alpha(0xFF000000, tone(0.1f, 0.3f) + tone(0.14f, 0.2f) * f));
+                shadows.draw(c, tmp, Surfaces.shape(rad), SHADOW_BLUR * k, shadow);
+            }
             Surfaces.panel(c, scene, cell, rad, pal.surface.at(night), tone(0.55f, 0.5f), tone(0.02f, 0.01f), 12 * k, 8 * k,
                     tone(0.6f, 0.45f), 1 - f, night);
             Surfaces.focusCircle(c, cell.centerX(), cell.centerY(), rad, pal.focusBackSoft.at(night), f, night);
