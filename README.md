@@ -11,10 +11,14 @@
 A non-destructive Android TV cleanup tool and a native television launcher, **Climin UI**, written in
 plain Java (no Kotlin, no web views) for 1080p and 4K televisions down to Android 8.0.
 
-The launcher ships **five selectable looks** — Glass UI (the default, the one you see in the
-screenshots), Material 3 Expressive, Win UI, Cyberpunk and Retro UI — switched live from
-**Settings › Theme**, and every one of them is the same launcher: same motion, same geometry, same
-icons, same navigation.
+The launcher ships **five selectable looks** — Glass UI (the default), Material 3 Expressive, Win UI,
+Cyberpunk and Retro UI — switched live from **Settings › Theme**, and every one of them is the same
+launcher: same motion, same geometry, same icons, same navigation.
+
+![Climin UI home screen in the Retro UI look](docs/images/home-retro-ui.png)
+
+**Retro UI home theme** — For You picks, the shelf and the five top buttons in the flat beige look.
+Every look draws this same screen: only the palette, surfaces and shape change.
 
 This project is inspired by CleanYourTV and FreeMyTV.
 
