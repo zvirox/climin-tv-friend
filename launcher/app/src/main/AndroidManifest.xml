@@ -1,85 +1,89 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools">
+    package="io.climintv.home">
 
-    <!-- TV Platform Hardware and Software Declarations -->
-    <uses-feature android:name="android.software.leanback" android:required="false" />
-    <uses-feature android:name="android.hardware.touchscreen" android:required="false" />
-    <uses-feature android:name="android.hardware.wifi" android:required="false" />
-
-    <!-- Network query permissions for Open-Meteo weather refresh (Section 3 & 4) -->
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
-    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
-    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"
-        tools:ignore="CoarseFineLocation" />
-    <uses-permission android:name="android.permission.WRITE_SECURE_SETTINGS"
-        tools:ignore="ProtectedPermissions" />
-    <uses-permission android:name="yandex.tv.permission.ACCESS_TV_SOURCE" />
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
+    <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW" />
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
+    <uses-permission android:name="android.permission.SCHEDULE_EXACT_ALARM" android:maxSdkVersion="32" />
+    <uses-permission android:name="android.permission.USE_EXACT_ALARM" />
 
-    <!-- Android 11+ (API 30+) Package Visibility Declarations -->
+    <!-- Android 11+: leanback app queries -->
     <queries>
-        <intent>
-            <action android:name="android.settings.SETTINGS" />
-        </intent>
-        <intent>
-            <action android:name="android.settings.WIFI_SETTINGS" />
-        </intent>
-        <intent>
-            <action android:name="android.settings.DISPLAY_SETTINGS" />
-        </intent>
-        <intent>
-            <action android:name="android.settings.MANAGE_APPLICATIONS_SETTINGS" />
-        </intent>
-        <intent>
-            <action android:name="android.settings.APPLICATION_DETAILS_SETTINGS" />
-            <data android:scheme="package" />
-        </intent>
-        <intent>
-            <action android:name="android.intent.action.MAIN" />
-            <category android:name="android.intent.category.LAUNCHER" />
-        </intent>
+        <package android:name="com.netflix.ninja" />
+        <package android:name="com.google.android.youtube.tv" />
+        <package android:name="com.amazon.firetv.youtube" />
+        <package android:name="com.amazon.amazonvideo.livingroom" />
+        <package android:name="com.amazon.firebat" />
+        <package android:name="com.amazon.avod" />
+        <package android:name="com.disney.disneyplus" />
+        <package android:name="com.wbd.stream" />
+        <package android:name="com.hbo.hbonow" />
+        <package android:name="com.apple.atve.androidtv.appletv" />
+        <package android:name="com.apple.atve.sony.appletv" />
+        <package android:name="com.apple.atve.amazon.appletv" />
+        <package android:name="com.hulu.livingroomplus" />
+        <package android:name="com.hulu.plus" />
+        <package android:name="com.cbs.ott" />
+        <package android:name="com.cbs.ca" />
+        <package android:name="com.bskyb.nowtv.beta" />
+        <package android:name="com.peacocktv.peacockandroid" />
+        <package android:name="com.peacock.peacockfiretv" />
+        <package android:name="com.globo.globotv" />
+        <package android:name="com.spotify.tv.android" />
+        <package android:name="com.tcl.tv" />
+        <package android:name="com.google.android.tv" />
+        <package android:name="com.mediatek.wwtv.tvcenter" />
+        <package android:name="com.sony.dtv.tvx" />
+        <package android:name="in.startv.hotstar" />
+        <package android:name="com.htc.htcsettings" />
+        <package android:name="com.softwinner.miracastReceiver" />
+        <package android:name="com.softwinner.awlivetv" />
+        <package android:name="com.xiaomi.mitv.tvplayer" />
+        <package android:name="com.amazon.tv.livetv" />
+        <package android:name="com.amazon.mediatek.livetv" />
         <intent>
             <action android:name="android.intent.action.MAIN" />
             <category android:name="android.intent.category.LEANBACK_LAUNCHER" />
         </intent>
         <intent>
             <action android:name="android.intent.action.MAIN" />
-            <category android:name="android.intent.category.HOME" />
+            <category android:name="android.intent.category.LAUNCHER" />
         </intent>
-        <package android:name="com.xiaomi.mitv.settings" />
-        <package android:name="com.tcl.settings" />
-        <package android:name="com.amazon.tv.launcher" />
-        <provider android:authorities="com.skyworth.tv.provider" />
-        <provider android:authorities="com.skyworth.tv.sdk.provider" />
+        <intent>
+            <action android:name="android.intent.action.VIEW" />
+            <data android:scheme="content" android:host="android.media.tv" />
+        </intent>
     </queries>
 
-    <!-- High-Resolution TV Display Support -->
-    <supports-screens
-        android:smallScreens="true"
-        android:normalScreens="true"
-        android:largeScreens="true"
-        android:xlargeScreens="true"
-        android:anyDensity="true" />
+    <uses-feature android:name="android.software.leanback" android:required="false" />
+    <uses-feature android:name="android.hardware.touchscreen" android:required="false" />
 
     <application
-        android:label="@string/app_name"
-        android:icon="@mipmap/ic_launcher"
+        android:name=".App"
+        android:label="Climin UI"
+        android:icon="@drawable/icon"
         android:banner="@drawable/banner"
-        android:theme="@style/Theme.CliminTv.Expressive"
-        android:hardwareAccelerated="true"
-        android:allowBackup="false">
+        android:allowBackup="false"
+        android:usesCleartextTraffic="false">
 
-        <!-- Main Material 3 Expressive Android TV Launcher Activity -->
+        <!-- Main Home Screen Launcher Activity -->
         <activity
             android:name=".MainActivity"
+            android:process=":home"
             android:exported="true"
+            android:label="Climin UI"
             android:launchMode="singleTask"
+            android:taskAffinity=""
             android:stateNotNeeded="true"
-            android:excludeFromRecents="true"
             android:clearTaskOnLaunch="true"
-            android:configChanges="orientation|screenSize|keyboard|keyboardHidden|uiMode"
-            android:screenOrientation="landscape">
+            android:resumeWhilePausing="true"
+            android:excludeFromRecents="true"
+            android:screenOrientation="landscape"
+            android:configChanges="keyboard|keyboardHidden|navigation|orientation|screenSize|screenLayout|smallestScreenSize|uiMode|density|fontScale|locale|layoutDirection"
+            android:theme="@style/CliminUI.Home">
             <intent-filter android:priority="2">
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.HOME" />
@@ -88,33 +92,58 @@
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LEANBACK_LAUNCHER" />
-            </intent-filter>
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
 
-        <!-- Remote Deep-Link App Launch Activity (market://launch?id=<package>) -->
         <activity
-            android:name=".AppLaunchActivity"
-            android:exported="true"
+            android:name=".HomeActivity"
+            android:process=":home"
+            android:exported="false"
+            android:label="Climin UI"
+            android:launchMode="singleTask"
+            android:taskAffinity=""
+            android:stateNotNeeded="true"
+            android:clearTaskOnLaunch="true"
+            android:resumeWhilePausing="true"
             android:excludeFromRecents="true"
-            android:noHistory="true"
-            android:theme="@android:style/Theme.NoDisplay">
-            <intent-filter>
-                <action android:name="android.intent.action.VIEW" />
-                <category android:name="android.intent.category.DEFAULT" />
-                <category android:name="android.intent.category.BROWSABLE" />
-                <data android:scheme="market" android:host="launch" />
-            </intent-filter>
-        </activity>
+            android:screenOrientation="landscape"
+            android:configChanges="keyboard|keyboardHidden|navigation|orientation|screenSize|screenLayout|smallestScreenSize|uiMode|density|fontScale|locale|layoutDirection"
+            android:theme="@style/CliminUI.Home" />
 
-        <!-- Material 3 Expressive Ambient Clock Screensaver -->
-        <service
-            android:name=".ClockDream"
-            android:label="@string/dream_name"
+        <!-- Settings Screen -->
+        <activity
+            android:name=".SettingsActivity"
+            android:process=":home"
             android:exported="true"
+            android:label="Climin UI"
+            android:launchMode="singleTask"
+            android:taskAffinity="io.climintv.home.settings"
+            android:excludeFromRecents="true"
+            android:screenOrientation="landscape"
+            android:configChanges="keyboard|keyboardHidden|navigation|orientation|screenSize|screenLayout|smallestScreenSize|uiMode|density|fontScale|locale|layoutDirection"
+            android:theme="@style/CliminUI.Home" />
+
+        <!-- Fire TV variant -->
+        <activity
+            android:name=".FireHomeActivity"
+            android:process=":home"
+            android:exported="false"
+            android:label="Climin UI"
+            android:launchMode="singleTask"
+            android:taskAffinity="io.climintv.home.settings"
+            android:excludeFromRecents="true"
+            android:screenOrientation="landscape"
+            android:configChanges="keyboard|keyboardHidden|navigation|orientation|screenSize|screenLayout|smallestScreenSize|uiMode|density|fontScale|locale|layoutDirection"
+            android:theme="@style/CliminUI.Home" />
+
+        <!-- Screensaver on Android 8-10 and 13+ -->
+        <service
+            android:name=".Screensaver"
+            android:process=":home"
+            android:enabled="@bool/dream_in_home"
+            android:exported="true"
+            android:label="Climin UI"
             android:permission="android.permission.BIND_DREAM_SERVICE">
             <intent-filter>
                 <action android:name="android.service.dreams.DreamService" />
@@ -122,35 +151,61 @@
             </intent-filter>
         </service>
 
-        <!-- OEM Remote Home Key Interception Service (Xiaomi KEYCODE_ALL_APPS 284, TCL) -->
+        <!-- Screensaver on Android 11 to 12L -->
         <service
-            android:name=".service.HomeKeyService"
-            android:label="@string/home_key_name"
-            android:directBootAware="true"
+            android:name=".ScreensaverAlone"
+            android:enabled="@bool/dream_alone"
             android:exported="true"
-            android:permission="android.permission.BIND_ACCESSIBILITY_SERVICE">
+            android:label="Climin UI"
+            android:permission="android.permission.BIND_DREAM_SERVICE">
             <intent-filter>
-                <action android:name="android.accessibilityservice.AccessibilityService" />
+                <action android:name="android.service.dreams.DreamService" />
+                <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
-            <meta-data
-                android:name="android.accessibilityservice"
-                android:resource="@xml/home_key_service" />
         </service>
 
-        <!-- OEM Remote Input Key Interception Service -->
+        <!-- Background Mode switch job service -->
         <service
-            android:name=".service.InputKeyService"
-            android:label="@string/input_key_name"
+            android:name=".ModeJob"
             android:exported="false"
+            android:permission="android.permission.BIND_JOB_SERVICE" />
+
+        <!-- Accessibility Remote Key Service for OEM button mapping -->
+        <service
+            android:name=".RemoteKeyService"
+            android:process=":keys"
+            android:exported="true"
+            android:label="Climin UI"
             android:permission="android.permission.BIND_ACCESSIBILITY_SERVICE">
             <intent-filter>
                 <action android:name="android.accessibilityservice.AccessibilityService" />
             </intent-filter>
             <meta-data
                 android:name="android.accessibilityservice"
-                android:resource="@xml/input_key_service" />
+                android:resource="@xml/remote_key_service" />
         </service>
+
+        <!-- Photo inbox provider -->
+        <provider
+            android:name=".PhotoInbox"
+            android:authorities="io.climintv.home.photos"
+            android:exported="true" />
+
+        <!-- Sleep overlay service -->
+        <service
+            android:name=".SleepOverlay"
+            android:process=":sleep"
+            android:exported="false" />
+
+        <!-- Boot receiver -->
+        <receiver
+            android:name=".HomeReceiver"
+            android:exported="false">
+            <intent-filter>
+                <action android:name="android.intent.action.BOOT_COMPLETED" />
+                <action android:name="android.intent.action.MY_PACKAGE_REPLACED" />
+            </intent-filter>
+        </receiver>
 
     </application>
-
 </manifest>

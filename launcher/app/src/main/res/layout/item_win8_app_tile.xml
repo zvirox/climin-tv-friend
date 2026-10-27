@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/card_root"
+    android:layout_width="match_parent"
+    android:layout_height="64dp"
+    android:layout_margin="3dp"
+    android:background="@drawable/bg_win8_tile_rounded"
+    android:clickable="true"
+    android:clipChildren="true"
+    android:clipToOutline="true"
+    android:clipToPadding="true"
+    android:focusable="true">
+
+    <!-- Centered High-Res App Icon (Strict Icon-Only in Minimal & Super Mode) -->
+    <ImageView
+        android:id="@+id/app_icon"
+        android:layout_width="38dp"
+        android:layout_height="38dp"
+        android:layout_gravity="center"
+        android:adjustViewBounds="true"
+        android:contentDescription="@null"
+        android:scaleType="fitCenter" />
+
+    <!-- Optional Visual Banner for Wide Tiles when Available -->
+    <ImageView
+        android:id="@+id/app_banner"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:contentDescription="@null"
+        android:scaleType="centerCrop"
+        android:visibility="gone" />
+
+    <!-- Visual Indicator for Reorder Mode (Holding OK) -->
+    <TextView
+        android:id="@+id/badge_reorder"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|center_horizontal"
+        android:layout_marginBottom="3dp"
+        android:background="@drawable/bg_m3_pill_chip"
+        android:fontFamily="@font/outfit_bold"
+        android:paddingStart="6dp"
+        android:paddingTop="1dp"
+        android:paddingEnd="6dp"
+        android:paddingBottom="1dp"
+        android:text="◀ MOVE ▶"
+        android:textColor="@color/m3_dark_pri"
+        android:textSize="8sp"
+        android:visibility="gone" />
+
+</FrameLayout>

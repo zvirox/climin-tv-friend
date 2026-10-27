@@ -1,939 +1,246 @@
 <?xml version="1.0" encoding="utf-8"?>
-<io.climintv.home.view.TvScrollView xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/main_scroll_view"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/root_layout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/m3_dark_bg"
+    android:orientation="vertical"
+    android:background="#000000"
     android:clipChildren="false"
-    android:clipToPadding="false"
-    android:fillViewport="true"
-    android:focusable="false"
-    android:focusableInTouchMode="false"
-    android:descendantFocusability="afterDescendants"
-    android:scrollbars="none">
+    android:clipToPadding="false">
 
-    <LinearLayout
-        android:id="@+id/root_layout"
+    <!-- ZONE 1: DEDICATED TOP HEADER BAND (NO TILES ALLOWED HERE) -->
+    <FrameLayout
+        android:id="@+id/top_header_row"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="116dp"
+        android:paddingStart="44dp"
+        android:paddingEnd="44dp"
+        android:paddingTop="10dp"
+        android:paddingBottom="2dp"
         android:clipChildren="false"
-        android:clipToPadding="false"
-        android:descendantFocusability="afterDescendants"
-        android:focusable="false"
-        android:focusableInTouchMode="false"
-        android:orientation="vertical"
-        android:paddingStart="32dp"
-        android:paddingTop="16dp"
-        android:paddingEnd="32dp"
-        android:paddingBottom="16dp">
+        android:clipToPadding="false">
 
-        <!-- ======================================================== -->
-        <!-- 1. TOP HEADER: BIG LIVE CLOCK (LEFT) & 5 CIRCULAR ICONS   -->
-        <!-- ======================================================== -->
+        <!-- Top-Left: Vertical Clock (No Seconds) + Date + Greeting -->
         <LinearLayout
-            android:id="@+id/top_header_row"
-            android:layout_width="match_parent"
+            android:id="@+id/clock_container"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:clipChildren="false"
-            android:clipToPadding="false"
+            android:layout_gravity="top|start"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/text_clock_hour"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/outfit_bold"
+                    android:includeFontPadding="false"
+                    android:lineSpacingMultiplier="0.80"
+                    android:text="04"
+                    android:textColor="#FFFFFF"
+                    android:textSize="32sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/badge_super_mode"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="12dp"
+                    android:background="@drawable/bg_m3_pill_chip"
+                    android:fontFamily="@font/outfit_bold"
+                    android:includeFontPadding="false"
+                    android:paddingStart="8dp"
+                    android:paddingTop="3dp"
+                    android:paddingEnd="8dp"
+                    android:paddingBottom="3dp"
+                    android:text="✦ SUPER MODE ACTIVE"
+                    android:textColor="#80DEEA"
+                    android:textSize="9.5sp"
+                    android:textStyle="bold" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/clock_minute_row"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="-6dp"
+                android:gravity="bottom"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/text_clock_minute"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/outfit_bold"
+                    android:includeFontPadding="false"
+                    android:lineSpacingMultiplier="0.80"
+                    android:text="30"
+                    android:textColor="#007A7A"
+                    android:textSize="32sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/text_clock_am_pm"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="5dp"
+                    android:layout_marginBottom="3dp"
+                    android:fontFamily="@font/outfit_bold"
+                    android:includeFontPadding="false"
+                    android:text="PM"
+                    android:textColor="#007A7A"
+                    android:textSize="13sp"
+                    android:textStyle="bold" />
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/text_clock_date"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="2dp"
+                android:fontFamily="@font/outfit_medium"
+                android:includeFontPadding="false"
+                android:text="Monday, 26 October 2026"
+                android:textColor="#E0FFFFFF"
+                android:textSize="11.5sp" />
+
+            <TextView
+                android:id="@+id/text_clock_greeting"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="1dp"
+                android:fontFamily="@font/outfit_bold"
+                android:includeFontPadding="false"
+                android:text="Good Afternoon • Patan • 32°C Clear sky"
+                android:textColor="#B0FFFFFF"
+                android:textSize="10sp" />
+        </LinearLayout>
+
+        <!-- Top-Right: Quick Action Circular Buttons -->
+        <LinearLayout
+            android:id="@+id/header_controls_row"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="top|end"
             android:gravity="center_vertical"
             android:orientation="horizontal">
 
-            <!-- REFINED LIVE CLOCK (LEFT SIDE) -->
-            <LinearLayout
-                android:id="@+id/clock_container"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:orientation="vertical">
-
-                <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:gravity="bottom"
-                    android:orientation="horizontal">
-
-                    <TextView
-                        android:id="@+id/text_clock_time"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:fontFamily="@font/outfit_medium"
-                        android:letterSpacing="-0.03"
-                        android:lineSpacingMultiplier="0.9"
-                        android:textColor="@color/m3_dark_onbg"
-                        android:textSize="50sp"
-                        tools:text="1:39" />
-
-                    <!-- Seconds in Primary Color Beside AM/PM -->
-                    <TextView
-                        android:id="@+id/text_clock_seconds"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="3dp"
-                        android:layout_marginBottom="7dp"
-                        android:fontFamily="@font/outfit_medium"
-                        android:textColor="@color/m3_dark_pri"
-                        android:textSize="18sp"
-                        tools:text=":24" />
-
-                    <!-- AM / PM Chip -->
-                    <TextView
-                        android:id="@+id/text_clock_am_pm"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="6dp"
-                        android:layout_marginBottom="8dp"
-                        android:fontFamily="@font/outfit_medium"
-                        android:textColor="@color/m3_dark_pri"
-                        android:textSize="14sp"
-                        tools:text="PM" />
-                </LinearLayout>
-
-                <!-- Full Formatted Date: Weekday, Day Month Year -->
-                <TextView
-                    android:id="@+id/text_clock_date"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="1dp"
-                    android:fontFamily="@font/outfit_regular"
-                    android:textColor="@color/m3_dark_osv"
-                    android:textSize="11.5sp"
-                    tools:text="Sunday, 25 October 2026" />
-            </LinearLayout>
-
-            <!-- 5 CIRCULAR ACTION BUTTONS (RIGHT SIDE) (40x40 dp) -->
-            <LinearLayout
-                android:id="@+id/header_controls_row"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:clipChildren="false"
-                android:clipToPadding="false"
-                android:gravity="center_vertical"
-                android:orientation="horizontal">
-
-                <!-- 1. TV Inputs Jump Button -->
-                <FrameLayout
-                    android:id="@+id/btn_circle_inputs"
-                    android:layout_width="40dp"
-                    android:layout_height="40dp"
-                    android:layout_marginEnd="8dp"
-                    android:background="@drawable/bg_m3_circle_button"
-                    android:clickable="true"
-                    android:focusable="true">
-
-                    <ImageView
-                        android:id="@+id/ic_circle_inputs"
-                        android:layout_width="20dp"
-                        android:layout_height="20dp"
-                        android:layout_gravity="center"
-                        android:contentDescription="TV Inputs"
-                        android:src="@drawable/ic_input" />
-                </FrameLayout>
-
-                <!-- 2. UI Settings (Light / Dark Theme) -->
-                <FrameLayout
-                    android:id="@+id/btn_circle_ui_settings"
-                    android:layout_width="40dp"
-                    android:layout_height="40dp"
-                    android:layout_marginEnd="8dp"
-                    android:background="@drawable/bg_m3_circle_button"
-                    android:clickable="true"
-                    android:focusable="true">
-
-                    <ImageView
-                        android:id="@+id/ic_circle_ui_settings"
-                        android:layout_width="20dp"
-                        android:layout_height="20dp"
-                        android:layout_gravity="center"
-                        android:contentDescription="UI Settings"
-                        android:src="@drawable/ic_palette" />
-                </FrameLayout>
-
-                <!-- 3. Wi-Fi Status Button -->
-                <FrameLayout
-                    android:id="@+id/btn_circle_wifi"
-                    android:layout_width="40dp"
-                    android:layout_height="40dp"
-                    android:layout_marginEnd="8dp"
-                    android:background="@drawable/bg_m3_circle_button"
-                    android:clickable="true"
-                    android:focusable="true">
-
-                    <ImageView
-                        android:id="@+id/ic_circle_wifi"
-                        android:layout_width="20dp"
-                        android:layout_height="20dp"
-                        android:layout_gravity="center"
-                        android:contentDescription="Wi-Fi Settings"
-                        android:src="@drawable/ic_wifi" />
-                </FrameLayout>
-
-                <!-- 4. Bluetooth Status Button -->
-                <FrameLayout
-                    android:id="@+id/btn_circle_bluetooth"
-                    android:layout_width="40dp"
-                    android:layout_height="40dp"
-                    android:layout_marginEnd="8dp"
-                    android:background="@drawable/bg_m3_circle_button"
-                    android:clickable="true"
-                    android:focusable="true">
-
-                    <ImageView
-                        android:id="@+id/ic_circle_bluetooth"
-                        android:layout_width="20dp"
-                        android:layout_height="20dp"
-                        android:layout_gravity="center"
-                        android:contentDescription="Bluetooth Settings"
-                        android:src="@drawable/ic_bluetooth" />
-                </FrameLayout>
-
-                <!-- 5. Android TV Settings Gear -->
-                <FrameLayout
-                    android:id="@+id/btn_circle_tv_settings"
-                    android:layout_width="40dp"
-                    android:layout_height="40dp"
-                    android:background="@drawable/bg_m3_circle_button"
-                    android:clickable="true"
-                    android:focusable="true">
-
-                    <ImageView
-                        android:id="@+id/ic_circle_tv_settings"
-                        android:layout_width="20dp"
-                        android:layout_height="20dp"
-                        android:layout_gravity="center"
-                        android:contentDescription="Android TV Settings"
-                        android:src="@drawable/ic_settings" />
-                </FrameLayout>
-            </LinearLayout>
-        </LinearLayout>
-
-        <!-- ======================================================== -->
-        <!-- SPACING BETWEEN CLOCK & APP MENU / SUPER MODE            -->
-        <!-- ======================================================== -->
-        <Space
-            android:id="@+id/spacer_clock_app_menu"
-            android:layout_width="match_parent"
-            android:layout_height="18dp" />
-
-        <!-- ======================================================== -->
-        <!-- SUPER MODE: TMDB STREAMING RECOMMENDATIONS CAROUSEL       -->
-        <!-- ======================================================== -->
-        <LinearLayout
-            android:id="@+id/super_mode_container"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:clipChildren="false"
-            android:clipToPadding="false"
-            android:orientation="vertical"
-            android:visibility="gone">
-
-            <TextView
-                android:id="@+id/label_super_mode"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="4dp"
-                android:fontFamily="@font/outfit_bold"
-                android:letterSpacing="0.04"
-                android:text="TRENDING &amp; STREAMING SUGGESTIONS"
-                android:textColor="@color/m3_dark_pri"
-                android:textSize="10.5sp" />
-
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/recycler_super_mode"
-                android:layout_width="match_parent"
-                android:layout_height="112dp"
-                android:clipChildren="false"
-                android:clipToPadding="false"
-                android:descendantFocusability="afterDescendants"
-                android:focusable="false"
-                android:focusableInTouchMode="false"
-                android:nestedScrollingEnabled="false"
-                android:orientation="horizontal"
-                android:paddingTop="2dp"
-                android:paddingBottom="2dp" />
-
-            <Space
-                android:layout_width="match_parent"
-                android:layout_height="12dp" />
-        </LinearLayout>
-
-        <!-- ======================================================== -->
-        <!-- 2. FULL 16:9 APP CARDS ROW (SPRING MOTION SCROLLING)     -->
-        <!-- ======================================================== -->
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/recycler_apps_menu"
-            android:layout_width="match_parent"
-            android:layout_height="94dp"
-            android:clipChildren="false"
-            android:clipToPadding="false"
-            android:descendantFocusability="afterDescendants"
-            android:focusable="false"
-            android:focusableInTouchMode="false"
-            android:nestedScrollingEnabled="false"
-            android:orientation="horizontal"
-            android:paddingTop="2dp"
-            android:paddingBottom="2dp" />
-
-        <Space
-            android:layout_width="match_parent"
-            android:layout_height="14dp" />
-
-        <!-- ======================================================== -->
-        <!-- 3. INPUTS & SHORTCUTS (REFINED COMPACT BAR)              -->
-        <!-- ======================================================== -->
-        <HorizontalScrollView
-            android:layout_width="match_parent"
-            android:layout_height="44dp"
-            android:clipChildren="false"
-            android:clipToPadding="false"
-            android:scrollbars="none">
-
-            <LinearLayout
-                android:id="@+id/inputs_shortcuts_row"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:clipChildren="false"
-                android:clipToPadding="false"
-                android:gravity="center_vertical"
-                android:orientation="horizontal">
-
-                <!-- HDMI 1 -->
-                <LinearLayout
-                    android:id="@+id/chip_input_hdmi1"
-                    android:layout_width="wrap_content"
-                    android:layout_height="34dp"
-                    android:layout_marginEnd="8dp"
-                    android:background="@drawable/bg_m3_pill_chip"
-                    android:clickable="true"
-                    android:focusable="true"
-                    android:gravity="center_vertical"
-                    android:nextFocusDown="@+id/weather_widget_card"
-                    android:nextFocusUp="@+id/recycler_apps_menu"
-                    android:orientation="horizontal"
-                    android:paddingStart="12dp"
-                    android:paddingEnd="12dp">
-
-                    <ImageView
-                        android:id="@+id/ic_hdmi1"
-                        android:layout_width="16dp"
-                        android:layout_height="16dp"
-                        android:src="@drawable/ic_input" />
-
-                    <TextView
-                        android:id="@+id/text_hdmi1"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="6dp"
-                        android:fontFamily="@font/outfit_medium"
-                        android:text="HDMI 1"
-                        android:textColor="@color/m3_dark_onbg"
-                        android:textSize="11.5sp" />
-                </LinearLayout>
-
-                <!-- HDMI 2 -->
-                <LinearLayout
-                    android:id="@+id/chip_input_hdmi2"
-                    android:layout_width="wrap_content"
-                    android:layout_height="34dp"
-                    android:layout_marginEnd="8dp"
-                    android:background="@drawable/bg_m3_pill_chip"
-                    android:clickable="true"
-                    android:focusable="true"
-                    android:gravity="center_vertical"
-                    android:nextFocusDown="@+id/weather_widget_card"
-                    android:nextFocusUp="@+id/recycler_apps_menu"
-                    android:orientation="horizontal"
-                    android:paddingStart="12dp"
-                    android:paddingEnd="12dp">
-
-                    <ImageView
-                        android:id="@+id/ic_hdmi2"
-                        android:layout_width="16dp"
-                        android:layout_height="16dp"
-                        android:src="@drawable/ic_input" />
-
-                    <TextView
-                        android:id="@+id/text_hdmi2"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="6dp"
-                        android:fontFamily="@font/outfit_medium"
-                        android:text="HDMI 2"
-                        android:textColor="@color/m3_dark_onbg"
-                        android:textSize="11.5sp" />
-                </LinearLayout>
-
-                <!-- HDMI 3 -->
-                <LinearLayout
-                    android:id="@+id/chip_input_hdmi3"
-                    android:layout_width="wrap_content"
-                    android:layout_height="34dp"
-                    android:layout_marginEnd="8dp"
-                    android:background="@drawable/bg_m3_pill_chip"
-                    android:clickable="true"
-                    android:focusable="true"
-                    android:gravity="center_vertical"
-                    android:nextFocusDown="@+id/weather_widget_card"
-                    android:nextFocusUp="@+id/recycler_apps_menu"
-                    android:orientation="horizontal"
-                    android:paddingStart="12dp"
-                    android:paddingEnd="12dp">
-
-                    <ImageView
-                        android:id="@+id/ic_hdmi3"
-                        android:layout_width="16dp"
-                        android:layout_height="16dp"
-                        android:src="@drawable/ic_input" />
-
-                    <TextView
-                        android:id="@+id/text_hdmi3"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="6dp"
-                        android:fontFamily="@font/outfit_medium"
-                        android:text="HDMI 3"
-                        android:textColor="@color/m3_dark_onbg"
-                        android:textSize="11.5sp" />
-                </LinearLayout>
-
-                <!-- USB -->
-                <LinearLayout
-                    android:id="@+id/chip_input_usb"
-                    android:layout_width="wrap_content"
-                    android:layout_height="34dp"
-                    android:layout_marginEnd="8dp"
-                    android:background="@drawable/bg_m3_pill_chip"
-                    android:clickable="true"
-                    android:focusable="true"
-                    android:gravity="center_vertical"
-                    android:nextFocusDown="@+id/weather_widget_card"
-                    android:nextFocusUp="@+id/recycler_apps_menu"
-                    android:orientation="horizontal"
-                    android:paddingStart="12dp"
-                    android:paddingEnd="12dp">
-
-                    <ImageView
-                        android:id="@+id/ic_usb"
-                        android:layout_width="16dp"
-                        android:layout_height="16dp"
-                        android:src="@drawable/ic_usb" />
-
-                    <TextView
-                        android:id="@+id/text_usb"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="6dp"
-                        android:fontFamily="@font/outfit_medium"
-                        android:text="USB Media"
-                        android:textColor="@color/m3_dark_onbg"
-                        android:textSize="11.5sp" />
-                </LinearLayout>
-
-                <!-- AV -->
-                <LinearLayout
-                    android:id="@+id/chip_input_av"
-                    android:layout_width="wrap_content"
-                    android:layout_height="34dp"
-                    android:layout_marginEnd="10dp"
-                    android:background="@drawable/bg_m3_pill_chip"
-                    android:clickable="true"
-                    android:focusable="true"
-                    android:gravity="center_vertical"
-                    android:nextFocusDown="@+id/weather_widget_card"
-                    android:nextFocusUp="@+id/recycler_apps_menu"
-                    android:orientation="horizontal"
-                    android:paddingStart="12dp"
-                    android:paddingEnd="12dp">
-
-                    <ImageView
-                        android:id="@+id/ic_av"
-                        android:layout_width="16dp"
-                        android:layout_height="16dp"
-                        android:src="@drawable/ic_av" />
-
-                    <TextView
-                        android:id="@+id/text_av"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="6dp"
-                        android:fontFamily="@font/outfit_medium"
-                        android:text="AV Input"
-                        android:textColor="@color/m3_dark_onbg"
-                        android:textSize="11.5sp" />
-                </LinearLayout>
-
-                <!-- Vertical Divider -->
-                <View
-                    android:id="@+id/inputs_divider"
-                    android:layout_width="1dp"
-                    android:layout_height="22dp"
-                    android:layout_marginEnd="10dp"
-                    android:background="@color/m3_dark_sc" />
-
-                <!-- Shortcut 1: All Apps (Full Screen TV Drawer) -->
-                <LinearLayout
-                    android:id="@+id/chip_shortcut_all_apps"
-                    android:layout_width="wrap_content"
-                    android:layout_height="34dp"
-                    android:layout_marginEnd="8dp"
-                    android:background="@drawable/bg_m3_pill_chip"
-                    android:clickable="true"
-                    android:focusable="true"
-                    android:gravity="center_vertical"
-                    android:nextFocusDown="@+id/weather_widget_card"
-                    android:nextFocusUp="@+id/recycler_apps_menu"
-                    android:orientation="horizontal"
-                    android:paddingStart="12dp"
-                    android:paddingEnd="12dp">
-
-                    <ImageView
-                        android:id="@+id/ic_all_apps"
-                        android:layout_width="16dp"
-                        android:layout_height="16dp"
-                        android:src="@drawable/ic_apps" />
-
-                    <TextView
-                        android:id="@+id/text_all_apps"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="6dp"
-                        android:fontFamily="@font/outfit_medium"
-                        android:text="All Apps"
-                        android:textColor="@color/m3_dark_onbg"
-                        android:textSize="11.5sp" />
-                </LinearLayout>
-
-                <!-- Shortcut 2: UI Settings -->
-                <LinearLayout
-                    android:id="@+id/chip_shortcut_ui_settings"
-                    android:layout_width="wrap_content"
-                    android:layout_height="34dp"
-                    android:layout_marginEnd="8dp"
-                    android:background="@drawable/bg_m3_pill_chip"
-                    android:clickable="true"
-                    android:focusable="true"
-                    android:gravity="center_vertical"
-                    android:nextFocusDown="@+id/weather_widget_card"
-                    android:nextFocusUp="@+id/recycler_apps_menu"
-                    android:orientation="horizontal"
-                    android:paddingStart="12dp"
-                    android:paddingEnd="12dp">
-
-                    <ImageView
-                        android:id="@+id/ic_ui_settings"
-                        android:layout_width="16dp"
-                        android:layout_height="16dp"
-                        android:src="@drawable/ic_palette" />
-
-                    <TextView
-                        android:id="@+id/text_ui_settings"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="6dp"
-                        android:fontFamily="@font/outfit_medium"
-                        android:text="UI Settings"
-                        android:textColor="@color/m3_dark_onbg"
-                        android:textSize="11.5sp" />
-                </LinearLayout>
-
-                <!-- Shortcut 3: TV Settings -->
-                <LinearLayout
-                    android:id="@+id/chip_shortcut_tv_settings"
-                    android:layout_width="wrap_content"
-                    android:layout_height="34dp"
-                    android:layout_marginEnd="8dp"
-                    android:background="@drawable/bg_m3_pill_chip"
-                    android:clickable="true"
-                    android:focusable="true"
-                    android:gravity="center_vertical"
-                    android:nextFocusDown="@+id/weather_widget_card"
-                    android:nextFocusUp="@+id/recycler_apps_menu"
-                    android:orientation="horizontal"
-                    android:paddingStart="12dp"
-                    android:paddingEnd="12dp">
-
-                    <ImageView
-                        android:id="@+id/ic_tv_settings"
-                        android:layout_width="16dp"
-                        android:layout_height="16dp"
-                        android:src="@drawable/ic_settings" />
-
-                    <TextView
-                        android:id="@+id/text_tv_settings"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="6dp"
-                        android:fontFamily="@font/outfit_medium"
-                        android:text="TV Settings"
-                        android:textColor="@color/m3_dark_onbg"
-                        android:textSize="11.5sp" />
-                </LinearLayout>
-
-                <!-- Shortcut 4: Global Search -->
-                <LinearLayout
-                    android:id="@+id/chip_shortcut_search"
-                    android:layout_width="wrap_content"
-                    android:layout_height="34dp"
-                    android:background="@drawable/bg_m3_pill_chip"
-                    android:clickable="true"
-                    android:focusable="true"
-                    android:gravity="center_vertical"
-                    android:nextFocusDown="@+id/weather_widget_card"
-                    android:nextFocusUp="@+id/recycler_apps_menu"
-                    android:orientation="horizontal"
-                    android:paddingStart="12dp"
-                    android:paddingEnd="12dp">
-
-                    <ImageView
-                        android:id="@+id/ic_search"
-                        android:layout_width="16dp"
-                        android:layout_height="16dp"
-                        android:src="@drawable/ic_search" />
-
-                    <TextView
-                        android:id="@+id/text_search"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="6dp"
-                        android:fontFamily="@font/outfit_medium"
-                        android:text="Search"
-                        android:textColor="@color/m3_dark_onbg"
-                        android:textSize="11.5sp" />
-                </LinearLayout>
-
-            </LinearLayout>
-        </HorizontalScrollView>
-
-        <Space
-            android:layout_width="match_parent"
-            android:layout_height="14dp" />
-
-        <!-- ======================================================== -->
-        <!-- 4. WEATHER WIDGET (REFINED 64dp COMPACT CARD)            -->
-        <!-- ======================================================== -->
-        <LinearLayout
-            android:id="@+id/weather_widget_card"
-            android:layout_width="match_parent"
-            android:layout_height="64dp"
-            android:background="@drawable/bg_m3_weather_card"
-            android:clickable="true"
-            android:clipChildren="false"
-            android:clipToPadding="false"
-            android:focusable="true"
-            android:gravity="center_vertical"
-            android:nextFocusUp="@+id/chip_shortcut_all_apps"
-            android:orientation="horizontal"
-            android:paddingStart="14dp"
-            android:paddingTop="6dp"
-            android:paddingEnd="14dp"
-            android:paddingBottom="6dp">
-
-            <!-- Condition Circular Badge (38x38 dp) -->
             <FrameLayout
-                android:id="@+id/weather_badge_container"
+                android:id="@+id/btn_circle_inputs"
                 android:layout_width="38dp"
                 android:layout_height="38dp"
-                android:background="@drawable/bg_m3_circle_button">
-
+                android:layout_marginEnd="8dp"
+                android:background="@drawable/bg_m3_circle_button"
+                android:clickable="true"
+                android:focusable="true"
+                android:focusableInTouchMode="false">
                 <ImageView
-                    android:id="@+id/weather_icon"
-                    android:layout_width="20dp"
-                    android:layout_height="20dp"
+                    android:id="@+id/ic_circle_inputs"
+                    android:layout_width="18dp"
+                    android:layout_height="18dp"
                     android:layout_gravity="center"
-                    android:contentDescription="Weather Icon"
-                    android:src="@drawable/ic_weather_sun" />
+                    android:src="@drawable/ic_input" />
             </FrameLayout>
 
-            <!-- Current Temp & Conditions Text Block -->
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="10dp"
-                android:orientation="vertical">
+            <FrameLayout
+                android:id="@+id/btn_circle_ui_settings"
+                android:layout_width="38dp"
+                android:layout_height="38dp"
+                android:layout_marginEnd="8dp"
+                android:background="@drawable/bg_m3_circle_button"
+                android:clickable="true"
+                android:focusable="true"
+                android:focusableInTouchMode="false">
+                <ImageView
+                    android:id="@+id/ic_circle_ui_settings"
+                    android:layout_width="18dp"
+                    android:layout_height="18dp"
+                    android:layout_gravity="center"
+                    android:src="@drawable/ic_palette" />
+            </FrameLayout>
 
-                <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:gravity="bottom"
-                    android:orientation="horizontal">
+            <FrameLayout
+                android:id="@+id/btn_circle_wifi"
+                android:layout_width="38dp"
+                android:layout_height="38dp"
+                android:layout_marginEnd="8dp"
+                android:background="@drawable/bg_m3_circle_button"
+                android:clickable="true"
+                android:focusable="true"
+                android:focusableInTouchMode="false">
+                <ImageView
+                    android:id="@+id/ic_circle_wifi"
+                    android:layout_width="18dp"
+                    android:layout_height="18dp"
+                    android:layout_gravity="center"
+                    android:src="@drawable/ic_wifi" />
+            </FrameLayout>
 
-                    <TextView
-                        android:id="@+id/text_weather_temp"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:fontFamily="@font/outfit_bold"
-                        android:letterSpacing="-0.03"
-                        android:text="28°"
-                        android:textColor="@color/m3_dark_onbg"
-                        android:textSize="20sp" />
+            <FrameLayout
+                android:id="@+id/btn_circle_bluetooth"
+                android:layout_width="38dp"
+                android:layout_height="38dp"
+                android:layout_marginEnd="8dp"
+                android:background="@drawable/bg_m3_circle_button"
+                android:clickable="true"
+                android:focusable="true"
+                android:focusableInTouchMode="false">
+                <ImageView
+                    android:id="@+id/ic_circle_bluetooth"
+                    android:layout_width="18dp"
+                    android:layout_height="18dp"
+                    android:layout_gravity="center"
+                    android:src="@drawable/ic_bluetooth" />
+            </FrameLayout>
 
-                    <TextView
-                        android:id="@+id/text_weather_condition"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="6dp"
-                        android:fontFamily="@font/outfit_medium"
-                        android:text="Sunny"
-                        android:textColor="@color/m3_dark_onbg"
-                        android:textSize="11.5sp" />
-                </LinearLayout>
-
-                <TextView
-                    android:id="@+id/text_weather_details"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:fontFamily="@font/outfit_regular"
-                    android:text="Feels like 30° · Humidity 45% · Wind 12 km/h"
-                    android:textColor="@color/m3_dark_osv"
-                    android:textSize="9.5sp" />
-
-                <TextView
-                    android:id="@+id/text_weather_high_low"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:fontFamily="@font/outfit_regular"
-                    android:text="High 32° · Low 22°"
-                    android:textColor="@color/m3_dark_osv"
-                    android:textSize="9sp" />
-            </LinearLayout>
-
-            <View
-                android:layout_width="0dp"
-                android:layout_height="1dp"
-                android:layout_weight="1" />
-
-            <!-- 6 Hourly Forecast Chips (Section 3 & 4) -->
-            <LinearLayout
-                android:id="@+id/forecast_hourly_strip"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:gravity="center_vertical"
-                android:orientation="horizontal">
-
-                <!-- Slot 1: Now -->
-                <LinearLayout
-                    android:id="@+id/forecast_chip_1"
-                    android:layout_width="44dp"
-                    android:layout_height="44dp"
-                    android:layout_marginEnd="4dp"
-                    android:background="@drawable/bg_m3_pill_chip"
-                    android:gravity="center"
-                    android:orientation="vertical">
-
-                    <TextView
-                        android:id="@+id/text_forecast_time_1"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:fontFamily="@font/outfit_bold"
-                        android:text="Now"
-                        android:textColor="@color/m3_dark_pri"
-                        android:textSize="8.5sp" />
-
-                    <ImageView
-                        android:id="@+id/ic_forecast_1"
-                        android:layout_width="12dp"
-                        android:layout_height="12dp"
-                        android:layout_marginTop="1dp"
-                        android:src="@drawable/ic_weather_sun" />
-
-                    <TextView
-                        android:id="@+id/text_forecast_temp_1"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="1dp"
-                        android:fontFamily="@font/outfit_medium"
-                        android:text="28°"
-                        android:textColor="@color/m3_dark_onbg"
-                        android:textSize="9.5sp" />
-                </LinearLayout>
-
-                <!-- Slot 2: 2 PM -->
-                <LinearLayout
-                    android:id="@+id/forecast_chip_2"
-                    android:layout_width="44dp"
-                    android:layout_height="44dp"
-                    android:layout_marginEnd="4dp"
-                    android:background="@drawable/bg_m3_pill_chip"
-                    android:gravity="center"
-                    android:orientation="vertical">
-
-                    <TextView
-                        android:id="@+id/text_forecast_time_2"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:fontFamily="@font/outfit_regular"
-                        android:text="2 PM"
-                        android:textColor="@color/m3_dark_osv"
-                        android:textSize="8.5sp" />
-
-                    <ImageView
-                        android:id="@+id/ic_forecast_2"
-                        android:layout_width="12dp"
-                        android:layout_height="12dp"
-                        android:layout_marginTop="1dp"
-                        android:src="@drawable/ic_weather_sun" />
-
-                    <TextView
-                        android:id="@+id/text_forecast_temp_2"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="1dp"
-                        android:fontFamily="@font/outfit_medium"
-                        android:text="31°"
-                        android:textColor="@color/m3_dark_onbg"
-                        android:textSize="9.5sp" />
-                </LinearLayout>
-
-                <!-- Slot 3: 3 PM -->
-                <LinearLayout
-                    android:id="@+id/forecast_chip_3"
-                    android:layout_width="44dp"
-                    android:layout_height="44dp"
-                    android:layout_marginEnd="4dp"
-                    android:background="@drawable/bg_m3_pill_chip"
-                    android:gravity="center"
-                    android:orientation="vertical">
-
-                    <TextView
-                        android:id="@+id/text_forecast_time_3"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:fontFamily="@font/outfit_regular"
-                        android:text="3 PM"
-                        android:textColor="@color/m3_dark_osv"
-                        android:textSize="8.5sp" />
-
-                    <ImageView
-                        android:id="@+id/ic_forecast_3"
-                        android:layout_width="12dp"
-                        android:layout_height="12dp"
-                        android:layout_marginTop="1dp"
-                        android:src="@drawable/ic_weather_sun" />
-
-                    <TextView
-                        android:id="@+id/text_forecast_temp_3"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="1dp"
-                        android:fontFamily="@font/outfit_medium"
-                        android:text="32°"
-                        android:textColor="@color/m3_dark_onbg"
-                        android:textSize="9.5sp" />
-                </LinearLayout>
-
-                <!-- Slot 4: 4 PM -->
-                <LinearLayout
-                    android:id="@+id/forecast_chip_4"
-                    android:layout_width="44dp"
-                    android:layout_height="44dp"
-                    android:layout_marginEnd="4dp"
-                    android:background="@drawable/bg_m3_pill_chip"
-                    android:gravity="center"
-                    android:orientation="vertical">
-
-                    <TextView
-                        android:id="@+id/text_forecast_time_4"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:fontFamily="@font/outfit_regular"
-                        android:text="4 PM"
-                        android:textColor="@color/m3_dark_osv"
-                        android:textSize="8.5sp" />
-
-                    <ImageView
-                        android:id="@+id/ic_forecast_4"
-                        android:layout_width="12dp"
-                        android:layout_height="12dp"
-                        android:layout_marginTop="1dp"
-                        android:src="@drawable/ic_weather_cloud_sun" />
-
-                    <TextView
-                        android:id="@+id/text_forecast_temp_4"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="1dp"
-                        android:fontFamily="@font/outfit_medium"
-                        android:text="30°"
-                        android:textColor="@color/m3_dark_onbg"
-                        android:textSize="9.5sp" />
-                </LinearLayout>
-
-                <!-- Slot 5: 5 PM -->
-                <LinearLayout
-                    android:id="@+id/forecast_chip_5"
-                    android:layout_width="44dp"
-                    android:layout_height="44dp"
-                    android:layout_marginEnd="4dp"
-                    android:background="@drawable/bg_m3_pill_chip"
-                    android:gravity="center"
-                    android:orientation="vertical">
-
-                    <TextView
-                        android:id="@+id/text_forecast_time_5"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:fontFamily="@font/outfit_regular"
-                        android:text="5 PM"
-                        android:textColor="@color/m3_dark_osv"
-                        android:textSize="8.5sp" />
-
-                    <ImageView
-                        android:id="@+id/ic_forecast_5"
-                        android:layout_width="12dp"
-                        android:layout_height="12dp"
-                        android:layout_marginTop="1dp"
-                        android:src="@drawable/ic_weather_cloud_sun" />
-
-                    <TextView
-                        android:id="@+id/text_forecast_temp_5"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="1dp"
-                        android:fontFamily="@font/outfit_medium"
-                        android:text="28°"
-                        android:textColor="@color/m3_dark_onbg"
-                        android:textSize="9.5sp" />
-                </LinearLayout>
-
-                <!-- Slot 6: 6 PM -->
-                <LinearLayout
-                    android:id="@+id/forecast_chip_6"
-                    android:layout_width="44dp"
-                    android:layout_height="44dp"
-                    android:background="@drawable/bg_m3_pill_chip"
-                    android:gravity="center"
-                    android:orientation="vertical">
-
-                    <TextView
-                        android:id="@+id/text_forecast_time_6"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:fontFamily="@font/outfit_regular"
-                        android:text="6 PM"
-                        android:textColor="@color/m3_dark_osv"
-                        android:textSize="8.5sp" />
-
-                    <ImageView
-                        android:id="@+id/ic_forecast_6"
-                        android:layout_width="12dp"
-                        android:layout_height="12dp"
-                        android:layout_marginTop="1dp"
-                        android:src="@drawable/ic_weather_cloud_sun" />
-
-                    <TextView
-                        android:id="@+id/text_forecast_temp_6"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="1dp"
-                        android:fontFamily="@font/outfit_medium"
-                        android:text="26°"
-                        android:textColor="@color/m3_dark_onbg"
-                        android:textSize="9.5sp" />
-                </LinearLayout>
-            </LinearLayout>
+            <FrameLayout
+                android:id="@+id/btn_circle_tv_settings"
+                android:layout_width="38dp"
+                android:layout_height="38dp"
+                android:background="@drawable/bg_m3_circle_button"
+                android:clickable="true"
+                android:focusable="true"
+                android:focusableInTouchMode="false">
+                <ImageView
+                    android:id="@+id/ic_circle_tv_settings"
+                    android:layout_width="18dp"
+                    android:layout_height="18dp"
+                    android:layout_gravity="center"
+                    android:src="@drawable/ic_settings" />
+            </FrameLayout>
         </LinearLayout>
+    </FrameLayout>
 
-    </LinearLayout>
+    <!-- ZONE 2: HORIZONTALLY SCROLLING 4-ROW WINDOWS 8.1 START GRID -->
+    <HorizontalScrollView
+        android:id="@+id/win8_horizontal_scroll"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:clipChildren="false"
+        android:clipToPadding="false"
+        android:fillViewport="false"
+        android:focusable="false"
+        android:focusableInTouchMode="false"
+        android:overScrollMode="never"
+        android:paddingStart="44dp"
+        android:paddingTop="6dp"
+        android:paddingEnd="44dp"
+        android:paddingBottom="10dp"
+        android:scrollbars="none">
 
-</io.climintv.home.view.TvScrollView>
+        <FrameLayout
+            android:id="@+id/win8_tile_canvas"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:clipChildren="false"
+            android:clipToPadding="false"
+            android:focusable="false" />
+    </HorizontalScrollView>
+
+</LinearLayout>
