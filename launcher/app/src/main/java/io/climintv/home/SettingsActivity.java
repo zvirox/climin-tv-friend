@@ -152,7 +152,6 @@ public class SettingsActivity extends Activity {
         private static final float RAIL_ROW_H = 68, RAIL_ROW_GAP = 4, RAIL_ROW_X = 104, RAIL_ROW_R = 536, RAIL_ROW_TOP = 252;
         /** The right panel's heading baseline (its rows start at LIST_TOP). */
         private static final float PANE_HEAD = 190;
-        private static final int INK = 0xFF1C1C1E, SMOKE = 0xFF111113;
 
         private final SettingsActivity activity;
         private final Scene scene = new Scene();
@@ -200,7 +199,7 @@ public class SettingsActivity extends Activity {
         private Shader sky;
         private final Paint photoPaint = new Paint(Paint.ANTI_ALIAS_FLAG | Paint.FILTER_BITMAP_FLAG | Paint.DITHER_FLAG);
         private final Paint fill = new Paint();
-        private Paint brand, title, subtitle, version, rowLabel, rowValue, rowSub, railLabel, white, shadow, aboutName;
+        private Paint brand, title, subtitle, version, rowLabel, rowValue, rowSub, railLabel, shadow, aboutName;
         private final TextPaint whyPaint = new TextPaint(), aboutPaint = new TextPaint();
         private StaticLayout aboutLayout;
 
@@ -395,8 +394,6 @@ public class SettingsActivity extends Activity {
             String about = Ui.tr("Climin UI is a home screen for Android TV: no ads, your own photos, the weather, and a screensaver.");
             aboutLayout = StaticLayout.Builder.obtain(about, 0, about.length(), aboutPaint, Math.round(1020 * k))
                     .setLineSpacing(0, 1.2f).build();
-            white = new Paint(Paint.ANTI_ALIAS_FLAG);
-            white.setColor(0xFFF5F5F7);
             shadow = new Paint(Paint.ANTI_ALIAS_FLAG);
             shadow.setMaskFilter(new BlurMaskFilter(22 * k, BlurMaskFilter.Blur.NORMAL));
         }
@@ -511,15 +508,14 @@ public class SettingsActivity extends Activity {
                     shadow.setColor(Ui.alpha(0xFF000000, tone(0.28f, 0.34f) * f));
                     c.drawRoundRect(tmp, rr, rr, shadow);
                     tmp.offset(0, -8 * k * f);
-                    white.setAlpha(Math.round(255 * f));
-                    c.drawRoundRect(tmp, rr, rr, white);
+                    Surfaces.focus(c, tmp, rr, col(pal.focusBackPanel), f, night ? 1 : 0);
                     r = tmp;
                 } else if (chosen) {
                     fill.setColor(col(pal.rowFillAlt));
                     c.drawRoundRect(r, 16 * k, 16 * k, fill);
                 }
                 boolean off = railUnavailable(i) != null;
-                railLabel.setColor(off ? inkFade(0x73, f) : blend(inkBase(0xD9), INK, f));
+                railLabel.setColor(off ? inkFade(0x73, f) : blend(inkBase(0xD9), col(pal.focusInkPanel), f));
                 c.drawText(labels[i], x, r.centerY() + Ui.halfCap(railLabel), railLabel);
             }
         }
@@ -644,7 +640,7 @@ public class SettingsActivity extends Activity {
                 float y = (LIST_TOP + 20 + i * (LIST_ROW_H + LIST_ROW_GAP)) * k;
                 rowRect.set(LIST_X * k, y, LIST_R * k, y + LIST_ROW_H * k);
                 float f = drawRowBackground(c, i);
-                rowLabel.setColor(blend(inkBase(0xF2), INK, f));
+                rowLabel.setColor(blend(inkBase(0xF2), col(pal.focusInkPanel), f));
                 rowValue.setColor(inkValue(f));
                 float base = rowRect.centerY() + Ui.halfCap(rowLabel);
                 c.drawText(labels[i], rowRect.left + 30 * k, base, rowLabel);
@@ -660,7 +656,7 @@ public class SettingsActivity extends Activity {
             float y = (LIST_TOP + 20) * k;
             rowRect.set(LIST_X * k, y, LIST_R * k, y + LIST_ROW_H * k);
             float f = drawRowBackground(c, 0);
-            rowLabel.setColor(blend(inkBase(0xF2), INK, f));
+            rowLabel.setColor(blend(inkBase(0xF2), col(pal.focusInkPanel), f));
             c.drawText(Ui.tr("Preview"), rowRect.left + 30 * k, rowRect.centerY() + Ui.halfCap(rowLabel), rowLabel);
             float cw = Symbols.width(getContext(), "chevron_right", 22 * k);
             Symbols.draw(getContext(), c, "chevron_right", rowRect.right - 30 * k - cw / 2, rowRect.centerY(), 22 * k,
@@ -679,8 +675,7 @@ public class SettingsActivity extends Activity {
                 shadow.setColor(Ui.alpha(0xFF000000, 0.4f * f));
                 c.drawRoundRect(tmp, r, r, shadow);
                 tmp.offset(0, -10 * k * f);
-                white.setAlpha(Math.round(255 * f));
-                c.drawRoundRect(tmp, r, r, white);
+                Surfaces.focus(c, tmp, r, col(pal.focusBackPanel), f, night ? 1 : 0);
                 rowRect.set(tmp);
             }
             return f;
@@ -728,7 +723,9 @@ public class SettingsActivity extends Activity {
         private int inkBase(int alpha) { return (alpha << 24) | col(pal.inkBase); }
 
         /** A faded label: white on the smoked glass at night, ink on the light glass by day; ink once the row is focused. */
-        private int inkFade(int alpha, float f) { return blend(inkBase(alpha), (alpha << 24) | 0x1C1C1E, f); }
+        private int inkFade(int alpha, float f) {
+            return blend(inkBase(alpha), (alpha << 24) | (col(pal.focusInkPanel) & 0xFFFFFF), f);
+        }
 
         /** A row's value, right-aligned: dimmer than its label, and ink once the row is focused. */
         private int inkValue(float f) { return inkFade(0xB3, f); }
@@ -746,7 +743,6 @@ public class SettingsActivity extends Activity {
             rowSub.setColor(inkBase(0x8C));
             railLabel.setColor(inkBase(0xD9));
             whyPaint.setColor(inkBase(0xA6));
-            white.setColor(col(pal.white));
         }
 
         // MARK: - The menu on the left
@@ -1396,7 +1392,7 @@ public class SettingsActivity extends Activity {
                 float f = drawRowBackground(c, i);
                 boolean off = unavailable(i) != null;
                 rowLabel.setColor(off ? inkFade(0x73, f)
-                        : blend(place >= 0 ? inkBase(0xF2) : inkBase(0x80), INK, f));
+                        : blend(place >= 0 ? col(pal.focusInkPanel) : inkBase(0x80), col(pal.focusInkPanel), f));
                 rowValue.setColor(off ? inkFade(0x59, f) : inkValue(f));
                 float base = rowRect.centerY() + Ui.halfCap(rowLabel);
                 c.drawText(TextUtils.ellipsize(app[1], new TextPaint(rowLabel), 520 * k, TextUtils.TruncateAt.END).toString(), rowRect.left + 30 * k, base, rowLabel);
@@ -1405,7 +1401,7 @@ public class SettingsActivity extends Activity {
                     // On the shelf: a check, as in the pickers, after its place.
                     float cw = Symbols.width(getContext(), "check", 26 * k);
                     Symbols.draw(getContext(), c, "check", right - cw / 2, rowRect.centerY(), 26 * k,
-                            blend(col(pal.valueInk), INK, f));
+                            blend(col(pal.valueInk), col(pal.focusInkPanel), f));
                     right -= cw + 16 * k;
                 }
                 c.drawText(off ? Ui.tr("Unavailable") : place >= 0 ? "#" + (place + 1) : Ui.tr("shelf|Off"), right, base, rowValue);
@@ -1464,7 +1460,7 @@ public class SettingsActivity extends Activity {
                 rowRect.set(LIST_X * k, y, LIST_R * k, y + LIST_ROW_H * k);
                 float f = drawRowBackground(c, i);
                 boolean off = unavailable(i) != null;
-                rowLabel.setColor(off ? inkFade(0x73, f) : blend(inkBase(0xF2), INK, f));
+                rowLabel.setColor(off ? inkFade(0x73, f) : blend(inkBase(0xF2), col(pal.focusInkPanel), f));
                 c.drawText(pickLabels.get(at), rowRect.left + 30 * k, rowRect.centerY() + Ui.halfCap(rowLabel), rowLabel);
                 if (off) {
                     rowValue.setColor(inkFade(0x59, f));
@@ -1472,7 +1468,7 @@ public class SettingsActivity extends Activity {
                 } else if (at == pickCurrent) {
                     float cw = Symbols.width(getContext(), "check", 26 * k);
                     Symbols.draw(getContext(), c, "check", rowRect.right - 30 * k - cw / 2, rowRect.centerY(), 26 * k,
-                            blend(col(pal.valueInk), INK, f));
+                            blend(col(pal.valueInk), col(pal.focusInkPanel), f));
                 }
             }
             float hy = (PANEL_BOTTOM - 60) * k;
@@ -1491,7 +1487,7 @@ public class SettingsActivity extends Activity {
                 float y = (LIST_TOP + 20 + i * pitch) * k;
                 rowRect.set(LIST_X * k, y, LIST_R * k, y + LIST_ROW_H * k);
                 float f = drawRowBackground(c, i);
-                rowLabel.setColor(blend(inkBase(0xF2), INK, f));
+                rowLabel.setColor(blend(inkBase(0xF2), col(pal.focusInkPanel), f));
                 boolean locked = unavailable(i) != null;
                 if (locked) values[from + i] = Ui.tr("Unavailable");
                 rowValue.setColor(locked ? inkFade(0x59, f) : inkValue(f));

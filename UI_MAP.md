@@ -396,15 +396,30 @@ panels, a menu on the left and that item's settings on the right.
 
 ## 7. Cross-cutting tokens
 
+Two axes, never mixed: **Mode** (`Prefs.theme`: automatic / light / dark) picks a column; **Style**
+(`Prefs.look`: glass / material / winui / cyberpunk / retro) picks the palette and surface recipe.
+
 | Concern | Where | Day / Night |
 |---|---|---|
-| Ink | `L_INK` `0xFF1D1D1F` / `WHITE` `0xFFF5F5F7` | `tone(light, night)` swaps |
-| Secondary | `L_DIM` `0xFF6E6E73`, `L_FAINT` `0xFF8E8E93` | lighter at night |
-| Smoked glass | `SMOKE` `0xFF111113` | drawer/platter/buttons |
-| Glass | `scene.liquid(...)` (platter, buttons), `drawerGlass()` (drawer/quotes/weather) | tint + blur, `HomeView` |
+| Palette | `Palette.java`: 29 slots (`ink`, `dim`, `surface`, `rowFill`, `focusBack`…), one `Pair` per slot | `Pair.at(night)` blends the two columns |
+| Styles | `Look.java`: key, brand name, surface kind, palette; `ALL` is the cycle order | Glass UI is the default |
+| Surfaces | `Surfaces.java`: `panel()` (platter, rail, pane, round buttons), `card()` (drawer, quotes, weather), `toast()`, `focus()`/`focusCircle()` | `SURFACE_GLASS` replays `Scene.liquid`/`Scene.glass` verbatim; `SURFACE_TONAL` is an opaque fill + 1 px outline |
+| Ink | `pal.ink`, `pal.dim`, `pal.faint` | previously `L_INK` / `WHITE`, `L_DIM`, `L_FAINT` |
+| Smoked glass | `SMOKE` `0xFF111113` via `Surfaces.card`/`toast` | drawer/platter/buttons |
+| Focus | `pal.focusBack` (drawer), `focusBackSoft` (tabs, round buttons), `focusBackPanel` (settings), `pal.focusInk`/`focusInkPanel` | Glass UI keeps the white pill and ink |
 | Background | `drawLightSky()`: card 0's photo blurred, or a gradient | night image/gradient |
 | Focus springs | `Spring(...)` per item | frozen |
 | Shadows | `Shadows` + `SHADOW_BLUR 26`, `DEEP_BLUR 30` | frozen |
+
+Material 3 Expressive (day / dark), contrast on its container `#F3EDF7` / `#211F26`:
+
+| Pair | Day | Dark |
+|---|---|---|
+| `ink` on container | 14.85:1 | 12.57:1 |
+| `dim`/value on container | 8.13:1 | 9.56:1 |
+| `focusInk` on focus fill | 13.28:1 | 7.21:1 |
+| accent on container | 5.60:1 | 9.56:1 |
+| `up` / `down` | 5.68:1 / 5.62:1 | 8.96:1 / 9.60:1 |
 
 ---
 

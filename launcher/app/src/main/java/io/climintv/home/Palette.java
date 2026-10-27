@@ -70,8 +70,12 @@ final class Palette {
     Pair inkBase;
     /** A settings row's value. */
     Pair valueInk;
-    /** A pressed/selected white. */
-    Pair white;
+    /** The fill behind a focused drawer button, and behind a focused tab or top button. */
+    Pair focusBack, focusBackSoft;
+    /** The fill behind a focused settings row or rail row. */
+    Pair focusBackPanel;
+    /** The text and icons on a focused tab or top button, and on a focused row or drawer button. */
+    Pair focusInk, focusInkPanel;
 
     // MARK: - The looks
 
@@ -106,7 +110,53 @@ final class Palette {
         p.rowFillAlt = new Pair(0x141C1C1E, 0x2EFFFFFF);
         p.inkBase = new Pair(0x001C1C1E, 0x00FFFFFF);
         p.valueInk = new Pair(0x991C1C1E, 0xFFFFFFFF);
-        p.white = new Pair(0xFFFFFFFF, 0xFFF5F5F7);
+        p.focusBack = new Pair(0xFFF5F5F7, 0xFFF5F5F7);
+        p.focusBackSoft = new Pair(0xFFFFFFFF, 0xFFFFFFFF);
+        p.focusBackPanel = new Pair(0xFFFFFFFF, 0xFFF5F5F7);
+        p.focusInk = new Pair(0xFF1D1D1F, 0xFF1D1D1F);
+        p.focusInkPanel = new Pair(0xFF1C1C1E, 0xFF1C1C1E);
+        return p;
+    }
+
+    /**
+     * Material 3 Expressive: tonal surfaces instead of glass, the default purple seed, and an accent-tinted focus
+     * instead of the white pill. Day is the light scheme, night the dark one.
+     */
+    static Palette material() {
+        Palette p = new Palette();
+        p.surface = new Pair(0xFFFEF7FF, 0xFF141218);
+        p.ink = new Pair(0xFF1D1B20, 0xFFE6E0E9);
+        p.tab = new Pair(0xFF49454F, 0xFFCAC4D0);
+        p.dim = new Pair(0xFF49454F, 0xFFCAC4D0);
+        p.faint = new Pair(0xFF79747E, 0xFF938F99);
+        p.faintStale = new Pair(0xFF79747E, 0xFF938F99);
+        p.drawerRow = new Pair(0xFF49454F, 0xFFCAC4D0);
+        p.drawerDim = new Pair(0xFF49454F, 0xFFCAC4D0);
+        p.drawerFaint = new Pair(0xFF79747E, 0xFF938F99);
+        p.coinGlyph = new Pair(0xFF6750A4, 0xFFD0BCFF);
+        p.quotesCoin = new Pair(0xFF6750A4, 0xFFD0BCFF);
+        p.mark = new Pair(0xFF49454F, 0xFFCAC4D0);
+        p.inkOpaque = new Pair(0xFF1D1B20, 0xFFE6E0E9);
+        p.onPhoto = new Pair(0xFF1D1B20, 0xFFE6E0E9);
+        p.rim = new Pair(0xFF79747E, 0xFF938F99);
+        p.cardBack = new Pair(0xFFE7E0EC, 0xFF2B2930);
+        p.divider = new Pair(0xFFCAC4D0, 0xFF49454F);
+        p.up = new Pair(0xFF146C2E, 0xFF6DD58C);
+        p.down = new Pair(0xFFBA1A1A, 0xFFFFB4AB);
+        p.neutral = new Pair(0xFFF3EDF7, 0xFF211F26);
+        p.platterShadow = new Pair(0x0D000000, 0x33000000);
+        p.panelShadow = new Pair(0x0D000000, 0x33000000);
+        p.rowOn = new Pair(0xFF1D1B20, 0xFFE6E0E9);
+        p.rowOff = new Pair(0xFF79747E, 0xFF938F99);
+        p.rowFill = new Pair(0xFFEDE6F4, 0xFF2B2930);
+        p.rowFillAlt = new Pair(0xFFE7E0EC, 0xFF332D3A);
+        p.inkBase = new Pair(0x001D1B20, 0x00E6E0E9);
+        p.valueInk = new Pair(0x991D1B20, 0x99E6E0E9);
+        p.focusBack = new Pair(0xFFEADDFF, 0xFF4F378B);
+        p.focusBackSoft = new Pair(0xFFEADDFF, 0xFF4F378B);
+        p.focusBackPanel = new Pair(0xFFEADDFF, 0xFF4F378B);
+        p.focusInk = new Pair(0xFF1D192B, 0xFFE8DEF8);
+        p.focusInkPanel = new Pair(0xFF1D192B, 0xFFE8DEF8);
         return p;
     }
 

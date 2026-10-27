@@ -83,7 +83,7 @@ final class HomeView extends ViewGroup implements Choreographer.FrameCallback, H
     // "All Apps" sheet.
     private static final int COLUMNS = 5, VISIBLE_ROWS = 3;
     private static final float GRID_W = 300, GRID_H = 169, GRID_GAP = 40, GRID_ROW = 239, GRID_TOP = 196, GRID_RADIUS = 22;
-    private static final int SMOKE = 0xFF111113, INK = 0xFF1C1C1E, WHITE = 0xFFF5F5F7;
+    private static final int SMOKE = 0xFF111113, INK = 0xFF1C1C1E;
     private static final int UP_COLOR = 0xFF30D158, DOWN_COLOR = 0xFFFF453A;
     private static final long TOAST_MS = 6000, FADE_MS = 800;
     /** Blur radii of the shadow and shadowDeep paints (Shadows needs them to draw the same blur on older TVs). */
@@ -1625,9 +1625,8 @@ final class HomeView extends ViewGroup implements Choreographer.FrameCallback, H
             tmp.offset(0, drop);
             shadow.setColor(Ui.alpha(shadowColor, 1 - dk));
             shadows.draw(c, tmp, radius, SHADOW_BLUR * k, shadow);
-            scene.glass(c, r, radius, 0xFFFFFFFF, lightTint, 0, 0, 0.02f, 1, 1 - dk);
         }
-        if (dk > 0.001f) scene.glass(c, r, radius, SMOKE, 0.4f, 0, 0, 0.02f, 1, dk);
+        Surfaces.card(c, scene, r, radius, 0xFFFFFFFF, lightTint, SMOKE, 0.4f, dk);
     }
 
     private void drawerCard(Canvas c, RectF r) {
@@ -1672,13 +1671,9 @@ final class HomeView extends ViewGroup implements Choreographer.FrameCallback, H
             shadows.draw(c, tmp, r, SHADOW_BLUR * k, shadow);
         }
         if (f < 0.99f) drawerGlass(c, cell, r, 0.7f, 0x14000000, 6 * k);
-        if (f > 0.01f) {
-            fill.setShader(null);
-            fill.setColor(Ui.alpha(WHITE, f));
-            c.drawRoundRect(cell, r, r, fill);
-        }
+        Surfaces.focus(c, cell, r, pal.focusBack.at(night), f, night);
         boolean off = it.kind == HomeApps.INPUT && !it.connected;
-        int ink = blend((off ? pal.rowOff.at(night) : pal.rowOn.at(night)), INK, f);
+        int ink = blend((off ? pal.rowOff.at(night) : pal.rowOn.at(night)), pal.focusInkPanel.at(night), f);
         Symbols.draw(getContext(), c, it.symbol, cx, cell.top + cell.height() * 0.4f, 34 * k * s, ink);
         drawerLabel.setColor(ink);
         drawerLabel.setTextSize(23 * k * s);
@@ -2062,7 +2057,7 @@ final class HomeView extends ViewGroup implements Choreographer.FrameCallback, H
         float toastTop = 64 * k - (1 - a) * 16 * k;
         tmp.set((w - tw) / 2f - padX, toastTop, (w + tw) / 2f + padX, toastTop + th + 2 * padY);
         int save = c.saveLayerAlpha(tmp.left - 4, tmp.top - 4, tmp.right + 4, tmp.bottom + 4, Math.round(255 * a));
-        scene.glass(c, tmp, Math.min(tmp.height() / 2, 32 * k), SMOKE, 0.55f, 0, 0, 0.02f, 1);
+        Surfaces.toast(c, scene, tmp, Math.min(tmp.height() / 2, 32 * k));
         Symbols.draw(getContext(), c, "bell", tmp.left + padX + iconW / 2, tmp.centerY(), icon, 0xEBFFFFFF);
         c.translate(tmp.left + padX + iconW + 16 * k, tmp.top + padY);
         toast.draw(c);
@@ -3010,12 +3005,10 @@ final class HomeView extends ViewGroup implements Choreographer.FrameCallback, H
                     shadow.setColor(Ui.alpha(0xFF000000, tone(0.22f, 0.4f) * focus));
                     shadows.draw(c, tmp, rr, SHADOW_BLUR * k, shadow);
                 }
-                fill.setShader(null);
-                fill.setColor(Ui.alpha(0xFFFFFFFF, focus));
-                c.drawRoundRect(cell, rr, rr, fill);
+                Surfaces.focus(c, cell, rr, pal.focusBackSoft.at(night), focus, night);
             }
             Paint p = i == tab ? lTabOn : lTab;
-            if (i == tab) lTabOn.setColor(blend(pal.ink.at(night), L_INK, focus));   // always dark on the white pill
+            if (i == tab) lTabOn.setColor(blend(pal.ink.at(night), pal.focusInk.at(night), focus));   // dark on the pill
             c.drawText(tabs()[i], r.centerX() - p.measureText(tabs()[i]) / 2, r.centerY() + Ui.halfCap(p), p);
         }
         int top = -1;
@@ -3133,14 +3126,10 @@ final class HomeView extends ViewGroup implements Choreographer.FrameCallback, H
             shadows.draw(c, tmp, rad, SHADOW_BLUR * k, shadow);
             Surfaces.panel(c, scene, cell, rad, pal.surface.at(night), tone(0.55f, 0.5f), tone(0.02f, 0.01f), 12 * k, 8 * k,
                     tone(0.6f, 0.45f), 1 - f, night);
-            if (f > 0.01f) {
-                fill.setShader(null);
-                fill.setColor(Ui.alpha(0xFFFFFFFF, f));
-                c.drawCircle(cell.centerX(), cell.centerY(), rad, fill);
-            }
+            Surfaces.focusCircle(c, cell.centerX(), cell.centerY(), rad, pal.focusBackSoft.at(night), f, night);
             Symbols.draw(getContext(), c, it.kind == HomeApps.THEME ? themeSymbol() : it.symbol,
                     cell.centerX(), cell.centerY(), 27 * k * s,
-                    blend(pal.onPhoto.at(night), L_INK, f));
+                    blend(pal.onPhoto.at(night), pal.focusInk.at(night), f));
             if (f > 0.01f) {
                 String label = it.kind == HomeApps.THEME ? themeName() : it.label;
                 float half = lTip.measureText(label) / 2;
