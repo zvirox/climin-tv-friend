@@ -306,8 +306,8 @@ panels, a menu on the left and that item's settings on the right.
 
 | Region | Box | Contents |
 |---|---|---|
-| `SETTINGS.RAIL` | x **80 → 560**, y **120 → 960**, radius 30 | wordmark + version, then the nine menu rows |
-| `SETTINGS.PANE` | x **600 → 1840**, y **120 → 960**, radius 30 | heading, that screen's rows, hints/status at the foot |
+| `SETTINGS.RAIL` | x **80 → 560**, y **120 → 960**, radius 30 | wordmark + version, then the eight menu rows |
+| `SETTINGS.PANE` | x **600 → 1840**, y **120 → 960**, radius 30 | heading, that screen's rows, hints at the foot |
 
 - Panels: `scene.liquid(...)` white glass (day) / `SMOKE` (night), 26–30 px band, shadow 16 px below;
   day shadow `0x26`, night `0x4D`.
@@ -315,15 +315,16 @@ panels, a menu on the left and that item's settings on the right.
   → / OK enter the panel; Back in the panel returns to the menu; Back on the menu leaves the app.
   Inside a panel ← → keep their old meaning (adjust value / reorder); a panel with no adjustment uses
   ← to return to the menu.
-- TalkBack ids: 1–9 the menu, 10+ the panel's visible rows. A panel the TV can't use exposes no rows.
+- TalkBack ids: 1–8 the menu, 9+ the panel's visible rows. A panel the TV can't use exposes no rows.
 
 ### SETTINGS.RAIL — the menu
 - Wordmark "Climin UI" 28 px baseline **178** at x **128**; the number alone (`v0.0.1`) right-aligned
   at **536**; hairline at **202**.
 - Rows: top **252**, height **68**, gap **4** (pitch 72), full width 104 → 536; label 28 px at x 128.
-- Order: Home Settings, Greetings, Home Screen, Screensaver, Shelf, Top Buttons, Remote Buttons,
-  Sleep Timer, TV Settings. Unavailable items (Remote Buttons, Sleep Timer) stay listed at 45 % and
-  their panel shows the reason in words instead of rows.
+- Order: Home Settings, Greetings, Screensaver, Shelf, Top Buttons, Remote Buttons, Sleep Timer,
+  About. Unavailable items (Remote Buttons, Sleep Timer) stay listed at 45 % and their panel shows
+  the reason in words instead of rows. "Home Screen" (the Climin UI / Original switch) and
+  "TV Settings" are not in the menu: the mode choice is gone, and TV Settings is a home button.
 - Focused row: white pill (scale 1.02, 8 px lift, 16 px radius) with a 28 % / 34 % shadow; the label
   turns ink. With the focus in the panel, the chosen menu row is a faint fill (`0x14` ink by day,
   `0x2E` white at night).
@@ -333,8 +334,7 @@ panels, a menu on the left and that item's settings on the right.
 - Rows: top **256** (`LIST_TOP + 20`), height **64**, gap **6** (pitch 70), x **640 → 1800**; label
   29 px at +30; value 27 px right-aligned at −30.
 - Focused row: white pill, scale 1.02, 10 px lift, 18 px radius, 40 % shadow; label and value turn ink.
-- Hints sit at the panel's foot, baseline **900** (`PANEL_BOTTOM − 60`); the mode-switch spinner /
-  error takes that place instead (`drawStatus()`), and the hints hide while it does.
+- Hints sit at the panel's foot, baseline **900** (`PANEL_BOTTOM − 60`).
 
 ### SETTINGS.HOME_SETTINGS — Home Settings panel
 - Rows (**8 visible**, `SETTINGS_VISIBLE`): Language, Temperature, Theme, My Photos, Navigation sounds,
@@ -346,10 +346,12 @@ panels, a menu on the left and that item's settings on the right.
 - Heading "Greetings", one line "Coming soon." at `LIST_TOP + 64`; no rows (the menu can't enter it).
   Reserved for the greetings feature.
 
-### SETTINGS.HOME_CHOICE — Home Screen panel
-- Two 104-high cards from `LIST_TOP + 20` (256): "Climin UI" / "Original", each with a 2-line
-  description and a check on the one in use; hint under them at y **520**. Picking starts the mode
-  switch (screen blinks).
+### SETTINGS.ABOUT — about Climin UI
+- Heading "About"; wordmark "Climin UI" 46 px at `LIST_TOP + 56` (292), "Version 0.0.1" 23 px at
+  `LIST_TOP + 104` (340); hairline at `LIST_TOP + 132` (368).
+- One paragraph, 23 px, wrapped to 1020 px (`StaticLayout`), from `LIST_TOP + 168` (404): "Climin UI
+  is a home screen for Android TV: no ads, your own photos, the weather, and a screensaver."
+- No rows: the menu can't enter it, as with Greetings.
 
 ### SETTINGS.SCREENSAVER — one action
 - Heading "Screensaver", one row "Preview" with a chevron; OK runs the screensaver preview and
@@ -379,10 +381,6 @@ panels, a menu on the left and that item's settings on the right.
 - Heading "Sleep Timer"; 2–3 rows: Sleep Timer (duration), Show Time Left, Position (when shown).
 - Values change with ← → or OK (opens `PICKER` for duration / placement). Needs Climin UI mode; when
   off, the panel explains it and the menu won't enter.
-
-### SETTINGS.TV_SETTINGS — one action
-- Heading "TV Settings", one row "Settings" with a chevron; OK leaves the app for the TV's own
-  settings (`Settings.ACTION_SETTINGS`). No UI of ours.
 
 ---
 

@@ -19,7 +19,6 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
 import android.os.SystemClock;
-import android.provider.Settings;
 import android.text.StaticLayout;
 import android.text.TextPaint;
 import android.text.TextUtils;
@@ -45,9 +44,8 @@ import java.util.Set;
 /**
  * Climin UI's settings (the app's icon, "All Apps", or the gear on the home screen): two glass panels on the home
  * screen's backdrop, as on Apple TV. The menu on the left picks what the right panel shows (Home Settings, Greetings,
- * Home Screen, Screensaver, Shelf, Top Buttons, Remote Buttons, Sleep Timer, TV Settings), and the focused row in
- * either panel is white. "Home screen" opens the Climin UI / Original choice (with a check on the current one); the
- * switch runs in the main process (HomeMode) and this screen only asks for it and follows the state file.
+ * Screensaver, Shelf, Top Buttons, Remote Buttons, Sleep Timer, About), and the focused row in either panel is white.
+ * The mode switch still runs in the main process (HomeMode), but this screen no longer offers it.
  */
 public class SettingsActivity extends Activity {
     private SettingsView view;
@@ -138,22 +136,22 @@ public class SettingsActivity extends Activity {
     }
 
     static final class SettingsView extends View implements Choreographer.FrameCallback {
-        private static final int HOME_CHOICE = 1, HOME_SETTINGS = 2, REMOTE_KEYS = 3, PICKER = 4, SHELF_EDIT = 5,
-                POWER = 6, GREETINGS = 7, SCREENSAVER = 8, TV_SETTINGS = 9;
+        private static final int HOME_SETTINGS = 1, REMOTE_KEYS = 2, PICKER = 3, SHELF_EDIT = 4,
+                POWER = 5, GREETINGS = 6, SCREENSAVER = 7, ABOUT = 8;
         /** The left menu, in its order. */
-        private static final int RAIL_HOME_SETTINGS = 0, RAIL_GREETINGS = 1, RAIL_HOME_CHOICE = 2, RAIL_SCREENSAVER = 3,
-                RAIL_SHELF = 4, RAIL_TOP = 5, RAIL_REMOTE = 6, RAIL_POWER = 7, RAIL_TV = 8, RAILS = 9;
+        private static final int RAIL_HOME_SETTINGS = 0, RAIL_GREETINGS = 1, RAIL_SCREENSAVER = 2,
+                RAIL_SHELF = 3, RAIL_TOP = 4, RAIL_REMOTE = 5, RAIL_POWER = 6, RAIL_ABOUT = 7, RAILS = 8;
         private static final int Z_RAIL = 0, Z_PANE = 1;
         private static final float LIST_ROW_H = 64, LIST_ROW_GAP = 6;
         private static final int PICK_VISIBLE = 8;
-        private static final float LIST_X = 640, LIST_R = 1800, LIST_TOP = 236, ROW_GAP = 8, CHOICE_H = 104;
+        private static final float LIST_X = 640, LIST_R = 1800, LIST_TOP = 236;
         /** The two glass panels: the menu on the left, what it holds on the right. */
         private static final float RAIL_X = 80, RAIL_R = 560, PANE_X = 600, PANE_R = 1840, PANEL_TOP = 120,
                 PANEL_BOTTOM = 960, PANEL_RADIUS = 30;
         private static final float RAIL_ROW_H = 68, RAIL_ROW_GAP = 4, RAIL_ROW_X = 104, RAIL_ROW_R = 536, RAIL_ROW_TOP = 252;
         /** The right panel's heading baseline (its rows start at LIST_TOP). */
         private static final float PANE_HEAD = 190;
-        private static final int AMBER = 0xFFFFC266, INK = 0xFF1C1C1E, SMOKE = 0xFF111113;
+        private static final int INK = 0xFF1C1C1E, SMOKE = 0xFF111113;
 
         private final SettingsActivity activity;
         private final Scene scene = new Scene();
@@ -179,7 +177,6 @@ public class SettingsActivity extends Activity {
         private JSONObject state = new JSONObject();
         private int screen = HOME_SETTINGS, focus, railFocus, zone = Z_RAIL;
         private boolean running, okDown, backDown, wasBusy;
-        private StaticLayout errorLayout;   // the last error, wrapped (rebuilt only when it changes)
         private StaticLayout whyLayout;     // the panel's reason for a menu item this TV can't use
         private String whyReason;
         private Toast whyToast;   // why the focused option is unavailable
@@ -187,9 +184,8 @@ public class SettingsActivity extends Activity {
         private int whyScreen = -1, whyScroll = -1;
         private int sleepLeft;     // the sleep timer's minutes left, read with the state, not on every frame
         private int whyState = -1;
-        private String errorShown;
         private final Spoken spoken;
-        private long startedAt, lastNanos, pendingAt;
+        private long lastNanos;
         private int w, h;
         private float k = 1;
         private boolean night;
@@ -200,8 +196,9 @@ public class SettingsActivity extends Activity {
         private Shader sky;
         private final Paint photoPaint = new Paint(Paint.ANTI_ALIAS_FLAG | Paint.FILTER_BITMAP_FLAG | Paint.DITHER_FLAG);
         private final Paint fill = new Paint();
-        private Paint brand, title, subtitle, version, rowLabel, rowValue, rowSub, railLabel, warn, spinner, white, shadow;
-        private final TextPaint whyPaint = new TextPaint();
+        private Paint brand, title, subtitle, version, rowLabel, rowValue, rowSub, railLabel, white, shadow, aboutName;
+        private final TextPaint whyPaint = new TextPaint(), aboutPaint = new TextPaint();
+        private StaticLayout aboutLayout;
 
         private final Runnable poll = new Runnable() {
             @Override public void run() {
@@ -210,7 +207,6 @@ public class SettingsActivity extends Activity {
                 sleepLeft = SleepTimer.minutesLeft(getContext());
                 night = HomeData.get(getContext()).isNight(System.currentTimeMillis());
                 boolean nowBusy = !busyText().isEmpty();
-                if (nowBusy) pendingAt = 0;
                 // What can change the reasons away from a key: a switch (or the watchdog's revert) and the overlay's check.
                 int whyNow = (freeActive() ? 1 : 0) | (Capabilities.refused(getContext(), Capabilities.OVERLAY) ? 2 : 0);
                 if (whyNow != whyState) whyRows = null;
@@ -238,7 +234,7 @@ public class SettingsActivity extends Activity {
             scene.applyPalette();
             setFocusable(true);
             setContentDescription("Climin UI");
-            // TalkBack: the menu (ids 1 to 9), then one item per row of the panel on the right.
+            // TalkBack: the menu (ids 1 to 8), then one item per row of the panel on the right.
             spoken = new Spoken(this, new Spoken.Source() {
                 @Override public void items(List<Integer> out) {
                     for (int i = 1; i <= RAILS; i++) out.add(i);
@@ -292,14 +288,6 @@ public class SettingsActivity extends Activity {
                     return Ui.tr("Coming soon.");
                 case SCREENSAVER:
                     return Ui.tr("Screensaver") + ", " + Ui.tr("Preview");
-                case TV_SETTINGS:
-                    return Ui.tr("TV Settings");
-                case HOME_CHOICE: {
-                    String name = row == 0 ? "Climin UI, " + Ui.tr("no ads, with the new screensaver")
-                            : "Original, " + Ui.tr("the TV's factory home screen");
-                    boolean inUse = (row == 0) == freeActive();
-                    return name + (inUse ? Ui.tr(". In use") : "") + ", " + Ui.trf("{i} of {n}", "i", row + 1, "n", 2);
-                }
                 case HOME_SETTINGS:
                 case REMOTE_KEYS:
                 case POWER: {
@@ -332,15 +320,8 @@ public class SettingsActivity extends Activity {
         }
 
         private RectF rowBox(int row) {
-            float top, height;
-            if (screen == HOME_CHOICE) {
-                top = LIST_TOP + 20 + row * (CHOICE_H + ROW_GAP);
-                height = CHOICE_H;
-            } else {
-                top = LIST_TOP + 20 + row * (LIST_ROW_H + LIST_ROW_GAP);
-                height = LIST_ROW_H;
-            }
-            focusBox.set(LIST_X * k, top * k, LIST_R * k, (top + height) * k);
+            float top = LIST_TOP + 20 + row * (LIST_ROW_H + LIST_ROW_GAP);
+            focusBox.set(LIST_X * k, top * k, LIST_R * k, (top + LIST_ROW_H) * k);
             return focusBox;
         }
 
@@ -356,7 +337,6 @@ public class SettingsActivity extends Activity {
             running = true;
             whyRows = null;
             night = HomeData.get(getContext()).isNight(System.currentTimeMillis());
-            startedAt = SystemClock.uptimeMillis();
             lastNanos = 0;
             handler.post(poll);
             Choreographer.getInstance().postFrameCallback(this);
@@ -401,13 +381,14 @@ public class SettingsActivity extends Activity {
             rowSub = Ui.text(Ui.regular, 23 * k, 0x8CFFFFFF);
             railLabel = Ui.text(Ui.medium, 28 * k, 0xD9FFFFFF);
             brand = Ui.text(Ui.displaySemibold, 28 * k, 0xF2FFFFFF);
-            warn = Ui.text(Ui.regular, 23 * k, AMBER);
+            aboutName = Ui.text(Ui.displaySemibold, 46 * k, 0xFFFFFFFF);
             whyPaint.setTextSize(23 * k);
             whyPaint.setAntiAlias(true);
-            spinner = new Paint(Paint.ANTI_ALIAS_FLAG);
-            spinner.setStyle(Paint.Style.STROKE);
-            spinner.setStrokeCap(Paint.Cap.ROUND);
-            spinner.setStrokeWidth(3.5f * k);
+            aboutPaint.setTextSize(23 * k);
+            aboutPaint.setAntiAlias(true);
+            String about = Ui.tr("Climin UI is a home screen for Android TV: no ads, your own photos, the weather, and a screensaver.");
+            aboutLayout = StaticLayout.Builder.obtain(about, 0, about.length(), aboutPaint, Math.round(1020 * k))
+                    .setLineSpacing(0, 1.2f).build();
             white = new Paint(Paint.ANTI_ALIAS_FLAG);
             white.setColor(0xFFF5F5F7);
             shadow = new Paint(Paint.ANTI_ALIAS_FLAG);
@@ -415,7 +396,7 @@ public class SettingsActivity extends Activity {
         }
 
         private boolean busy() {
-            return !busyText().isEmpty() || (pendingAt != 0 && SystemClock.uptimeMillis() - pendingAt < 10_000);
+            return !busyText().isEmpty();
         }
 
         private String busyText() {
@@ -431,13 +412,12 @@ public class SettingsActivity extends Activity {
         private int rowCount() {
             switch (screen) {
                 case GREETINGS: return 0;
-                case HOME_CHOICE: return 2;
                 case HOME_SETTINGS: return Math.min(SETTINGS_VISIBLE, settingLabels().length);
                 case PICKER: return Math.min(PICK_VISIBLE, pickLabels.size());
                 case SHELF_EDIT: return Math.min(PICK_VISIBLE, shelfRows.size());
                 case POWER: return powerRows().length;
-                case SCREENSAVER:
-                case TV_SETTINGS: return 1;
+                case SCREENSAVER: return 1;
+                case ABOUT: return 0;
                 default: return Prefs.KEYS.length;
             }
         }
@@ -464,12 +444,11 @@ public class SettingsActivity extends Activity {
             String why = railUnavailable(railFocus);
             if (why != null) drawUnavailable(c, why);
             else if (screen == GREETINGS) drawGreetings(c);
-            else if (screen == HOME_CHOICE) drawChoice(c);
+            else if (screen == ABOUT) drawAbout(c);
             else if (screen == PICKER) drawPicker(c);
             else if (screen == SHELF_EDIT) drawShelfEditor(c);
-            else if (screen == SCREENSAVER || screen == TV_SETTINGS) drawActionPane(c);
+            else if (screen == SCREENSAVER) drawActionPane(c);
             else drawList(c);
-            drawStatus(c);
         }
 
         /** The home screen's photo behind the glass (softly blurred), or its light/night gradient without one. */
@@ -585,9 +564,9 @@ public class SettingsActivity extends Activity {
 
         /** A menu item's name, as on the left and as TalkBack reads it. */
         private String[] railLabels() {
-            return new String[] {Ui.tr("Home Settings"), Ui.tr("Greetings"), Ui.tr("Home Screen"), Ui.tr("Screensaver"),
+            return new String[] {Ui.tr("Home Settings"), Ui.tr("Greetings"), Ui.tr("Screensaver"),
                     Ui.tr("Shelf"), Ui.tr("Top Buttons"), Ui.tr("Remote Buttons"), Ui.tr("Sleep Timer"),
-                    Ui.tr("TV Settings")};
+                    Ui.tr("About")};
         }
 
         private void drawPaneTitle(Canvas c, String text) {
@@ -648,16 +627,14 @@ public class SettingsActivity extends Activity {
             c.drawText(Ui.tr("Coming soon."), LIST_X * k + 30 * k, (LIST_TOP + 64) * k, subtitle);
         }
 
-        /** Screensaver and TV Settings: one action, with a chevron. */
+        /** Screensaver: one action, with a chevron. */
         private void drawActionPane(Canvas c) {
-            boolean preview = screen == SCREENSAVER;
-            drawPaneTitle(c, preview ? Ui.tr("Screensaver") : Ui.tr("TV Settings"));
+            drawPaneTitle(c, Ui.tr("Screensaver"));
             float y = (LIST_TOP + 20) * k;
             rowRect.set(LIST_X * k, y, LIST_R * k, y + LIST_ROW_H * k);
             float f = drawRowBackground(c, 0);
             rowLabel.setColor(blend(inkBase(0xF2), INK, f));
-            c.drawText(preview ? Ui.tr("Preview") : Ui.tr("Settings"), rowRect.left + 30 * k,
-                    rowRect.centerY() + Ui.halfCap(rowLabel), rowLabel);
+            c.drawText(Ui.tr("Preview"), rowRect.left + 30 * k, rowRect.centerY() + Ui.halfCap(rowLabel), rowLabel);
             float cw = Symbols.width(getContext(), "chevron_right", 22 * k);
             Symbols.draw(getContext(), c, "chevron_right", rowRect.right - 30 * k - cw / 2, rowRect.centerY(), 22 * k,
                     blend(inkBase(0x66), inkBase(0x99), f));
@@ -682,61 +659,18 @@ public class SettingsActivity extends Activity {
             return f;
         }
 
-        /** Home screen choice: Climin UI or the original, with a check on the one in use. */
-        private void drawChoice(Canvas c) {
-            drawPaneTitle(c, Ui.tr("Home Screen"));
-            String[][] options = {{"Climin UI", Ui.tr("No ads, with the new screensaver")},
-                    {Ui.tr("Original"), Ui.tr("The TV's factory home screen")}};
-            int current = freeActive() ? 0 : 1;
-            for (int i = 0; i < 2; i++) {
-                float y = (LIST_TOP + 20 + i * (CHOICE_H + ROW_GAP)) * k;
-                rowRect.set(LIST_X * k, y, LIST_R * k, y + CHOICE_H * k);
-                float f = drawRowBackground(c, i);
-                rowLabel.setColor(blend(inkBase(0xF2), INK, f));
-                rowSub.setColor(blend(inkBase(0x8C), inkBase(0x99), f));
-                c.drawText(options[i][0], rowRect.left + 30 * k, rowRect.top + 44 * k, rowLabel);
-                c.drawText(options[i][1], rowRect.left + 30 * k, rowRect.top + 80 * k, rowSub);
-                if (i == current) {
-                    float cw = Symbols.width(getContext(), "check", 26 * k);
-                    Symbols.draw(getContext(), c, "check", rowRect.right - 30 * k - cw / 2, rowRect.centerY(), 26 * k,
-                            blend(tone(0x991C1C1E, 0xFFFFFFFF), INK, f));
-                }
-            }
-            c.drawText(Ui.tr("Switching takes a few seconds; the screen blinks while it measures."), LIST_X * k + 30 * k,
-                    (LIST_TOP + 20 + 2 * (CHOICE_H + ROW_GAP) + 40) * k, subtitle);
-        }
-
-        /**
-         * The mode switch going on (with what it is doing) and anything that went wrong, at the panel's foot: the
-         * same words the root list used to show under its rows.
-         */
-        private void drawStatus(Canvas c) {
-            boolean working = busy();
-            String busyText = busyText(), error = state.optString("error");
-            if (!working && error.isEmpty()) return;
-            float x = LIST_X * k + 30 * k, foot = (PANEL_BOTTOM - 40) * k;
-            if (working) {
-                String text = busyText.isEmpty() ? Ui.tr("Starting…") : busyText;
-                if (text.equals(Ui.tr("Accept “Allow USB debugging?” on the TV (tick “Always allow”).")))
-                    text = Ui.tr("On the TV: tick “Always allow” and press OK.");
-                float seconds = (SystemClock.uptimeMillis() - startedAt) / 1000f;
-                spinner.setColor(inkBase(0xE6));
-                Ui.spinner(c, x + 10 * k, foot - 10 * k, 12 * k, seconds * 1.3f, spinner);
-                c.drawText(TextUtils.ellipsize(text, new TextPaint(rowValue), 1000 * k, TextUtils.TruncateAt.END).toString(),
-                        x + 36 * k, foot, rowSub);
-                return;
-            }
-            // The whole message, on up to five lines: some say what to do (the Wi-Fi one, #14).
-            int width = Math.round(1040 * k);
-            if (errorLayout == null || !error.equals(errorShown) || errorLayout.getWidth() != width) {
-                errorShown = error;
-                errorLayout = StaticLayout.Builder.obtain(error, 0, error.length(), new TextPaint(warn), width)
-                        .setMaxLines(5).setEllipsize(TextUtils.TruncateAt.END).build();
-            }
-            float last = errorLayout.getLineBaseline(errorLayout.getLineCount() - 1);
+        /** About: what Climin UI is, and the version, with no rows to act on. */
+        private void drawAbout(Canvas c) {
+            drawPaneTitle(c, Ui.tr("About"));
+            float x = LIST_X * k + 30 * k;
+            c.drawText("Climin UI", x, (LIST_TOP + 56) * k, aboutName);
+            c.drawText(Ui.trf("Version {version}", "version", versionNumber(getContext())), x,
+                    (LIST_TOP + 104) * k, subtitle);
+            fill.setColor(tone(0x1F1C1C1E, 0x26FFFFFF));
+            c.drawRect(x, (LIST_TOP + 132) * k, LIST_R * k - 30 * k, (LIST_TOP + 133) * k, fill);
             c.save();
-            c.translate(x, foot - last);
-            errorLayout.draw(c);
+            c.translate(x, (LIST_TOP + 168) * k);
+            aboutLayout.draw(c);
             c.restore();
         }
 
@@ -775,17 +709,15 @@ public class SettingsActivity extends Activity {
             subtitle.setColor(inkBase(0xA6));
             version.setColor(inkBase(0x73));
             brand.setColor(inkBase(0xFF));
+            aboutName.setColor(inkBase(0xFF));
+            aboutPaint.setColor(inkBase(0xA6));
             rowLabel.setColor(inkBase(0xF2));
             rowValue.setColor(inkBase(0xB3));
             rowSub.setColor(inkBase(0x8C));
             railLabel.setColor(inkBase(0xD9));
-            warn.setColor(tone(0xFF9A3B00, AMBER));
             whyPaint.setColor(inkBase(0xA6));
             white.setColor(tone(0xFFFFFFFF, 0xFFF5F5F7));
         }
-
-        /** The mode switch running or an error waiting to be read: they take the panel's foot instead of the hints. */
-        private boolean statusShown() { return busy() || !state.optString("error").isEmpty(); }
 
         // MARK: - The menu on the left
 
@@ -803,13 +735,12 @@ public class SettingsActivity extends Activity {
         private int paneFor(int rail) {
             switch (rail) {
                 case RAIL_GREETINGS: return GREETINGS;
-                case RAIL_HOME_CHOICE: return HOME_CHOICE;
                 case RAIL_SCREENSAVER: return SCREENSAVER;
                 case RAIL_SHELF:
                 case RAIL_TOP: return SHELF_EDIT;
                 case RAIL_REMOTE: return REMOTE_KEYS;
                 case RAIL_POWER: return POWER;
-                case RAIL_TV: return TV_SETTINGS;
+                case RAIL_ABOUT: return ABOUT;
                 default: return HOME_SETTINGS;
             }
         }
@@ -1433,7 +1364,6 @@ public class SettingsActivity extends Activity {
                 }
                 c.drawText(off ? Ui.tr("Unavailable") : place >= 0 ? "#" + (place + 1) : Ui.tr("shelf|Off"), right, base, rowValue);
             }
-            if (statusShown()) return;
             float hy = (PANEL_BOTTOM - 60) * k;
             if (!editingTop && HomeApps.lowRam(getContext())) {
                 c.drawText(Ui.tr("This TV has little memory, so the shelf holds fewer apps."), LIST_X * k + 30 * k, hy, subtitle);
@@ -1499,7 +1429,6 @@ public class SettingsActivity extends Activity {
                             blend(tone(0x991C1C1E, 0xFFFFFFFF), INK, f));
                 }
             }
-            if (statusShown()) return;
             float hy = (PANEL_BOTTOM - 60) * k;
             c.drawText((pickScroll + focus + 1) + " / " + pickLabels.size() + "  ·  " + Ui.tr("OK picks, Back cancels."),
                     LIST_X * k + 30 * k, hy, subtitle);
@@ -1525,7 +1454,6 @@ public class SettingsActivity extends Activity {
                 c.drawText(labels[from + i], rowRect.left + 30 * k, base, rowLabel);
                 c.drawText(values[from + i], rowRect.right - 30 * k, base, rowValue);
             }
-            if (statusShown()) return;   // the switch's progress or an error has the foot
             float hy = (PANEL_BOTTOM - 60) * k;
             // A list longer than the screen says where we are in it, as the app picker does. Photos say where they come
             // from; on the Sleep Timer screen, the timer and Position open a list on OK.
@@ -1554,14 +1482,7 @@ public class SettingsActivity extends Activity {
                 return;
             }
             if (tellWhy()) return;
-            if (screen == HOME_CHOICE) {
-                boolean wantFree = focus == 0;
-                boolean already = wantFree ? freeActive() : HomeMode.ORIGINAL.equals(state.optString("mode", HomeMode.ORIGINAL));
-                if (!already && !busy()) {
-                    HomeMode.request(c, wantFree ? HomeMode.FREE : HomeMode.ORIGINAL);
-                    pendingAt = SystemClock.uptimeMillis();
-                }
-            } else if (screen == PICKER && pickFor == PICK_CITY) {
+            if (screen == PICKER && pickFor == PICK_CITY) {
                 String[] city = cities.get(pickScroll + focus);
                 Prefs.setCity(city[1], city[2], city[3]);
                 HomeData.get(c).settingsChanged();
@@ -1604,9 +1525,6 @@ public class SettingsActivity extends Activity {
             } else if (screen == SCREENSAVER) {
                 pause();
                 activity.showPreview();
-                return;
-            } else if (screen == TV_SETTINGS) {
-                activity.startActivity(new Intent(Settings.ACTION_SETTINGS).addFlags(Intent.FLAG_ACTIVITY_NEW_TASK));
                 return;
             }
             for (Spring s : pop) s.snap(0);

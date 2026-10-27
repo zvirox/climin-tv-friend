@@ -4602,159 +4602,159 @@
     "semantic_hash": ""
   },
   "launcher/app/src/main/assets/i18n/cs.json": {
-    "mtime": 1793034470.740039,
-    "seen": 1793035189.0619247,
-    "ast_hash": "db53854802df050103abbdec263c7246",
+    "mtime": 1793084302.6870992,
+    "seen": 1793085285.8346777,
+    "ast_hash": "6bde3614942c67a922db240f3f5a8697",
     "semantic_hash": ""
   },
   "launcher/app/src/main/assets/i18n/da.json": {
-    "mtime": 1793034470.7403197,
-    "seen": 1793035189.061926,
-    "ast_hash": "053458ec8724e44aeca65d9fab0e3717",
+    "mtime": 1793084302.6877508,
+    "seen": 1793085285.8346794,
+    "ast_hash": "262703f231a994047999cae63b067fd6",
     "semantic_hash": ""
   },
   "launcher/app/src/main/assets/i18n/de.json": {
-    "mtime": 1793034470.740519,
-    "seen": 1793035189.061927,
-    "ast_hash": "8c5adb0f752cf3249eb572902feeb5b2",
+    "mtime": 1793084302.688462,
+    "seen": 1793085285.8346808,
+    "ast_hash": "368b003258c9038d887a91289afca6bb",
     "semantic_hash": ""
   },
   "launcher/app/src/main/assets/i18n/el.json": {
-    "mtime": 1793034470.7407522,
-    "seen": 1793035189.0619285,
-    "ast_hash": "90d87dc9761a1b11fb86ced04e31b8f1",
+    "mtime": 1793084302.6893218,
+    "seen": 1793085285.8346822,
+    "ast_hash": "5c1008e44bf2db0decc4a279f2a3af97",
     "semantic_hash": ""
   },
   "launcher/app/src/main/assets/i18n/en.json": {
-    "mtime": 1793034470.7409987,
-    "seen": 1793035189.0619292,
-    "ast_hash": "184395b1a7da8b0a2c3713ae179cd4ad",
+    "mtime": 1793084302.6903222,
+    "seen": 1793085285.8346832,
+    "ast_hash": "d2c5449434a40d2fc3d4333c80d70b41",
     "semantic_hash": ""
   },
   "launcher/app/src/main/assets/i18n/es.json": {
-    "mtime": 1793034470.741466,
-    "seen": 1793035189.0619302,
-    "ast_hash": "0907f48001609d83b8c3f689a9f2e080",
+    "mtime": 1793084302.6910121,
+    "seen": 1793085285.834684,
+    "ast_hash": "39225fe4970391c31cc278d9eed51444",
     "semantic_hash": ""
   },
   "launcher/app/src/main/assets/i18n/fi.json": {
-    "mtime": 1793034470.7418778,
-    "seen": 1793035189.061931,
-    "ast_hash": "159674e3f7c23923ee4dc1009085ff34",
+    "mtime": 1793084302.6915634,
+    "seen": 1793085285.8346848,
+    "ast_hash": "c1ea0b511e15f57d45c281d30bbba946",
     "semantic_hash": ""
   },
   "launcher/app/src/main/assets/i18n/fr.json": {
-    "mtime": 1793034470.7422981,
-    "seen": 1793035189.0619318,
-    "ast_hash": "3afab3b30c7c4fe8f443f603eb5de3b9",
+    "mtime": 1793084302.6920521,
+    "seen": 1793085285.8346858,
+    "ast_hash": "1d3866892662c9761a105811a20d0792",
     "semantic_hash": ""
   },
   "launcher/app/src/main/assets/i18n/hi.json": {
-    "mtime": 1793034470.742658,
-    "seen": 1793035189.0619326,
-    "ast_hash": "93f2a8d931f912cadec71178d5840b1b",
+    "mtime": 1793084302.6927013,
+    "seen": 1793085285.8346865,
+    "ast_hash": "1e94066520a82e3a78808620d7781b2d",
     "semantic_hash": ""
   },
   "launcher/app/src/main/assets/i18n/id.json": {
-    "mtime": 1793034470.7430441,
-    "seen": 1793035189.0619335,
-    "ast_hash": "48ee8c73026f1ce55570a66638ca6272",
+    "mtime": 1793084302.6932776,
+    "seen": 1793085285.8346875,
+    "ast_hash": "f79ca544d8fc13fd8d559a410f939195",
     "semantic_hash": ""
   },
   "launcher/app/src/main/assets/i18n/it.json": {
-    "mtime": 1793034470.7434084,
-    "seen": 1793035189.0619342,
-    "ast_hash": "d771bcf996030b5104f746485078f37a",
+    "mtime": 1793084302.6937776,
+    "seen": 1793085285.8346882,
+    "ast_hash": "49209bdfe8432aac9870145e07b1b15a",
     "semantic_hash": ""
   },
   "launcher/app/src/main/assets/i18n/ja.json": {
-    "mtime": 1793034470.7437534,
-    "seen": 1793035189.0619352,
-    "ast_hash": "2ea902f824f49ad00013a6c58cb00001",
+    "mtime": 1793084302.6942134,
+    "seen": 1793085285.8346891,
+    "ast_hash": "3efa29d39110d8f07f2e16bf5f8b324f",
     "semantic_hash": ""
   },
   "launcher/app/src/main/assets/i18n/ko.json": {
-    "mtime": 1793034470.7439873,
-    "seen": 1793035189.0619361,
-    "ast_hash": "29a053aedc16e0400302acd66684cb28",
+    "mtime": 1793084302.6946669,
+    "seen": 1793085285.83469,
+    "ast_hash": "d808512ed4b9f90fcce55278836e0214",
     "semantic_hash": ""
   },
   "launcher/app/src/main/assets/i18n/nb.json": {
-    "mtime": 1793034470.74423,
-    "seen": 1793035189.0619369,
-    "ast_hash": "ebfea6dc5a169a17ef1613ddff9aba22",
+    "mtime": 1793084302.6951253,
+    "seen": 1793085285.8346908,
+    "ast_hash": "4708af93b266e8980a569d59132b3354",
     "semantic_hash": ""
   },
   "launcher/app/src/main/assets/i18n/nl.json": {
-    "mtime": 1793034470.744515,
-    "seen": 1793035189.0619378,
-    "ast_hash": "cfe2be6fdb1a633dfc32c473e839d6c0",
+    "mtime": 1793084302.695566,
+    "seen": 1793085285.8346918,
+    "ast_hash": "19be249706c6d829c6c46ee8d179ca7d",
     "semantic_hash": ""
   },
   "launcher/app/src/main/assets/i18n/pl.json": {
-    "mtime": 1793034470.744924,
-    "seen": 1793035189.0619395,
-    "ast_hash": "fa75971c4d2cf26d9631f721a2940163",
+    "mtime": 1793084302.6960692,
+    "seen": 1793085285.8346934,
+    "ast_hash": "326513ee965b0a5b2d1fb08e2e8f0062",
     "semantic_hash": ""
   },
   "launcher/app/src/main/assets/i18n/pt.json": {
-    "mtime": 1793034470.74516,
-    "seen": 1793035189.0619407,
-    "ast_hash": "c85bc85f19ed5806e4fcc83eb3c771ec",
+    "mtime": 1793084302.6965704,
+    "seen": 1793085285.8346944,
+    "ast_hash": "55de948b0877fd039e4e96b3cd5da3bc",
     "semantic_hash": ""
   },
   "launcher/app/src/main/assets/i18n/ro.json": {
-    "mtime": 1793034470.7453897,
-    "seen": 1793035189.0619414,
-    "ast_hash": "3d77c834554bdc077a5d39aff7496b63",
+    "mtime": 1793084302.696987,
+    "seen": 1793085285.834695,
+    "ast_hash": "3cd8da77f9788caab5bac34bf7e108dd",
     "semantic_hash": ""
   },
   "launcher/app/src/main/assets/i18n/ru.json": {
-    "mtime": 1793034470.7455916,
-    "seen": 1793035189.0619423,
-    "ast_hash": "3030a33cdcba90d0436e72c3695ae8e0",
+    "mtime": 1793084302.6974182,
+    "seen": 1793085285.834696,
+    "ast_hash": "7f02be09ba15a91f45f5d0b5c56f5a2b",
     "semantic_hash": ""
   },
   "launcher/app/src/main/assets/i18n/sv.json": {
-    "mtime": 1793034470.7458062,
-    "seen": 1793035189.061943,
-    "ast_hash": "871dbe11aba1b9ee6e1c7591ae9be25f",
+    "mtime": 1793084302.69784,
+    "seen": 1793085285.8346968,
+    "ast_hash": "fca5211a9124cb0e20fecc27950d8daa",
     "semantic_hash": ""
   },
   "launcher/app/src/main/assets/i18n/th.json": {
-    "mtime": 1793034470.7459946,
-    "seen": 1793035189.0619438,
-    "ast_hash": "3dd41351085266b7714ae9caa5dad9c8",
+    "mtime": 1793084302.698246,
+    "seen": 1793085285.8346975,
+    "ast_hash": "c2427f2f54ac1afd57edd1baa3b5c798",
     "semantic_hash": ""
   },
   "launcher/app/src/main/assets/i18n/tr.json": {
-    "mtime": 1793034470.7462363,
-    "seen": 1793035189.0619445,
-    "ast_hash": "8dd7d3cb864a5b2480134ca6cab41c02",
+    "mtime": 1793084302.6987007,
+    "seen": 1793085285.8346984,
+    "ast_hash": "82000f984598b118481d37f1047055fe",
     "semantic_hash": ""
   },
   "launcher/app/src/main/assets/i18n/uk.json": {
-    "mtime": 1793034470.7464275,
-    "seen": 1793035189.0619457,
-    "ast_hash": "78bbcfabb1d3ada30b8e31b6a0faf063",
+    "mtime": 1793084302.6991467,
+    "seen": 1793085285.8346996,
+    "ast_hash": "06206fa988566a614654f04acb09b79b",
     "semantic_hash": ""
   },
   "launcher/app/src/main/assets/i18n/vi.json": {
-    "mtime": 1793034470.7466366,
-    "seen": 1793035189.0619469,
-    "ast_hash": "b4ef6c32c9b5e15d015eed5bc0b619a4",
+    "mtime": 1793084302.6995547,
+    "seen": 1793085285.8347006,
+    "ast_hash": "07f145081cc9ca62dcf5aaa41cc7a35d",
     "semantic_hash": ""
   },
   "launcher/app/src/main/assets/i18n/zh-CN.json": {
-    "mtime": 1793034470.746844,
-    "seen": 1793035189.0619476,
-    "ast_hash": "544f3213a74292e79a9aa966531b27e4",
+    "mtime": 1793084302.6999614,
+    "seen": 1793085285.8347015,
+    "ast_hash": "5df08c9722978266f42b6dace0a78867",
     "semantic_hash": ""
   },
   "launcher/app/src/main/assets/i18n/zh-TW.json": {
-    "mtime": 1793034470.747071,
-    "seen": 1793035189.0619488,
-    "ast_hash": "7159e06cd65f6bb4fb739bd235e2968e",
+    "mtime": 1793084302.7003474,
+    "seen": 1793085285.8347025,
+    "ast_hash": "fef7a673c90a83a9fe361bfae3ec43ac",
     "semantic_hash": ""
   },
   "launcher/app/src/main/assets/zones.json": {
@@ -4938,9 +4938,9 @@
     "semantic_hash": ""
   },
   "launcher/app/src/main/java/io/climintv/home/SettingsActivity.java": {
-    "mtime": 1793081755.6643915,
-    "seen": 1793082206.8340235,
-    "ast_hash": "87f6942836427b73921eee486704e7d2",
+    "mtime": 1793085202.8354769,
+    "seen": 1793085285.834738,
+    "ast_hash": "96e4ffb86389f89fc3fabe4b89d84c49",
     "semantic_hash": ""
   },
   "launcher/app/src/main/java/io/climintv/home/Shaders.java": {
@@ -5262,9 +5262,9 @@
     "semantic_hash": ""
   },
   "UI_MAP.md": {
-    "mtime": 1793082108.0638168,
-    "seen": 1793082206.834071,
-    "ast_hash": "f6b6fd715dc41f2079871beb2d07a8d0",
+    "mtime": 1793085202.834906,
+    "seen": 1793085285.8347864,
+    "ast_hash": "027acd59b8b32bc2d39c804a3dd0dc9b",
     "semantic_hash": ""
   },
   "launcher/app/src/main/assets/symbols/brightness_auto.png": {

@@ -25,7 +25,7 @@ final class Capabilities {
     static String missing(Context c, String need) {
         switch (need) {
             case NEED_ADB:
-                return adb(c) ? null : Ui.tr("Needs Climin UI mode: turn it on in Home Screen.");
+                return adb(c) ? null : Ui.tr("Needs Climin UI mode.");
             case NEED_REMOTE_BUTTONS:
                 return remoteButtons() ? null : Ui.tr("This TV's remote has no app buttons that Climin UI knows.");
             case NEED_OVERLAY:
