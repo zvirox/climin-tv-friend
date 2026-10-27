@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <item name="column_left" type="id" /><item name="column_center" type="id" /><item name="column_right" type="id" />
+    <item name="card_super_featured" type="id" /><item name="img_super_featured_poster" type="id" /><item name="text_super_featured_title" type="id" /><item name="text_super_featured_meta" type="id" /><item name="badge_super_featured_provider" type="id" />
+    <item name="badge_super_mode_center" type="id" /><item name="row_super_center_cards" type="id" />
+    <item name="card_super_center_1" type="id" /><item name="img_super_c1_poster" type="id" /><item name="text_super_c1_title" type="id" /><item name="text_super_c1_meta" type="id" /><item name="badge_super_c1_provider" type="id" />
+    <item name="card_super_center_2" type="id" /><item name="img_super_c2_poster" type="id" /><item name="text_super_c2_title" type="id" /><item name="text_super_c2_meta" type="id" /><item name="badge_super_c2_provider" type="id" />
+    <item name="weather_widget_card" type="id" /><item name="text_weather_temp" type="id" /><item name="text_weather_condition" type="id" /><item name="text_weather_high_low" type="id" />
+    <item name="forecast_chip_1" type="id" /><item name="forecast_chip_2" type="id" /><item name="forecast_chip_3" type="id" /><item name="forecast_chip_4" type="id" /><item name="forecast_chip_5" type="id" /><item name="forecast_chip_6" type="id" /><item name="forecast_chip_7" type="id" />
+    <item name="text_forecast_time_1" type="id" /><item name="text_forecast_time_2" type="id" /><item name="text_forecast_time_3" type="id" /><item name="text_forecast_time_4" type="id" /><item name="text_forecast_time_5" type="id" /><item name="text_forecast_time_6" type="id" /><item name="text_forecast_time_7" type="id" />
+    <item name="ic_forecast_1" type="id" /><item name="ic_forecast_2" type="id" /><item name="ic_forecast_3" type="id" /><item name="ic_forecast_4" type="id" /><item name="ic_forecast_5" type="id" /><item name="ic_forecast_6" type="id" /><item name="ic_forecast_7" type="id" />
+    <item name="text_forecast_temp_1" type="id" /><item name="text_forecast_temp_2" type="id" /><item name="text_forecast_temp_3" type="id" /><item name="text_forecast_temp_4" type="id" /><item name="text_forecast_temp_5" type="id" /><item name="text_forecast_temp_6" type="id" /><item name="text_forecast_temp_7" type="id" />
+    <item name="tile_scrim" type="id" /><item name="badge_provider_pill" type="id" /><item name="text_tile_label" type="id" />
+</resources>

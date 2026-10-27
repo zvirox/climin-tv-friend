@@ -1,5 +1,29 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <color name="home_background">#EBEBF0</color>
+
+    <style name="CliminUI.Home" parent="@android:style/Theme.DeviceDefault.NoActionBar.Fullscreen">
+        <item name="android:windowBackground">@color/home_background</item>
+        <item name="android:windowContentOverlay">@null</item>
+        <item name="android:windowShowWallpaper">false</item>
+        <item name="android:colorBackgroundCacheHint">@null</item>
+    </style>
+
+    <style name="HeaderCircle">
+        <item name="android:layout_width">42dp</item>
+        <item name="android:layout_height">42dp</item>
+        <item name="android:layout_marginStart">7dp</item>
+        <item name="android:background">@drawable/bg_win8_tile_rounded</item>
+        <item name="android:clickable">true</item>
+        <item name="android:focusable">true</item>
+        <item name="android:foreground">?android:attr/selectableItemBackground</item>
+    </style>
+    <style name="HeaderCircleIcon">
+        <item name="android:layout_width">22dp</item>
+        <item name="android:layout_height">22dp</item>
+        <item name="android:layout_gravity">center</item>
+        <item name="android:contentDescription">@null</item>
+    </style>
     <!-- Base Material 3 Expressive TV Theme -->
     <style name="Theme.CliminTv.Expressive" parent="@android:style/Theme.NoTitleBar.Fullscreen">
         <item name="android:windowBackground">@color/m3_surface_container_lowest</item>

@@ -2,68 +2,311 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/m3_dark_bg"
+    android:background="#0A0A0A"
     android:clipChildren="false"
     android:clipToPadding="false"
     android:orientation="horizontal"
-    android:paddingStart="36dp"
+    android:paddingStart="32dp"
     android:paddingTop="20dp"
-    android:paddingEnd="36dp"
+    android:paddingEnd="32dp"
     android:paddingBottom="20dp">
 
-    <!-- LEFT PANEL: Brand, Status & Contextual Information (Apple TV Style) -->
+    <!-- ======================================================== -->
+    <!-- LEFT PANE: BRAND, COLOR PALETTES & SYSTEM STATUS          -->
+    <!-- ======================================================== -->
     <LinearLayout
-        android:layout_width="240dp"
+        android:id="@+id/settings_left_pane"
+        android:layout_width="290dp"
         android:layout_height="match_parent"
         android:gravity="top"
         android:orientation="vertical"
-        android:paddingEnd="24dp">
+        android:paddingEnd="20dp">
 
-        <ImageView
-            android:layout_width="36dp"
-            android:layout_height="36dp"
-            android:contentDescription="@null"
-            android:src="@drawable/ic_settings"
-            android:tint="@color/m3_primary" />
+        <!-- Header -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
 
+            <ImageView
+                android:layout_width="32dp"
+                android:layout_height="32dp"
+                android:contentDescription="@null"
+                android:src="@drawable/ic_settings"
+                android:tint="#E63946" />
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/outfit_bold"
+                    android:text="Settings"
+                    android:textColor="#FFFFFF"
+                    android:textSize="20sp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/outfit_medium"
+                    android:letterSpacing="0.02"
+                    android:text="Climin UI • Win 8.1 Expressive"
+                    android:textColor="#8E8E93"
+                    android:textSize="11sp" />
+            </LinearLayout>
+        </LinearLayout>
+
+        <!-- Section: ACTIVE COLOR PALETTES -->
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="12dp"
+            android:layout_marginTop="14dp"
+            android:layout_marginBottom="6dp"
             android:fontFamily="@font/outfit_bold"
-            android:text="Settings"
-            android:textColor="@color/m3_on_surface"
-            android:textSize="20sp" />
+            android:letterSpacing="0.06"
+            android:text="ACTIVE COLOR PALETTES"
+            android:textColor="#8E8E93"
+            android:textSize="10sp" />
 
-        <TextView
-            android:layout_width="wrap_content"
+        <!-- Palette 1: Crimson Wine Dark -->
+        <LinearLayout
+            android:id="@+id/btn_palette_crimson"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="2dp"
-            android:fontFamily="@font/outfit_medium"
-            android:text="Climin UI"
-            android:textColor="@color/m3_primary"
-            android:textSize="12sp" />
+            android:layout_marginBottom="8dp"
+            android:background="@drawable/bg_win8_tile_rounded"
+            android:clickable="true"
+            android:focusable="true"
+            android:orientation="vertical"
+            android:padding="8dp">
 
-        <TextView
-            android:layout_width="wrap_content"
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/outfit_bold"
+                android:text="Crimson Wine Dark"
+                android:textColor="#FFFFFF"
+                android:textSize="11sp" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="22dp"
+                android:layout_marginTop="5dp"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:background="#000000"
+                    android:gravity="center"
+                    android:text="#000000"
+                    android:textColor="#888888"
+                    android:textSize="7sp" />
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:background="#1F1F1F"
+                    android:gravity="center"
+                    android:text="#1F1F1F"
+                    android:textColor="#AAAAAA"
+                    android:textSize="7sp" />
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:background="#6E6E6E"
+                    android:gravity="center"
+                    android:text="#6E6E6E"
+                    android:textColor="#FFFFFF"
+                    android:textSize="7sp" />
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:background="#6C0010"
+                    android:gravity="center"
+                    android:text="#6C0010"
+                    android:textColor="#FFFFFF"
+                    android:textSize="7sp" />
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:background="#350008"
+                    android:gravity="center"
+                    android:text="#350008"
+                    android:textColor="#FFFFFF"
+                    android:textSize="7sp" />
+            </LinearLayout>
+        </LinearLayout>
+
+        <!-- Palette 2: Cyber Teal & Oxblood -->
+        <LinearLayout
+            android:id="@+id/btn_palette_teal"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:fontFamily="@font/outfit_regular"
-            android:lineSpacingMultiplier="1.2"
-            android:text="Customize your Android TV launcher experience with Material 3 Expressive solid tokens, live seconds clock, TMDB streaming suggestions, and tactile D-pad motion."
-            android:textColor="@color/m3_on_surface_variant"
-            android:textSize="10.5sp" />
+            android:layout_marginBottom="8dp"
+            android:background="@drawable/bg_win8_tile_rounded"
+            android:clickable="true"
+            android:focusable="true"
+            android:orientation="vertical"
+            android:padding="8dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/outfit_bold"
+                android:text="Cyber Teal &amp; Oxblood"
+                android:textColor="#FFFFFF"
+                android:textSize="11sp" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="22dp"
+                android:layout_marginTop="5dp"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:background="#007A7A"
+                    android:gravity="center"
+                    android:text="#007A7A"
+                    android:textColor="#FFFFFF"
+                    android:textSize="7sp" />
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:background="#004040"
+                    android:gravity="center"
+                    android:text="#004040"
+                    android:textColor="#FFFFFF"
+                    android:textSize="7sp" />
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:background="#3D0000"
+                    android:gravity="center"
+                    android:text="#3D0000"
+                    android:textColor="#FFFFFF"
+                    android:textSize="7sp" />
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:background="#7A0000"
+                    android:gravity="center"
+                    android:text="#7A0000"
+                    android:textColor="#FFFFFF"
+                    android:textSize="7sp" />
+            </LinearLayout>
+        </LinearLayout>
+
+        <!-- Palette 3: Honeydew & Prussian Light -->
+        <LinearLayout
+            android:id="@+id/btn_palette_honeydew"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+            android:background="@drawable/bg_win8_tile_rounded"
+            android:clickable="true"
+            android:focusable="true"
+            android:orientation="vertical"
+            android:padding="8dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/outfit_bold"
+                android:text="Honeydew &amp; Prussian Light"
+                android:textColor="#FFFFFF"
+                android:textSize="11sp" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="22dp"
+                android:layout_marginTop="5dp"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:background="#E63946"
+                    android:gravity="center"
+                    android:text="#E63946"
+                    android:textColor="#FFFFFF"
+                    android:textSize="7sp" />
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:background="#F1FAEE"
+                    android:gravity="center"
+                    android:text="#F1FAEE"
+                    android:textColor="#1D3557"
+                    android:textSize="7sp" />
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:background="#A8DADC"
+                    android:gravity="center"
+                    android:text="#A8DADC"
+                    android:textColor="#1D3557"
+                    android:textSize="7sp" />
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:background="#457B9D"
+                    android:gravity="center"
+                    android:text="#457B9D"
+                    android:textColor="#FFFFFF"
+                    android:textSize="7sp" />
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:background="#1D3557"
+                    android:gravity="center"
+                    android:text="#1D3557"
+                    android:textColor="#FFFFFF"
+                    android:textSize="7sp" />
+            </LinearLayout>
+        </LinearLayout>
 
         <View
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight="1" />
 
-        <!-- TV System Info Box -->
+        <!-- SYSTEM STATUS Box -->
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@drawable/bg_m3_pill_chip"
+            android:background="@drawable/bg_win8_tile_rounded"
             android:orientation="vertical"
             android:padding="10dp">
 
@@ -71,477 +314,365 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/outfit_bold"
+                android:letterSpacing="0.04"
                 android:text="SYSTEM STATUS"
-                android:textColor="@color/m3_primary"
+                android:textColor="#8E8E93"
                 android:textSize="9.5sp" />
+
+            <TextView
+                android:id="@+id/text_settings_system_info"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="3dp"
+                android:fontFamily="@font/outfit_regular"
+                android:lineSpacingMultiplier="1.2"
+                android:text="Memory: Lean APK\nSuper Mode: 3D Flip Active\nWeather: Open-Meteo Patan"
+                android:textColor="#CCCCCC"
+                android:textSize="10sp" />
+        </LinearLayout>
+
+        <!-- Back to Home Button -->
+        <LinearLayout
+            android:id="@+id/btn_close_settings"
+            android:layout_width="match_parent"
+            android:layout_height="38dp"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/bg_win8_tile_rounded"
+            android:clickable="true"
+            android:focusable="true"
+            android:gravity="center"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:layout_width="16dp"
+                android:layout_height="16dp"
+                android:contentDescription="@null"
+                android:src="@drawable/ic_input"
+                android:tint="#FFFFFF" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="2dp"
-                android:fontFamily="@font/outfit_regular"
-                android:text="Memory: Lean (245 KB APK)\nTMDB Super Mode: Active\nZero-Key Weather: Open-Meteo"
-                android:textColor="@color/m3_on_surface_variant"
-                android:textSize="10sp" />
+                android:layout_marginStart="8dp"
+                android:fontFamily="@font/outfit_bold"
+                android:text="Back to Home"
+                android:textColor="#FFFFFF"
+                android:textSize="12sp" />
         </LinearLayout>
-
-        <Button
-            android:id="@+id/btn_close_settings"
-            android:layout_width="match_parent"
-            android:layout_height="36dp"
-            android:layout_marginTop="12dp"
-            android:background="@drawable/bg_m3_pill_chip"
-            android:fontFamily="@font/outfit_medium"
-            android:text="Back to Home"
-            android:textColor="@color/m3_on_surface"
-            android:textSize="11.5sp" />
     </LinearLayout>
 
     <View
         android:layout_width="1dp"
         android:layout_height="match_parent"
-        android:background="@color/m3_outline" />
+        android:background="#222222" />
 
-    <!-- RIGHT PANEL: Categorized Preferences List with Custom M3 Switches -->
+    <!-- ======================================================== -->
+    <!-- RIGHT PANE: PREFERENCES CARDS GRID (WINE/DARK BACKGROUND) -->
+    <!-- ======================================================== -->
     <ScrollView
+        android:id="@+id/settings_right_pane"
         android:layout_width="0dp"
         android:layout_height="match_parent"
         android:layout_weight="1"
+        android:background="#200005"
         android:clipChildren="false"
         android:clipToPadding="false"
         android:paddingStart="24dp"
+        android:paddingTop="6dp"
+        android:paddingEnd="16dp"
+        android:paddingBottom="24dp"
         android:scrollbars="vertical">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:paddingBottom="48dp">
+            android:orientation="vertical">
 
-            <!-- 1. DISPLAY & EXPERIENCE -->
+            <!-- 1. START SCREEN & LIVE TILES -->
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/outfit_bold"
                 android:letterSpacing="0.06"
-                android:text="DISPLAY &amp; EXPERIENCE"
-                android:textColor="@color/m3_primary"
+                android:text="START SCREEN &amp; LIVE TILES"
+                android:textColor="#E63946"
                 android:textSize="11sp" />
 
-            <!-- Super Mode Switch Row -->
             <LinearLayout
-                android:id="@+id/row_toggle_home_layout"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
-                android:layout_marginBottom="8dp"
-                android:background="@drawable/bg_m3_pill_chip"
-                android:clickable="true"
-                android:focusable="true"
-                android:gravity="center_vertical"
-                android:orientation="horizontal"
-                android:paddingStart="18dp"
-                android:paddingTop="12dp"
-                android:paddingEnd="18dp"
-                android:paddingBottom="12dp">
+                android:layout_marginBottom="12dp"
+                android:orientation="horizontal">
 
+                <!-- Card 1: Super Mode -->
                 <LinearLayout
+                    android:id="@+id/row_toggle_home_layout"
                     android:layout_width="0dp"
-                    android:layout_height="wrap_content"
+                    android:layout_height="72dp"
+                    android:layout_marginEnd="8dp"
                     android:layout_weight="1"
-                    android:orientation="vertical">
+                    android:background="@drawable/bg_win8_tile_rounded"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal"
+                    android:paddingStart="14dp"
+                    android:paddingEnd="14dp">
 
                     <TextView
                         android:id="@+id/text_home_layout_label"
-                        android:layout_width="wrap_content"
+                        android:layout_width="0dp"
                         android:layout_height="wrap_content"
+                        android:layout_weight="1"
                         android:fontFamily="@font/outfit_medium"
-                        android:text="Super Mode (TMDB Recommendations)"
-                        android:textColor="@color/m3_on_surface"
-                        android:textSize="15sp" />
+                        android:lineSpacingMultiplier="1.1"
+                        android:text="Super Mode (Live Tile\n3D Flip\nRecommendations)"
+                        android:textColor="#FFFFFF"
+                        android:textSize="11sp" />
 
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="2dp"
-                        android:fontFamily="@font/outfit_regular"
-                        android:text="Streaming content suggestions with posters, ratings &amp; providers"
-                        android:textColor="@color/m3_on_surface_variant"
-                        android:textSize="12sp" />
+                    <io.climintv.home.view.M3Switch
+                        android:id="@+id/switch_home_layout"
+                        android:layout_width="58dp"
+                        android:layout_height="28dp" />
                 </LinearLayout>
 
-                <io.climintv.home.view.M3Switch
-                    android:id="@+id/switch_home_layout"
-                    android:layout_width="58dp"
-                    android:layout_height="32dp" />
-            </LinearLayout>
-
-            <!-- Dark Mode Switch Row -->
-            <LinearLayout
-                android:id="@+id/row_toggle_dark_mode"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="8dp"
-                android:background="@drawable/bg_m3_pill_chip"
-                android:clickable="true"
-                android:focusable="true"
-                android:gravity="center_vertical"
-                android:orientation="horizontal"
-                android:paddingStart="18dp"
-                android:paddingTop="12dp"
-                android:paddingEnd="18dp"
-                android:paddingBottom="12dp">
-
+                <!-- Card 2: Dark Mode -->
                 <LinearLayout
+                    android:id="@+id/row_toggle_dark_mode"
                     android:layout_width="0dp"
-                    android:layout_height="wrap_content"
+                    android:layout_height="72dp"
+                    android:layout_marginStart="8dp"
                     android:layout_weight="1"
-                    android:orientation="vertical">
+                    android:background="@drawable/bg_win8_tile_rounded"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal"
+                    android:paddingStart="14dp"
+                    android:paddingEnd="14dp">
 
                     <TextView
-                        android:layout_width="wrap_content"
+                        android:layout_width="0dp"
                         android:layout_height="wrap_content"
+                        android:layout_weight="1"
                         android:fontFamily="@font/outfit_medium"
-                        android:text="Dark Mode (Solid Colors)"
-                        android:textColor="@color/m3_on_surface"
-                        android:textSize="15sp" />
+                        android:lineSpacingMultiplier="1.1"
+                        android:text="Dark Mode\n(Solid Win 8.1 + M3\nTokens)"
+                        android:textColor="#FFFFFF"
+                        android:textSize="11sp" />
 
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="2dp"
-                        android:fontFamily="@font/outfit_regular"
-                        android:text="Switch between Solid Dark (#141218) and Light (#FEF7FF) theme"
-                        android:textColor="@color/m3_on_surface_variant"
-                        android:textSize="12sp" />
+                    <io.climintv.home.view.M3Switch
+                        android:id="@+id/switch_dark_mode"
+                        android:layout_width="58dp"
+                        android:layout_height="28dp" />
                 </LinearLayout>
-
-                <io.climintv.home.view.M3Switch
-                    android:id="@+id/switch_dark_mode"
-                    android:layout_width="58dp"
-                    android:layout_height="32dp" />
             </LinearLayout>
 
-            <!-- Adaptive Colors Switch Row -->
-            <LinearLayout
-                android:id="@+id/row_toggle_adaptive_color"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="8dp"
-                android:background="@drawable/bg_m3_pill_chip"
-                android:clickable="true"
-                android:focusable="true"
-                android:gravity="center_vertical"
-                android:orientation="horizontal"
-                android:paddingStart="18dp"
-                android:paddingTop="12dp"
-                android:paddingEnd="18dp"
-                android:paddingBottom="12dp">
-
-                <LinearLayout
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:orientation="vertical">
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:fontFamily="@font/outfit_medium"
-                        android:text="Adaptive Dynamic Color Engine"
-                        android:textColor="@color/m3_on_surface"
-                        android:textSize="15sp" />
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="2dp"
-                        android:fontFamily="@font/outfit_regular"
-                        android:text="Extract seed color from focused app icon to dynamically tint UI"
-                        android:textColor="@color/m3_on_surface_variant"
-                        android:textSize="12sp" />
-                </LinearLayout>
-
-                <io.climintv.home.view.M3Switch
-                    android:id="@+id/switch_adaptive_color"
-                    android:layout_width="58dp"
-                    android:layout_height="32dp" />
-            </LinearLayout>
-
-            <!-- 2. APP SELECTOR & HOME SHELF -->
+            <!-- 2. THEME & EXPRESSIVE PALETTES -->
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
                 android:fontFamily="@font/outfit_bold"
                 android:letterSpacing="0.06"
-                android:text="APP SELECTOR &amp; HOME SHELF"
-                android:textColor="@color/m3_primary"
+                android:text="THEME &amp; EXPRESSIVE PALETTES"
+                android:textColor="#E63946"
                 android:textSize="11sp" />
 
             <LinearLayout
-                android:id="@+id/row_reorder_info"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
-                android:layout_marginBottom="8dp"
-                android:background="@drawable/bg_m3_pill_chip"
-                android:clickable="true"
-                android:focusable="true"
-                android:gravity="center_vertical"
-                android:orientation="horizontal"
-                android:paddingStart="18dp"
-                android:paddingTop="12dp"
-                android:paddingEnd="18dp"
-                android:paddingBottom="12dp">
+                android:layout_marginBottom="12dp"
+                android:orientation="horizontal">
 
+                <!-- Card 1: Color Palette Preset -->
                 <LinearLayout
+                    android:id="@+id/row_theme_presets"
                     android:layout_width="0dp"
-                    android:layout_height="wrap_content"
+                    android:layout_height="72dp"
+                    android:layout_marginEnd="8dp"
                     android:layout_weight="1"
-                    android:orientation="vertical">
+                    android:background="@drawable/bg_win8_tile_rounded"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal"
+                    android:paddingStart="14dp"
+                    android:paddingEnd="14dp">
 
                     <TextView
-                        android:layout_width="wrap_content"
+                        android:id="@+id/text_palette_preset_summary"
+                        android:layout_width="0dp"
                         android:layout_height="wrap_content"
+                        android:layout_weight="1"
                         android:fontFamily="@font/outfit_medium"
-                        android:text="Reorder Apps on Home Carousel"
-                        android:textColor="@color/m3_on_surface"
-                        android:textSize="15sp" />
+                        android:lineSpacingMultiplier="1.1"
+                        android:text="Color Palette Preset\nCrimson Wine / Cyber Teal /\nHoneydew Light"
+                        android:textColor="#FFFFFF"
+                        android:textSize="11sp" />
 
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="2dp"
-                        android:fontFamily="@font/outfit_regular"
-                        android:text="Hold remote OK button on any card on Home to drag &amp; reorder"
-                        android:textColor="@color/m3_on_surface_variant"
-                        android:textSize="12sp" />
+                    <ImageView
+                        android:layout_width="22dp"
+                        android:layout_height="22dp"
+                        android:contentDescription="@null"
+                        android:src="@drawable/ic_palette"
+                        android:tint="#E63946" />
                 </LinearLayout>
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:background="@drawable/bg_m3_circle_button"
-                    android:fontFamily="@font/outfit_bold"
-                    android:paddingStart="12dp"
-                    android:paddingTop="6dp"
-                    android:paddingEnd="12dp"
-                    android:paddingBottom="6dp"
-                    android:text="HOLD OK"
-                    android:textColor="@color/m3_primary"
-                    android:textSize="11sp" />
-            </LinearLayout>
-
-            <LinearLayout
-                android:id="@+id/row_reset_home_apps"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="8dp"
-                android:background="@drawable/bg_m3_pill_chip"
-                android:clickable="true"
-                android:focusable="true"
-                android:gravity="center_vertical"
-                android:orientation="horizontal"
-                android:paddingStart="18dp"
-                android:paddingTop="12dp"
-                android:paddingEnd="18dp"
-                android:paddingBottom="12dp">
-
+                <!-- Card 2: Adaptive Dynamic Colors -->
                 <LinearLayout
+                    android:id="@+id/row_toggle_adaptive_color"
                     android:layout_width="0dp"
-                    android:layout_height="wrap_content"
+                    android:layout_height="72dp"
+                    android:layout_marginStart="8dp"
                     android:layout_weight="1"
-                    android:orientation="vertical">
+                    android:background="@drawable/bg_win8_tile_rounded"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal"
+                    android:paddingStart="14dp"
+                    android:paddingEnd="14dp">
 
                     <TextView
-                        android:layout_width="wrap_content"
+                        android:layout_width="0dp"
                         android:layout_height="wrap_content"
+                        android:layout_weight="1"
                         android:fontFamily="@font/outfit_medium"
-                        android:text="Reset Home App Selector"
-                        android:textColor="@color/m3_on_surface"
-                        android:textSize="15sp" />
+                        android:lineSpacingMultiplier="1.1"
+                        android:text="Adaptive Dynamic\nColor Engine"
+                        android:textColor="#FFFFFF"
+                        android:textSize="11sp" />
 
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="2dp"
-                        android:fontFamily="@font/outfit_regular"
-                        android:text="Restore default installed streaming apps to carousel"
-                        android:textColor="@color/m3_on_surface_variant"
-                        android:textSize="12sp" />
+                    <io.climintv.home.view.M3Switch
+                        android:id="@+id/switch_adaptive_color"
+                        android:layout_width="58dp"
+                        android:layout_height="28dp" />
                 </LinearLayout>
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:fontFamily="@font/outfit_medium"
-                    android:text="Reset"
-                    android:textColor="@color/m3_primary"
-                    android:textSize="13sp" />
             </LinearLayout>
 
             <!-- 3. CLOCK & WEATHER -->
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
                 android:fontFamily="@font/outfit_bold"
                 android:letterSpacing="0.06"
                 android:text="CLOCK &amp; WEATHER"
-                android:textColor="@color/m3_primary"
+                android:textColor="#E63946"
                 android:textSize="11sp" />
 
             <LinearLayout
-                android:id="@+id/row_toggle_clock"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
                 android:layout_marginBottom="8dp"
-                android:background="@drawable/bg_m3_pill_chip"
-                android:clickable="true"
-                android:focusable="true"
-                android:gravity="center_vertical"
-                android:orientation="horizontal"
-                android:paddingStart="18dp"
-                android:paddingTop="12dp"
-                android:paddingEnd="18dp"
-                android:paddingBottom="12dp">
+                android:orientation="horizontal">
 
+                <!-- Card 1: Reorder / Hold OK info -->
                 <LinearLayout
+                    android:id="@+id/row_reorder_info"
                     android:layout_width="0dp"
-                    android:layout_height="wrap_content"
+                    android:layout_height="68dp"
+                    android:layout_marginEnd="8dp"
                     android:layout_weight="1"
-                    android:orientation="vertical">
+                    android:background="@drawable/bg_win8_tile_rounded"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal"
+                    android:paddingStart="14dp"
+                    android:paddingEnd="14dp">
+
+                    <ImageView
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
+                        android:layout_marginEnd="10dp"
+                        android:contentDescription="@null"
+                        android:src="@drawable/ic_input"
+                        android:tint="#AAAAAA" />
 
                     <TextView
-                        android:layout_width="wrap_content"
+                        android:layout_width="0dp"
                         android:layout_height="wrap_content"
+                        android:layout_weight="1"
                         android:fontFamily="@font/outfit_medium"
-                        android:text="24-Hour Time Format"
-                        android:textColor="@color/m3_on_surface"
-                        android:textSize="15sp" />
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="2dp"
-                        android:fontFamily="@font/outfit_regular"
-                        android:text="Display time as 14:35:10 instead of 2:35:10 PM"
-                        android:textColor="@color/m3_on_surface_variant"
-                        android:textSize="12sp" />
+                        android:lineSpacingMultiplier="1.1"
+                        android:text="Customize &amp; Resize Start\nGrid Tiles (HOLD OK)"
+                        android:textColor="#FFFFFF"
+                        android:textSize="11sp" />
                 </LinearLayout>
 
-                <io.climintv.home.view.M3Switch
-                    android:id="@+id/switch_24h_clock"
-                    android:layout_width="58dp"
-                    android:layout_height="32dp" />
+                <!-- Card 2: 24-Hour Vertical Clock -->
+                <LinearLayout
+                    android:id="@+id/row_toggle_clock"
+                    android:layout_width="0dp"
+                    android:layout_height="68dp"
+                    android:layout_marginStart="8dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/bg_win8_tile_rounded"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal"
+                    android:paddingStart="14dp"
+                    android:paddingEnd="14dp">
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:fontFamily="@font/outfit_medium"
+                        android:lineSpacingMultiplier="1.1"
+                        android:text="24-Hour Vertical Clock\n(No Seconds)"
+                        android:textColor="#FFFFFF"
+                        android:textSize="11sp" />
+
+                    <io.climintv.home.view.M3Switch
+                        android:id="@+id/switch_24h_clock"
+                        android:layout_width="58dp"
+                        android:layout_height="28dp" />
+                </LinearLayout>
             </LinearLayout>
 
+            <!-- Card 3: Weather Unit & City -->
             <LinearLayout
                 android:id="@+id/row_toggle_weather_temp"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="8dp"
-                android:background="@drawable/bg_m3_pill_chip"
+                android:layout_height="52dp"
+                android:layout_marginBottom="16dp"
+                android:background="@drawable/bg_win8_tile_rounded"
                 android:clickable="true"
                 android:focusable="true"
                 android:gravity="center_vertical"
                 android:orientation="horizontal"
-                android:paddingStart="18dp"
-                android:paddingTop="12dp"
-                android:paddingEnd="18dp"
-                android:paddingBottom="12dp">
+                android:paddingStart="14dp"
+                android:paddingEnd="14dp">
 
-                <LinearLayout
+                <TextView
+                    android:id="@+id/text_weather_unit_title"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:orientation="vertical">
-
-                    <TextView
-                        android:id="@+id/text_weather_unit_title"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:fontFamily="@font/outfit_medium"
-                        android:text="Weather Unit: Celsius (°C)"
-                        android:textColor="@color/m3_on_surface"
-                        android:textSize="15sp" />
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="2dp"
-                        android:fontFamily="@font/outfit_regular"
-                        android:text="Switch between Celsius (°C) and Fahrenheit (°F)"
-                        android:textColor="@color/m3_on_surface_variant"
-                        android:textSize="12sp" />
-                </LinearLayout>
+                    android:fontFamily="@font/outfit_medium"
+                    android:text="Weather Unit: Celsius (°C) • Patan"
+                    android:textColor="#FFFFFF"
+                    android:textSize="12sp" />
 
                 <io.climintv.home.view.M3Switch
                     android:id="@+id/switch_weather_temp"
                     android:layout_width="58dp"
-                    android:layout_height="32dp" />
+                    android:layout_height="28dp" />
             </LinearLayout>
 
-            <LinearLayout
-                android:id="@+id/row_weather_city"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="8dp"
-                android:background="@drawable/bg_m3_pill_chip"
-                android:clickable="true"
-                android:focusable="true"
-                android:gravity="center_vertical"
-                android:orientation="horizontal"
-                android:paddingStart="18dp"
-                android:paddingTop="12dp"
-                android:paddingEnd="18dp"
-                android:paddingBottom="12dp">
-
-                <LinearLayout
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:orientation="vertical">
-
-                    <TextView
-                        android:id="@+id/text_city_label"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:fontFamily="@font/outfit_medium"
-                        android:text="Weather City: New York"
-                        android:textColor="@color/m3_on_surface"
-                        android:textSize="15sp" />
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="2dp"
-                        android:fontFamily="@font/outfit_regular"
-                        android:text="Zero-key Open-Meteo accurate geocoding and 6-slot forecast"
-                        android:textColor="@color/m3_on_surface_variant"
-                        android:textSize="12sp" />
-                </LinearLayout>
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:fontFamily="@font/outfit_medium"
-                    android:text="Change"
-                    android:textColor="@color/m3_primary"
-                    android:textSize="13sp" />
-            </LinearLayout>
-
-            <!-- 4. SYSTEM & HARDWARE -->
+            <!-- 4. SYSTEM & SHORTCUTS -->
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
                 android:fontFamily="@font/outfit_bold"
                 android:letterSpacing="0.06"
                 android:text="SYSTEM &amp; CONNECTIVITY"
-                android:textColor="@color/m3_primary"
+                android:textColor="#E63946"
                 android:textSize="11sp" />
 
             <LinearLayout
@@ -553,39 +684,71 @@
                 <Button
                     android:id="@+id/btn_open_system_settings"
                     android:layout_width="0dp"
-                    android:layout_height="44dp"
+                    android:layout_height="40dp"
                     android:layout_marginEnd="6dp"
                     android:layout_weight="1"
-                    android:background="@drawable/bg_m3_pill_chip"
-                    android:fontFamily="@font/outfit_medium"
-                    android:text="Android TV Settings"
-                    android:textColor="@color/m3_on_surface"
-                    android:textSize="12sp" />
+                    android:background="@drawable/bg_win8_tile_rounded"
+                    android:fontFamily="@font/outfit_bold"
+                    android:text="Android TV"
+                    android:textColor="#FFFFFF"
+                    android:textSize="11sp" />
 
                 <Button
                     android:id="@+id/btn_open_wifi_settings"
                     android:layout_width="0dp"
-                    android:layout_height="44dp"
+                    android:layout_height="40dp"
                     android:layout_marginStart="3dp"
                     android:layout_marginEnd="3dp"
                     android:layout_weight="1"
-                    android:background="@drawable/bg_m3_pill_chip"
-                    android:fontFamily="@font/outfit_medium"
-                    android:text="Wi-Fi Settings"
-                    android:textColor="@color/m3_on_surface"
-                    android:textSize="12sp" />
+                    android:background="@drawable/bg_win8_tile_rounded"
+                    android:fontFamily="@font/outfit_bold"
+                    android:text="Wi-Fi"
+                    android:textColor="#FFFFFF"
+                    android:textSize="11sp" />
 
                 <Button
                     android:id="@+id/btn_open_bluetooth_settings"
                     android:layout_width="0dp"
-                    android:layout_height="44dp"
+                    android:layout_height="40dp"
                     android:layout_marginStart="6dp"
                     android:layout_weight="1"
-                    android:background="@drawable/bg_m3_pill_chip"
+                    android:background="@drawable/bg_win8_tile_rounded"
+                    android:fontFamily="@font/outfit_bold"
+                    android:text="Bluetooth"
+                    android:textColor="#FFFFFF"
+                    android:textSize="11sp" />
+            </LinearLayout>
+
+            <!-- Reset Start Screen Order Row -->
+            <LinearLayout
+                android:id="@+id/row_reset_home_apps"
+                android:layout_width="match_parent"
+                android:layout_height="42dp"
+                android:layout_marginTop="12dp"
+                android:background="@drawable/bg_win8_tile_rounded"
+                android:clickable="true"
+                android:focusable="true"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:paddingStart="14dp"
+                android:paddingEnd="14dp">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
                     android:fontFamily="@font/outfit_medium"
-                    android:text="Bluetooth Settings"
-                    android:textColor="@color/m3_on_surface"
-                    android:textSize="12sp" />
+                    android:text="Reset Start Grid Tile Order to Default"
+                    android:textColor="#CCCCCC"
+                    android:textSize="11sp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/outfit_bold"
+                    android:text="Reset"
+                    android:textColor="#E63946"
+                    android:textSize="11.5sp" />
             </LinearLayout>
 
         </LinearLayout>
