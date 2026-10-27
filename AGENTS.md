@@ -1,3 +1,13 @@
+# Project rules — read first
+
+`RULES.md` in the repository root is the binding rule book for this project.
+It freezes the launcher's working behaviour (animations, icons, app cards,
+navigation, launch flows, system integration, settings/state) and allows only
+UI work and new features without explicit per-change approval.
+
+**Before any edit: read `RULES.md`.** If a requested UI change needs a protected
+component, stop and use the approval template in `RULES.md` §4.
+
 ## graphify
 
 This project has a knowledge graph at graphify-out/ with god nodes, community structure, and cross-file relationships.
