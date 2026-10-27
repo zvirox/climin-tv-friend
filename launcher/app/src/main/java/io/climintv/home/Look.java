@@ -28,8 +28,11 @@ final class Look {
 
     /** Cyberpunk: a near-black panel with a glowing cyan hairline. */
     static final Look CYBERPUNK = new Look("cyberpunk", "Cyberpunk", SURFACE_NEON, Palette.cyber());
+    /** Retro UI: flat beige plastic by day, a warm CRT at night. */
+    static final Look RETRO = new Look("retro", "Retro UI", SURFACE_FLAT, Palette.retro());
+
     /** Every look, in the order the Theme pane cycles them. */
-    static final Look[] ALL = {GLASS, MATERIAL, WINUI, CYBERPUNK};
+    static final Look[] ALL = {GLASS, MATERIAL, WINUI, CYBERPUNK, RETRO};
 
     final String key, name;
     /** How this look draws a panel: glass, acrylic, tonal, neon or flat. */

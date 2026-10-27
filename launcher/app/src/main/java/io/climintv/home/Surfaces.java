@@ -35,6 +35,9 @@ final class Surfaces {
             case Look.SURFACE_NEON:
                 neon(c, look.palette, r, radius, look.palette.neutral.at(dark), alpha, dark);
                 return;
+            case Look.SURFACE_FLAT:
+                flat(c, look.palette, r, radius, look.palette.neutral.at(dark), alpha, dark);
+                return;
             default:
                 scene.liquid(c, r, radius, tint, tintAlpha, sheen, refraction, band, specular, alpha);
         }
@@ -58,6 +61,9 @@ final class Surfaces {
                 return;
             case Look.SURFACE_NEON:
                 neon(c, look.palette, r, radius, look.palette.neutral.at(dark), 1, dark);
+                return;
+            case Look.SURFACE_FLAT:
+                flat(c, look.palette, r, radius, look.palette.neutral.at(dark), 1, dark);
                 return;
             default:
                 tonal(c, look.palette, r, radius, look.palette.neutral.at(dark), 1, dark);
@@ -85,6 +91,16 @@ final class Surfaces {
         if (amount <= 0.01f) return;
         Look look = Look.current();
         radius = shape(look, radius);
+        if (look.surface == Look.SURFACE_FLAT) {
+            PAINT.setStyle(Paint.Style.FILL);
+            PAINT.setColor(Ui.alpha(fill, amount));
+            c.drawRect(r, PAINT);
+            PAINT.setStyle(Paint.Style.STROKE);
+            PAINT.setStrokeWidth(2f);
+            PAINT.setColor(Ui.alpha(look.palette.ink.at(dark), amount));
+            c.drawRect(r, PAINT);
+            return;
+        }
         base(c, look, r, radius, amount, dark, false);
         PAINT.setStyle(Paint.Style.FILL);
         PAINT.setColor(Ui.alpha(fill, amount));
@@ -101,6 +117,12 @@ final class Surfaces {
     /** The focused circle (the round top buttons): the same rule as {@link #focus}, round. */
     static void focusCircle(Canvas c, float cx, float cy, float radius, int fill, float amount, float dark) {
         Look look = Look.current();
+        if (look.surface == Look.SURFACE_FLAT) {
+            // Retro has no circles: the button focuses as a square block.
+            RING.set(cx - radius, cy - radius, cx + radius, cy + radius);
+            focus(c, RING, 0, fill, amount, dark);
+            return;
+        }
         if (amount <= 0.01f) return;
         RING.set(cx - radius, cy - radius, cx + radius, cy + radius);
         base(c, look, RING, radius, amount, dark, true);
@@ -159,6 +181,22 @@ final class Surfaces {
         c.drawRoundRect(RING, rr, rr, PAINT);
     }
 
+    /** A flat fill, a 2 px ink border and a hard 4 px offset block, no blur (Retro). */
+    private static void flat(Canvas c, Palette p, RectF r, float radius, int fill, float alpha, float dark) {
+        if (alpha <= 0.004f) return;
+        RING.set(r);
+        RING.offset(4f, 4f);
+        PAINT.setStyle(Paint.Style.FILL);
+        PAINT.setColor(Ui.alpha(p.ink.at(dark), 0.35f * alpha));
+        c.drawRect(RING, PAINT);
+        PAINT.setColor(Ui.alpha(fill, alpha));
+        c.drawRect(r, PAINT);
+        PAINT.setStyle(Paint.Style.STROKE);
+        PAINT.setStrokeWidth(2f);
+        PAINT.setColor(Ui.alpha(p.ink.at(dark), alpha));
+        c.drawRect(r, PAINT);
+    }
+
     /**
      * The corner radius a look draws a shape with: a look may sharpen what the layout asked for, never round it more.
      * Every shadow and rim that follows a panel asks for this, so the depth matches the shape.
@@ -167,7 +205,7 @@ final class Surfaces {
         return shape(Look.current(), radius);
     }
 
-    /** False for Retro (a flat block carries its own hard offset); no look uses that recipe yet. */
+    /** False for Retro: a flat block carries its own hard offset, so the soft shadow is left out. */
     static boolean softShadow() {
         return Look.current().surface != Look.SURFACE_FLAT;
     }
@@ -176,6 +214,7 @@ final class Surfaces {
         switch (look.surface) {
             case Look.SURFACE_ACRYLIC: return Math.min(radius, 8f);
             case Look.SURFACE_NEON: return Math.min(radius, 2f);
+            case Look.SURFACE_FLAT: return 0;
             default: return radius;
         }
     }

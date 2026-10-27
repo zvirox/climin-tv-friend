@@ -397,7 +397,7 @@ panels, a menu on the left and that item's settings on the right.
 ## 7. Cross-cutting tokens
 
 Two axes, never mixed: **Mode** (`Prefs.theme`: automatic / light / dark) picks a column; **Style**
-(`Prefs.look`: glass / material / winui / cyberpunk) picks the palette and surface recipe.
+(`Prefs.look`: glass / material / winui / cyberpunk / retro) picks the palette and surface recipe.
 
 | Concern | Where | Day / Night |
 |---|---|---|
@@ -441,6 +441,17 @@ plus the 12 % accent wash, `#B1CCDA` / `#0D2A35`):
 | `focusInk` on focus block | 5.44:1 | 9.75:1 |
 | accent (ring, coin glyph) on container | 4.11:1 | 12.25:1 |
 | `up` / `down` | 5.54:1 / 4.71:1 | 14.33:1 / 5.21:1 |
+
+Retro UI, contrast on its container `#EADFC8` / `#2B231D` (focus is an inverted block: cream on
+the rust accent by day, dark on the orange at night):
+
+| Pair | Day | Dark |
+|---|---|---|
+| `ink` on container | 9.94:1 | 11.54:1 |
+| `dim` on container | 5.38:1 | 6.41:1 |
+| `focusInk` on the inverted block | 5.63:1 | 7.54:1 |
+| accent on container | 4.56:1 | 6.58:1 |
+| `up` / `down` | 5.60:1 / 6.28:1 | 6.03:1 / 5.45:1 |
 
 ---
 

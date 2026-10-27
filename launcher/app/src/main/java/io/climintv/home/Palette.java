@@ -250,6 +250,49 @@ final class Palette {
         return p;
     }
 
+    /**
+     * Retro UI: 80s beige plastic by day, a warm CRT at night. Flat fills, a hard offset block and a 2 px border
+     * instead of glass: cheap enough for the oldest TV.
+     */
+    static Palette retro() {
+        Palette p = new Palette();
+        p.surface = new Pair(0xFFF2E8D5, 0xFF221B16);
+        p.ink = new Pair(0xFF33302B, 0xFFF0DCC0);
+        p.tab = new Pair(0xFF6B6357, 0xFFB9A488);
+        p.dim = new Pair(0xFF5F574C, 0xFFB9A488);
+        p.faint = new Pair(0xFF857B6C, 0xFF9C8A72);
+        p.faintStale = new Pair(0xFF857B6C, 0xFF9C8A72);
+        p.drawerRow = new Pair(0xFF6B6357, 0xFFB9A488);
+        p.drawerDim = new Pair(0xFF6B6357, 0xFFB9A488);
+        p.drawerFaint = new Pair(0xFF857B6C, 0xFF9C8A72);
+        p.coinGlyph = new Pair(0xFFA8431A, 0xFFFF8A3D);
+        p.quotesCoin = new Pair(0xFF6B6357, 0xFFB9A488);
+        p.mark = new Pair(0xFF33302B, 0xFFF0DCC0);
+        p.inkOpaque = new Pair(0xFF33302B, 0xFFF0DCC0);
+        p.onPhoto = new Pair(0xFF33302B, 0xFFF0DCC0);
+        p.rim = new Pair(0xFF33302B, 0xFFF0DCC0);
+        p.accent = new Pair(0xFFA8431A, 0xFFFF8A3D);
+        p.cardBack = new Pair(0xFFE0D3BC, 0xFF2B231D);
+        p.divider = new Pair(0x2633302B, 0x26F0DCC0);
+        p.up = new Pair(0xFF1F5F58, 0xFF3FB3A6);
+        p.down = new Pair(0xFF8C2F12, 0xFFFF6B3D);
+        p.neutral = new Pair(0xFFEADFC8, 0xFF2B231D);
+        p.platterShadow = new Pair(0x0033302B, 0x00F0DCC0);
+        p.panelShadow = new Pair(0x0033302B, 0x00F0DCC0);
+        p.rowOn = new Pair(0xFF33302B, 0xFFF0DCC0);
+        p.rowOff = new Pair(0xFF6B6357, 0xFFB9A488);
+        p.rowFill = new Pair(0x1433302B, 0x14F0DCC0);
+        p.rowFillAlt = new Pair(0x1F33302B, 0x1FF0DCC0);
+        p.inkBase = new Pair(0x0033302B, 0x00F0DCC0);
+        p.valueInk = new Pair(0x9933302B, 0x99F0DCC0);
+        p.focusBack = new Pair(0xFFA8431A, 0xFFFF8A3D);
+        p.focusBackSoft = new Pair(0xFFA8431A, 0xFFFF8A3D);
+        p.focusBackPanel = new Pair(0xFFA8431A, 0xFFFF8A3D);
+        p.focusInk = new Pair(0xFFFFF6E8, 0xFF2A1206);
+        p.focusInkPanel = new Pair(0xFFFFF6E8, 0xFF2A1206);
+        return p;
+    }
+
     /** The same blend the screens have always used: per channel, rounded, alpha included. */
     static int blend(int a, int b, float f) {
         int aa = a >>> 24, ar = (a >> 16) & 255, ag = (a >> 8) & 255, ab = a & 255;
