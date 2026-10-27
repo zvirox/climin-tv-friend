@@ -4860,9 +4860,9 @@
     "semantic_hash": ""
   },
   "launcher/app/src/main/java/io/climintv/home/HomeView.java": {
-    "mtime": 1793081701.54568,
-    "seen": 1793082206.834009,
-    "ast_hash": "7e215797d49e851bbbc42350c16e0a97",
+    "mtime": 1793097823.6839788,
+    "seen": 1793098391.142682,
+    "ast_hash": "2a790b6045b95d220650f3c36f8e8256",
     "semantic_hash": ""
   },
   "launcher/app/src/main/java/io/climintv/home/ModeJob.java": {
@@ -4890,9 +4890,9 @@
     "semantic_hash": ""
   },
   "launcher/app/src/main/java/io/climintv/home/Prefs.java": {
-    "mtime": 1793081755.6643915,
-    "seen": 1793082206.8340154,
-    "ast_hash": "06dc66badc5edf179a2cbb78dfabaf5f",
+    "mtime": 1793097807.7044547,
+    "seen": 1793098391.1427133,
+    "ast_hash": "8db103d8ef95574beee07baa848bbbb7",
     "semantic_hash": ""
   },
   "launcher/app/src/main/java/io/climintv/home/Recording.java": {
@@ -4938,9 +4938,9 @@
     "semantic_hash": ""
   },
   "launcher/app/src/main/java/io/climintv/home/SettingsActivity.java": {
-    "mtime": 1793090208.2842805,
-    "seen": 1793090336.3778236,
-    "ast_hash": "eae9c822c2323ee5c23323438755f588",
+    "mtime": 1793097845.8299742,
+    "seen": 1793098391.1427374,
+    "ast_hash": "5a1365a1983ea9d363a042ff17f0ea96",
     "semantic_hash": ""
   },
   "launcher/app/src/main/java/io/climintv/home/Shaders.java": {
@@ -5277,6 +5277,24 @@
     "mtime": 1793081664.2168884,
     "seen": 1793082206.8345034,
     "ast_hash": "50fa65f6ba7b9925d2f8683924180565",
+    "semantic_hash": ""
+  },
+  "launcher/app/src/main/java/io/climintv/home/Look.java": {
+    "mtime": 1793097792.4759877,
+    "seen": 1793098391.1426876,
+    "ast_hash": "b2d442d4afd4a74d4f966ba86ba2f51a",
+    "semantic_hash": ""
+  },
+  "launcher/app/src/main/java/io/climintv/home/Palette.java": {
+    "mtime": 1793098233.1948192,
+    "seen": 1793098391.1426985,
+    "ast_hash": "ab3b032c27cb5518e7448f352cda0a6f",
+    "semantic_hash": ""
+  },
+  "launcher/app/src/main/java/io/climintv/home/Surfaces.java": {
+    "mtime": 1793097804.1901174,
+    "seen": 1793098391.1427577,
+    "ast_hash": "160d559cf4eb098a122bdadb4f71a5a2",
     "semantic_hash": ""
   }
 }

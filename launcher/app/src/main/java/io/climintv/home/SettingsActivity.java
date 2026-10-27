@@ -190,8 +190,9 @@ public class SettingsActivity extends Activity {
         private int w, h;
         private float k = 1;
         private boolean night;
-        /** The active look's colors (see Palette): the same values the panels used to hardcode. */
-        private Palette pal = Look.GLASS.palette;
+        /** The look in use and its colors: the same values the panels used to hardcode. */
+        private Look look = Look.current();
+        private Palette pal = look.palette;
         private Bitmap backdrop;    // the home screen's photo, softly blurred behind the glass
         private boolean backdropTried;
         private int[] glassDay, glassNight;   // the same photo as the panels' glass reads it (lightened by day, darker at night)
@@ -292,7 +293,7 @@ public class SettingsActivity extends Activity {
                 case SCREENSAVER:
                     return Ui.tr("Screensaver") + ", " + Ui.tr("Preview");
                 case THEME:
-                    return row == 0 ? Ui.tr("Mode") + ", " + modeName() : Ui.tr("Theme") + ", Glass UI";
+                    return row == 0 ? Ui.tr("Mode") + ", " + modeName() : Ui.tr("Style") + ", " + look.name;
                 case HOME_SETTINGS:
                 case REMOTE_KEYS:
                 case POWER: {
@@ -634,11 +635,11 @@ public class SettingsActivity extends Activity {
             c.drawText(Ui.tr("Coming soon."), LIST_X * k + 30 * k, (LIST_TOP + 64) * k, subtitle);
         }
 
-        /** Theme: the light/night mode (moved out of Home Settings) and the look (Glass UI for now). */
+        /** Theme: the light/night mode (moved out of Home Settings) and the look of the whole launcher. */
         private void drawTheme(Canvas c) {
             drawPaneTitle(c, Ui.tr("Theme"));
-            String[] labels = {Ui.tr("Mode"), Ui.tr("Theme")};
-            String[] values = {modeName(), "Glass UI"};
+            String[] labels = {Ui.tr("Mode"), Ui.tr("Style")};
+            String[] values = {modeName(), look.name};
             for (int i = 0; i < labels.length; i++) {
                 float y = (LIST_TOP + 20 + i * (LIST_ROW_H + LIST_ROW_GAP)) * k;
                 rowRect.set(LIST_X * k, y, LIST_R * k, y + LIST_ROW_H * k);
@@ -650,7 +651,7 @@ public class SettingsActivity extends Activity {
                 c.drawText(values[i], rowRect.right - 30 * k, base, rowValue);
             }
             c.drawText(focus == 0 ? Ui.tr("OK or the arrows change the value.")
-                    : Ui.tr("More themes are coming soon."), LIST_X * k + 30 * k, (PANEL_BOTTOM - 60) * k, subtitle);
+                    : Ui.tr("Applies to the whole launcher."), LIST_X * k + 30 * k, (PANEL_BOTTOM - 60) * k, subtitle);
         }
 
         /** Screensaver: one action, with a chevron. */
@@ -1184,6 +1185,14 @@ public class SettingsActivity extends Activity {
                     Prefs.setTheme(THEMES[(at + dir + THEMES.length) % THEMES.length]);
                     SleepOverlay.update(getContext());   // the pill's glass follows
                     HomeData.get(getContext()).settingsChanged();
+                } else if (Look.ALL.length > 1) {
+                    Look next = Look.ALL[(Look.indexOf(look) + dir + Look.ALL.length) % Look.ALL.length];
+                    Prefs.setLook(next.key);
+                    look = next;
+                    pal = look.palette;
+                    applyTone();
+                    glassFor = -1;      // the panels' glass follows the look
+                    applyGlass();
                 }
                 return;
             }

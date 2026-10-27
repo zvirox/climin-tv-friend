@@ -935,8 +935,18 @@ final class HomeView extends ViewGroup implements Choreographer.FrameCallback, H
 
     // MARK: - Night look
 
+    /** The look changed in the settings (another process): take its colors and repaint. */
+    private void reloadLook() {
+        Look look = Look.current();
+        if (look.palette == pal) return;
+        pal = look.palette;
+        if (lTitle != null) applyTone();   // the paints are made in onSizeChanged, after the first checkNight
+        nightChanged();
+    }
+
     /** Day or night right now (from the sun at your location); `animate`: with the transition. */
     private void checkNight(boolean animate) {
+        reloadLook();
         boolean want = data.isNight(System.currentTimeMillis());
         if (want == nightTarget) return;
         nightTarget = want;

@@ -1,17 +1,17 @@
 # Graph Report - climin-tv-friend  (2026-10-27)
 
 ## Corpus Check
-- 526 files · ~435,277 words
+- 526 files · ~435,680 words
 - Verdict: corpus is large enough that graph structure adds value.
 - Unclassified: 77 file(s) not represented in the graph (top: .xml 67, (none) 3, .ttf 2)
 
 ## Summary
-- 2205 nodes · 5364 edges · 142 communities (84 shown, 58 thin omitted)
-- Extraction: 95% EXTRACTED · 5% INFERRED · 0% AMBIGUOUS · INFERRED: 282 edges (avg confidence: 0.87)
+- 2206 nodes · 5375 edges · 139 communities (84 shown, 55 thin omitted)
+- Extraction: 95% EXTRACTED · 5% INFERRED · 0% AMBIGUOUS · INFERRED: 283 edges (avg confidence: 0.87)
 - Token cost: 0 input · 0 output
 
 ## Graph Freshness
-- Built from commit: `c2720cdc`
+- Built from commit: `d8e999b9`
 - Run `git rev-parse HEAD` and compare to check if the graph is stale.
 - Run `graphify update .` after code changes (no API cost).
 
@@ -33,10 +33,10 @@
 - Prefs
 - HomeMode
 - recovery.py
-- HomeData
 - android.content.Context
 - .SettingsView
 - Super General (CVTE TP.SK708D.PC821, Android 9): notes
+- Pick
 - 6. SETTINGS — Home Settings app (`SettingsActivity`)
 - Recs
 - Spoken.java
@@ -44,8 +44,8 @@
 - with
 - Override
 - SleepOverlay.java
-- .doFrame
-- b64push.py
+- Screensaver
+- flamechart.py
 - argparse
 - HomeActivity
 - Ui
@@ -54,12 +54,12 @@
 - SettingsView
 - SettingsActivity
 - readme_card.py
-- android.view.KeyEvent
+- RemoteKeyService
 - PhotoInbox
 - Scene
-- Climin UI — Screen Map
+- .onSizeChanged
 - TCL 32L5A (Android TV 11)
-- .datePattern
+- HomeData
 - Implementation Plan: Win 8.1 Start Menu + M3 Expressive (climin_tv_win81_m3_expressive_plan.md)
 - AdbDeviceConnection
 - Place
@@ -74,7 +74,7 @@
 - Motorola MT4310 (43", Newsan / Hisense hayward, Android TV 11)
 - TCL G03 / BeyondTV4 (Google TV 11): 43C645, 50C635, 60C635
 - TCL 65" C7L Google TV
-- .update
+- Recording
 - Climin TV Friend: Android TV Debloater & Climin UI Launcher
 - TODO: Win 8.1 Start Menu + M3 Expressive completion
 - Palette
@@ -85,7 +85,6 @@
 - Sber Salute TV 43" (StarOS on Android 13)
 - XGIMI MoGo 4 (Google TV 14 portable projector)
 - .onStartJob
-- .onSizeChanged
 - README.md
 - Climin TV Friend: AI Agent Prompting Directives & System Prompts
 - BenQ GV32 (Google TV 14 portable projector)
@@ -114,7 +113,6 @@
 - TCL 55C745 (2023, Google TV, Android 14)
 - TCL Smart TV Pro (G08, Android 12), Australian firmware
 - disable.sh
-- Override
 - TCL C7K (G08, Google TV, Android 14), UK and EU firmware
 - TCL 75C845X2 (UK/Europe), Google TV 14
 - Vu VIBE TV
@@ -135,15 +133,13 @@
 - copilot-instructions.md
 - Climin TV Friend: Systems & Software Architecture
 - TiVo Stream 4K
-- .HomeView
-- Capabilities
+- android.content.Context
 - AppLog
-- android.graphics.Paint
 - Frost
 
 ## God Nodes (most connected - your core abstractions)
-1. `HomeView` - 180 edges
-2. `SettingsView` - 100 edges
+1. `HomeView` - 181 edges
+2. `SettingsView` - 101 edges
 3. `HomeApps` - 70 edges
 4. `Recs` - 59 edges
 5. `HomeMode` - 53 edges
@@ -168,11 +164,11 @@
 ## Import Cycles
 - None detected.
 
-## Communities (142 total, 58 thin omitted)
+## Communities (139 total, 55 thin omitted)
 
 ### Community 0 - "trace_report.py"
-Cohesion: 0.07
-Nodes (33): colour(), draw(), highlighted(), lane_height(), lanes(), main(), median_run(), parse() (+25 more)
+Cohesion: 0.09
+Nodes (27): lanes(), main(), median_run(), window(), compare(), expand(), fmt(), _has_outlier() (+19 more)
 
 ### Community 1 - "bench.py"
 Cohesion: 0.06
@@ -192,7 +188,7 @@ Nodes (11): _field(), main(), other_app(), parse(), perfetto_config(), record_on
 
 ### Community 5 - "HomeApps"
 Cohesion: 0.05
-Nodes (11): Backdrop, HomeApps, Item, Snapshot, 3. HOME.DRAWER — open with ↓ from the shelf, Drawer navigation (frozen), HOME.BUTTONS — round glass buttons (top right), HOME.DRAWER.INPUTS — TV inputs (first group) (+3 more)
+Nodes (11): Backdrop, HomeApps, Item, RemoteKeys, 3. HOME.DRAWER — open with ↓ from the shelf, Drawer navigation (frozen), HOME.BUTTONS — round glass buttons (top right), HOME.DRAWER.INPUTS — TV inputs (first group) (+3 more)
 
 ### Community 6 - "race_calendar.py"
 Cohesion: 0.31
@@ -214,13 +210,21 @@ Nodes (11): main(), split_host_port(), generate_rsa_keypair(), get_default_key_p
 Cohesion: 0.14
 Nodes (10): check_arity(), connect(), get_signer(), keyevent(), main(), restrict(), screenshot(), screenshot_args() (+2 more)
 
+### Community 11 - "HomeView"
+Cohesion: 0.06
+Nodes (5): Hero, HomeView, Layer, Snapshot, Spring
+
 ### Community 12 - "android.graphics.Canvas"
-Cohesion: 0.14
-Nodes (4): Surfaces, 8. Where to change what (open surfaces), HOME.DRAWER.WEATHER — big horizontal card, HOME.SHELF — app canvas
+Cohesion: 0.12
+Nodes (6): Shadows, Surfaces, 7. Cross-cutting tokens, 8. Where to change what (open surfaces), HOME.DRAWER.WEATHER — big horizontal card, HOME.SHELF — app canvas
 
 ### Community 13 - "Windows 8.1 + Material 3 Expressive Home Redesign"
 Cohesion: 0.17
 Nodes (11): Assumptions and non-functional requirements, Decision log, Design contract, Home, Implementation slices, Remote interaction and motion, Risks, Settings and palette behavior (+3 more)
+
+### Community 14 - "Prefs"
+Cohesion: 0.11
+Nodes (3): Prefs, HOME.SLEEPTIMER — "Off in 45 min" chip, SETTINGS.THEME — mode and look
 
 ### Community 18 - "recovery.py"
 Cohesion: 0.10
@@ -228,19 +232,15 @@ Nodes (25): asks_for_input_hardware(), expected_launcher(), fix(), handler_apps(
 
 ### Community 20 - "android.content.Context"
 Cohesion: 0.12
-Nodes (4): HomeReceiver, SleepTimer, android.content.BroadcastReceiver, Watchdog
+Nodes (3): SleepTimer, android.content.BroadcastReceiver, Watchdog
 
 ### Community 22 - "Super General (CVTE TP.SK708D.PC821, Android 9): notes"
 Cohesion: 0.06
 Nodes (26): Philips 50PUS8505: single-session TPM191E notes, Philips 55OLED854/12: single-session notes, What was checked, Examples, Home handover, Remote buttons after Google TV Home, RockTek GB1, Verification still needed before submitting upstream (+18 more)
 
 ### Community 25 - "6. SETTINGS — Home Settings app (`SettingsActivity`)"
-Cohesion: 0.14
-Nodes (13): 6. SETTINGS — Home Settings app (`SettingsActivity`), SETTINGS.ABOUT — about Climin UI, SETTINGS.BACKDROP — behind the panels, SETTINGS.GREETINGS — placeholder, SETTINGS.HOME_SETTINGS — Home Settings panel, SETTINGS.PANE — shared layout, SETTINGS.PICKER — long-list panel, SETTINGS.POWER — Sleep Timer (+5 more)
-
-### Community 26 - "Recs"
-Cohesion: 0.07
-Nodes (5): Listener, Pick, Recs, Screensaver, ScreensaverAlone
+Cohesion: 0.17
+Nodes (12): 6. SETTINGS — Home Settings app (`SettingsActivity`), SETTINGS.ABOUT — about Climin UI, SETTINGS.BACKDROP — behind the panels, SETTINGS.GREETINGS — placeholder, SETTINGS.HOME_SETTINGS — Home Settings panel, SETTINGS.PANE — shared layout, SETTINGS.PICKER — long-list panel, SETTINGS.POWER — Sleep Timer (+4 more)
 
 ### Community 28 - "TCL Q7C (G08, Google TV, Android 14), European firmware"
 Cohesion: 0.07
@@ -250,21 +250,21 @@ Nodes (28): Additional G08 AU02 unit: native shortcuts and held-volume repeat, A
 Cohesion: 0.07
 Nodes (27): name, runs-on, steps, GITHUB_TOKEN, jobs, build-and-release, name, permissions (+19 more)
 
-### Community 31 - "Override"
-Cohesion: 0.11
-Nodes (3): Node, Pic, Recording
+### Community 33 - "Screensaver"
+Cohesion: 0.16
+Nodes (3): Listener, Screensaver, ScreensaverAlone
 
-### Community 34 - "b64push.py"
-Cohesion: 0.39
-Nodes (3): main(), q(), safe_remote()
+### Community 34 - "flamechart.py"
+Cohesion: 0.13
+Nodes (9): main(), q(), safe_remote(), colour(), draw(), highlighted(), lane_height(), parse() (+1 more)
 
 ### Community 35 - "argparse"
 Cohesion: 0.14
 Nodes (10): main(), pipe(), serve(), box(), compare(), _compare(), main(), pair() (+2 more)
 
 ### Community 36 - "HomeActivity"
-Cohesion: 0.19
-Nodes (3): Click, FireHomeActivity, HomeActivity
+Cohesion: 0.13
+Nodes (4): Click, FireHomeActivity, HomeActivity, Listener
 
 ### Community 39 - "privacy.py"
 Cohesion: 0.18
@@ -274,9 +274,9 @@ Nodes (13): audit(), classify(), connect(), list_lines(), main(), print_report()
 Cohesion: 0.12
 Nodes (3): font_and_out(), font_and_out(), font_and_out()
 
-### Community 51 - "Climin UI — Screen Map"
-Cohesion: 0.17
-Nodes (11): 10. Amending this map, 1. State matrix — what is on canvas, 2. HOME — base screen (drawer closed), 4. SHEET — "All Apps" overlay, 5. HOME.TOAST — notification pill, 9. Re-verifying on the TV, Climin UI — Screen Map, HOME.FALLBACK — no TMDB key (+3 more)
+### Community 51 - ".onSizeChanged"
+Cohesion: 0.11
+Nodes (13): 0. Coordinate system, 10. Amending this map, 1. State matrix — what is on canvas, 2. HOME — base screen (drawer closed), 4. SHEET — "All Apps" overlay, 5. HOME.TOAST — notification pill, 9. Re-verifying on the TV, Climin UI — Screen Map (+5 more)
 
 ### Community 52 - "TCL 32L5A (Android TV 11)"
 Cohesion: 0.14
@@ -287,7 +287,7 @@ Cohesion: 0.14
 Nodes (13): Already done (verified in working tree), Architecture Decisions, Checkpoint: acceptance checklist §6 walk-through + build, Checkpoint: build passes, logic reviewed, Gaps to close, Implementation Plan: Win 8.1 Start Menu + M3 Expressive (climin_tv_win81_m3_expressive_plan.md), Open Questions, Overview (+5 more)
 
 ### Community 58 - "Adb"
-Cohesion: 0.15
+Cohesion: 0.14
 Nodes (3): Adb, Approval, Message
 
 ### Community 59 - "Features & Highlights"
@@ -307,8 +307,8 @@ Cohesion: 0.18
 Nodes (10): 1. Prime directive, 2. Scope of a change, 3. Protected core (do not modify without approval), 4. Approval protocol, 5. Anti-drift rules, 6. Standard workflow for every change, 7. Definition of done (UI / feature work), 8. Rollback (+2 more)
 
 ### Community 63 - ".drawContent"
-Cohesion: 0.11
-Nodes (4): Glyphs, Weather, Quotes, Symbols
+Cohesion: 0.13
+Nodes (3): Glyphs, Quotes, Symbols
 
 ### Community 64 - "Anker Nebula D2426 (Android TV 14): debloated, with an Apple TV style home"
 Cohesion: 0.20
@@ -339,7 +339,7 @@ Cohesion: 0.20
 Nodes (9): Checkpoint, Final checkpoint, Follow-up 2: equal gaps all sides + flashing fix (user request), Follow-up: 4-row grid + reference spacing (user request), Parking lot (not required by plan §6), Phase 1: Grid engine & models, Phase 2: Rendering, Phase 3: Wiring & layout (+1 more)
 
 ### Community 72 - "Palette"
-Cohesion: 0.19
+Cohesion: 0.21
 Nodes (3): Look, Pair, Palette
 
 ### Community 73 - "Anker Nebula Mars 3 Air (Google TV 14): debloated, with an Apple TV style home"
@@ -366,10 +366,6 @@ Nodes (8): App "rotation": why apps vanish on their own, Install, Launcher notes
 Cohesion: 0.22
 Nodes (8): Inputs and hardware, Install, Notes on `config.json`, Remote buttons, The helper costs volume-key auto-repeat, The stock launcher does not stay disabled, Turning ADB on, XGIMI MoGo 4 (Google TV 14 portable projector)
 
-### Community 80 - ".onSizeChanged"
-Cohesion: 0.22
-Nodes (3): 0. Coordinate system, HOME.CARDS — the three recommendation cards, Layer stack (z-order, bottom → top)
-
 ### Community 81 - "README.md"
 Cohesion: 0.15
 Nodes (9): 1. Near-Term Goals (v1.3.0), 2. Mid-Term Goals (v1.4.0 - v1.5.0), 3. Long-Term Architectural Goals, Climin TV Friend: Product Roadmap & Future Milestones, 1. Quick Test Matrix, 2. Remote Navigation Keycode Automated Test Script, 3. Visual Quality & Screenshot Verification, 4. Debloater Safety Verification (+1 more)
@@ -395,8 +391,8 @@ Cohesion: 0.39
 Nodes (7): ANDROID_HOME, MSYS_NO_PATHCONV, PATH, query_home(), rollback_home(), build-and-install.sh script, enable_service()
 
 ### Community 87 - "DreamView"
-Cohesion: 0.14
-Nodes (3): DreamView, Glass, Slide
+Cohesion: 0.13
+Nodes (4): DreamView, Glass, Slide, Weather
 
 ### Community 88 - "Acer AR55AR2851UDPRO 55" (Android TV 14): debloated, with the launcher on the Home button"
 Cohesion: 0.29
@@ -508,23 +504,23 @@ Nodes (7): Current task state, Apply, The launcher, TiVo Stream 4K, Undo, Why `t
 
 ## Knowledge Gaps
 - **15 isolated node(s):** `JAVA_HOME`, `ANDROID_HOME`, `PATH`, `MSYS_NO_PATHCONV`, `ANDROID_HOME` (+10 more)
-  These have ≤1 connection - possible missing edges or undocumented components. (Counts symbols only; 741 node(s) total have ≤1 connection when file, concept and rationale nodes are included.)
-- **58 thin communities (<3 nodes) omitted from report** — run `graphify query` to explore isolated nodes.
+  These have ≤1 connection - possible missing edges or undocumented components. (Counts symbols only; 740 node(s) total have ≤1 connection when file, concept and rationale nodes are included.)
+- **55 thin communities (<3 nodes) omitted from report** — run `graphify query` to explore isolated nodes.
 
 ## Suggested Questions
 _Questions this graph is uniquely positioned to answer:_
 
-- **Why does `tv()` connect `sys` to `HomeApps`?**
+- **Why does `HOME.BUTTONS — round glass buttons (top right)` connect `HomeApps` to `sys`, `android.graphics.Canvas`, `SettingsActivity`, `Prefs`, `.onSizeChanged`?**
   _High betweenness centrality (0.158) - this node is a cross-community bridge._
 - **What connects `JAVA_HOME`, `ANDROID_HOME`, `PATH` to the rest of the system?**
   _15 weakly-connected nodes found - possible documentation gaps or missing edges._
 - **Should `trace_report.py` be split into smaller, more focused modules?**
-  _Cohesion score 0.06654567453115548 - nodes in this community are weakly interconnected._
-- **Why does `HOME.BUTTONS — round glass buttons (top right)` connect `HomeApps` to `sys`, `android.graphics.Canvas`, `SettingsActivity`, `Prefs`, `.onSizeChanged`, `Climin UI — Screen Map`?**
+  _Cohesion score 0.08985200845665962 - nodes in this community are weakly interconnected._
+- **Why does `tv()` connect `sys` to `HomeApps`?**
   _High betweenness centrality (0.158) - this node is a cross-community bridge._
 - **Should `bench.py` be split into smaller, more focused modules?**
   _Cohesion score 0.05584415584415584 - nodes in this community are weakly interconnected._
-- **Why does `HomeView` connect `HomeView` to `HomeApps`, `.HomeView`, `android.graphics.Paint`, `android.graphics.Canvas`, `Prefs`, `Recs.java`, `HomeData`, `.move`, `HomeView.java`, `Recs`, `Spoken.java`, `HomeApps.java`, `SleepOverlay.java`, `.doFrame`, `HomeActivity`, `Ui`, `.retarget`, `.nightChanged`, `SettingsView`, `Ui.java`, `Scene`, `.activate`, `.drawContent`, `.update`, `Palette`, `.onSizeChanged`?**
-  _High betweenness centrality (0.154) - this node is a cross-community bridge._
+- **Why does `HomeView` connect `HomeView` to `HomeApps`, `android.graphics.Canvas`, `Prefs`, `Recs.java`, `Pick`, `HomeView.java`, `Recs`, `Spoken.java`, `HomeApps.java`, `SleepOverlay.java`, `HomeActivity`, `Ui`, `.nightChanged`, `Scene`, `.retarget`, `.onSizeChanged`, `HomeData`, `.drawContent`, `Palette`, `DreamView`?**
+  _High betweenness centrality (0.157) - this node is a cross-community bridge._
 - **Should `scenes_wallpapers.py` be split into smaller, more focused modules?**
   _Cohesion score 0.09796806966618288 - nodes in this community are weakly interconnected._

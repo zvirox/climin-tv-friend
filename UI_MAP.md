@@ -352,8 +352,9 @@ panels, a menu on the left and that item's settings on the right.
 - **Mode** (row 0): the light/night mode moved out of Home Settings — Automatic, Light, Dark; ← → or
   OK cycles it (`Prefs.theme`, the same value the home screen's Theme button uses). Footer "OK or the
   arrows change the value."
-- **Theme** (row 1): value "Glass UI", the only look for now; OK/← → do nothing. Footer says
-  "More themes are coming soon."
+- **Style** (row 1): the look of the whole launcher — Glass UI, Material 3, Win UI, Cyberpunk, Retro
+  UI (`Prefs.look`, default `glass`); ← → or OK cycles it and the screen changes live. Footer
+  "Applies to the whole launcher." Look names are brand names and are not translated.
 
 ### SETTINGS.ABOUT — about Climin UI
 - Heading "About"; wordmark "Climin UI" 46 px at `LIST_TOP + 56` (292), "Version 0.0.1" 23 px at
