@@ -1,7 +1,7 @@
 package io.climintv.home;
 
 /**
- * A look: its colors, the recipe its surfaces are drawn with, and the shape and type it uses. The Mode (automatic,
+ * A look: its colors, the recipe its surfaces are drawn with, and the shape it uses. The Mode (automatic,
  * light, dark) picks which column of the palette is used. A look never has its own motion, geometry, icons or
  * navigation — those are the same for every look.
  */

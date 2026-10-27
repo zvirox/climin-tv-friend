@@ -1,4 +1,7 @@
 # Climin TV Friend: AI Agent Prompting Directives & System Prompts
+<!-- Historical design brief. It records the plan the launcher was built from, not the shipped
+     architecture: several internals named here (FocusAnimator, M3Switch, TvScrollView,
+     HomeKeyService) were never implemented. docs/architecture.md is authoritative. -->
 
 This document serves as the master engineering prompt specification for AI agents, developers, and autonomous assistants contributing to the **Climin TV Friend** repository (`climin-tv-friend`) and its native Android TV launcher, **Climin UI** (`io.climintv.home`).
 

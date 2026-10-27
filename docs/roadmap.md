@@ -4,24 +4,26 @@ This document tracks upcoming features, engineering milestones, and optimization
 
 ---
 
-## 1. Near-Term Goals (v1.3.0)
+## 1. Near-Term Goals
 
-- [ ] **Multi-Category Super Mode Tabs**:
-  - Add sub-category chips (Trending, Movies, TV Shows, Anime, Documentaries) with fast D-pad tab switching.
-  - User-configurable TMDB genres in Settings.
+- [ ] **More For You tabs**:
+  - The row already has Explore / Movies / Shows; add genre chips (Anime, Documentaries, …) and let
+    the genres be chosen in Settings instead of being fixed in `Recs`.
 - [ ] **Per-App Custom Banner Art**:
   - Allow users to override low-res or portrait banners for sideloaded mobile APKs using local storage images or custom TMDB/TVDB banner URLs.
 - [ ] **HDMI Input Renaming & Custom Icons**:
   - Allow renaming "HDMI 1" to "PlayStation 5", "HDMI 2" to "Apple TV", "HDMI 3" to "Nintendo Switch", etc.
-- [ ] **Screensaver / Ambient Mode**:
-  - Material 3 ambient clock screensaver with uncompressed 4K photography backgrounds (`ClockDream.java`).
+- [ ] **Ambient Mode beyond the screensaver**:
+  - Let the screensaver stay up as an ambient display (dimmed clock and photos) instead of exiting on
+    the first key, where the TV's dream settings allow it.
 
 ---
 
-## 2. Mid-Term Goals (v1.4.0 - v1.5.0)
+## 2. Mid-Term Goals
 
-- [ ] **Adaptive Audio Feedback**:
-  - Subtle TV sound effects for D-pad navigation clicks, card focus spring pops, and reorder drop feedback (toggleable in Settings).
+- [x] **Audio Feedback** — shipped: focus and open clicks, synthesized at runtime (`Click`), toggleable
+  in Settings › Home Settings › Navigation sounds.
+- [ ] **More sound choices**: a second click set, and a distinct sound for reorder drop.
 - [ ] **Parental Control / App Lock**:
   - Numeric PIN lock for selected apps or Settings access.
 - [ ] **Integrated System Performance Monitor**:

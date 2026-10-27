@@ -401,7 +401,7 @@ Two axes, never mixed: **Mode** (`Prefs.theme`: automatic / light / dark) picks 
 
 | Concern | Where | Day / Night |
 |---|---|---|
-| Palette | `Palette.java`: 30 slots (`ink`, `dim`, `surface`, `rowFill`, `focusBack`…), one `Pair` per slot | `Pair.at(night)` blends the two columns |
+| Palette | `Palette.java`: 31 slots (`ink`, `dim`, `surface`, `rowFill`, `focusBack`, `pill`…), one `Pair` per slot | `Pair.at(night)` blends the two columns |
 | Styles | `Look.java`: key, brand name, surface kind, palette; `ALL` is the cycle order | Glass UI is the default |
 | Surfaces | `Surfaces.java`: `panel()` (platter, rail, pane, round buttons), `card()` (drawer, quotes, weather), `toast()`, `focus()`/`focusCircle()`, `shape()`/`softShadow()` for the shadows and rims that follow a panel | `SURFACE_GLASS` replays `Scene.liquid`/`Scene.glass` verbatim; `SURFACE_TONAL` is an opaque fill + 1 px outline; `SURFACE_ACRYLIC` one frosted layer; `SURFACE_NEON` a near-black fill + glow stroke; `SURFACE_FLAT` a solid fill + 2 px border + hard offset block |
 | Ink | `pal.ink`, `pal.dim`, `pal.faint` | previously `L_INK` / `WHITE`, `L_DIM`, `L_FAINT` |
