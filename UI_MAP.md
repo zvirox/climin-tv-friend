@@ -306,7 +306,7 @@ panels, a menu on the left and that item's settings on the right.
 
 | Region | Box | Contents |
 |---|---|---|
-| `SETTINGS.RAIL` | x **80 → 560**, y **120 → 960**, radius 30 | wordmark + version, then the eight menu rows |
+| `SETTINGS.RAIL` | x **80 → 560**, y **120 → 960**, radius 30 | wordmark + version, then the nine menu rows |
 | `SETTINGS.PANE` | x **600 → 1840**, y **120 → 960**, radius 30 | heading, that screen's rows, hints at the foot |
 
 - Panels: `scene.liquid(...)` white glass (day) / `SMOKE` (night), 26–30 px band, shadow 16 px below;
@@ -315,16 +315,16 @@ panels, a menu on the left and that item's settings on the right.
   → / OK enter the panel; Back in the panel returns to the menu; Back on the menu leaves the app.
   Inside a panel ← → keep their old meaning (adjust value / reorder); a panel with no adjustment uses
   ← to return to the menu.
-- TalkBack ids: 1–8 the menu, 9+ the panel's visible rows. A panel the TV can't use exposes no rows.
+- TalkBack ids: 1–9 the menu, 10+ the panel's visible rows. A panel the TV can't use exposes no rows.
 
 ### SETTINGS.RAIL — the menu
 - Wordmark "Climin UI" 28 px baseline **178** at x **128**; the number alone (`v0.0.1`) right-aligned
   at **536**; hairline at **202**.
 - Rows: top **252**, height **68**, gap **4** (pitch 72), full width 104 → 536; label 28 px at x 128.
-- Order: Home Settings, Greetings, Screensaver, Shelf, Top Buttons, Remote Buttons, Sleep Timer,
-  About. Unavailable items (Remote Buttons, Sleep Timer) stay listed at 45 % and their panel shows
-  the reason in words instead of rows. "Home Screen" (the Climin UI / Original switch) and
-  "TV Settings" are not in the menu: the mode choice is gone, and TV Settings is a home button.
+- Order: Home Settings, Greetings, Theme, Screensaver, Shelf, Top Buttons, Remote Buttons,
+  Sleep Timer, About. Unavailable items (Remote Buttons, Sleep Timer) stay listed at 45 % and their
+  panel shows the reason in words instead of rows. "Home Screen" (the Climin UI / Original switch)
+  and "TV Settings" are not in the menu: the mode choice is gone, and TV Settings is a home button.
 - Focused row: white pill (scale 1.02, 8 px lift, 16 px radius) with a 28 % / 34 % shadow; the label
   turns ink. With the focus in the panel, the chosen menu row is a faint fill (`0x14` ink by day,
   `0x2E` white at night).
@@ -337,14 +337,23 @@ panels, a menu on the left and that item's settings on the right.
 - Hints sit at the panel's foot, baseline **900** (`PANEL_BOTTOM − 60`).
 
 ### SETTINGS.HOME_SETTINGS — Home Settings panel
-- Rows (**8 visible**, `SETTINGS_VISIBLE`): Language, Temperature, Theme, My Photos, Navigation sounds,
+- Rows (**8 visible**, `SETTINGS_VISIBLE`): Language, Temperature, My Photos, Navigation sounds,
   Weather widget, City, Forecast, Quotes widget, Bitcoin, Ethereum, Solana, Dollar (BRL only) — the
   list scrolls, footer "n / total · OK or the arrows change the value."
 - Locked rows render "Unavailable" at 35 % opacity. **Frozen:** row set/order, semantics, persistence.
+  Theme moved to `SETTINGS.THEME`.
 
 ### SETTINGS.GREETINGS — placeholder
 - Heading "Greetings", one line "Coming soon." at `LIST_TOP + 64`; no rows (the menu can't enter it).
   Reserved for the greetings feature.
+
+### SETTINGS.THEME — mode and look
+- Heading "Theme"; two rows at the shared 64/6 pitch.
+- **Mode** (row 0): the light/night mode moved out of Home Settings — Automatic, Light, Dark; ← → or
+  OK cycles it (`Prefs.theme`, the same value the home screen's Theme button uses). Footer "OK or the
+  arrows change the value."
+- **Theme** (row 1): value "Glass UI", the only look for now; OK/← → do nothing. Footer says
+  "More themes are coming soon."
 
 ### SETTINGS.ABOUT — about Climin UI
 - Heading "About"; wordmark "Climin UI" 46 px at `LIST_TOP + 56` (292), "Version 0.0.1" 23 px at

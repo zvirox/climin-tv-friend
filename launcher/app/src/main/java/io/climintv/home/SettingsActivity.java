@@ -44,7 +44,8 @@ import java.util.Set;
 /**
  * Climin UI's settings (the app's icon, "All Apps", or the gear on the home screen): two glass panels on the home
  * screen's backdrop, as on Apple TV. The menu on the left picks what the right panel shows (Home Settings, Greetings,
- * Screensaver, Shelf, Top Buttons, Remote Buttons, Sleep Timer, About), and the focused row in either panel is white.
+ * Theme, Screensaver, Shelf, Top Buttons, Remote Buttons, Sleep Timer, About), and the focused row in either panel is
+ * white.
  * The mode switch still runs in the main process (HomeMode), but this screen no longer offers it.
  */
 public class SettingsActivity extends Activity {
@@ -137,10 +138,10 @@ public class SettingsActivity extends Activity {
 
     static final class SettingsView extends View implements Choreographer.FrameCallback {
         private static final int HOME_SETTINGS = 1, REMOTE_KEYS = 2, PICKER = 3, SHELF_EDIT = 4,
-                POWER = 5, GREETINGS = 6, SCREENSAVER = 7, ABOUT = 8;
+                POWER = 5, GREETINGS = 6, SCREENSAVER = 7, ABOUT = 8, THEME = 9;
         /** The left menu, in its order. */
-        private static final int RAIL_HOME_SETTINGS = 0, RAIL_GREETINGS = 1, RAIL_SCREENSAVER = 2,
-                RAIL_SHELF = 3, RAIL_TOP = 4, RAIL_REMOTE = 5, RAIL_POWER = 6, RAIL_ABOUT = 7, RAILS = 8;
+        private static final int RAIL_HOME_SETTINGS = 0, RAIL_GREETINGS = 1, RAIL_THEME = 2, RAIL_SCREENSAVER = 3,
+                RAIL_SHELF = 4, RAIL_TOP = 5, RAIL_REMOTE = 6, RAIL_POWER = 7, RAIL_ABOUT = 8, RAILS = 9;
         private static final int Z_RAIL = 0, Z_PANE = 1;
         private static final float LIST_ROW_H = 64, LIST_ROW_GAP = 6;
         private static final int PICK_VISIBLE = 8;
@@ -234,7 +235,7 @@ public class SettingsActivity extends Activity {
             scene.applyPalette();
             setFocusable(true);
             setContentDescription("Climin UI");
-            // TalkBack: the menu (ids 1 to 8), then one item per row of the panel on the right.
+            // TalkBack: the menu (ids 1 to 9), then one item per row of the panel on the right.
             spoken = new Spoken(this, new Spoken.Source() {
                 @Override public void items(List<Integer> out) {
                     for (int i = 1; i <= RAILS; i++) out.add(i);
@@ -288,6 +289,8 @@ public class SettingsActivity extends Activity {
                     return Ui.tr("Coming soon.");
                 case SCREENSAVER:
                     return Ui.tr("Screensaver") + ", " + Ui.tr("Preview");
+                case THEME:
+                    return row == 0 ? Ui.tr("Mode") + ", " + modeName() : Ui.tr("Theme") + ", Glass UI";
                 case HOME_SETTINGS:
                 case REMOTE_KEYS:
                 case POWER: {
@@ -418,6 +421,7 @@ public class SettingsActivity extends Activity {
                 case POWER: return powerRows().length;
                 case SCREENSAVER: return 1;
                 case ABOUT: return 0;
+                case THEME: return 2;
                 default: return Prefs.KEYS.length;
             }
         }
@@ -445,6 +449,7 @@ public class SettingsActivity extends Activity {
             if (why != null) drawUnavailable(c, why);
             else if (screen == GREETINGS) drawGreetings(c);
             else if (screen == ABOUT) drawAbout(c);
+            else if (screen == THEME) drawTheme(c);
             else if (screen == PICKER) drawPicker(c);
             else if (screen == SHELF_EDIT) drawShelfEditor(c);
             else if (screen == SCREENSAVER) drawActionPane(c);
@@ -564,7 +569,7 @@ public class SettingsActivity extends Activity {
 
         /** A menu item's name, as on the left and as TalkBack reads it. */
         private String[] railLabels() {
-            return new String[] {Ui.tr("Home Settings"), Ui.tr("Greetings"), Ui.tr("Screensaver"),
+            return new String[] {Ui.tr("Home Settings"), Ui.tr("Greetings"), Ui.tr("Theme"), Ui.tr("Screensaver"),
                     Ui.tr("Shelf"), Ui.tr("Top Buttons"), Ui.tr("Remote Buttons"), Ui.tr("Sleep Timer"),
                     Ui.tr("About")};
         }
@@ -625,6 +630,25 @@ public class SettingsActivity extends Activity {
         private void drawGreetings(Canvas c) {
             drawPaneTitle(c, Ui.tr("Greetings"));
             c.drawText(Ui.tr("Coming soon."), LIST_X * k + 30 * k, (LIST_TOP + 64) * k, subtitle);
+        }
+
+        /** Theme: the light/night mode (moved out of Home Settings) and the look (Glass UI for now). */
+        private void drawTheme(Canvas c) {
+            drawPaneTitle(c, Ui.tr("Theme"));
+            String[] labels = {Ui.tr("Mode"), Ui.tr("Theme")};
+            String[] values = {modeName(), "Glass UI"};
+            for (int i = 0; i < labels.length; i++) {
+                float y = (LIST_TOP + 20 + i * (LIST_ROW_H + LIST_ROW_GAP)) * k;
+                rowRect.set(LIST_X * k, y, LIST_R * k, y + LIST_ROW_H * k);
+                float f = drawRowBackground(c, i);
+                rowLabel.setColor(blend(inkBase(0xF2), INK, f));
+                rowValue.setColor(inkValue(f));
+                float base = rowRect.centerY() + Ui.halfCap(rowLabel);
+                c.drawText(labels[i], rowRect.left + 30 * k, base, rowLabel);
+                c.drawText(values[i], rowRect.right - 30 * k, base, rowValue);
+            }
+            c.drawText(focus == 0 ? Ui.tr("OK or the arrows change the value.")
+                    : Ui.tr("More themes are coming soon."), LIST_X * k + 30 * k, (PANEL_BOTTOM - 60) * k, subtitle);
         }
 
         /** Screensaver: one action, with a chevron. */
@@ -735,6 +759,7 @@ public class SettingsActivity extends Activity {
         private int paneFor(int rail) {
             switch (rail) {
                 case RAIL_GREETINGS: return GREETINGS;
+                case RAIL_THEME: return THEME;
                 case RAIL_SCREENSAVER: return SCREENSAVER;
                 case RAIL_SHELF:
                 case RAIL_TOP: return SHELF_EDIT;
@@ -826,7 +851,8 @@ public class SettingsActivity extends Activity {
                         if (right) enterPane();
                     } else if (down && screen == SHELF_EDIT) {
                         moveShelfApp(right ? 1 : -1);
-                    } else if (down && (screen == HOME_SETTINGS || screen == REMOTE_KEYS || screen == POWER)) {
+                    } else if (down && (screen == HOME_SETTINGS || screen == REMOTE_KEYS || screen == POWER
+                            || screen == THEME)) {
                         adjust(right ? 1 : -1);
                     } else if (down && !right) {
                         leavePane();   // panels with nothing to step back through: ← returns to the menu
@@ -881,8 +907,8 @@ public class SettingsActivity extends Activity {
         // MARK: - Home Settings and Remote Buttons
 
         private static final String[] UNITS = {"auto", "C", "F"}, THEMES = {"auto", "light", "dark"};
-        /** Home Settings: language, temperature, theme, my photos, sounds, weather, city, forecast, quotes, then one row per coin. */
-        private static final int PHOTOS_ROW = 3, CITY_ROW = 6, FORECAST_ROW = 7, QUOTES_ROW = 8, COIN_ROWS = 9;
+        /** Home Settings: language, temperature, my photos, sounds, weather, city, forecast, quotes, then one row per coin. */
+        private static final int PHOTOS_ROW = 2, CITY_ROW = 5, FORECAST_ROW = 6, QUOTES_ROW = 7, COIN_ROWS = 8;
         /** Home Settings rows on screen at once (what fits above the hints at 1080p); a longer list scrolls. */
         private static final int SETTINGS_VISIBLE = 8;
 
@@ -894,7 +920,6 @@ public class SettingsActivity extends Activity {
             List<String> l = new ArrayList<>();
             l.add(Ui.tr("Language"));
             l.add(Ui.tr("Temperature"));
-            l.add(Ui.tr("Theme"));
             l.add(Ui.tr("My Photos"));
             l.add(Ui.tr("Navigation sounds"));
             l.add(Ui.tr("Weather widget"));
@@ -915,19 +940,23 @@ public class SettingsActivity extends Activity {
             v[0] = lang.equals("auto") ? Ui.tr("Automatic") : Ui.languageName(lang);
             String unit = Prefs.temperature();
             v[1] = unit.equals("C") ? "°C" : unit.equals("F") ? "°F" : Ui.tr("unit|Automatic");
-            String theme = Prefs.theme();
-            v[2] = theme.equals("light") ? Ui.tr("Light") : theme.equals("dark") ? Ui.tr("Dark") : Ui.tr("Automatic");
             int photos = Photos.files(getContext()).size();
             v[PHOTOS_ROW] = photos == 0 ? Ui.tr("photos|None")
                     : Prefs.photos() ? Ui.plural("plural|one:{n} photo|other:{n} photos", photos) : Ui.tr("Off");
-            v[4] = onOff(Prefs.sounds());
-            v[5] = onOff(Prefs.weather());
+            v[3] = onOff(Prefs.sounds());
+            v[4] = onOff(Prefs.weather());
             v[CITY_ROW] = !cityStatus.isEmpty() ? cityStatus : Prefs.city().isEmpty() ? "—" : Prefs.city();
             v[FORECAST_ROW] = Prefs.forecast().equals("days") ? Ui.tr("Next days") : Ui.tr("Next hours");
             v[QUOTES_ROW] = onOff(Prefs.quotes());
             // No quotes widget, nowhere to show prices: the coins read as off (and stay locked) until it is back on.
             for (int i = COIN_ROWS; i < v.length; i++) v[i] = onOff(Prefs.quotes() && Prefs.coin(i - COIN_ROWS));
             return v;
+        }
+
+        /** The light/night mode, as the Theme pane and TalkBack show it. */
+        private String modeName() {
+            String theme = Prefs.theme();
+            return theme.equals("light") ? Ui.tr("Light") : theme.equals("dark") ? Ui.tr("Dark") : Ui.tr("Automatic");
         }
 
         /** "auto", then English and every language with a catalogue. */
@@ -1144,6 +1173,15 @@ public class SettingsActivity extends Activity {
         /** Changes the focused row's value one step (OK and → go forward, ← goes back). */
         private void adjust(int dir) {
             if (unavailable(focus) != null) return;
+            if (screen == THEME) {
+                if (focus == 0) {
+                    int at = java.util.Arrays.asList(THEMES).indexOf(Prefs.theme());
+                    Prefs.setTheme(THEMES[(at + dir + THEMES.length) % THEMES.length]);
+                    SleepOverlay.update(getContext());   // the pill's glass follows
+                    HomeData.get(getContext()).settingsChanged();
+                }
+                return;
+            }
             if (screen == POWER) {
                 int row = powerRow();
                 if (row == P_SLEEP) {
@@ -1174,18 +1212,12 @@ public class SettingsActivity extends Activity {
                     Prefs.setTemperature(UNITS[(at + dir + UNITS.length) % UNITS.length]);
                     break;
                 }
-                case 2: {
-                    int at = java.util.Arrays.asList(THEMES).indexOf(Prefs.theme());
-                    Prefs.setTheme(THEMES[(at + dir + THEMES.length) % THEMES.length]);
-                    SleepOverlay.update(getContext());   // the pill's glass follows
-                    break;
-                }
                 case PHOTOS_ROW:
                     if (Photos.files(getContext()).isEmpty()) return;
                     Prefs.setPhotos(!Prefs.photos());
                     return;
-                case 4: Prefs.setSounds(!Prefs.sounds()); break;
-                case 5: Prefs.setWeather(!Prefs.weather()); break;
+                case 3: Prefs.setSounds(!Prefs.sounds()); break;
+                case 4: Prefs.setWeather(!Prefs.weather()); break;
                 case CITY_ROW: return;
                 case FORECAST_ROW:   // both are in memory: nothing to fetch
                     Prefs.setForecast(Prefs.forecast().equals("days") ? "hours" : "days");
@@ -1518,7 +1550,7 @@ public class SettingsActivity extends Activity {
                 return;
             } else if (screen == POWER) {
                 activatePower();
-            } else if (screen == HOME_SETTINGS) {
+            } else if (screen == HOME_SETTINGS || screen == THEME) {
                 adjust(1);
                 invalidate();
                 return;
