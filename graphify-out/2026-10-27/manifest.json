@@ -4806,9 +4806,9 @@
     "semantic_hash": ""
   },
   "launcher/app/src/main/java/io/climintv/home/DreamView.java": {
-    "mtime": 1793030866.5371554,
-    "seen": 1793032036.682822,
-    "ast_hash": "02cb91ab57dd3bea6ace85f8c2ce7996",
+    "mtime": 1793105182.681038,
+    "seen": 1793105275.599118,
+    "ast_hash": "2c11630c6ebb7c9521989538ae20433f",
     "semantic_hash": ""
   },
   "launcher/app/src/main/java/io/climintv/home/FireHomeActivity.java": {
@@ -4860,9 +4860,9 @@
     "semantic_hash": ""
   },
   "launcher/app/src/main/java/io/climintv/home/HomeView.java": {
-    "mtime": 1793100965.582086,
-    "seen": 1793101648.4930403,
-    "ast_hash": "6d68ef983e151a3fc1171f5b297f14a2",
+    "mtime": 1793104271.388779,
+    "seen": 1793105275.5991278,
+    "ast_hash": "95bdded336d3bdf53899d6e48149210e",
     "semantic_hash": ""
   },
   "launcher/app/src/main/java/io/climintv/home/ModeJob.java": {
@@ -4956,9 +4956,9 @@
     "semantic_hash": ""
   },
   "launcher/app/src/main/java/io/climintv/home/SleepOverlay.java": {
-    "mtime": 1793030866.5470157,
-    "seen": 1793032036.6828456,
-    "ast_hash": "dbbba529e9edea1739b8f3efd16527ab",
+    "mtime": 1793104293.655716,
+    "seen": 1793105275.5991488,
+    "ast_hash": "dbcbbfe174b7423d53da4cc6811cf0b4",
     "semantic_hash": ""
   },
   "launcher/app/src/main/java/io/climintv/home/SleepTimer.java": {
@@ -5262,9 +5262,9 @@
     "semantic_hash": ""
   },
   "UI_MAP.md": {
-    "mtime": 1793101714.947885,
-    "seen": 1793101718.4408348,
-    "ast_hash": "8b09fe6543692cc3bee26a0fb8fd8919",
+    "mtime": 1793104328.8026073,
+    "seen": 1793105275.5991936,
+    "ast_hash": "9c9c30cc8d34d9e3d5993df7dc3ae7e0",
     "semantic_hash": ""
   },
   "launcher/app/src/main/assets/symbols/brightness_auto.png": {
@@ -5286,15 +5286,15 @@
     "semantic_hash": ""
   },
   "launcher/app/src/main/java/io/climintv/home/Palette.java": {
-    "mtime": 1793101659.338065,
-    "seen": 1793101718.4407737,
-    "ast_hash": "8722cb6246b5aebe53d98c7cec2d75e8",
+    "mtime": 1793103853.141348,
+    "seen": 1793105275.599133,
+    "ast_hash": "02eddaf66b3a53417f76f070bc4ff535",
     "semantic_hash": ""
   },
   "launcher/app/src/main/java/io/climintv/home/Surfaces.java": {
-    "mtime": 1793101659.3383548,
-    "seen": 1793101718.4407942,
-    "ast_hash": "4770c98e71a1f15ad8abe7ce15bf99ef",
+    "mtime": 1793103853.141618,
+    "seen": 1793105275.5991528,
+    "ast_hash": "37cf4343b1db386166101569b852c9d2",
     "semantic_hash": ""
   }
 }

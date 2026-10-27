@@ -62,9 +62,8 @@ This project is inspired by CleanYourTV and FreeMyTV.
 - **Glass chrome**: liquid-glass platter and buttons over a blurred, slowly drifting backdrop, a
   live clock with seconds, and the price ticker (Binance, the coins you enable, 24 h change; off
   until the quotes widget is turned on).
-- **My Photos**: photos pushed from a computer (`content write --uri
-  content://io.climintv.home.photos/<name>?size=<bytes>`) are imported into the app and take over the
-  screensaver and the blurred backdrop behind the home screen.
+- **My Photos**: your own photos become the screensaver and, without picks, the blurred backdrop
+  behind the home screen (see [Your own photos](#your-own-photos)).
 - **Shelf**: the apps on the home platter. Hold OK on a tile to move it with the D-pad, OK to drop;
   hold OK on an app in **All Apps** to pin or unpin it from the shelf.
 - **All Apps**: a full-screen five-column grid (not a cramped dialog) with the same pin/unpin hold.
@@ -90,6 +89,29 @@ This project is inspired by CleanYourTV and FreeMyTV.
 - Starts only where the system lets a screensaver replace the stock one; any remote key exits.
   **Settings › Screensaver** previews it full screen without touching the system setting.
 - Follows the selected look: ink, scrim tone and (for the flat looks) the clock style.
+
+### Your own photos
+
+`tools/photos.py` sends photos from a computer to the TV:
+
+```bash
+TV_HOST=<YOUR_TV_IP> tools/venv/bin/python -I tools/photos.py ~/Pictures/holiday/*.jpg
+```
+
+It takes JPEG, PNG, WebP and (where the TV decodes it) HEIC, skips anything under 640 px on the short
+side, and gets each file there by the first path that works:
+
+- **the app's own folder**, `/sdcard/Android/data/io.climintv.home/files/photos`, which adb may write
+  on Android 8–10;
+- **the photo inbox**, the app's content provider (`content://io.climintv.home.photos`), where
+  Android 11+ and Fire OS 8 keep adb out of that folder. Only adb's shell may write there, and a send
+  cut short is discarded instead of imported.
+
+The launcher imports what is waiting the next time the home screen, the screensaver or Settings
+opens: each photo is turned upright, cropped to 16:9, re-encoded at 2112×1188 as JPEG (which also
+drops EXIF and GPS) and kept in the order it was sent, up to 100. While **Home Settings › My Photos**
+is on, the screensaver shows them instead of the picks' photos, and without picks one of them is the
+home screen's backdrop. OK on that row removes them all.
 
 ### Sleep timer
 
@@ -248,8 +270,10 @@ themselves do not need the `adb` binary — only Python 3 and a reachable TV wit
   list without touching the recovery record.
 - **`privacy.py`** — audits what the firmware runs for voice, ACR and telemetry, with the evidence
   for each name, and can write the candidates out as a debloat list.
-- **`b64push.py`** — pushes large files (the APK) through one shell channel in 48 KB base64 chunks,
-  for TVs whose `adb install` is unreliable.
+- **`b64push.py`** — pushes large files (the APK, photos) through one shell channel in 48 KB base64
+  chunks and verifies the copy with `md5sum`, for TVs whose ADB sync push or `adb install` stalls.
+- **`photos.py`** — sends your own photos to the launcher over the app's folder or the photo inbox,
+  whichever the Android version allows (see [Your own photos](#your-own-photos)).
 - **`adb-closed.py`** — checks that the TV's ADB port is closed again after debugging is switched off.
 - **`bench.py`, `trace.py`, `screendiff.py`** — frame-time benchmarks, Perfetto traces and
   screenshot diffs used while tuning the launcher.

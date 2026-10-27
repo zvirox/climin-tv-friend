@@ -60,6 +60,16 @@ through every step.
   template for a change that would touch it.
 - [`UI_MAP.md`](../UI_MAP.md): a section-by-section map of the home screen, drawer, All Apps and
   settings, plus per-look token and contrast tables.
+- README: rewritten for 0.0.2, including a **Your own photos** section (the name Settings › My Photos
+  points at), the five looks, the real settings panes and the MIT licence.
+
+#### Tools
+- **`tools/photos.py`**: send your own photos to the TV over whichever path the Android version
+  allows — the app's external folder, or the `PhotoInbox` content provider on Android 11+ and Fire
+  OS 8. It checks the image size first, keeps the send order, and verifies every transfer.
+- **`tools/b64push.py`**: the verified chunked transfer is now `send(dev, local, remote)`, so a tool
+  that already holds a connection can use it. The sync push in `adb_shell` stalls against some TVs
+  (this Xiaomi/MiTV among them), which is why both tools speak base64 over the shell.
 
 ### Changed
 - The **Theme** pane replaces the old Mode row in Home Settings; the home **Theme** button still
