@@ -190,6 +190,8 @@ public class SettingsActivity extends Activity {
         private int w, h;
         private float k = 1;
         private boolean night;
+        /** The active look's colors (see Palette): the same values the panels used to hardcode. */
+        private Palette pal = Look.GLASS.palette;
         private Bitmap backdrop;    // the home screen's photo, softly blurred behind the glass
         private boolean backdropTried;
         private int[] glassDay, glassNight;   // the same photo as the panels' glass reads it (lightened by day, darker at night)
@@ -474,17 +476,17 @@ public class SettingsActivity extends Activity {
         /** The two glass panels: the menu on the left, what it holds on the right. */
         private void drawPanels(Canvas c) {
             float radius = PANEL_RADIUS * k;
-            shadow.setColor(tone(0x26000000, 0x4D000000));
+            shadow.setColor(col(pal.panelShadow));
             tmp.set(railRect);
             tmp.offset(0, 16 * k);
             c.drawRoundRect(tmp, radius, radius, shadow);
             tmp.set(paneRect);
             tmp.offset(0, 16 * k);
             c.drawRoundRect(tmp, radius, radius, shadow);
-            scene.liquid(c, railRect, radius, tone(0xFFFFFFFF, SMOKE), tone(0.24f, 0.12f), tone(0.03f, 0.08f),
-                    tone(26, 30) * k, tone(20, 26) * k, tone(0.6f, 0.9f), 1);
-            scene.liquid(c, paneRect, radius, tone(0xFFFFFFFF, SMOKE), tone(0.20f, 0.10f), tone(0.03f, 0.08f),
-                    tone(26, 30) * k, tone(20, 26) * k, tone(0.6f, 0.9f), 1);
+            Surfaces.panel(c, scene, railRect, radius, col(pal.surface), tone(0.24f, 0.12f), tone(0.03f, 0.08f),
+                    tone(26, 30) * k, tone(20, 26) * k, tone(0.6f, 0.9f), 1, night ? 1 : 0);
+            Surfaces.panel(c, scene, paneRect, radius, col(pal.surface), tone(0.20f, 0.10f), tone(0.03f, 0.08f),
+                    tone(26, 30) * k, tone(20, 26) * k, tone(0.6f, 0.9f), 1, night ? 1 : 0);
         }
 
         /** The menu: the wordmark and version, then one row per screen. */
@@ -493,7 +495,7 @@ public class SettingsActivity extends Activity {
             c.drawText("Climin UI", x, 178 * k, brand);
             String number = versionNumber(getContext());
             c.drawText(number.isEmpty() ? "" : "v" + number, RAIL_ROW_R * k - 24 * k, 178 * k, version);
-            fill.setColor(tone(0x1F1C1C1E, 0x26FFFFFF));
+            fill.setColor(col(pal.rowFill));
             c.drawRect(x, 202 * k, RAIL_ROW_R * k - 24 * k, 203 * k, fill);
             String[] labels = railLabels();
             for (int i = 0; i < RAILS; i++) {
@@ -512,7 +514,7 @@ public class SettingsActivity extends Activity {
                     c.drawRoundRect(tmp, rr, rr, white);
                     r = tmp;
                 } else if (chosen) {
-                    fill.setColor(tone(0x141C1C1E, 0x2EFFFFFF));
+                    fill.setColor(col(pal.rowFillAlt));
                     c.drawRoundRect(r, 16 * k, 16 * k, fill);
                 }
                 boolean off = railUnavailable(i) != null;
@@ -588,7 +590,7 @@ public class SettingsActivity extends Activity {
             }
             // No photo: the glass reads the background's own gray, not Scene's aurora (which isn't on screen).
             int[] neutral = new int[Backdrop.GW * Backdrop.GH];
-            java.util.Arrays.fill(neutral, tone(0xFFEBEBF0, 0xFF141416));
+            java.util.Arrays.fill(neutral, col(pal.neutral));
             scene.setGlassImage(neutral);
         }
 
@@ -690,7 +692,7 @@ public class SettingsActivity extends Activity {
             c.drawText("Climin UI", x, (LIST_TOP + 56) * k, aboutName);
             c.drawText(Ui.trf("Version {version}", "version", versionNumber(getContext())), x,
                     (LIST_TOP + 104) * k, subtitle);
-            fill.setColor(tone(0x1F1C1C1E, 0x26FFFFFF));
+            fill.setColor(col(pal.rowFill));
             c.drawRect(x, (LIST_TOP + 132) * k, LIST_R * k - 30 * k, (LIST_TOP + 133) * k, fill);
             c.save();
             c.translate(x, (LIST_TOP + 168) * k);
@@ -714,12 +716,15 @@ public class SettingsActivity extends Activity {
             }
         }
 
+        /** A palette slot at the panels' day or night value (they swap, they do not blend). */
+        private int col(Palette.Pair c) { return c.at(night ? 1 : 0); }
+
         private float tone(float day, float dark) { return night ? dark : day; }
 
         private int tone(int day, int dark) { return night ? dark : day; }
 
         /** A text tint at `alpha` of the ink the panels need: black by day, white at night (the focused row is always ink). */
-        private int inkBase(int alpha) { return (alpha << 24) | tone(0x1C1C1E, 0xFFFFFF); }
+        private int inkBase(int alpha) { return (alpha << 24) | col(pal.inkBase); }
 
         /** A faded label: white on the smoked glass at night, ink on the light glass by day; ink once the row is focused. */
         private int inkFade(int alpha, float f) { return blend(inkBase(alpha), (alpha << 24) | 0x1C1C1E, f); }
@@ -740,7 +745,7 @@ public class SettingsActivity extends Activity {
             rowSub.setColor(inkBase(0x8C));
             railLabel.setColor(inkBase(0xD9));
             whyPaint.setColor(inkBase(0xA6));
-            white.setColor(tone(0xFFFFFFFF, 0xFFF5F5F7));
+            white.setColor(col(pal.white));
         }
 
         // MARK: - The menu on the left
@@ -1391,7 +1396,7 @@ public class SettingsActivity extends Activity {
                     // On the shelf: a check, as in the pickers, after its place.
                     float cw = Symbols.width(getContext(), "check", 26 * k);
                     Symbols.draw(getContext(), c, "check", right - cw / 2, rowRect.centerY(), 26 * k,
-                            blend(tone(0x991C1C1E, 0xFFFFFFFF), INK, f));
+                            blend(col(pal.valueInk), INK, f));
                     right -= cw + 16 * k;
                 }
                 c.drawText(off ? Ui.tr("Unavailable") : place >= 0 ? "#" + (place + 1) : Ui.tr("shelf|Off"), right, base, rowValue);
@@ -1458,7 +1463,7 @@ public class SettingsActivity extends Activity {
                 } else if (at == pickCurrent) {
                     float cw = Symbols.width(getContext(), "check", 26 * k);
                     Symbols.draw(getContext(), c, "check", rowRect.right - 30 * k - cw / 2, rowRect.centerY(), 26 * k,
-                            blend(tone(0x991C1C1E, 0xFFFFFFFF), INK, f));
+                            blend(col(pal.valueInk), INK, f));
                 }
             }
             float hy = (PANEL_BOTTOM - 60) * k;

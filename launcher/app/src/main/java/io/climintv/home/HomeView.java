@@ -104,6 +104,8 @@ final class HomeView extends ViewGroup implements Choreographer.FrameCallback, H
     private static final int Z_TOP = 4, Z_CARDS = 5;
 
     private final Activity activity;
+    /** The active look's colors (see Palette): the same values the screens used to hardcode. */
+    private Palette pal = Look.GLASS.palette;
     private final Scene scene = new Scene();
     private final HomeData data;
     private final Recs recs;
@@ -999,18 +1001,18 @@ final class HomeView extends ViewGroup implements Choreographer.FrameCallback, H
 
     /** Text colors for the current night value (dark by day, white at night). */
     private void applyTone() {
-        lTitle.setColor(tone(L_INK, WHITE));
-        lTab.setColor(tone(L_DIM, 0xFF8E8E93));
-        lTabOn.setColor(tone(L_INK, WHITE));
-        lCardTitle.setColor(tone(L_INK, WHITE));
-        lCardMeta.setColor(tone(L_DIM, 0xFF98989D));
-        lQuote.setColor(tone(L_FAINT, 0xB8FFFFFF));
-        lTip.setColor(tone(L_INK, WHITE));
-        lDate.setColor(tone(L_DIM, 0xFF98989D));
-        lClock.setColor(tone(L_INK, WHITE));
-        lWeather.setColor(tone(L_DIM, 0xFF98989D));
-        lClockQuote.setColor(tone(L_DIM, 0xFF98989D));
-        staleQuote.setColor(tone(L_FAINT, 0x99FFFFFF));
+        lTitle.setColor(pal.ink.at(night));
+        lTab.setColor(pal.tab.at(night));
+        lTabOn.setColor(pal.ink.at(night));
+        lCardTitle.setColor(pal.ink.at(night));
+        lCardMeta.setColor(pal.dim.at(night));
+        lQuote.setColor(pal.faint.at(night));
+        lTip.setColor(pal.ink.at(night));
+        lDate.setColor(pal.dim.at(night));
+        lClock.setColor(pal.ink.at(night));
+        lWeather.setColor(pal.dim.at(night));
+        lClockQuote.setColor(pal.dim.at(night));
+        staleQuote.setColor(pal.faintStale.at(night));
     }
 
     private boolean tickBackgroundFade(long up) {
@@ -1231,11 +1233,11 @@ final class HomeView extends ViewGroup implements Choreographer.FrameCallback, H
         float radius = (TILE_RADIUS + SHELF_PAD) * k;
         tmp.set(platterRect);
         tmp.offset(0, 18 * k);
-        shadow.setColor(tone(0x1F000000, 0x52000000));
+        shadow.setColor(pal.platterShadow.at(night));
         shadows.draw(c, tmp, radius, SHADOW_BLUR * k, shadow);
         // White glass by day; smoked glass at night.
-        scene.liquid(c, platterRect, radius, tone(0xFFFFFFFF, SMOKE), tone(0.42f, 0.12f), tone(0.03f, 0.08f),
-                tone(30, 34) * k, tone(22, 28) * k, tone(0.65f, 0.95f), 1);
+        Surfaces.panel(c, scene, platterRect, radius, pal.surface.at(night), tone(0.42f, 0.12f), tone(0.03f, 0.08f),
+                tone(30, 34) * k, tone(22, 28) * k, tone(0.65f, 0.95f), 1, night);
     }
 
     /** The quotes row's text and sizes, for one set of coins, prices and text size. */
@@ -1302,7 +1304,7 @@ final class HomeView extends ViewGroup implements Choreographer.FrameCallback, H
         float total = spacing * (n - 1);
         for (int i = 0; i < n; i++) total += q.glyphs[i] + gap + q.widths[i];
         float x = clock ? MARGIN * k : right - total;
-        int coinColor = clock ? text.getColor() : Ui.alpha(tone(0xB38E8E93, 0x8CFFFFFF), fade);
+        int coinColor = clock ? text.getColor() : Ui.alpha(pal.coinGlyph.at(night), fade);
         for (int i = 0; i < n; i++) {
             Glyphs.coin(getContext(), c, HomeData.COINS[coins[i]], x + q.glyphs[i] / 2, base - cap / 2, cap, coinColor);
             x += q.glyphs[i] + gap;
@@ -1341,7 +1343,7 @@ final class HomeView extends ViewGroup implements Choreographer.FrameCallback, H
             float out = 6 * k, radius = (TILE_RADIUS + SHELF_PAD) * k + out;
             tmp.set(platterRect.left - out, platterRect.top - out, platterRect.right + out, platterRect.bottom + out);
             rim.setShader(null);
-            rim.setColor(Ui.alpha(tone(0xFF3A3A3C, 0xFFFFFFFF), tone(0.45f, 0.8f) * shelfOn));
+            rim.setColor(Ui.alpha(pal.rim.at(night), tone(0.45f, 0.8f) * shelfOn));
             rim.setStrokeWidth(3 * k);
             c.drawRoundRect(tmp, radius, radius, rim);
             rim.setStrokeWidth(2.5f * k);
@@ -1378,7 +1380,7 @@ final class HomeView extends ViewGroup implements Choreographer.FrameCallback, H
         // More apps than fit: a small arrow inside the glass's edge on each side that has more, where no tile reaches
         // even focused (inside the screen's safe area).
         float cy = platterRect.centerY(), size = 28 * k, inset = 14 * k;
-        int ink = tone(0x99000000, 0xCCFFFFFF);
+        int ink = pal.mark.at(night);
         if (last < shelf.size()) Symbols.draw(getContext(), c, "chevron_right", platterRect.right - inset, cy, size, ink);
         if (shelfFirst > 0) {
             c.save();
@@ -1602,7 +1604,7 @@ final class HomeView extends ViewGroup implements Choreographer.FrameCallback, H
 
     /** Color for the drawer's text and symbols: dark by day, white at night. */
     private int drawerInk(float alpha) {
-        return Ui.alpha(tone(L_INK, 0xFFFFFFFF), alpha);
+        return Ui.alpha(pal.inkOpaque.at(night), alpha);
     }
 
     /** Glass for a drawer card or button: white by day, smoked at night (both during the transition). */
@@ -1624,15 +1626,15 @@ final class HomeView extends ViewGroup implements Choreographer.FrameCallback, H
 
     private void drawDrawer(Canvas c) {
         if (drawerItems.isEmpty()) return;
-        rowTitle.setColor(tone(L_DIM, 0xB3FFFFFF));
-        cardTitle.setColor(tone(L_DIM, 0xB3FFFFFF));
+        rowTitle.setColor(pal.drawerRow.at(night));
+        cardTitle.setColor(pal.drawerRow.at(night));
         cardText.setColor(drawerInk(0.95f));
-        cardDim.setColor(tone(L_DIM, 0xADFFFFFF));
-        cardDimRight.setColor(tone(L_FAINT, 0x99FFFFFF));
+        cardDim.setColor(pal.drawerDim.at(night));
+        cardDimRight.setColor(pal.drawerFaint.at(night));
         bigTemp.setColor(drawerInk(1));
-        hourPaint.setColor(tone(L_DIM, 0xADFFFFFF));
+        hourPaint.setColor(pal.drawerDim.at(night));
         hourTemp.setColor(drawerInk(0.95f));
-        dayLow.setColor(tone(L_DIM, 0xADFFFFFF));
+        dayLow.setColor(pal.drawerDim.at(night));
         pricePaint.setColor(drawerInk(0.95f));
         float titleBase = ROW_TITLE * k;
         if (drawerInputs > 0) c.drawText(Ui.tr("Inputs"), drawerRects[0].left + 4 * k, titleBase, rowTitle);
@@ -1666,7 +1668,7 @@ final class HomeView extends ViewGroup implements Choreographer.FrameCallback, H
             c.drawRoundRect(cell, r, r, fill);
         }
         boolean off = it.kind == HomeApps.INPUT && !it.connected;
-        int ink = blend(tone(off ? 0xFF8E8E93 : L_INK, off ? 0x6BFFFFFF : 0xF2FFFFFF), INK, f);
+        int ink = blend((off ? pal.rowOff.at(night) : pal.rowOn.at(night)), INK, f);
         Symbols.draw(getContext(), c, it.symbol, cx, cell.top + cell.height() * 0.4f, 34 * k * s, ink);
         drawerLabel.setColor(ink);
         drawerLabel.setTextSize(23 * k * s);
@@ -1703,7 +1705,7 @@ final class HomeView extends ViewGroup implements Choreographer.FrameCallback, H
         c.drawText(highLow, x, r.top + 258 * k, cardDim);
         float split = r.left + 392 * k;
         fill.setShader(null);
-        fill.setColor(tone(0x1A000000, 0x24FFFFFF));
+        fill.setColor(pal.divider.at(night));
         c.drawRoundRect(split - k, r.top + 34 * k, split + k, r.bottom - 34 * k, k, k, fill);
         float hx = split + 30 * k;
         if (textDays) {
@@ -1770,7 +1772,7 @@ final class HomeView extends ViewGroup implements Choreographer.FrameCallback, H
 
     private float sunItem(Canvas c, String symbol, String label, float x, float base) {
         float size = 22 * k, sw = Symbols.width(getContext(), symbol, size);
-        Symbols.draw(getContext(), c, symbol, x + sw / 2, base - Ui.halfCap(cardDim), size, tone(L_DIM, 0xB3FFFFFF));
+        Symbols.draw(getContext(), c, symbol, x + sw / 2, base - Ui.halfCap(cardDim), size, pal.drawerRow.at(night));
         c.drawText(label, x + sw + 10 * k, base, cardDim);
         return x + sw + 10 * k + cardDim.measureText(label);
     }
@@ -1830,12 +1832,12 @@ final class HomeView extends ViewGroup implements Choreographer.FrameCallback, H
             int i = coins[j];
             float base = r.top + (110 + 52 * j) * k, mid = base - cap / 2;
             float gw = Glyphs.width(getContext(), HomeData.COINS[i], cap);
-            Glyphs.coin(getContext(), c, HomeData.COINS[i], x + 14 * k, mid, cap, tone(L_DIM, 0xCCFFFFFF));
+            Glyphs.coin(getContext(), c, HomeData.COINS[i], x + 14 * k, mid, cap, pal.quotesCoin.at(night));
             c.drawText(HomeData.coinName(i), x + Math.max(gw, 28 * k) / 2 + 30 * k, base, cardText);
             c.drawText(priceText[i], right - 128 * k, base, pricePaint);
             double change = data.changes[i];
             if (Double.isNaN(change)) continue;
-            int color = change >= 0 ? tone(0xFF248A3D, UP_COLOR) : tone(0xFFD70015, DOWN_COLOR);
+            int color = change >= 0 ? pal.up.at(night) : pal.down.at(night);
             tmp.set(right - 108 * k, mid - 17 * k, right, mid + 17 * k);
             fill.setShader(null);
             fill.setColor(Ui.alpha(color, 0.2f));
@@ -3003,7 +3005,7 @@ final class HomeView extends ViewGroup implements Choreographer.FrameCallback, H
                 c.drawRoundRect(cell, rr, rr, fill);
             }
             Paint p = i == tab ? lTabOn : lTab;
-            if (i == tab) lTabOn.setColor(blend(tone(L_INK, WHITE), L_INK, focus));   // always dark on the white pill
+            if (i == tab) lTabOn.setColor(blend(pal.ink.at(night), L_INK, focus));   // always dark on the white pill
             c.drawText(tabs()[i], r.centerX() - p.measureText(tabs()[i]) / 2, r.centerY() + Ui.halfCap(p), p);
         }
         int top = -1;
@@ -3064,7 +3066,7 @@ final class HomeView extends ViewGroup implements Choreographer.FrameCallback, H
             roundImage(c, img, i == 0 ? b.wideShader : b.tallShader, cell, r);
         } else {
             fill.setShader(null);
-            fill.setColor(tone(0xFFDADADF, 0xFF2C2C2E));
+            fill.setColor(pal.cardBack.at(night));
             c.drawRoundRect(cell, r, r, fill);
         }
         if (f > 0.01f) {
@@ -3119,8 +3121,8 @@ final class HomeView extends ViewGroup implements Choreographer.FrameCallback, H
             tmp.offset(0, (6 + 8 * f) * k);
             shadow.setColor(Ui.alpha(0xFF000000, tone(0.1f, 0.3f) + tone(0.14f, 0.2f) * f));
             shadows.draw(c, tmp, rad, SHADOW_BLUR * k, shadow);
-            scene.liquid(c, cell, rad, tone(0xFFFFFFFF, SMOKE), tone(0.55f, 0.5f), tone(0.02f, 0.01f), 12 * k, 8 * k,
-                    tone(0.6f, 0.45f), 1 - f);
+            Surfaces.panel(c, scene, cell, rad, pal.surface.at(night), tone(0.55f, 0.5f), tone(0.02f, 0.01f), 12 * k, 8 * k,
+                    tone(0.6f, 0.45f), 1 - f, night);
             if (f > 0.01f) {
                 fill.setShader(null);
                 fill.setColor(Ui.alpha(0xFFFFFFFF, f));
@@ -3128,7 +3130,7 @@ final class HomeView extends ViewGroup implements Choreographer.FrameCallback, H
             }
             Symbols.draw(getContext(), c, it.kind == HomeApps.THEME ? themeSymbol() : it.symbol,
                     cell.centerX(), cell.centerY(), 27 * k * s,
-                    blend(tone(L_INK, 0xEBFFFFFF), L_INK, f));
+                    blend(pal.onPhoto.at(night), L_INK, f));
             if (f > 0.01f) {
                 String label = it.kind == HomeApps.THEME ? themeName() : it.label;
                 float half = lTip.measureText(label) / 2;

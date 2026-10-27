@@ -135,6 +135,17 @@ final class Prefs {
 
     static void setTheme(String v) { put("theme", v); }
 
+    /**
+     * The look the launcher is drawn with: "glass" (the original and the default), "material", "winui", "cyberpunk" or
+     * "retro". An unknown or missing value is Glass UI, so an older install or a hand-edited file still draws.
+     */
+    static String look() {
+        String v = sp().getString("look", "glass").trim();
+        return v.isEmpty() ? "glass" : v;
+    }
+
+    static void setLook(String v) { put("look", v); }
+
     // MARK: - City
 
     static String city() { return sp().getString("city", Place.city()).trim(); }
