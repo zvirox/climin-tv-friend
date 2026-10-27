@@ -8,6 +8,12 @@ UI work and new features without explicit per-change approval.
 **Before any edit: read `RULES.md`.** If a requested UI change needs a protected
 component, stop and use the approval template in `RULES.md` §4.
 
+`UI_MAP.md` is the section-by-section map of every screen (home, drawer, All Apps,
+Home Settings) with coordinates, states and the code that draws each part. Use its
+section IDs (`HOME.CARDS.WIDE`, `HOME.DRAWER.WEATHER`, `SHEET.GRID`,
+`SETTINGS.PREFS`, …) to locate anything the user names; update the map whenever a
+change lands.
+
 ## graphify
 
 This project has a knowledge graph at graphify-out/ with god nodes, community structure, and cross-file relationships.
