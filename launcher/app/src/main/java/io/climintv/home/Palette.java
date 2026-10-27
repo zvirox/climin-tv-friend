@@ -55,6 +55,8 @@ final class Palette {
     Pair rim;
     /** The look's signature colour: the focus ring, and the small marks. */
     Pair accent;
+    /** The floating pill the sleep timer shows over other apps (see SleepOverlay). */
+    Pair pill;
     /** The empty card placeholder. */
     Pair cardBack;
     /** Hairlines inside a card. */
@@ -100,6 +102,7 @@ final class Palette {
         p.onPhoto = new Pair(0xFF1D1D1F, 0xEBFFFFFF);
         p.rim = new Pair(0xFF3A3A3C, 0xFFFFFFFF);
         p.accent = new Pair(0xFF1D1D1F, 0xFFFFFFFF);   // never drawn: Glass UI has no focus ring
+        p.pill = new Pair(0xFFF5F5F7, 0xFF1C1C1E);
         p.cardBack = new Pair(0xFFDADADF, 0xFF2C2C2E);
         p.divider = new Pair(0x1A000000, 0x24FFFFFF);
         p.up = new Pair(0xFF248A3D, 0xFF30D158);
@@ -143,6 +146,7 @@ final class Palette {
         p.onPhoto = new Pair(0xFF1D1B20, 0xFFE6E0E9);
         p.rim = new Pair(0xFF79747E, 0xFF938F99);
         p.accent = new Pair(0xFF6750A4, 0xFFD0BCFF);
+        p.pill = new Pair(0xFFF3EDF7, 0xFF211F26);
         p.cardBack = new Pair(0xFFE7E0EC, 0xFF2B2930);
         p.divider = new Pair(0xFFCAC4D0, 0xFF49454F);
         p.up = new Pair(0xFF146C2E, 0xFF6DD58C);
@@ -186,6 +190,7 @@ final class Palette {
         p.onPhoto = new Pair(0xFF1A1A1A, 0xFFFFFFFF);
         p.rim = new Pair(0x0F000000, 0x14FFFFFF);
         p.accent = new Pair(0xFF0078D4, 0xFF4CC2FF);
+        p.pill = new Pair(0xFFFFFFFF, 0xFF2C2C2C);
         p.cardBack = new Pair(0xFFE5E5E5, 0xFF2C2C2C);
         p.divider = new Pair(0x14000000, 0x1AFFFFFF);
         p.up = new Pair(0xFF0F7B0F, 0xFF6CCB5F);
@@ -229,6 +234,7 @@ final class Palette {
         p.onPhoto = new Pair(0xFF0B1A24, 0xFFE6F7FF);
         p.rim = new Pair(0xFF006E7F, 0xFF00E5FF);
         p.accent = new Pair(0xFF006E7F, 0xFF00E5FF);
+        p.pill = new Pair(0xFFC9D9E6, 0xFF0F1119);
         p.cardBack = new Pair(0xFFC9D9E6, 0xFF0F1119);
         p.divider = new Pair(0x1F0B1A24, 0x24E6F7FF);
         p.up = new Pair(0xFF0A5C43, 0xFF2BFFA8);
@@ -272,6 +278,7 @@ final class Palette {
         p.onPhoto = new Pair(0xFF33302B, 0xFFF0DCC0);
         p.rim = new Pair(0xFF33302B, 0xFFF0DCC0);
         p.accent = new Pair(0xFFA8431A, 0xFFFF8A3D);
+        p.pill = new Pair(0xFFEADFC8, 0xFF2B231D);
         p.cardBack = new Pair(0xFFE0D3BC, 0xFF2B231D);
         p.divider = new Pair(0x2633302B, 0x26F0DCC0);
         p.up = new Pair(0xFF1F5F58, 0xFF3FB3A6);

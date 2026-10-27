@@ -20,9 +20,9 @@ import android.widget.TextView;
 
 /**
  * Settings > Sleep Timer > Show Time Left: the sleep timer's minutes left over anything on screen, where picked
- * (Position), while the timer runs, in the home screen's light or dark glass. A foreground service, so Android keeps it
- * while another app plays, in a process of its own (:sleep) that reads nothing: the end, the place and what day or night
- * depends on come in its Intent.
+ * (Position), while the timer runs, in the home screen's look, light or dark. A foreground service, so Android keeps it
+ * while another app plays, in a process of its own (:sleep) that reads nothing: the end, the place, the look and what
+ * day or night depends on come in its Intent.
  */
 public class SleepOverlay extends Service {
     private final Handler handler = new Handler(Looper.getMainLooper());
@@ -33,6 +33,9 @@ public class SleepOverlay extends Service {
     private GradientDrawable pill;
     private long endsAt, sunrise, sunset;
     private String theme = "auto", language;
+    private float k;
+    /** The look, from the home screen: this process reads no settings of its own. */
+    private Look look = Look.GLASS;
 
     /** Settings > Sleep Timer > Position: the top center first, then around the screen. */
     private static final int[] GRAVITY = {Gravity.TOP | Gravity.CENTER_HORIZONTAL, Gravity.TOP | Gravity.RIGHT,
@@ -60,7 +63,7 @@ public class SleepOverlay extends Service {
         HomeData.Weather w = HomeData.get(c).weather;
         Intent i = new Intent(c, SleepOverlay.class).putExtra("endsAt", Prefs.sleepAt()).putExtra("place", Prefs.sleepPlace())
                 .putExtra("theme", Prefs.theme()).putExtra("sunrise", w.sunrise).putExtra("sunset", w.sunset)
-                .putExtra("language", Prefs.language());
+                .putExtra("look", Prefs.look()).putExtra("language", Prefs.language());
         boolean wanted = Prefs.sleepShown() && SleepTimer.minutesLeft(c) > 0;
         if (wanted && Settings.canDrawOverlays(c)) {
             c.startForegroundService(i);
@@ -101,12 +104,14 @@ public class SleepOverlay extends Service {
                 return;
             }
             view.setText(Ui.trf("Off in {time}", "time", SleepTimer.duration((int) ((endsAt - now + 59_999) / 60_000))));
-            // The home screen's glass: white with dark ink by day, smoked with light ink at night (Settings > Theme).
+            // The look's own pill: light with dark ink by day, smoked with light ink at night (Settings > Theme).
             boolean night = HomeData.isNight(theme, now, sunrise, sunset);
-            int ink = night ? 0xEBFFFFFF : 0xFF1D1D1F;
+            Palette p = look.palette;
+            int ink = p.onPhoto.at(night ? 1 : 0);
             view.setTextColor(ink);
             moon.setTint(ink);
-            pill.setColor(night ? 0xCC1C1C1E : 0xE6F5F5F7);
+            pill.setColor(Ui.alpha(p.pill.at(night ? 1 : 0), night ? 0xCC / 255f : 0xE6 / 255f));
+            pill.setCornerRadius(Surfaces.shape(look, 40 * k));
             handler.postDelayed(this, 15_000);
         }
     };
@@ -120,12 +125,12 @@ public class SleepOverlay extends Service {
                 .setContentTitle(Ui.tr("Sleep Timer")).build());
         Ui.init(this);   // its own process: the app's font isn't loaded here yet
         SleepTimer.listen(this);
-        float k = getResources().getDisplayMetrics().widthPixels / 1920f;
+        k = getResources().getDisplayMetrics().widthPixels / 1920f;
         view = new TextView(this);
         view.setTypeface(Ui.regular);
         view.setTextSize(TypedValue.COMPLEX_UNIT_PX, 24 * k);
         pill = new GradientDrawable();
-        pill.setCornerRadius(40 * k);
+        pill.setCornerRadius(Surfaces.shape(look, 40 * k));
         view.setBackground(pill);
         view.setPadding(Math.round(24 * k), Math.round(12 * k), Math.round(28 * k), Math.round(12 * k));
         moon = new BitmapDrawable(getResources(), Symbols.get(this, "bedtime"));
@@ -154,6 +159,7 @@ public class SleepOverlay extends Service {
             Ui.applyLanguage(lang);
         }
         theme = intent.getStringExtra("theme");
+        look = Look.byKey(intent.getStringExtra("look"));
         sunrise = intent.getLongExtra("sunrise", 0);
         sunset = intent.getLongExtra("sunset", 0);
         int gravity = GRAVITY[intent.getIntExtra("place", 0) % PLACES];

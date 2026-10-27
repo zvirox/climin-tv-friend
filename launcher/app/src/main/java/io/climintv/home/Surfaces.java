@@ -210,7 +210,8 @@ final class Surfaces {
         return Look.current().surface != Look.SURFACE_FLAT;
     }
 
-    private static float shape(Look look, float radius) {
+    /** The same, for a process that knows the look itself (the sleep timer's overlay reads no settings). */
+    static float shape(Look look, float radius) {
         switch (look.surface) {
             case Look.SURFACE_ACRYLIC: return Math.min(radius, 8f);
             case Look.SURFACE_NEON: return Math.min(radius, 2f);

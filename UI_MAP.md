@@ -411,6 +411,24 @@ Two axes, never mixed: **Mode** (`Prefs.theme`: automatic / light / dark) picks 
 | Focus springs | `Spring(...)` per item | frozen |
 | Shadows | `Shadows` + `SHADOW_BLUR 26`, `DEEP_BLUR 30` | frozen |
 
+### 7.1 The screensaver, the sleep pill and the toast
+
+Every one of these sits on something dark, so each takes the look's **night** column even by day.
+
+| Surface | Where | Rule |
+|---|---|---|
+| Screensaver ink | `DreamView.onSizeChanged()` → `ssInk(alpha)` | Glass UI keeps pure white, byte for byte; the others take `pal.ink.night` |
+| Screensaver scrims | `DreamView.scrim(a)`, `withScrims()` | Glass UI keeps black, byte for byte; the others scrim in their own dark tone (`pal.surface.night`) |
+| Screensaver clock | `glassClock` in `DreamView` | `SURFACE_GLASS` / `SURFACE_ACRYLIC` draw the liquid-glass lens; `TONAL` / `NEON` / `FLAT` draw the same digits as plain text |
+| Sleep pill | `Palette.pill`, `SleepOverlay` | fill `pal.pill.at(night)` at 80 % (night) / 90 % (day), ink `pal.onPhoto`; corner `Surfaces.shape(look, 40*k)` → Glass 40, Material 40, Win UI 8, Cyberpunk 2, Retro 0. Glass UI: `#F5F5F7`/`#1C1C1E` + `#1D1D1F`/`#EBFFFFFF`, unchanged |
+| Toast | `HomeView.applyTone()` → `toastInk` | the pill is dark in every look (`Surfaces.toast`), so the ink and the bell are the look's night ink; Glass UI keeps `#F2FFFFFF` / `#EBFFFFFF` |
+
+**Not themed on purpose** (a look only reaches the launcher's own surfaces):
+
+- the platform alert dialogs (`Theme_DeviceDefault_Dialog_Alert`) and the platform `Toast` used where Android refuses a change;
+- app icons, the Remote Buttons' key names, and the All Apps sheet's dimmed backdrop (its cards and labels are protected);
+- the intro/boot animation and every spring: motion is never a parameter.
+
 Material 3 Expressive (day / dark), contrast on its container `#F3EDF7` / `#211F26`:
 
 | Pair | Day | Dark |

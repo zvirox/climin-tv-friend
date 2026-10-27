@@ -129,6 +129,10 @@ final class DreamView extends View implements Choreographer.FrameCallback, HomeD
     private Paint datePaint, clockPaint, weatherPaint, weatherDim, quotePaint, stalePaint;
     private Paint cornerDate, cornerQuote, cornerStale, cornerClock, labelPaint, metaPaint;
     private TextPaint titlePaint;
+    /** The look's ink for a dark scrim (the screensaver is dark in every look), and the scrim's own tone. */
+    private volatile int inkRgb = 0xFFFFFF, scrimRgb = 0x000000;
+    /** Glass UI and Win UI keep the liquid-glass clock; the flat looks draw it as plain text. */
+    private volatile boolean glassClock = true;
 
     private final Runnable tick = new Runnable() {
         @Override public void run() {
@@ -224,30 +228,36 @@ final class DreamView extends View implements Choreographer.FrameCallback, HomeD
         w = width;
         h = height;
         k = w / 1920f;
+        // The screensaver always sits on a dark scrim, so it uses the look's night ink (Glass keeps pure white).
+        Look look = Look.current();
+        inkRgb = look.surface == Look.SURFACE_GLASS ? 0xFFFFFF : look.palette.ink.night & 0xFFFFFF;
+        // Glass UI keeps the black it has always used, byte for byte; the other looks scrim in their own dark tone.
+        scrimRgb = look.surface == Look.SURFACE_GLASS ? 0x000000 : look.palette.surface.night & 0xFFFFFF;
+        glassClock = look.surface == Look.SURFACE_GLASS || look.surface == Look.SURFACE_ACRYLIC;
         scene.setSize(w, h);
         content.setPosition(0, 0, w, h);
         chrome.setPosition(0, 0, w, h);
         // Without photos (the clock over the aurora).
-        datePaint = Ui.text(Ui.semibold, 36 * k, 0xD9FFFFFF);
+        datePaint = Ui.text(Ui.semibold, 36 * k, ssInk(0xD9));
         datePaint.setTextAlign(Paint.Align.CENTER);
-        clockPaint = Ui.numbers(Ui.thin, 280 * k, 0xF2FFFFFF);
+        clockPaint = Ui.numbers(Ui.thin, 280 * k, ssInk(0xF2));
         clockPaint.setTextAlign(Paint.Align.CENTER);
         clockPaint.setLetterSpacing(-0.01f);
-        weatherPaint = Ui.numbers(Ui.medium, 30 * k, 0xC7FFFFFF);
-        weatherDim = Ui.numbers(Ui.regular, 28 * k, 0x80FFFFFF);
-        quotePaint = Ui.numbers(Ui.medium, 24 * k, 0x99FFFFFF);
-        stalePaint = Ui.text(Ui.regular, 20 * k, 0x59FFFFFF);
+        weatherPaint = Ui.numbers(Ui.medium, 30 * k, ssInk(0xC7));
+        weatherDim = Ui.numbers(Ui.regular, 28 * k, ssInk(0x80));
+        quotePaint = Ui.numbers(Ui.medium, 24 * k, ssInk(0x99));
+        stalePaint = Ui.text(Ui.regular, 20 * k, ssInk(0x59));
         stalePaint.setTextAlign(Paint.Align.CENTER);
         // With photos: the corner (date, clock, prices) and the caption.
-        cornerDate = Ui.numbers(Ui.semibold, 30 * k, 0xEBFFFFFF);
-        cornerQuote = Ui.numbers(Ui.regular, 23 * k, 0xC7FFFFFF);
-        cornerStale = Ui.text(Ui.medium, 21 * k, 0x99FFFFFF);
-        cornerClock = Ui.numbers(Ui.displaySemibold, CLOCK_SIZE * k, 0xF2FFFFFF);
-        labelPaint = Ui.text(Ui.medium, 25 * k, 0xB8FFFFFF);
+        cornerDate = Ui.numbers(Ui.semibold, 30 * k, ssInk(0xEB));
+        cornerQuote = Ui.numbers(Ui.regular, 23 * k, ssInk(0xC7));
+        cornerStale = Ui.text(Ui.medium, 21 * k, ssInk(0x99));
+        cornerClock = Ui.numbers(Ui.displaySemibold, CLOCK_SIZE * k, ssInk(0xF2));
+        labelPaint = Ui.text(Ui.medium, 25 * k, ssInk(0xB8));
         labelPaint.setLetterSpacing(0.1f);
-        titlePaint = new TextPaint(Ui.text(Ui.displayMedium, 76 * k, 0xFFFFFFFF));
+        titlePaint = new TextPaint(Ui.text(Ui.displayMedium, 76 * k, ssInk(0xFF)));
         titlePaint.setLetterSpacing(0.005f);
-        metaPaint = Ui.text(Ui.medium, 29 * k, 0xC7FFFFFF);
+        metaPaint = Ui.text(Ui.medium, 29 * k, ssInk(0xC7));
         metaPaint.setLetterSpacing(0.014f);
         Symbols.warmWeather(getContext(), 30 * k);   // the corner's
         Symbols.warmWeather(getContext(), 32 * k);   // under the clock
@@ -467,29 +477,29 @@ final class DreamView extends View implements Choreographer.FrameCallback, HomeD
      * background): each frame draws only the photo (the TV's GPU feels every full-screen layer). With the slow zoom,
      * they move a little along with the photo, which makes no difference to the text.
      */
-    private static Bitmap withScrims(Bitmap photo, boolean withCaption, float lightCaption, float lightClock) {
+    private Bitmap withScrims(Bitmap photo, boolean withCaption, float lightCaption, float lightClock) {
         int w = photo.getWidth(), h = photo.getHeight();
         Canvas c = new Canvas(photo);
         Paint p = new Paint(Paint.DITHER_FLAG);
         float caption = withCaption ? scrimStrength(lightCaption, 0.5f) : 0, corner = scrimStrength(lightClock, 0.42f);
         p.setShader(new LinearGradient(0, h, 0, h * 0.42f,
-                new int[] {black(0.55f * caption), black(0.33f * caption), black(0.11f * caption), 0},
+                new int[] {scrim(0.55f * caption), scrim(0.33f * caption), scrim(0.11f * caption), 0},
                 new float[] {0, 0.35f, 0.7f, 1}, Shader.TileMode.CLAMP));
         c.drawRect(0, h * 0.42f, w, h, p);
         RadialGradient around = new RadialGradient(0, h, w * 0.7f,
-                new int[] {black(caption), black(0.55f * caption), black(0.15f * caption), 0},
+                new int[] {scrim(caption), scrim(0.55f * caption), scrim(0.15f * caption), 0},
                 new float[] {0, 0.4f, 0.72f, 1}, Shader.TileMode.CLAMP);
         Matrix m = new Matrix();
         m.setScale(1, 0.62f, 0, h);
         around.setLocalMatrix(m);
         p.setShader(around);
         c.drawRect(0, h - w * 0.7f * 0.62f, w * 0.7f, h, p);
-        p.setShader(new LinearGradient(0, 0, 0, h * 0.3f, new int[] {black(0.3f), black(0.075f), 0},
+        p.setShader(new LinearGradient(0, 0, 0, h * 0.3f, new int[] {scrim(0.3f), scrim(0.075f), 0},
                 new float[] {0, 0.45f, 1}, Shader.TileMode.CLAMP));
         c.drawRect(0, 0, w, h * 0.3f, p);
         float cx = w * 0.86f, cy = h * 0.15f;
         RadialGradient clockSide = new RadialGradient(cx, cy, w * 0.36f,
-                new int[] {black(corner), black(0.6f * corner), black(0.15f * corner), 0},
+                new int[] {scrim(corner), scrim(0.6f * corner), scrim(0.15f * corner), 0},
                 new float[] {0, 0.42f, 0.75f, 1}, Shader.TileMode.CLAMP);
         Matrix mc = new Matrix();
         mc.setScale(1, 0.72f, cx, cy);
@@ -499,8 +509,14 @@ final class DreamView extends View implements Choreographer.FrameCallback, HomeD
         return photo;
     }
 
-    private static int black(float a) {
-        return Math.round(Math.max(0, Math.min(1, a)) * 255) << 24;
+    /** The look's ink with the alpha it has always had: the screensaver's text is white in Glass UI. */
+    private int ssInk(int alpha) {
+        return (alpha << 24) | inkRgb;
+    }
+
+    /** A scrim tone: the look's dark surface, opaque enough to carry the text over any photo. */
+    private int scrim(float a) {
+        return (Math.round(Math.max(0, Math.min(1, a)) * 255) << 24) | scrimRgb;
     }
 
     private static float scrimStrength(float light, float base) {
@@ -522,13 +538,13 @@ final class DreamView extends View implements Choreographer.FrameCallback, HomeD
                 x -= tw + 10 * k;
                 String symbol = Symbols.weather(wx.code, wx.isDay);
                 float size = 30 * k, sw = Symbols.width(getContext(), symbol, size);
-                Symbols.draw(getContext(), c, symbol, x - sw / 2, DATE_BASE * k - Ui.halfCap(cornerDate), size, 0xEBFFFFFF);
+                Symbols.draw(getContext(), c, symbol, x - sw / 2, DATE_BASE * k - Ui.halfCap(cornerDate), size, ssInk(0xEB));
                 x -= sw + 26 * k;
             }
             c.drawText(date, x - cornerDate.measureText(date), DATE_BASE * k, cornerDate);
 
             Glass g = glass;
-            if (g != null && glassShader != null) {
+            if (glassClock && g != null && glassShader != null) {
                 // The shadow under the glass: sets the digits apart from a bright photo.
                 shadowPaint.setAlpha(140);
                 c.drawBitmap(g.shadow, g.x, g.y + 6 * k, shadowPaint);
@@ -553,7 +569,7 @@ final class DreamView extends View implements Choreographer.FrameCallback, HomeD
             }
             float qx = right - total;
             for (int i = 0; i < n; i++) {
-                Glyphs.coin(getContext(), c, HomeData.COINS[coins[i]], qx + glyphs[i] / 2, base - cap / 2, cap, 0xA6FFFFFF);
+                Glyphs.coin(getContext(), c, HomeData.COINS[coins[i]], qx + glyphs[i] / 2, base - cap / 2, cap, ssInk(0xA6));
                 qx += glyphs[i] + gap;
                 c.drawText(values[i], qx, base, cornerQuote);
                 qx += cornerQuote.measureText(values[i]) + spacing;
@@ -568,7 +584,7 @@ final class DreamView extends View implements Choreographer.FrameCallback, HomeD
 
     private void drawGlass(Canvas c, float alpha, float e) {
         Glass g = glass;
-        if (g == null || glassShader == null || alpha <= 0.004f) return;
+        if (!glassClock || g == null || glassShader == null || alpha <= 0.004f) return;
         // The glass samples the frosted version (1/6 of the photo): same position, with the scale 6 times larger.
         float f = Backdrop.PHOTO_FROST;
         glassShader.setFloatUniform("placeA", placeA[0], placeA[1], placeA[2] * f);
@@ -586,7 +602,7 @@ final class DreamView extends View implements Choreographer.FrameCallback, HomeD
     /** Builds the glass clock's digits in the background (once a minute) and swaps them in when they're ready. */
     private void buildGlass(String text) {
         glassFor = text;
-        if (glassShader == null || text.isEmpty()) {
+        if (!glassClock || glassShader == null || text.isEmpty()) {
             chromeDirty = true;
             return;
         }
@@ -777,7 +793,7 @@ final class DreamView extends View implements Choreographer.FrameCallback, HomeD
             float sw = Symbols.width(getContext(), symbol, 32 * k);
             float width = sw + 12 * k + weatherPaint.measureText(now) + 18 * k + weatherDim.measureText(range);
             float x = cx - width / 2;
-            Symbols.draw(getContext(), c, symbol, x + sw / 2, base - Ui.halfCap(weatherPaint), 32 * k, 0xC7FFFFFF);
+            Symbols.draw(getContext(), c, symbol, x + sw / 2, base - Ui.halfCap(weatherPaint), 32 * k, ssInk(0xC7));
             x += sw + 12 * k;
             c.drawText(now, x, base, weatherPaint);
             x += weatherPaint.measureText(now) + 18 * k;
@@ -796,7 +812,7 @@ final class DreamView extends View implements Choreographer.FrameCallback, HomeD
         float x = cx - total / 2, base = h - 92 * k;
         for (int i = 0; i < values.length; i++) {
             float gw = Glyphs.width(getContext(), HomeData.COINS[coins[i]], cap);
-            Glyphs.coin(getContext(), c, HomeData.COINS[coins[i]], x + gw / 2, base - cap / 2, cap, 0x80FFFFFF);
+            Glyphs.coin(getContext(), c, HomeData.COINS[coins[i]], x + gw / 2, base - cap / 2, cap, ssInk(0x80));
             x += gw + gap;
             c.drawText(values[i], x, base, quotePaint);
             x += quotePaint.measureText(values[i]) + spacing;

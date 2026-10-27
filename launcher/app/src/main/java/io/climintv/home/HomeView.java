@@ -252,6 +252,8 @@ final class HomeView extends ViewGroup implements Choreographer.FrameCallback, H
     private Paint rowTitle, drawerLabel, cardTitle, cardText, cardDim, cardDimRight, bigTemp, hourPaint, hourTemp, dayLow;
     private Paint pricePaint, changePaint, sheetTitle;
     private TextPaint titlePaint, gridLabel, toastPaint;
+    /** The toast sits on a dark pill in every look, so its ink is the look's night ink (Glass keeps its white). */
+    private int toastInk = 0xF2FFFFFF;
     private final Paint bitmapPaint = new Paint(Paint.ANTI_ALIAS_FLAG | Paint.FILTER_BITMAP_FLAG);
     private final Paint imagePaint = new Paint(Paint.FILTER_BITMAP_FLAG | Paint.DITHER_FLAG);
     private final Paint shadow = new Paint(Paint.ANTI_ALIAS_FLAG);
@@ -1023,6 +1025,10 @@ final class HomeView extends ViewGroup implements Choreographer.FrameCallback, H
         lWeather.setColor(pal.dim.at(night));
         lClockQuote.setColor(pal.dim.at(night));
         staleQuote.setColor(pal.faintStale.at(night));
+        if (toastPaint != null) {
+            toastInk = Look.current().surface == Look.SURFACE_GLASS ? 0xF2FFFFFF : (pal.ink.night | 0xFF000000);
+            toastPaint.setColor(toastInk);   // the next toast's layout takes it
+        }
     }
 
     private boolean tickBackgroundFade(long up) {
@@ -2061,7 +2067,8 @@ final class HomeView extends ViewGroup implements Choreographer.FrameCallback, H
         tmp.set((w - tw) / 2f - padX, toastTop, (w + tw) / 2f + padX, toastTop + th + 2 * padY);
         int save = c.saveLayerAlpha(tmp.left - 4, tmp.top - 4, tmp.right + 4, tmp.bottom + 4, Math.round(255 * a));
         Surfaces.toast(c, scene, tmp, Math.min(tmp.height() / 2, 32 * k));
-        Symbols.draw(getContext(), c, "bell", tmp.left + padX + iconW / 2, tmp.centerY(), icon, 0xEBFFFFFF);
+        Symbols.draw(getContext(), c, "bell", tmp.left + padX + iconW / 2, tmp.centerY(), icon,
+                (0xEB << 24) | (toastInk & 0xFFFFFF));
         c.translate(tmp.left + padX + iconW + 16 * k, tmp.top + padY);
         toast.draw(c);
         c.restoreToCount(save);
