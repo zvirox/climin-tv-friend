@@ -1,7 +1,7 @@
 # Graph Report - climin-tv-friend  (2026-10-27)
 
 ## Corpus Check
-- 528 files · ~445,121 words
+- 528 files · ~445,317 words
 - Verdict: corpus is large enough that graph structure adds value.
 - Unclassified: 77 file(s) not represented in the graph (top: .xml 67, (none) 3, .ttf 2)
 
@@ -11,7 +11,7 @@
 - Token cost: 0 input · 0 output
 
 ## Graph Freshness
-- Built from commit: `79870abe`
+- Built from commit: `00b8dcea`
 - Run `git rev-parse HEAD` and compare to check if the graph is stale.
 - Run `graphify update .` after code changes (no API cost).
 
@@ -520,7 +520,7 @@ _Questions this graph is uniquely positioned to answer:_
 - **Should `trace_report.py` be split into smaller, more focused modules?**
   _Cohesion score 0.052313883299798795 - nodes in this community are weakly interconnected._
 - **Why does `tv()` connect `sys` to `HomeApps`?**
-  _High betweenness centrality (0.174) - this node is a cross-community bridge._
+  _High betweenness centrality (0.175) - this node is a cross-community bridge._
 - **Should `bench.py` be split into smaller, more focused modules?**
   _Cohesion score 0.05584415584415584 - nodes in this community are weakly interconnected._
 - **Why does `HomeView` connect `HomeView` to `HomeApps`, `Click`, `Spring`, `android.graphics.Canvas`, `Prefs`, `Recs.java`, `.drawLightTop`, `Recs`, `.resume`, `HomeView.java`, `.retarget`, `Spoken.java`, `HomeApps.java`, `SleepOverlay.java`, `Ui`, `.activate`, `.onSizeChanged`, `.nightChanged`, `SettingsView`, `Scene`, `HomeData`, `.tr`, `Climin UI — Screen Map`, `.HomeView`, `Palette`?**

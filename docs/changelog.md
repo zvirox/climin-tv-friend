@@ -83,6 +83,9 @@ through every step.
   label / positive-delta contrast was raised to AA (5.44:1 and 5.54:1).
 - **Retro UI**: the dim label and positive-delta contrast was raised to AA (5.38:1 and 5.60:1).
 - Screensaver: text and scrims no longer assume white-on-black once a non-Glass look is selected.
+- **My Photos**: the Settings count, the screensaver picks and the home backdrop no longer stay stale
+  when photos are imported in the same second or by the other process. The list's cache was keyed on
+  the folder's time alone, which Android keeps in whole seconds; it now also keys on the entries.
 
 ### Known limitations
 - Verified on a TCL Android 9 (API 28) TV at 1280×720. The Android 11 – 12L screensaver variant

@@ -78,19 +78,26 @@ final class Photos {
     // MARK: - The imported photos
 
     private static long listedStamp = -1;
+    private static int listedKey;
     private static List<File> listed = new ArrayList<>();
 
-    /** The imported photos, in the order they came (one stat of the folder while nothing changed). */
+    /**
+     * The imported photos, in the order they came. The folder's time alone cannot be the key: Android keeps it in whole
+     * seconds, so two imports in one second, or another process's import, would leave the list (the Settings count, the
+     * screensaver picks, the backdrop) stale for good. The entries are the rest of the key — one listing, no stat per
+     * photo — and the sorted list is rebuilt only when they change.
+     */
     static synchronized List<File> files(Context c) {
         File d = dir(c);
         long stamp = d.exists() ? d.lastModified() : 0;
-        if (stamp != listedStamp) {
-            List<File> out = new ArrayList<>();
-            File[] all = d.listFiles();
-            if (all != null) for (File f : all) if (f.getName().endsWith(".jpg")) out.add(f);
+        File[] all = d.listFiles((dir, name) -> name.endsWith(".jpg"));
+        int key = all == null ? 0 : Arrays.hashCode(all);
+        if (stamp != listedStamp || key != listedKey) {
+            List<File> out = all == null ? new ArrayList<>() : new ArrayList<>(Arrays.asList(all));
             Collections.sort(out);
             listed = out;
             listedStamp = stamp;
+            listedKey = key;
         }
         return listed;
     }
@@ -220,8 +227,8 @@ final class Photos {
             AppLog.w("photos: can't create " + d);
             return 0;
         }
-        // Counted on disk, not from files(): its cache is keyed on the folder's time, which another process's import
-        // (or two within the same second) may not move.
+        // Counted on disk, not from files(): this loop is what changes the folder, and it needs the count as it was
+        // before the loop started.
         File[] imported = d.listFiles((dir, name) -> name.endsWith(".jpg"));
         int have = imported == null ? 0 : imported.length, count = 0;
         for (File sent : all) {
