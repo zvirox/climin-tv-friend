@@ -65,7 +65,7 @@ closed drawer is drawn at y 1100–1568, below the 1080 canvas. Never edit a rec
 
 ```
 ┌──────────────────────────────────────────────────────────────┐ 1920×1080
-│  For You  (HOME.TITLE)              ◯  ◯  ◯  (HOME.BUTTONS)  │ ← y 103
+│  For You  (HOME.TITLE)           ◯ ◯ ◯ ◯ ◯  (HOME.BUTTONS)  │ ← y 103
 │  [Explore] Movies Shows (HOME.TABS)          BTC ETH … QUOTES │ ← y 158–226
 │                                                              │
 │  ┌──────────────────────┐ ┌───────┐ ┌───────┐                │ ← y 262
@@ -98,14 +98,26 @@ closed drawer is drawn at y 1100–1568, below the 1080 canvas. Never edit a rec
 - **Frozen:** focus pill, +5 % grow, shadow, selection behaviour. **Open:** text size/weight, gap, pill height.
 
 ### HOME.BUTTONS — round glass buttons (top right)
-- Up to 3 circles, diameter **68**, centre y **103**, right edge at **1840**, gap **20**.
-  With three: Live TV 1596–1664, HDMI Inputs 1684–1752, Settings 1772–1840.
+- Up to 5 circles, diameter **68**, centre y **103**, right edge at **1840**, gap **20**.
+  Default order, left → right: Inputs 1420–1488, Wi-Fi 1508–1576, Theme 1596–1664,
+  Home Settings 1684–1752, TV Settings 1772–1840.
 - Icons: `Symbols` at 27 px; colour `L_INK` day / `0xEBFFFFFF` night. Focused: circle turns
   **white**, icon dark, grows **+10 %**, and its **name** appears below at y ≈ 177 (25 px).
 - Source: `HomeApps.topButtons()` / `topButtonKeys()` (user order from Settings › Top Buttons),
-  `drawLightButtons()`, rects `topRects[3..5]` in `layoutLight()`.
-- Actions: `LIVE_TV` → TV app/antenna, `INPUTS` → opens the drawer on the first input,
-  `SETTINGS` → `SettingsActivity` (`HomeApps.open`, case `SETTINGS`).
+  `drawLightButtons()`, rects `topRects[3..7]` in `layoutLight()`.
+- Actions:
+  | Key | Icon | Focus label | Action |
+  |---|---|---|---|
+  | `inputs` | `hdmi` | HDMI Inputs | opens the drawer on the first input |
+  | `wifi` | `wifi` | Wi-Fi | `Settings.ACTION_WIFI_SETTINGS` (fallback `ACTION_SETTINGS`) |
+  | `theme` | `brightness_auto` / `sunny` / `clear_night` | Automatic / Light / Dark | cycles auto → light → dark, `Prefs.setTheme`, no activity |
+  | `settings` | `settings` | Home Settings | `SettingsActivity` |
+  | `tv` | `tv_settings` | TV Settings | TV's `Settings.ACTION_SETTINGS` |
+- `theme` shows the mode now in use: icon `brightness_auto` (auto), `sunny` (light),
+  `clear_night` (dark); the focus label is the mode name, not the word "Theme". Cycling calls
+  `checkNight(true)` so the day/night palette follows at once and persists across restarts.
+- Live TV is no longer a top button (it stays in the drawer's Inputs group). A saved list equal
+  to the old default `live,inputs,settings` migrates to the new default (`TOP_LEGACY`).
 - 720p: diameter 45, centre y 69.
 - **Frozen:** focus animation, white fill, icon, label behaviour, order semantics. **Open:** glass tint, icon size, spacing.
 
@@ -318,7 +330,8 @@ Background: the live scene shader (`scene.drawBackground`), not the home screen'
   "Off", "Unavailable" for uninstalled apps.
 - OK toggles membership, ← → moves one place. Hint: "OK adds or removes (up to N). ← → change the order."
 - `SETTINGS.TOP_BUTTONS` reuses the same screen (`editingTop`): heading "Top Buttons", the
-  three candidates, same OK/← → semantics, hint "OK adds or removes a button."
+  five candidates (Inputs, Wi-Fi, Theme, Home Settings, TV Settings), same OK/← → semantics,
+  hint "OK adds or removes a button."
 
 ### SETTINGS.PICKER — long-list picker
 - Heading = context: **City**, **Language**, **Sleep Timer**, **Position**, or the remote-button name.

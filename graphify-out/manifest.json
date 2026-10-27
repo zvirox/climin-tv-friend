@@ -228,10 +228,10 @@
     "semantic_hash": "ec2dc0dc7bef63488889f34de2f5584d"
   },
   "AGENTS.md": {
-    "mtime": 1792992661.7299473,
-    "seen": 1792995059.1794686,
-    "ast_hash": "f36539ecc9af68f33ebd72770ce4a19e",
-    "semantic_hash": "f36539ecc9af68f33ebd72770ce4a19e"
+    "mtime": 1793080116.2587385,
+    "seen": 1793082206.8340664,
+    "ast_hash": "f15a4f1ed0b75f324f935ec10d588f6b",
+    "semantic_hash": ""
   },
   "README.md": {
     "mtime": 1792948442.9644153,
@@ -4836,9 +4836,9 @@
     "semantic_hash": ""
   },
   "launcher/app/src/main/java/io/climintv/home/HomeApps.java": {
-    "mtime": 1793034111.9836824,
-    "seen": 1793035189.061962,
-    "ast_hash": "f2db8a48f4c64603e3d81885ef06f236",
+    "mtime": 1793081679.2168036,
+    "seen": 1793082206.8340044,
+    "ast_hash": "0b93c5538dd282e3bf065f946315422e",
     "semantic_hash": ""
   },
   "launcher/app/src/main/java/io/climintv/home/HomeData.java": {
@@ -4860,9 +4860,9 @@
     "semantic_hash": ""
   },
   "launcher/app/src/main/java/io/climintv/home/HomeView.java": {
-    "mtime": 1793034191.8432782,
-    "seen": 1793035189.0619652,
-    "ast_hash": "e519a02732653a375e5550f0209ec310",
+    "mtime": 1793081701.54568,
+    "seen": 1793082206.834009,
+    "ast_hash": "7e215797d49e851bbbc42350c16e0a97",
     "semantic_hash": ""
   },
   "launcher/app/src/main/java/io/climintv/home/ModeJob.java": {
@@ -4890,9 +4890,9 @@
     "semantic_hash": ""
   },
   "launcher/app/src/main/java/io/climintv/home/Prefs.java": {
-    "mtime": 1793034437.9862375,
-    "seen": 1793035189.061972,
-    "ast_hash": "a0751e19192a3568733ce62934a38bdb",
+    "mtime": 1793081755.6643915,
+    "seen": 1793082206.8340154,
+    "ast_hash": "06dc66badc5edf179a2cbb78dfabaf5f",
     "semantic_hash": ""
   },
   "launcher/app/src/main/java/io/climintv/home/Recording.java": {
@@ -4938,9 +4938,9 @@
     "semantic_hash": ""
   },
   "launcher/app/src/main/java/io/climintv/home/SettingsActivity.java": {
-    "mtime": 1793034485.2425175,
-    "seen": 1793035189.0619802,
-    "ast_hash": "aae089515031bdca64e3bc55dfe1aa1f",
+    "mtime": 1793081755.6643915,
+    "seen": 1793082206.8340235,
+    "ast_hash": "87f6942836427b73921eee486704e7d2",
     "semantic_hash": ""
   },
   "launcher/app/src/main/java/io/climintv/home/Shaders.java": {
@@ -5253,6 +5253,30 @@
     "mtime": 1793035148.4374187,
     "seen": 1793035189.062415,
     "ast_hash": "cb107ed37f087cda666b2d8dcaebee78",
+    "semantic_hash": ""
+  },
+  "RULES.md": {
+    "mtime": 1793078132.3870296,
+    "seen": 1793082206.8340695,
+    "ast_hash": "e9a8cbb2229b316d05fe6c78685115be",
+    "semantic_hash": ""
+  },
+  "UI_MAP.md": {
+    "mtime": 1793082108.0638168,
+    "seen": 1793082206.834071,
+    "ast_hash": "f6b6fd715dc41f2079871beb2d07a8d0",
+    "semantic_hash": ""
+  },
+  "launcher/app/src/main/assets/symbols/brightness_auto.png": {
+    "mtime": 1793081664.2388883,
+    "seen": 1793082206.8344748,
+    "ast_hash": "2262e9927d6bbf625be178280e3505ba",
+    "semantic_hash": ""
+  },
+  "launcher/app/src/main/assets/symbols/wifi.png": {
+    "mtime": 1793081664.2168884,
+    "seen": 1793082206.8345034,
+    "ast_hash": "50fa65f6ba7b9925d2f8683924180565",
     "semantic_hash": ""
   }
 }

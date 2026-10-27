@@ -2388,6 +2388,10 @@ final class HomeView extends ViewGroup implements Choreographer.FrameCallback, H
             retarget(false);
             return;
         }
+        if (it.kind == HomeApps.THEME) {
+            cycleTheme();
+            return;
+        }
         boolean opened = HomeApps.open(activity, it, this, Math.round(r.left), Math.round(r.top),
                 Math.round(r.width()), Math.round(r.height()));
         if (!opened) showToast(Ui.trf("Couldn't open {app}.", "app", it.label));
@@ -2887,6 +2891,12 @@ final class HomeView extends ViewGroup implements Choreographer.FrameCallback, H
         for (HomeApps.Item it : lightButtons) {
             Symbols.warm(getContext(), it.symbol, 27 * k);
             Symbols.warm(getContext(), it.symbol, 27 * k * 1.1f);
+            if (it.kind == HomeApps.THEME) {   // the button's icon follows the mode
+                for (String s : new String[] {"brightness_auto", "sunny", "clear_night"}) {
+                    Symbols.warm(getContext(), s, 27 * k);
+                    Symbols.warm(getContext(), s, 27 * k * 1.1f);
+                }
+            }
         }
         Symbols.warmWeather(getContext(), 40 * k);
         heroDirty = statusDirty = true;
@@ -3116,10 +3126,11 @@ final class HomeView extends ViewGroup implements Choreographer.FrameCallback, H
                 fill.setColor(Ui.alpha(0xFFFFFFFF, f));
                 c.drawCircle(cell.centerX(), cell.centerY(), rad, fill);
             }
-            Symbols.draw(getContext(), c, it.symbol, cell.centerX(), cell.centerY(), 27 * k * s,
+            Symbols.draw(getContext(), c, it.kind == HomeApps.THEME ? themeSymbol() : it.symbol,
+                    cell.centerX(), cell.centerY(), 27 * k * s,
                     blend(tone(L_INK, 0xEBFFFFFF), L_INK, f));
             if (f > 0.01f) {
-                String label = it.label;
+                String label = it.kind == HomeApps.THEME ? themeName() : it.label;
                 float half = lTip.measureText(label) / 2;
                 float x = Math.min(r.centerX(), CONTENT_R * k - half);
                 lTip.setAlpha(Math.round(255 * f));
@@ -3131,6 +3142,27 @@ final class HomeView extends ViewGroup implements Choreographer.FrameCallback, H
         float tw = lQuote.measureText(sleepText), size = lQuote.getTextSize();
         c.drawText(sleepText, right - tw, cy + Ui.halfCap(lQuote), lQuote);
         Symbols.draw(getContext(), c, "bedtime", right - tw - size * 0.9f, cy, size, lQuote.getColor());
+    }
+
+    /** The Theme button's icon: the mode now in use. */
+    private static String themeSymbol() {
+        String mode = Prefs.theme();
+        return mode.equals("light") ? "sunny" : mode.equals("dark") ? "clear_night" : "brightness_auto";
+    }
+
+    /** The Theme button's name while it has the focus: the mode now in use. */
+    private static String themeName() {
+        String mode = Prefs.theme();
+        return mode.equals("light") ? Ui.tr("Light") : mode.equals("dark") ? Ui.tr("Dark") : Ui.tr("Automatic");
+    }
+
+    /** Theme pressed: Automatic › Light › Dark › Automatic, and the screen follows. */
+    private void cycleTheme() {
+        String mode = Prefs.theme();
+        Prefs.setTheme(mode.equals("auto") ? "light" : mode.equals("light") ? "dark" : "auto");
+        checkNight(true);     // Automatic follows the sun; Light and Dark pin it
+        statusDirty = true;   // the button's icon and name follow the mode
+        wake();
     }
 
     private boolean moveLight(int dx, int dy) {
