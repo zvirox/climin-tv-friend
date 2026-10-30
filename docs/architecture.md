@@ -1,7 +1,7 @@
 # Your TV Friend: Systems & Software Architecture
 
 This document describes the architecture of **Your TV Friend** and **Your UI** as the code is
-today (v0.0.2): the process model, how the launcher draws and moves, the theme seam added in 0.0.2,
+today (v0.0.3): the process model, how the launcher draws and moves, the theme seam added in 0.0.2,
 and the measured size and memory numbers. Where something is not measured, it says so instead of
 quoting a target as a result.
 
@@ -11,13 +11,13 @@ quoting a target as a result.
 
 ```
 ┌────────────────────────────────────────────────────────────────────────┐
-│                        CLIMIN TV FRIEND TOPOLOGY                       │
+│                        YOUR TV FRIEND TOPOLOGY                         │
 └────────────────────────────────────────────────────────────────────────┘
                                      │
            ┌─────────────────────────┴─────────────────────────┐
            ▼                                                   ▼
 ┌───────────────────────────────────────┐   ┌───────────────────────────────────────┐
-│           DEBLOAT SUBSYSTEM           │   │               CLIMIN UI               │
+│           DEBLOAT SUBSYSTEM           │   │                YOUR UI                │
 │               (tools/)                │   │              (launcher/)              │
 ├───────────────────────────────────────┼───┼───────────────────────────────────────┤
 │ • Pure-Python ADB client (tv.py)      │   │ • Package: io.yourtv.home           │

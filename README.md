@@ -28,13 +28,13 @@ This project is inspired by CleanYourTV and FreeMyTV.
 
 ```
 ┌────────────────────────────────────────────────────────────────────────┐
-│                        CLIMIN TV FRIEND TOPOLOGY                       │
+│                        YOUR TV FRIEND TOPOLOGY                         │
 └────────────────────────────────────────────────────────────────────────┘
                                      │
            ┌─────────────────────────┴─────────────────────────┐
            ▼                                                   ▼
 ┌───────────────────────────────────────┐   ┌───────────────────────────────────────┐
-│           DEBLOAT SUBSYSTEM           │   │               CLIMIN UI               │
+│           DEBLOAT SUBSYSTEM           │   │                YOUR UI                │
 │               (tools/)                │   │              (launcher/)              │
 ├───────────────────────────────────────┤   ├───────────────────────────────────────┤
 │ • Pure-Python ADB client (tv.py)      │   │ • Package: io.yourtv.home           │
