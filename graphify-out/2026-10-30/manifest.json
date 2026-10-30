@@ -1,0 +1,5312 @@
+{
+  ".codex/hooks.json": {
+    "mtime": 1793105851.4762304,
+    "seen": 1793109947.9545884,
+    "ast_hash": "87276081a137d3575fc76f425917d1f0",
+    "semantic_hash": "87276081a137d3575fc76f425917d1f0"
+  },
+  ".github/workflows/release.yml": {
+    "mtime": 1792949204.2721055,
+    "seen": 1792995059.1793714,
+    "ast_hash": "b04f8b2ed9610a38e6206cab4b659a45",
+    "semantic_hash": "b04f8b2ed9610a38e6206cab4b659a45"
+  },
+  "launcher/app/build.gradle": {
+    "mtime": 1793106204.2889192,
+    "seen": 1793109947.9549503,
+    "ast_hash": "b25c11bd0f916e9db257862fd0ac3997",
+    "semantic_hash": ""
+  },
+  "launcher/app/src/main/java/io/climintv/home/MainActivity.java": {
+    "mtime": 1793105851.79023,
+    "seen": 1793109947.954997,
+    "ast_hash": "b65688cbed934ccd17a715eec0616b52",
+    "semantic_hash": ""
+  },
+  "launcher/build-and-install.ps1": {
+    "mtime": 1792910810.9452138,
+    "seen": 1792995059.1794114,
+    "ast_hash": "2b937f3c1fd9d10d86f98a7a7f84ca88",
+    "semantic_hash": "2b937f3c1fd9d10d86f98a7a7f84ca88"
+  },
+  "launcher/build-and-install.sh": {
+    "mtime": 1792910810.9412594,
+    "seen": 1792995059.1794128,
+    "ast_hash": "52d2481bccbee6727c5bd96c41358e5c",
+    "semantic_hash": "52d2481bccbee6727c5bd96c41358e5c"
+  },
+  "launcher/build.gradle": {
+    "mtime": 1792910429.2256868,
+    "seen": 1792995059.179414,
+    "ast_hash": "fe17d36fa79fcb3bef5d3be7014680e1",
+    "semantic_hash": "fe17d36fa79fcb3bef5d3be7014680e1"
+  },
+  "launcher/gradlew": {
+    "mtime": 1792910429.2254968,
+    "seen": 1792995059.1794155,
+    "ast_hash": "f092910dfa8e47c5a37a452c3f6baf8a",
+    "semantic_hash": "f092910dfa8e47c5a37a452c3f6baf8a"
+  },
+  "launcher/settings.gradle": {
+    "mtime": 1792948115.2411938,
+    "seen": 1792995059.179417,
+    "ast_hash": "65538b24b595a7b4b304feca9bf79814",
+    "semantic_hash": "65538b24b595a7b4b304feca9bf79814"
+  },
+  "tools/adb-closed.py": {
+    "mtime": 1792910399.739741,
+    "seen": 1792995059.179418,
+    "ast_hash": "149510884565b19e918cc6c19ad57c69",
+    "semantic_hash": "149510884565b19e918cc6c19ad57c69"
+  },
+  "tools/b64push.py": {
+    "mtime": 1793109433.4852664,
+    "seen": 1793109947.9550283,
+    "ast_hash": "9d835d83aa7874048ddeb4983fbeda3d",
+    "semantic_hash": ""
+  },
+  "tools/bench.py": {
+    "mtime": 1792910820.4485886,
+    "seen": 1792995059.1794212,
+    "ast_hash": "dc5cffa5f91e8380b398d2822c4fcc0a",
+    "semantic_hash": "dc5cffa5f91e8380b398d2822c4fcc0a"
+  },
+  "tools/check.py": {
+    "mtime": 1792910399.7399938,
+    "seen": 1792995059.1794224,
+    "ast_hash": "450218c97b9e2fbd80034534c3d31875",
+    "semantic_hash": "450218c97b9e2fbd80034534c3d31875"
+  },
+  "tools/disable.ps1": {
+    "mtime": 1792910399.7400644,
+    "seen": 1792995059.179424,
+    "ast_hash": "7cb44994629f427f1b2bb60e0abfd1f7",
+    "semantic_hash": "7cb44994629f427f1b2bb60e0abfd1f7"
+  },
+  "tools/disable.sh": {
+    "mtime": 1792910399.7401404,
+    "seen": 1792995059.1794255,
+    "ast_hash": "a8d7048771642f950fb05930a06f74f6",
+    "semantic_hash": "a8d7048771642f950fb05930a06f74f6"
+  },
+  "tools/flamechart.py": {
+    "mtime": 1792910820.4492404,
+    "seen": 1792995059.1794271,
+    "ast_hash": "501ec8ed40fd1fe95fcabadd323143db",
+    "semantic_hash": "501ec8ed40fd1fe95fcabadd323143db"
+  },
+  "tools/gen_tables.py": {
+    "mtime": 1792910399.7414472,
+    "seen": 1792995059.1794283,
+    "ast_hash": "b04e6508c9c3ec2d70600f297c13bccb",
+    "semantic_hash": "b04e6508c9c3ec2d70600f297c13bccb"
+  },
+  "tools/lib/adb_client.py": {
+    "mtime": 1792910280.6249857,
+    "seen": 1792995059.1794298,
+    "ast_hash": "39656c85ed2416e4b39d2416eabbfd51",
+    "semantic_hash": "39656c85ed2416e4b39d2416eabbfd51"
+  },
+  "tools/lib/invariants.py": {
+    "mtime": 1792910254.9202268,
+    "seen": 1792995059.1794312,
+    "ast_hash": "a818dce6c214f4afac9d8bb1128a1a08",
+    "semantic_hash": "a818dce6c214f4afac9d8bb1128a1a08"
+  },
+  "tools/lib/ledger.py": {
+    "mtime": 1792910263.6251447,
+    "seen": 1792995059.1794326,
+    "ast_hash": "e718546a01aa619c92f42ba40bcc3168",
+    "semantic_hash": "e718546a01aa619c92f42ba40bcc3168"
+  },
+  "tools/manage.py": {
+    "mtime": 1792910820.4494884,
+    "seen": 1792995059.1794343,
+    "ast_hash": "83209deff8c13a22156dbb9010fbedc5",
+    "semantic_hash": "83209deff8c13a22156dbb9010fbedc5"
+  },
+  "tools/privacy.py": {
+    "mtime": 1792910399.7416053,
+    "seen": 1792995059.1794355,
+    "ast_hash": "c47359826ab38974bd1c8fd40c62e186",
+    "semantic_hash": "c47359826ab38974bd1c8fd40c62e186"
+  },
+  "tools/race_calendar.py": {
+    "mtime": 1792910399.7416687,
+    "seen": 1792995059.179438,
+    "ast_hash": "5bb736d4504419ce6876aabad96055d1",
+    "semantic_hash": "5bb736d4504419ce6876aabad96055d1"
+  },
+  "tools/readme_card.py": {
+    "mtime": 1792910399.7417881,
+    "seen": 1792995059.1794395,
+    "ast_hash": "2e4e5fe04a7667acb5965b1c37ee0775",
+    "semantic_hash": "2e4e5fe04a7667acb5965b1c37ee0775"
+  },
+  "tools/readme_featured.py": {
+    "mtime": 1792910399.7418375,
+    "seen": 1792995059.1794412,
+    "ast_hash": "a482f05a1bf93f0103c59d22585ca7f2",
+    "semantic_hash": "a482f05a1bf93f0103c59d22585ca7f2"
+  },
+  "tools/readme_stats.py": {
+    "mtime": 1792910399.7418811,
+    "seen": 1792995059.1794426,
+    "ast_hash": "78c932bee06909bd9a5a7883ce2a7dda",
+    "semantic_hash": "78c932bee06909bd9a5a7883ce2a7dda"
+  },
+  "tools/recovery.py": {
+    "mtime": 1792910820.449774,
+    "seen": 1792995059.1794443,
+    "ast_hash": "55dd10584952ea7437878236b6e173b9",
+    "semantic_hash": "55dd10584952ea7437878236b6e173b9"
+  },
+  "tools/relay.py": {
+    "mtime": 1792910399.74203,
+    "seen": 1792995059.1794455,
+    "ast_hash": "d30e54916f31b203642f03f457ba6949",
+    "semantic_hash": "d30e54916f31b203642f03f457ba6949"
+  },
+  "tools/restore.ps1": {
+    "mtime": 1792910399.742191,
+    "seen": 1792995059.1794467,
+    "ast_hash": "a7d427bee309ee4ff463ce226752c8d1",
+    "semantic_hash": "a7d427bee309ee4ff463ce226752c8d1"
+  },
+  "tools/restore.sh": {
+    "mtime": 1792910399.7422392,
+    "seen": 1792995059.1794481,
+    "ast_hash": "a66dcf253141aee489841caa7b8071a1",
+    "semantic_hash": "a66dcf253141aee489841caa7b8071a1"
+  },
+  "tools/scenes_wallpapers.py": {
+    "mtime": 1792910399.7422948,
+    "seen": 1792995059.1794496,
+    "ast_hash": "14aacab8053cb600032362bb76b7b594",
+    "semantic_hash": "14aacab8053cb600032362bb76b7b594"
+  },
+  "tools/screendiff.py": {
+    "mtime": 1792910399.742404,
+    "seen": 1792995059.1794586,
+    "ast_hash": "9d3745fb93783e966fc826a40ab56a6b",
+    "semantic_hash": "9d3745fb93783e966fc826a40ab56a6b"
+  },
+  "tools/theme.ps1": {
+    "mtime": 1792910820.4501107,
+    "seen": 1792995059.17946,
+    "ast_hash": "40d9bc904704d485419131e5620d8892",
+    "semantic_hash": "40d9bc904704d485419131e5620d8892"
+  },
+  "tools/theme.sh": {
+    "mtime": 1792910820.450257,
+    "seen": 1792995059.1794617,
+    "ast_hash": "3bc46a86b4f1b8f11200b2385d556ea9",
+    "semantic_hash": "3bc46a86b4f1b8f11200b2385d556ea9"
+  },
+  "tools/trace.py": {
+    "mtime": 1792910820.4504046,
+    "seen": 1792995059.179463,
+    "ast_hash": "1653ccc4518c6704352f03a1698f3540",
+    "semantic_hash": "1653ccc4518c6704352f03a1698f3540"
+  },
+  "tools/trace_report.py": {
+    "mtime": 1792910820.4506247,
+    "seen": 1792995059.179464,
+    "ast_hash": "fb4ec3da9b2162c8aa8b7a3feec5bb4e",
+    "semantic_hash": "fb4ec3da9b2162c8aa8b7a3feec5bb4e"
+  },
+  "tools/tv.py": {
+    "mtime": 1792910903.62657,
+    "seen": 1792995059.1794658,
+    "ast_hash": "ddb92d3be9c3f10aee09cdadf275d3b1",
+    "semantic_hash": "ddb92d3be9c3f10aee09cdadf275d3b1"
+  },
+  ".github/copilot-instructions.md": {
+    "mtime": 1793105851.4769316,
+    "seen": 1793109947.9550557,
+    "ast_hash": "ec2dc0dc7bef63488889f34de2f5584d",
+    "semantic_hash": "ec2dc0dc7bef63488889f34de2f5584d"
+  },
+  "AGENTS.md": {
+    "mtime": 1793105851.4770494,
+    "seen": 1793109947.9550567,
+    "ast_hash": "f15a4f1ed0b75f324f935ec10d588f6b",
+    "semantic_hash": ""
+  },
+  "README.md": {
+    "mtime": 1793109699.5019639,
+    "seen": 1793109947.9550576,
+    "ast_hash": "88bbc6518600a96440a553490a7a2713",
+    "semantic_hash": ""
+  },
+  "docs/architecture.md": {
+    "mtime": 1793106962.8780005,
+    "seen": 1793109947.9550636,
+    "ast_hash": "440b8e1e8c83b398cbebd8665a5facfc",
+    "semantic_hash": ""
+  },
+  "docs/changelog.md": {
+    "mtime": 1793110308.3982263,
+    "seen": 1793110328.7818997,
+    "ast_hash": "9f39e58a6f2f106c31c7af736bbd471a",
+    "semantic_hash": ""
+  },
+  "docs/prompt.md": {
+    "mtime": 1793107441.472562,
+    "seen": 1793109947.9550653,
+    "ast_hash": "ac6046fde07f5816865f112641f047bf",
+    "semantic_hash": ""
+  },
+  "docs/roadmap.md": {
+    "mtime": 1793107445.6231766,
+    "seen": 1793109947.9550674,
+    "ast_hash": "fe3aa2db4f3494ab2ce2c058f0331141",
+    "semantic_hash": ""
+  },
+  "docs/testing.md": {
+    "mtime": 1793107423.7684095,
+    "seen": 1793109947.9550683,
+    "ast_hash": "44f50b54698183d42e11c41bdcc26ef5",
+    "semantic_hash": ""
+  },
+  "launcher/FONT-LICENSE-OFL.txt": {
+    "mtime": 1792910429.2257667,
+    "seen": 1792995059.1794806,
+    "ast_hash": "fc7bcc2f3d37195db3ea982ccfecd531",
+    "semantic_hash": "fc7bcc2f3d37195db3ea982ccfecd531"
+  },
+  "tools/flamechart.md": {
+    "mtime": 1792910399.740267,
+    "seen": 1792995059.1794817,
+    "ast_hash": "4fcb8fedc7dafd1f215e8560b598298b",
+    "semantic_hash": "4fcb8fedc7dafd1f215e8560b598298b"
+  },
+  "tools/relay.md": {
+    "mtime": 1792910399.7419856,
+    "seen": 1792995059.1794834,
+    "ast_hash": "38988f9ce326c1dbd7020b115d64f05d",
+    "semantic_hash": "38988f9ce326c1dbd7020b115d64f05d"
+  },
+  "tools/requirements-perf.txt": {
+    "mtime": 1792910399.7420855,
+    "seen": 1792995059.1794848,
+    "ast_hash": "17cf4a01242500fd508c2ce00b0b57de",
+    "semantic_hash": "17cf4a01242500fd508c2ce00b0b57de"
+  },
+  "tools/requirements.txt": {
+    "mtime": 1792910399.7421432,
+    "seen": 1792995059.1794865,
+    "ast_hash": "6fe82ed404b67cea3472afda9b0691aa",
+    "semantic_hash": "6fe82ed404b67cea3472afda9b0691aa"
+  },
+  "tools/screendiff.md": {
+    "mtime": 1792910399.7423549,
+    "seen": 1792995059.179488,
+    "ast_hash": "7e920b8ecd10d4d42c257d8dae6b05e9",
+    "semantic_hash": "7e920b8ecd10d4d42c257d8dae6b05e9"
+  },
+  "tools/trace.md": {
+    "mtime": 1792910399.742543,
+    "seen": 1792995059.1794896,
+    "ast_hash": "adc2be1e8530baffba665e1d75ce8c46",
+    "semantic_hash": "adc2be1e8530baffba665e1d75ce8c46"
+  },
+  "images/tv/screenshot/all_apps.png": {
+    "mtime": 1792988042.1403618,
+    "seen": 1792995059.179491,
+    "ast_hash": "f09e0f953ec46dc745c6526a443a6a6f",
+    "semantic_hash": "f09e0f953ec46dc745c6526a443a6a6f"
+  },
+  "images/tv/screenshot/app_menu.png": {
+    "mtime": 1792988027.6466517,
+    "seen": 1792995059.1794922,
+    "ast_hash": "f09e0f953ec46dc745c6526a443a6a6f",
+    "semantic_hash": "f09e0f953ec46dc745c6526a443a6a6f"
+  },
+  "images/tv/screenshot/home.png": {
+    "mtime": 1792988389.4734702,
+    "seen": 1792995059.179494,
+    "ast_hash": "6e5a89f60bf600666002ac3f957470bf",
+    "semantic_hash": "6e5a89f60bf600666002ac3f957470bf"
+  },
+  "images/tv/screenshot/home_super_mode_dark.png": {
+    "mtime": 1792988202.8259132,
+    "seen": 1792995059.179495,
+    "ast_hash": "3db14f2402f9f62a2e0586ac4699b61f",
+    "semantic_hash": "3db14f2402f9f62a2e0586ac4699b61f"
+  },
+  "images/tv/screenshot/settings.png": {
+    "mtime": 1792988315.9578893,
+    "seen": 1792995059.1794968,
+    "ast_hash": "a8566eab2c7dad2da117ce93ae1b94c0",
+    "semantic_hash": "a8566eab2c7dad2da117ce93ae1b94c0"
+  },
+  "launcher/app/src/main/res/mipmap-xhdpi/ic_launcher.jpg": {
+    "mtime": 1792910566.7585363,
+    "seen": 1792995059.1795,
+    "ast_hash": "32b8dc4f282887edfe77234a94ba0142",
+    "semantic_hash": "32b8dc4f282887edfe77234a94ba0142"
+  },
+  "examples/acer-ar55ar2851udpro/config.json": {
+    "mtime": 1792910399.7446194,
+    "seen": 1793001729.9795969,
+    "ast_hash": "800ffd8f38112c726d2562d58101c1ae",
+    "semantic_hash": ""
+  },
+  "examples/acer-ar55ar2851udpro/tv.json": {
+    "mtime": 1792910399.7447376,
+    "seen": 1793001729.979599,
+    "ast_hash": "e7eab7971d6a3609e13a2183c272e7fc",
+    "semantic_hash": ""
+  },
+  "examples/aipro2k/tv.json": {
+    "mtime": 1792910399.744891,
+    "seen": 1793001729.9796004,
+    "ast_hash": "adf59b0c23317968a36680cef120e0e3",
+    "semantic_hash": ""
+  },
+  "examples/aiwa-ai-pont-sa/config.json": {
+    "mtime": 1792910399.7449925,
+    "seen": 1793001729.9796016,
+    "ast_hash": "e93c2f60d00444c3a4565b6984a6cf3a",
+    "semantic_hash": ""
+  },
+  "examples/aiwa-ai-pont-sa/tv.json": {
+    "mtime": 1792910399.7450883,
+    "seen": 1793001729.979603,
+    "ast_hash": "45fb813ae5d72eda70fdc44e062f591b",
+    "semantic_hash": ""
+  },
+  "examples/amazon-fire-tv-aftdec012e/tv.json": {
+    "mtime": 1792910399.7452397,
+    "seen": 1793001729.979604,
+    "ast_hash": "1bc2dd4c18ba5b22b27bc5631a3ac8e3",
+    "semantic_hash": ""
+  },
+  "examples/amazon-fire-tv-afteu014/tv.json": {
+    "mtime": 1792910399.7453823,
+    "seen": 1793001729.9796064,
+    "ast_hash": "eb2e8bb6e6134c62de215a40fda20e01",
+    "semantic_hash": ""
+  },
+  "examples/amazon-fire-tv-afttiff43/tv.json": {
+    "mtime": 1792910399.7455368,
+    "seen": 1793001729.9796073,
+    "ast_hash": "9864d6015b0eb90dd3b02d3942135342",
+    "semantic_hash": ""
+  },
+  "examples/amazon-fire-tv-stick-4k-2018/tv.json": {
+    "mtime": 1792910399.7456794,
+    "seen": 1793001729.9796083,
+    "ast_hash": "2af036dcb8107c369d1b0e109618c052",
+    "semantic_hash": ""
+  },
+  "examples/amazon-fire-tv-stick-4k-2023/tv.json": {
+    "mtime": 1792910399.745823,
+    "seen": 1793001729.979609,
+    "ast_hash": "fd67c49f3a22f9c1de49987f02646386",
+    "semantic_hash": ""
+  },
+  "examples/amazon-fire-tv-stick-4k-max-2021/tv.json": {
+    "mtime": 1792910399.745968,
+    "seen": 1793001729.9796104,
+    "ast_hash": "9e75a3958b17343bf9f3931b55db6f4b",
+    "semantic_hash": ""
+  },
+  "examples/amazon-fire-tv-stick-lite-2020/tv.json": {
+    "mtime": 1792910399.7461038,
+    "seen": 1793001729.9796114,
+    "ast_hash": "fef742a3be2ae568831414edc8941419",
+    "semantic_hash": ""
+  },
+  "examples/anker-nebula-d2140/tv.json": {
+    "mtime": 1792910399.746274,
+    "seen": 1793001729.979612,
+    "ast_hash": "b957fc43842b52c9455b955c407ebb7b",
+    "semantic_hash": ""
+  },
+  "examples/anker-nebula-d2426/build-and-install.sh": {
+    "mtime": 1792910399.7464597,
+    "seen": 1793001729.9796128,
+    "ast_hash": "6b9b1fbb9961f9f4bb7dd0c2cc023645",
+    "semantic_hash": ""
+  },
+  "examples/anker-nebula-d2426/config.json": {
+    "mtime": 1792910399.7465034,
+    "seen": 1793001729.9796143,
+    "ast_hash": "714067c09633fb571c706adf84dd2b0b",
+    "semantic_hash": ""
+  },
+  "examples/anker-nebula-d2426/restore.sh": {
+    "mtime": 1792910399.746586,
+    "seen": 1793001729.979615,
+    "ast_hash": "a461e077fa3c0dc9325af30ab04fc339",
+    "semantic_hash": ""
+  },
+  "examples/anker-nebula-d2426/tv.json": {
+    "mtime": 1792910399.746626,
+    "seen": 1793001729.979616,
+    "ast_hash": "8a7f39651bef351d9fe32bdfaf9e0aca",
+    "semantic_hash": ""
+  },
+  "examples/anker-nebula-mars-3-air/config.json": {
+    "mtime": 1792910399.7467914,
+    "seen": 1793001729.9796169,
+    "ast_hash": "7303ecbd023f367cefc49e977b8d032a",
+    "semantic_hash": ""
+  },
+  "examples/anker-nebula-mars-3-air/tv.json": {
+    "mtime": 1792910399.746882,
+    "seen": 1793001729.9796176,
+    "ast_hash": "e42560aed2bf771d2cf7f98440c6fa57",
+    "semantic_hash": ""
+  },
+  "examples/aqua-matrixtv-ee-50/config.json": {
+    "mtime": 1792910399.7470493,
+    "seen": 1793001729.9796183,
+    "ast_hash": "96dcb51372921cae7a7afe6f74bca263",
+    "semantic_hash": ""
+  },
+  "examples/aqua-matrixtv-ee-50/tv.json": {
+    "mtime": 1792910399.747143,
+    "seen": 1793001729.979619,
+    "ast_hash": "239b4347c1c29b2a551bc8f73fe45f42",
+    "semantic_hash": ""
+  },
+  "examples/artel-cvte-mt5863/tv.json": {
+    "mtime": 1792910399.7473047,
+    "seen": 1793001729.97962,
+    "ast_hash": "f2a1b61dc6d2871d16886ebdd29c30c7",
+    "semantic_hash": ""
+  },
+  "examples/asus-m1g/tv.json": {
+    "mtime": 1792910399.7474706,
+    "seen": 1793001729.979621,
+    "ast_hash": "4638b2af34daee16b63e54ed70d6ee65",
+    "semantic_hash": ""
+  },
+  "examples/beko-b43b880b/tv.json": {
+    "mtime": 1792910399.7476335,
+    "seen": 1793001729.9796216,
+    "ast_hash": "abc80524b745f9b402805bd5214b30a7",
+    "semantic_hash": ""
+  },
+  "examples/benq-e55-735/tv.json": {
+    "mtime": 1792910399.7477953,
+    "seen": 1793001729.9796224,
+    "ast_hash": "d4bc6fa5023d708a04314419ccbe5879",
+    "semantic_hash": ""
+  },
+  "examples/benq-e55-750/tv.json": {
+    "mtime": 1792910399.7479553,
+    "seen": 1793001729.979623,
+    "ast_hash": "6407f602bf53722073e8266c9977b6fa",
+    "semantic_hash": ""
+  },
+  "examples/benq-gv32/config.json": {
+    "mtime": 1792910399.7481365,
+    "seen": 1793001729.979624,
+    "ast_hash": "c7b109727166d9fa727386db8a55ac29",
+    "semantic_hash": ""
+  },
+  "examples/benq-gv32/tv.json": {
+    "mtime": 1792910399.7482355,
+    "seen": 1793001729.979625,
+    "ast_hash": "07302e1ce7640f7758ca61ea5bc8f686",
+    "semantic_hash": ""
+  },
+  "examples/benq-qs01/tv.json": {
+    "mtime": 1792910399.7483954,
+    "seen": 1793001729.9796257,
+    "ast_hash": "eb2875f192852a4da4d250f83e1a12d9",
+    "semantic_hash": ""
+  },
+  "examples/byintek-t5-max/tv.json": {
+    "mtime": 1792910399.7485528,
+    "seen": 1793001729.9796267,
+    "ast_hash": "bb6a99da62dc99ad9f72c8d94c71fb8b",
+    "semantic_hash": ""
+  },
+  "examples/byintek-u4/config.json": {
+    "mtime": 1792910399.7487252,
+    "seen": 1793001729.9796276,
+    "ast_hash": "04d2a5c4453858fcc15cbcb55d00aa5e",
+    "semantic_hash": ""
+  },
+  "examples/byintek-u4/tv.json": {
+    "mtime": 1792910399.7488115,
+    "seen": 1793001729.9796283,
+    "ast_hash": "29e497be381c9d43339ad08388e62b15",
+    "semantic_hash": ""
+  },
+  "examples/caxium-58-realtek-rtk2851p/tv.json": {
+    "mtime": 1792910399.7489405,
+    "seen": 1793001729.9796293,
+    "ast_hash": "ca8214a3be01b7589c0f8ea70ce73d96",
+    "semantic_hash": ""
+  },
+  "examples/cecotec-shandao/tv.json": {
+    "mtime": 1792910399.7490814,
+    "seen": 1793001729.97963,
+    "ast_hash": "60822e015619990fa3b08b4f59e7d34b",
+    "semantic_hash": ""
+  },
+  "examples/challenger-32t22bt/tv.json": {
+    "mtime": 1792910399.7492206,
+    "seen": 1793001729.9796312,
+    "ast_hash": "7f38376294e07a981089076d34af4ff2",
+    "semantic_hash": ""
+  },
+  "examples/chiq-ai-pont/tv.json": {
+    "mtime": 1792910399.7493587,
+    "seen": 1793001729.9796321,
+    "ast_hash": "7ffae6a6d115be7445338d030c967f40",
+    "semantic_hash": ""
+  },
+  "examples/chiq-gtvu65/tv.json": {
+    "mtime": 1792910399.7495046,
+    "seen": 1793001729.9796329,
+    "ast_hash": "b847a0cd68480884d6d55a1fc312dfb6",
+    "semantic_hash": ""
+  },
+  "examples/compac-atv-r2/tv.json": {
+    "mtime": 1792910399.74964,
+    "seen": 1793001729.9796336,
+    "ast_hash": "b7568fe43c1699b5cb5f9eddd7efad6c",
+    "semantic_hash": ""
+  },
+  "examples/coocaa-k3-pro-90p3d-max/tv.json": {
+    "mtime": 1792910399.7497978,
+    "seen": 1793001729.9796345,
+    "ast_hash": "c286b4ef60354483efe764cefecc01af",
+    "semantic_hash": ""
+  },
+  "examples/dcolor-gd2/tv.json": {
+    "mtime": 1792910399.7499485,
+    "seen": 1793001729.9796355,
+    "ast_hash": "f1a643105fef17a1e36370a06d08d905",
+    "semantic_hash": ""
+  },
+  "examples/dialog-viu-sei103dl/tv.json": {
+    "mtime": 1792910399.750089,
+    "seen": 1793001729.9796362,
+    "ast_hash": "2df028bbdf3d82f81aabb02f60e3ab12",
+    "semantic_hash": ""
+  },
+  "examples/eko-2k-google-tv-tennoji/tv.json": {
+    "mtime": 1792910399.7502446,
+    "seen": 1793001729.9796371,
+    "ast_hash": "4fbb20cc4d5f56dbefe24e2999e9aec8",
+    "semantic_hash": ""
+  },
+  "examples/epson-ls800/config.json": {
+    "mtime": 1792910399.7503917,
+    "seen": 1793001729.979638,
+    "ast_hash": "0f1aa3fed55b8db0dc253efb681e085f",
+    "semantic_hash": ""
+  },
+  "examples/epson-ls800/restore.sh": {
+    "mtime": 1792910399.7504761,
+    "seen": 1793001729.979639,
+    "ast_hash": "c72fd996eb58eedc4840bd6d84371bc5",
+    "semantic_hash": ""
+  },
+  "examples/epson-ls800/tv.json": {
+    "mtime": 1792910399.750514,
+    "seen": 1793001729.9796398,
+    "ast_hash": "6636927a33141fcfe29c601a9f951fb9",
+    "semantic_hash": ""
+  },
+  "examples/ffalcon-65s585c-pro/tv.json": {
+    "mtime": 1792910399.750679,
+    "seen": 1793001729.9796405,
+    "ast_hash": "8048d06bc55e9c699f2e1c28796a91ef",
+    "semantic_hash": ""
+  },
+  "examples/ffalcon-r34a0-cn/tv.json": {
+    "mtime": 1792910399.750827,
+    "seen": 1793001729.9796414,
+    "ast_hash": "8078e175d27614562491cca4bacf5873",
+    "semantic_hash": ""
+  },
+  "examples/formovie-laser-4k-hanlla/tv.json": {
+    "mtime": 1792910399.750967,
+    "seen": 1793001729.9796422,
+    "ast_hash": "2655d6b14ab87f139d05ac01b399613f",
+    "semantic_hash": ""
+  },
+  "examples/formovie-mprojm05/tv.json": {
+    "mtime": 1792910399.751119,
+    "seen": 1793001729.9796429,
+    "ast_hash": "b067bf38367a1516ea328de244632fd8",
+    "semantic_hash": ""
+  },
+  "examples/freebox-player-pop/tv.json": {
+    "mtime": 1792910399.7513015,
+    "seen": 1793001729.9796436,
+    "ast_hash": "8366030c0b8b304f8f5660a9c1f1c5cc",
+    "semantic_hash": ""
+  },
+  "examples/gadnic-proj100w/tv.json": {
+    "mtime": 1792910399.7514305,
+    "seen": 1793001729.9796443,
+    "ast_hash": "ebda051ee60a362217aa3ae0f70de89d",
+    "semantic_hash": ""
+  },
+  "examples/google-chromecast-gtv-4k/tv.json": {
+    "mtime": 1792910399.7516303,
+    "seen": 1793001729.9796453,
+    "ast_hash": "05a370b7c272b64b4c8277b8b2c168a0",
+    "semantic_hash": ""
+  },
+  "examples/google-chromecast-gtv-hd/tv.json": {
+    "mtime": 1792910399.751774,
+    "seen": 1793001729.9796462,
+    "ast_hash": "8e02e61ffa7251dd529ee35a78663dc7",
+    "semantic_hash": ""
+  },
+  "examples/google-tv-streamer-4k-kirkwood/tv.json": {
+    "mtime": 1792910399.7519207,
+    "seen": 1793001729.979647,
+    "ast_hash": "0f5bef6658995fda1adb5a5f8a7f8a0e",
+    "semantic_hash": ""
+  },
+  "examples/grundig-kunyang/tv.json": {
+    "mtime": 1792910399.7521136,
+    "seen": 1793001729.9796476,
+    "ast_hash": "1e6f4cc2c09063cb730568520d9b3913",
+    "semantic_hash": ""
+  },
+  "examples/haier-android-tv-dvb2k/tv.json": {
+    "mtime": 1792910399.752253,
+    "seen": 1793001729.9796486,
+    "ast_hash": "6f832e4a39ec436c768ccce91cbbd151",
+    "semantic_hash": ""
+  },
+  "examples/haier-h32s80efx/tv.json": {
+    "mtime": 1792910399.7524104,
+    "seen": 1793001729.9796493,
+    "ast_hash": "909ca854c5f2d01d706ec2c27ceb269b",
+    "semantic_hash": ""
+  },
+  "examples/haier-hr9216eu/config.json": {
+    "mtime": 1792910399.7525492,
+    "seen": 1793001729.9796503,
+    "ast_hash": "886b805548d03f26fe959e1aa8e6d2ce",
+    "semantic_hash": ""
+  },
+  "examples/haier-hr9216eu/tv.json": {
+    "mtime": 1792910399.75263,
+    "seen": 1793001729.979651,
+    "ast_hash": "cdfa45abb17b23f86faaac2a119f1630",
+    "semantic_hash": ""
+  },
+  "examples/hisense-65d62qh/config.json": {
+    "mtime": 1792910399.7527647,
+    "seen": 1793001729.979652,
+    "ast_hash": "0f9d05f109220a71c50e109bcd4fc975",
+    "semantic_hash": ""
+  },
+  "examples/hisense-65d62qh/tv.json": {
+    "mtime": 1792910399.7528763,
+    "seen": 1793001729.9796526,
+    "ast_hash": "3aeb7210e7447ff4a56056bdf8da95e2",
+    "semantic_hash": ""
+  },
+  "examples/hisense-e5q-pro/tv.json": {
+    "mtime": 1792910399.7530096,
+    "seen": 1793001729.9796536,
+    "ast_hash": "41f2df06f591b5f4f139faea09f517f3",
+    "semantic_hash": ""
+  },
+  "examples/hisense-fire-tv-aftcibfbd1/tv.json": {
+    "mtime": 1792910399.7531648,
+    "seen": 1793001729.9796543,
+    "ast_hash": "b489d2046037b8b5cf52546c51d9a744",
+    "semantic_hash": ""
+  },
+  "examples/hisense-hg9/tv.json": {
+    "mtime": 1792910399.7533014,
+    "seen": 1793001729.9796555,
+    "ast_hash": "41d333d5e1553028df25057f55ee4853",
+    "semantic_hash": ""
+  },
+  "examples/hisense-hismarttv-a4-android11/tv.json": {
+    "mtime": 1792910399.7536066,
+    "seen": 1793001729.9796565,
+    "ast_hash": "c9d8cae811d40749abef98a18477480f",
+    "semantic_hash": ""
+  },
+  "examples/hisense-hismarttv-a4/tv.json": {
+    "mtime": 1792910399.753463,
+    "seen": 1793001729.9796572,
+    "ast_hash": "48fa8ec7da57239df7530713cf54978b",
+    "semantic_hash": ""
+  },
+  "examples/hisense-smarttv-4k-ffm-android11/tv.json": {
+    "mtime": 1792910399.7539144,
+    "seen": 1793001729.979658,
+    "ast_hash": "68f1598f950ffa7360398fa1ebf9816d",
+    "semantic_hash": ""
+  },
+  "examples/hisense-smarttv-4k-ffm-lushan/tv.json": {
+    "mtime": 1792910399.754088,
+    "seen": 1793001729.9796588,
+    "ast_hash": "768c2718d11cee23a1a6984198e8d264",
+    "semantic_hash": ""
+  },
+  "examples/hisense-smarttv-4k-ffm/config.json": {
+    "mtime": 1792910399.753689,
+    "seen": 1793001729.9796596,
+    "ast_hash": "fa6ff03628584df3c96801920b8a83d1",
+    "semantic_hash": ""
+  },
+  "examples/hisense-smarttv-4k-ffm/tv.json": {
+    "mtime": 1792910399.7537775,
+    "seen": 1793001729.9796603,
+    "ast_hash": "68b55aaaa6ae7f50bec6d9ac6a9a83ca",
+    "semantic_hash": ""
+  },
+  "examples/hisense-u75-hengshan/config.json": {
+    "mtime": 1792910399.7542396,
+    "seen": 1793001729.9796612,
+    "ast_hash": "ec3690cc1b50002cd7a45c5c158fa2c9",
+    "semantic_hash": ""
+  },
+  "examples/hisense-u75-hengshan/tv.json": {
+    "mtime": 1792910399.7543666,
+    "seen": 1793001729.9796622,
+    "ast_hash": "6489e340b6214cc32473aed291c1f0a3",
+    "semantic_hash": ""
+  },
+  "examples/hitachi-65qledsm20/tv.json": {
+    "mtime": 1792910399.7545373,
+    "seen": 1793001729.979663,
+    "ast_hash": "b435e22da14f5a1964e416a85561f0d8",
+    "semantic_hash": ""
+  },
+  "examples/hitachi-cdh-le32smart21/tv.json": {
+    "mtime": 1792910399.754703,
+    "seen": 1793001729.9796636,
+    "ast_hash": "92da79423af8fee0c2cddafb5fdebcde",
+    "semantic_hash": ""
+  },
+  "examples/hotack-smart2kpjt/tv.json": {
+    "mtime": 1792910399.7548819,
+    "seen": 1793001729.9796643,
+    "ast_hash": "693b01986a50a5c3f8a16e59560c5254",
+    "semantic_hash": ""
+  },
+  "examples/inclo-google-tv-4k/tv.json": {
+    "mtime": 1792910399.7550461,
+    "seen": 1793001729.9796655,
+    "ast_hash": "d3680a3973cf746d3014828a95b9f618",
+    "semantic_hash": ""
+  },
+  "examples/insignia-ns55f301na25/tv.json": {
+    "mtime": 1792910399.7552161,
+    "seen": 1793001729.9796662,
+    "ast_hash": "53d12d70911bd403a4ac8be2d9f0f97f",
+    "semantic_hash": ""
+  },
+  "examples/jmgo-n1s-holan/tv.json": {
+    "mtime": 1792910399.7553914,
+    "seen": 1793001729.979667,
+    "ast_hash": "b12cce55b6886520166b4c9bf227affd",
+    "semantic_hash": ""
+  },
+  "examples/jvc-android-tv-menlo/tv.json": {
+    "mtime": 1792910399.7555346,
+    "seen": 1793001729.979668,
+    "ast_hash": "bdd58dbcafb8d41fdd51df852a0570f8",
+    "semantic_hash": ""
+  },
+  "examples/jvc-lt55mb508/tv.json": {
+    "mtime": 1792910399.7556796,
+    "seen": 1793001729.9796686,
+    "ast_hash": "e70af20bbee704d5030b327c1f125a24",
+    "semantic_hash": ""
+  },
+  "examples/jvc-uk-4k-sadang/tv.json": {
+    "mtime": 1792910399.7558444,
+    "seen": 1793001729.9796696,
+    "ast_hash": "fe12a40ef1a14f8c246e0522170c6b2f",
+    "semantic_hash": ""
+  },
+  "examples/kalley-43g200/tv.json": {
+    "mtime": 1792910399.756002,
+    "seen": 1793001729.9796703,
+    "ast_hash": "0922bd57343762dc64720033dc8dd8bd",
+    "semantic_hash": ""
+  },
+  "examples/kalley-r10g/tv.json": {
+    "mtime": 1792910399.7561655,
+    "seen": 1793001729.979671,
+    "ast_hash": "f3f3fab9f8ae2ec2abc41ba58f55c2fd",
+    "semantic_hash": ""
+  },
+  "examples/karbonn-swtv-20ae/tv.json": {
+    "mtime": 1792910399.7563252,
+    "seen": 1793001729.9796717,
+    "ast_hash": "db0ea8cc3358a1f25264376383acc59f",
+    "semantic_hash": ""
+  },
+  "examples/kogan-g7/tv.json": {
+    "mtime": 1792910399.7564976,
+    "seen": 1793001729.9796727,
+    "ast_hash": "cf04a2798a6ebef0048753c0f7e6ad4c",
+    "semantic_hash": ""
+  },
+  "examples/kogan-gtvu65kg/tv.json": {
+    "mtime": 1792910399.7566574,
+    "seen": 1793001729.9796734,
+    "ast_hash": "1a429a568a4f65e01481370e295c5957",
+    "semantic_hash": ""
+  },
+  "examples/ktc-4k-smart-tv-hongkong/tv.json": {
+    "mtime": 1792910399.7567987,
+    "seen": 1793001729.9796743,
+    "ast_hash": "2e572ad04ea3f4b561dfb5f782e02fe9",
+    "semantic_hash": ""
+  },
+  "examples/liberton-ltv-24h01at/config.json": {
+    "mtime": 1792910399.7568896,
+    "seen": 1793001729.979675,
+    "ast_hash": "06706e500970cd33273fcfe9649ee2f3",
+    "semantic_hash": ""
+  },
+  "examples/liberton-ltv-24h01at/tv.json": {
+    "mtime": 1792910399.7570052,
+    "seen": 1793001729.979676,
+    "ast_hash": "4ee80fb9f3b45955a5f463553b328343",
+    "semantic_hash": ""
+  },
+  "examples/lumio-vision-7/tv.json": {
+    "mtime": 1792910399.757196,
+    "seen": 1793001729.979677,
+    "ast_hash": "52dc162cba35de9119d953b442c3aa1a",
+    "semantic_hash": ""
+  },
+  "examples/magcubic-hy300-pro/config.json": {
+    "mtime": 1792910399.7573059,
+    "seen": 1793001729.9796777,
+    "ast_hash": "32dd28d52c847799772a27fcf0a6d7a7",
+    "semantic_hash": ""
+  },
+  "examples/magcubic-hy300-pro/tv.json": {
+    "mtime": 1792910399.7574112,
+    "seen": 1793001729.9796798,
+    "ast_hash": "17b8af12933be30f44e64ef96488ee31",
+    "semantic_hash": ""
+  },
+  "examples/master-g-mga3200/tv.json": {
+    "mtime": 1792910399.757568,
+    "seen": 1793001729.9796805,
+    "ast_hash": "c273919ad3c67b5b09bf63e62b80be43",
+    "semantic_hash": ""
+  },
+  "examples/motorola-mt4310/theme/config.json": {
+    "mtime": 1792910399.7578437,
+    "seen": 1793001729.9796813,
+    "ast_hash": "ea34eb90b0cc363553bc59f362f6a2de",
+    "semantic_hash": ""
+  },
+  "examples/motorola-mt4310/tv.json": {
+    "mtime": 1792910399.7579172,
+    "seen": 1793001729.979682,
+    "ast_hash": "9b31042468396833cc76fd2b07c7d147",
+    "semantic_hash": ""
+  },
+  "examples/motorola-swtv-24ae-fhd/tv.json": {
+    "mtime": 1792910399.75808,
+    "seen": 1793001729.979683,
+    "ast_hash": "9c6be3930e7324d464df5b922306ac6e",
+    "semantic_hash": ""
+  },
+  "examples/mtc-uk-2k-android-tv/tv.json": {
+    "mtime": 1792910399.7582564,
+    "seen": 1793001729.9796839,
+    "ast_hash": "17340cf5409195dd35f40a86f5b6b6d7",
+    "semantic_hash": ""
+  },
+  "examples/noblex-shinjuku/tv.json": {
+    "mtime": 1792910399.758419,
+    "seen": 1793001729.9796846,
+    "ast_hash": "569742117f16d0bacf7eeaea24edcfc6",
+    "semantic_hash": ""
+  },
+  "examples/nokia-streaming-box-8000/theme/config.json": {
+    "mtime": 1792910399.7586436,
+    "seen": 1793001729.9796853,
+    "ast_hash": "cc850250c69d1d245187819383f71fba",
+    "semantic_hash": ""
+  },
+  "examples/nokia-streaming-box-8000/tv.json": {
+    "mtime": 1792910399.758695,
+    "seen": 1793001729.9796863,
+    "ast_hash": "a7f350f95def81c13056beb81bba8981",
+    "semantic_hash": ""
+  },
+  "examples/nokia-streaming-box-8010/tv.json": {
+    "mtime": 1792910399.7588108,
+    "seen": 1793001729.9796872,
+    "ast_hash": "cbb4acf3e113578dc20f691aa767439c",
+    "semantic_hash": ""
+  },
+  "examples/nvidia-shield-tv-2019/config.json": {
+    "mtime": 1792910399.758955,
+    "seen": 1793001729.979688,
+    "ast_hash": "beb8b483f825ac233c1df4476817d786",
+    "semantic_hash": ""
+  },
+  "examples/nvidia-shield-tv-2019/tv.json": {
+    "mtime": 1792910399.7590766,
+    "seen": 1793001729.9796886,
+    "ast_hash": "c5a415fc24e1aa42dd20126728fc06be",
+    "semantic_hash": ""
+  },
+  "examples/nvidia-shield-tv-pro-2019/tv.json": {
+    "mtime": 1792910399.759203,
+    "seen": 1793001729.9796894,
+    "ast_hash": "03904fcb610b635c600b799b4cc9953a",
+    "semantic_hash": ""
+  },
+  "examples/ok-ai-pont-ikebukuro/config.json": {
+    "mtime": 1792910399.7592707,
+    "seen": 1793001729.9796903,
+    "ast_hash": "e1d4b528f1a883cb1618fe0515d41277",
+    "semantic_hash": ""
+  },
+  "examples/ok-ai-pont-ikebukuro/tv.json": {
+    "mtime": 1792910399.7593498,
+    "seen": 1793001729.979691,
+    "ast_hash": "4405b009cf45b405ec0b93e28bdcd3ec",
+    "semantic_hash": ""
+  },
+  "examples/oneplus-tv-cebu/config.json": {
+    "mtime": 1792910399.7594206,
+    "seen": 1793001729.979692,
+    "ast_hash": "348b4fd4933f9ffc91bdfef133545ee4",
+    "semantic_hash": ""
+  },
+  "examples/oneplus-tv-cebu/tv.json": {
+    "mtime": 1792910399.75951,
+    "seen": 1793001729.9796927,
+    "ast_hash": "721a9675ba29f144e788b8102fb7446d",
+    "semantic_hash": ""
+  },
+  "examples/oneplus-tv-dosa/config.json": {
+    "mtime": 1792910399.7595797,
+    "seen": 1793001729.9796937,
+    "ast_hash": "bc05f324bcff9a673ccad10a2a1d9f4d",
+    "semantic_hash": ""
+  },
+  "examples/oneplus-tv-dosa/tv.json": {
+    "mtime": 1792910399.7596557,
+    "seen": 1793001729.9796944,
+    "ast_hash": "e351a85d1b3f90c2228da7798b045f68",
+    "semantic_hash": ""
+  },
+  "examples/oneplus-tv-dubai/tv.json": {
+    "mtime": 1792910399.759764,
+    "seen": 1793001729.979695,
+    "ast_hash": "990a2d4573825489ec188303d3ab34e6",
+    "semantic_hash": ""
+  },
+  "examples/oneplus-tv-y1/tv.json": {
+    "mtime": 1792910399.7598815,
+    "seen": 1793001729.9796958,
+    "ast_hash": "76d0803be1fa9ec5352b4deeac3322eb",
+    "semantic_hash": ""
+  },
+  "examples/onn-4k-plus-2025/tv.json": {
+    "mtime": 1792910399.759991,
+    "seen": 1793001729.9796968,
+    "ast_hash": "ecd9f699ce38476edbd243586a7167ad",
+    "semantic_hash": ""
+  },
+  "examples/onn-4k-streaming-box-2023/tv.json": {
+    "mtime": 1792910399.760109,
+    "seen": 1793001729.9796975,
+    "ast_hash": "373f13c1f90ece767d432f7949bee940",
+    "semantic_hash": ""
+  },
+  "examples/panasonic-4ktv-0su/tv.json": {
+    "mtime": 1792910399.7603352,
+    "seen": 1793001729.9796982,
+    "ast_hash": "07f1b9eca425f32c7c9b8c82bab727d4",
+    "semantic_hash": ""
+  },
+  "examples/panasonic-4ktv-jup/tv.json": {
+    "mtime": 1792910399.7604415,
+    "seen": 1793001729.979699,
+    "ast_hash": "ba760073a95467e4dfd41d2f8a64ef8b",
+    "semantic_hash": ""
+  },
+  "examples/panasonic-kowloon/tv.json": {
+    "mtime": 1792910399.7605503,
+    "seen": 1793001729.9796999,
+    "ast_hash": "8db82fac5d8f5263c5b5972513c008d4",
+    "semantic_hash": ""
+  },
+  "examples/panasonic-th-40hs550k/tv.json": {
+    "mtime": 1792910399.7606556,
+    "seen": 1793001729.9797008,
+    "ast_hash": "0edd6eddefe5b18a200535ef0d198e13",
+    "semantic_hash": ""
+  },
+  "examples/panavox-google-tv/tv.json": {
+    "mtime": 1792910399.760762,
+    "seen": 1793001729.9797015,
+    "ast_hash": "aeebc805c5bbd6e41572ef544c70e473",
+    "semantic_hash": ""
+  },
+  "examples/peaq-ptv43aqu-5023c/config.json": {
+    "mtime": 1792910399.7608256,
+    "seen": 1793001729.9797022,
+    "ast_hash": "d9c5a93df3fc64397d24987ad8613952",
+    "semantic_hash": ""
+  },
+  "examples/peaq-ptv43aqu-5023c/tv.json": {
+    "mtime": 1792910399.7609034,
+    "seen": 1793001729.979703,
+    "ast_hash": "25643115a42dad1c155ee765ce22e54a",
+    "semantic_hash": ""
+  },
+  "examples/philips-50pud7406/tv.json": {
+    "mtime": 1792910399.7610185,
+    "seen": 1793001729.979704,
+    "ast_hash": "8e906a7c0450bdb76c81d2504937ff0b",
+    "semantic_hash": ""
+  },
+  "examples/philips-50pus8517/tv.json": {
+    "mtime": 1792910399.7611504,
+    "seen": 1793001729.9797046,
+    "ast_hash": "22e2fb5d5891de1c912e4ff9d81b7236",
+    "semantic_hash": ""
+  },
+  "examples/philips-55oled707/tv.json": {
+    "mtime": 1792910399.7612653,
+    "seen": 1793001729.9797056,
+    "ast_hash": "6ac4ed4e67e59a40675d39912a1b8538",
+    "semantic_hash": ""
+  },
+  "examples/philips-55oled708/tv.json": {
+    "mtime": 1792910399.76138,
+    "seen": 1793001729.9797063,
+    "ast_hash": "8e4cb81512b2dc2c42e56c65efebe3f7",
+    "semantic_hash": ""
+  },
+  "examples/philips-55pus7503/tv.json": {
+    "mtime": 1792910399.7614937,
+    "seen": 1793001729.9797072,
+    "ast_hash": "ff24a61c3e09c8e9ca19bfbc403aaa40",
+    "semantic_hash": ""
+  },
+  "examples/philips-65oled706/tv.json": {
+    "mtime": 1792910399.7616093,
+    "seen": 1793001729.979708,
+    "ast_hash": "d1ac863a5574278d7d2e69a14039126b",
+    "semantic_hash": ""
+  },
+  "examples/philips-65oled907/tv.json": {
+    "mtime": 1792910399.7617278,
+    "seen": 1793001729.9797087,
+    "ast_hash": "65ac02b33f46e33faa543f1710811490",
+    "semantic_hash": ""
+  },
+  "examples/philips-65pml9506/tv.json": {
+    "mtime": 1792910399.76184,
+    "seen": 1793001729.9797096,
+    "ast_hash": "b6c19a468a0717c29684388dddb6dd10",
+    "semantic_hash": ""
+  },
+  "examples/philips-65pus8102/tv.json": {
+    "mtime": 1792910399.7619598,
+    "seen": 1793001729.9797106,
+    "ast_hash": "f00555321a8e58eb2e7b343cde34837f",
+    "semantic_hash": ""
+  },
+  "examples/philips-65pus9435/tv.json": {
+    "mtime": 1792910399.7620754,
+    "seen": 1793001729.9797113,
+    "ast_hash": "72b202f2899c82fc900bb69af06addca",
+    "semantic_hash": ""
+  },
+  "examples/philips-75pus8505/tv.json": {
+    "mtime": 1792910399.7621953,
+    "seen": 1793001729.979712,
+    "ast_hash": "c989e2ef8a5dc3706f8cd6097048e341",
+    "semantic_hash": ""
+  },
+  "examples/philips-google-tv-ta7/theme/config.json": {
+    "mtime": 1792910399.7623687,
+    "seen": 1793001729.9797127,
+    "ast_hash": "f7838a33514096b296106737b895a912",
+    "semantic_hash": ""
+  },
+  "examples/philips-google-tv-ta7/tv.json": {
+    "mtime": 1792910399.7624187,
+    "seen": 1793001729.9797134,
+    "ast_hash": "bfeb40ef40616b045dd51899792fd3ad",
+    "semantic_hash": ""
+  },
+  "examples/philips-r8g-google-tv/tv.json": {
+    "mtime": 1792910399.7625432,
+    "seen": 1793001729.9797144,
+    "ast_hash": "3983345e09d30586c1b6b1dcafb1a69b",
+    "semantic_hash": ""
+  },
+  "examples/philips-smart-4k-google-tv/tv.json": {
+    "mtime": 1792910399.7626534,
+    "seen": 1793001729.9797153,
+    "ast_hash": "375e090f5903227db8a232cfb2ec8734",
+    "semantic_hash": ""
+  },
+  "examples/philips-tpm191e/tv.json": {
+    "mtime": 1792910399.7628257,
+    "seen": 1793001729.979716,
+    "ast_hash": "a4fd9f0fb4c31fff8cd24a2cfd1efb7a",
+    "semantic_hash": ""
+  },
+  "examples/polytron-2k-hayward/tv.json": {
+    "mtime": 1792910399.7629416,
+    "seen": 1793001729.9797168,
+    "ast_hash": "1d9f1adb89c9d721dcb9ec84f2a778f5",
+    "semantic_hash": ""
+  },
+  "examples/portronics-beem-470/tv.json": {
+    "mtime": 1792910399.7630534,
+    "seen": 1793001729.9797177,
+    "ast_hash": "2e2a577c57fc0d4dba84790143f2b6da",
+    "semantic_hash": ""
+  },
+  "examples/prismplus-q65-ultra-r10g/tv.json": {
+    "mtime": 1792910399.7631884,
+    "seen": 1793001729.9797184,
+    "ast_hash": "e82337616b74e93756856a45bdd098a2",
+    "semantic_hash": ""
+  },
+  "examples/rca-ai-pont/config.json": {
+    "mtime": 1792910399.7632835,
+    "seen": 1793001729.9797192,
+    "ast_hash": "6e1da3364ff288255ff53d3e4670cc52",
+    "semantic_hash": ""
+  },
+  "examples/rca-ai-pont/tv.json": {
+    "mtime": 1792910399.7633717,
+    "seen": 1793001729.9797199,
+    "ast_hash": "e3b42cddfefb07ad2cae2fef80640cc0",
+    "semantic_hash": ""
+  },
+  "examples/rca-rc50a21s-4ksm/config.json": {
+    "mtime": 1792910399.7634852,
+    "seen": 1793001729.979721,
+    "ast_hash": "517d7be9b1b8491f1839cf2cd091dad2",
+    "semantic_hash": ""
+  },
+  "examples/rca-rc50a21s-4ksm/tv.json": {
+    "mtime": 1792910399.763556,
+    "seen": 1793001729.9797218,
+    "ast_hash": "b22e84e614c413e2cef6e801f93c9c08",
+    "semantic_hash": ""
+  },
+  "examples/redmi-mitv-antl0/tv.json": {
+    "mtime": 1792910399.7637908,
+    "seen": 1793001729.9797227,
+    "ast_hash": "7ef3ce1bbe27715cd2bccfdaa38bd9de",
+    "semantic_hash": ""
+  },
+  "examples/redmi-mitv-mftp0/tv.json": {
+    "mtime": 1792910399.7639046,
+    "seen": 1793001729.9797235,
+    "ast_hash": "1aec8df2b207571fc3063a14b88e66b3",
+    "semantic_hash": ""
+  },
+  "examples/rocktek-gb1/config.json": {
+    "mtime": 1792910399.7640355,
+    "seen": 1793001729.9797244,
+    "ast_hash": "a53989e066f41a37f3f4c54b0f019fd2",
+    "semantic_hash": ""
+  },
+  "examples/rocktek-gb1/tv.json": {
+    "mtime": 1792910399.7641075,
+    "seen": 1793001729.9797254,
+    "ast_hash": "3b2f1f883a204cd3215ab5e26c171bab",
+    "semantic_hash": ""
+  },
+  "examples/sankey-smart-tv-hi3751v350/config.json": {
+    "mtime": 1792910399.764343,
+    "seen": 1793001729.979726,
+    "ast_hash": "2e7ab0b038fb8d2e2ff58635541dc0dd",
+    "semantic_hash": ""
+  },
+  "examples/sankey-smart-tv-hi3751v350/tv.json": {
+    "mtime": 1792910399.7644176,
+    "seen": 1793001729.9797268,
+    "ast_hash": "13bf5f33b6d2c2792cf64be0892beeef",
+    "semantic_hash": ""
+  },
+  "examples/sankey-smart2ktvse/tv.json": {
+    "mtime": 1792910399.7642257,
+    "seen": 1793001729.9797275,
+    "ast_hash": "b6569faf075d040db56e79a7ea08faa6",
+    "semantic_hash": ""
+  },
+  "examples/sanyo-atv-r2/tv.json": {
+    "mtime": 1792910399.7645674,
+    "seen": 1793001729.9797285,
+    "ast_hash": "e208b2992154bac0bb44eae926c28499",
+    "semantic_hash": ""
+  },
+  "examples/sber-salute-tv-at30a6/config.json": {
+    "mtime": 1792910399.764688,
+    "seen": 1793001729.9797294,
+    "ast_hash": "8fef4d4124e8faf720cc44bf94dbd330",
+    "semantic_hash": ""
+  },
+  "examples/sber-salute-tv-at30a6/tv.json": {
+    "mtime": 1792910399.764761,
+    "seen": 1793001729.9797301,
+    "ast_hash": "9a0d48a5d874b90853390a63274a6c55",
+    "semantic_hash": ""
+  },
+  "examples/sharp-2t-c32gh3000i/tv.json": {
+    "mtime": 1792910399.7648728,
+    "seen": 1793001729.9797308,
+    "ast_hash": "34f4f4d7026dce19c1648b44f0ad8a5a",
+    "semantic_hash": ""
+  },
+  "examples/sharp-aquos-tve21f/tv.json": {
+    "mtime": 1792910399.76498,
+    "seen": 1793001729.9797318,
+    "ast_hash": "91d8277e30c448223c6301b9272c11f1",
+    "semantic_hash": ""
+  },
+  "examples/sharp-aquos-tve23a/tv.json": {
+    "mtime": 1792910399.765099,
+    "seen": 1793001729.9797325,
+    "ast_hash": "f6c888a8385608bb0ba6ce82ed4fa6ce",
+    "semantic_hash": ""
+  },
+  "examples/skyworth-65a3f/tv.json": {
+    "mtime": 1792910399.7652228,
+    "seen": 1793001729.9797332,
+    "ast_hash": "e950931607f86666baa75ef9a2ea4d9f",
+    "semantic_hash": ""
+  },
+  "examples/skyworth-7s60-a5/config.json": {
+    "mtime": 1792910399.7653341,
+    "seen": 1793001729.9797342,
+    "ast_hash": "62a497aa93d0f1e7514ae60ae633144d",
+    "semantic_hash": ""
+  },
+  "examples/skyworth-7s60-a5/tv.json": {
+    "mtime": 1792910399.7654047,
+    "seen": 1793001729.9797351,
+    "ast_hash": "a6fddd213e524ba19395cc8934477429",
+    "semantic_hash": ""
+  },
+  "examples/skyworth-8r40-k5c/tv.json": {
+    "mtime": 1792910399.765516,
+    "seen": 1793001729.9797359,
+    "ast_hash": "6b3dff0b8ebc938f83b66b7948a9a6e9",
+    "semantic_hash": ""
+  },
+  "examples/skyworth-sw-22sa/tv.json": {
+    "mtime": 1792910399.7656333,
+    "seen": 1793001729.9797368,
+    "ast_hash": "eb95f4c3d6b11f7c06b73abfea696a82",
+    "semantic_hash": ""
+  },
+  "examples/skyworth-swtv-21ae/tv.json": {
+    "mtime": 1792910399.7657745,
+    "seen": 1793001729.9797375,
+    "ast_hash": "0bd91d0cf1ae9ba8075528b82277ee1d",
+    "semantic_hash": ""
+  },
+  "examples/skyworth-swtv-22ae-fhd/tv.json": {
+    "mtime": 1792910399.7659628,
+    "seen": 1793001729.9797385,
+    "ast_hash": "ba629b13a2b16c6713f3331bf42138c9",
+    "semantic_hash": ""
+  },
+  "examples/skyworth-swtv-24ae-4k-nf/tv.json": {
+    "mtime": 1792910399.7661073,
+    "seen": 1793001729.9797392,
+    "ast_hash": "c634e9bf50de4dca288f4312fbef0024",
+    "semantic_hash": ""
+  },
+  "examples/skyworth-swtv-24na-4k-nf/tv.json": {
+    "mtime": 1792910399.7662725,
+    "seen": 1793001729.9797401,
+    "ast_hash": "64b4798c5cab24e8f7c829fa64190bbc",
+    "semantic_hash": ""
+  },
+  "examples/sony-bravia-4k-gb-us/tv.json": {
+    "mtime": 1792910399.7665455,
+    "seen": 1793001729.9797409,
+    "ast_hash": "581f827c7ec67c103f1177fce0798b6b",
+    "semantic_hash": ""
+  },
+  "examples/sony-bravia-4k-gb/tv.json": {
+    "mtime": 1792910399.7664096,
+    "seen": 1793001729.9797418,
+    "ast_hash": "6e3f2a2386e93236245715c1d059a746",
+    "semantic_hash": ""
+  },
+  "examples/sony-bravia-4k-ur2/tv.json": {
+    "mtime": 1792910399.7666783,
+    "seen": 1793001729.9797425,
+    "ast_hash": "c5b7ef53d53e0b1f68ca623525f3c2c3",
+    "semantic_hash": ""
+  },
+  "examples/sony-bravia-4k-ur3/tv.json": {
+    "mtime": 1792910399.766818,
+    "seen": 1793001729.9797432,
+    "ast_hash": "5948c26f0ca2556fa5836371d0f2f795",
+    "semantic_hash": ""
+  },
+  "examples/sony-bravia-4k-vh1/tv.json": {
+    "mtime": 1792910399.7669601,
+    "seen": 1793001729.979744,
+    "ast_hash": "cde52e9580e8039291c083249b4e298b",
+    "semantic_hash": ""
+  },
+  "examples/sony-bravia-4k-vh2/tv.json": {
+    "mtime": 1792910399.767106,
+    "seen": 1793001729.9797447,
+    "ast_hash": "ab7e68fb7b7e8e732b36f0d61ff6db7d",
+    "semantic_hash": ""
+  },
+  "examples/sony-bravia-4k-vh21-eu/tv.json": {
+    "mtime": 1792910399.7674396,
+    "seen": 1793001729.9797456,
+    "ast_hash": "27232d46233ab975d9459d95cc950c81",
+    "semantic_hash": ""
+  },
+  "examples/sony-bravia-4k-vh21/tv.json": {
+    "mtime": 1792910399.7672513,
+    "seen": 1793001729.9797463,
+    "ast_hash": "5c0db8cf83eea1935d9effd2c0e9816d",
+    "semantic_hash": ""
+  },
+  "examples/sony-bravia-9-ii/tv.json": {
+    "mtime": 1792910399.7675989,
+    "seen": 1793001729.979747,
+    "ast_hash": "51865f8764c66b8448848be47b1e8d10",
+    "semantic_hash": ""
+  },
+  "examples/sony-bravia-ae1/config.json": {
+    "mtime": 1792910399.7676888,
+    "seen": 1793001729.979748,
+    "ast_hash": "fbb37ef943ac8a2957586e10e755d670",
+    "semantic_hash": ""
+  },
+  "examples/sony-bravia-ae1/tv.json": {
+    "mtime": 1792910399.767791,
+    "seen": 1793001729.979749,
+    "ast_hash": "e69c5e064a971229b78d937ea269feac",
+    "semantic_hash": ""
+  },
+  "examples/sony-bravia-ae2/tv.json": {
+    "mtime": 1792910399.767934,
+    "seen": 1793001729.9797497,
+    "ast_hash": "0163de0972e181002469f6bdd13bbd2d",
+    "semantic_hash": ""
+  },
+  "examples/sony-bravia-bf1/tv.json": {
+    "mtime": 1792910399.7681053,
+    "seen": 1793001729.9797506,
+    "ast_hash": "abf3df80a691f6f590643106f40e66c5",
+    "semantic_hash": ""
+  },
+  "examples/sony-bravia-tl2/tv.json": {
+    "mtime": 1792910399.7683077,
+    "seen": 1793001729.979751,
+    "ast_hash": "0e754b0883f912b8e96d6f54073003d5",
+    "semantic_hash": ""
+  },
+  "examples/sony-bravia-vu1/tv.json": {
+    "mtime": 1792910399.7684548,
+    "seen": 1793001729.9797523,
+    "ast_hash": "cb85522d9be01fab80c79e79772fe575",
+    "semantic_hash": ""
+  },
+  "examples/sony-bravia-vu3/tv.json": {
+    "mtime": 1792910399.7685893,
+    "seen": 1793001729.979753,
+    "ast_hash": "d87b878667b13c14555ba91efc224487",
+    "semantic_hash": ""
+  },
+  "examples/sony-bravia-vu31/tv.json": {
+    "mtime": 1792910399.768738,
+    "seen": 1793001729.9797537,
+    "ast_hash": "6935ffa1851c7c4648913f29353837e9",
+    "semantic_hash": ""
+  },
+  "examples/sony-kd-43x8000g/tv.json": {
+    "mtime": 1792910399.7689269,
+    "seen": 1793001729.9797544,
+    "ast_hash": "6b3ef467acd1ed441cf1b0ee524c5094",
+    "semantic_hash": ""
+  },
+  "examples/sony-kd-43x80l/tv.json": {
+    "mtime": 1792910399.7690685,
+    "seen": 1793001729.9797552,
+    "ast_hash": "54ff0fe827a5c56f988e201daa9ed0c9",
+    "semantic_hash": ""
+  },
+  "examples/sony-kd-49x8307c/tv.json": {
+    "mtime": 1792910399.76922,
+    "seen": 1793001729.979756,
+    "ast_hash": "a68e3abbf296139d538554b2212581a2",
+    "semantic_hash": ""
+  },
+  "examples/sony-kd-55x7500-cn/tv.json": {
+    "mtime": 1792910399.7693574,
+    "seen": 1793001729.979757,
+    "ast_hash": "d06ae2f860602eede0317e5d79b320cb",
+    "semantic_hash": ""
+  },
+  "examples/sony-kd-55x8000c/tv.json": {
+    "mtime": 1792910399.7694964,
+    "seen": 1793001729.9797578,
+    "ast_hash": "0bc8cc09d58d439d8c47db7ccc12f0dd",
+    "semantic_hash": ""
+  },
+  "examples/sony-kd-55x8509c/tv.json": {
+    "mtime": 1792910399.7696323,
+    "seen": 1793001729.9797585,
+    "ast_hash": "210b7a58d9fa26666e92fcd56a6670d0",
+    "semantic_hash": ""
+  },
+  "examples/sony-kd-55x85j/tv.json": {
+    "mtime": 1792910399.769768,
+    "seen": 1793001729.9797595,
+    "ast_hash": "a8f36ec5b9a80e68a21e196e2a521c5e",
+    "semantic_hash": ""
+  },
+  "examples/sony-kd-55xe8596/tv.json": {
+    "mtime": 1792910399.7699137,
+    "seen": 1793001729.9797604,
+    "ast_hash": "1579a86d18a5a9e72c2a2199af5f736f",
+    "semantic_hash": ""
+  },
+  "examples/sony-kd-55xf7596/tv.json": {
+    "mtime": 1792910399.7700934,
+    "seen": 1793001729.9797611,
+    "ast_hash": "d5b20dd69e40ee22b671c040e3a4b368",
+    "semantic_hash": ""
+  },
+  "examples/sony-kd-55xf8096/tv.json": {
+    "mtime": 1792910399.7702446,
+    "seen": 1793001729.9797618,
+    "ast_hash": "dc40ac90ce56dd869f21b52e7a145337",
+    "semantic_hash": ""
+  },
+  "examples/sony-kd-65x80j/tv.json": {
+    "mtime": 1792910399.7703815,
+    "seen": 1793001729.9797628,
+    "ast_hash": "3aa809bb78be12313b676c1041b04e92",
+    "semantic_hash": ""
+  },
+  "examples/sony-kd-65x82l/tv.json": {
+    "mtime": 1792910399.7705185,
+    "seen": 1793001729.9797635,
+    "ast_hash": "94a9f8db4889789610434f174dbc8d10",
+    "semantic_hash": ""
+  },
+  "examples/sony-kd-65x9300d/tv.json": {
+    "mtime": 1792910399.7706685,
+    "seen": 1793001729.9797645,
+    "ast_hash": "ff00332eed3cf03123f23b4363e36d0e",
+    "semantic_hash": ""
+  },
+  "examples/sony-kdl-43w950d/config.json": {
+    "mtime": 1792910399.7708008,
+    "seen": 1793001729.9797652,
+    "ast_hash": "1c666b7e188791cf834d196739aac493",
+    "semantic_hash": ""
+  },
+  "examples/sony-kdl-43w950d/tv.json": {
+    "mtime": 1792910399.7709095,
+    "seen": 1793001729.9797661,
+    "ast_hash": "6e8d10f91a8ad3521f6ac9a92175660c",
+    "semantic_hash": ""
+  },
+  "examples/sony-x9000h-cn/tv.json": {
+    "mtime": 1792910399.7710505,
+    "seen": 1793001729.9797668,
+    "ast_hash": "dcf6a01cd6d2dbae97c50c0263e65b4a",
+    "semantic_hash": ""
+  },
+  "examples/sony-xbr-55x850c/tv.json": {
+    "mtime": 1792910399.771224,
+    "seen": 1793001729.9797676,
+    "ast_hash": "6594167d3bff3024e1346eb9f7d8da89",
+    "semantic_hash": ""
+  },
+  "examples/sony-xbr-55x850d/tv.json": {
+    "mtime": 1792910399.7714221,
+    "seen": 1793001729.9797685,
+    "ast_hash": "1cce9c8b70f461c9e01e1c304e080478",
+    "semantic_hash": ""
+  },
+  "examples/sony-xbr-65x900f/tv.json": {
+    "mtime": 1792910399.771563,
+    "seen": 1793001729.9797692,
+    "ast_hash": "bb1cecbc32bb132eca124fb0e3eac6af",
+    "semantic_hash": ""
+  },
+  "examples/sony-xbr-x900e/tv.json": {
+    "mtime": 1792910399.7717025,
+    "seen": 1793001729.9797702,
+    "ast_hash": "7f657010fbdfee96b313dcfffadde9ad",
+    "semantic_hash": ""
+  },
+  "examples/sony-xr-65a80j/tv.json": {
+    "mtime": 1792910399.771847,
+    "seen": 1793001729.979771,
+    "ast_hash": "a3042771946f95ed18064c6b4c9d7081",
+    "semantic_hash": ""
+  },
+  "examples/sony-xr-65x90j-cn/tv.json": {
+    "mtime": 1792910399.771996,
+    "seen": 1793001729.9797719,
+    "ast_hash": "eba351aeb1c72df2619e4c816755f759",
+    "semantic_hash": ""
+  },
+  "examples/stellamore-t950s/tv.json": {
+    "mtime": 1792910399.77219,
+    "seen": 1793001729.9797726,
+    "ast_hash": "df97d7bac4309cfe71517e471f58754d",
+    "semantic_hash": ""
+  },
+  "examples/super-general-cvte-t972/tv.json": {
+    "mtime": 1792910399.77243,
+    "seen": 1793001729.9797735,
+    "ast_hash": "dc1f6a9236f8493fafe91d0774cb97c9",
+    "semantic_hash": ""
+  },
+  "examples/tcl-32l5a/tv.json": {
+    "mtime": 1792910399.772678,
+    "seen": 1793001729.9797742,
+    "ast_hash": "0ba4547bff23cac9b9eae57de8b0b562",
+    "semantic_hash": ""
+  },
+  "examples/tcl-32s5400a/tv.json": {
+    "mtime": 1792910399.773003,
+    "seen": 1793001729.979775,
+    "ast_hash": "1f001bb0a187315aa73365139828c9b5",
+    "semantic_hash": ""
+  },
+  "examples/tcl-32s5k/tv.json": {
+    "mtime": 1792910399.7732089,
+    "seen": 1793001729.979776,
+    "ast_hash": "62468df2bc5791d1fb78c1646246f6de",
+    "semantic_hash": ""
+  },
+  "examples/tcl-40s5400a/tv.json": {
+    "mtime": 1792910399.7734442,
+    "seen": 1793001729.9797769,
+    "ast_hash": "068aad2804382199c0e1cfc3a5ffc501",
+    "semantic_hash": ""
+  },
+  "examples/tcl-43c645/build-and-install.sh": {
+    "mtime": 1792910399.7737467,
+    "seen": 1793001729.9797776,
+    "ast_hash": "ae156bd56f35e8b930e83353134a463e",
+    "semantic_hash": ""
+  },
+  "examples/tcl-43c645/config.json": {
+    "mtime": 1792910399.7738128,
+    "seen": 1793001729.9797783,
+    "ast_hash": "679b5d45223ee31fa098b984907c9ffa",
+    "semantic_hash": ""
+  },
+  "examples/tcl-43c645/restore.sh": {
+    "mtime": 1792910399.77394,
+    "seen": 1793001729.979779,
+    "ast_hash": "ec1c5b42cb643bafd21baa7d11397498",
+    "semantic_hash": ""
+  },
+  "examples/tcl-43c645/tv.json": {
+    "mtime": 1792910399.774001,
+    "seen": 1793001729.97978,
+    "ast_hash": "b6612ab5d14b8af44d2c597790a2d367",
+    "semantic_hash": ""
+  },
+  "examples/tcl-43ep660/tv.json": {
+    "mtime": 1792910399.7742646,
+    "seen": 1793001729.9797807,
+    "ast_hash": "f635e7f3102f3aa1552be0de6bf8cd44",
+    "semantic_hash": ""
+  },
+  "examples/tcl-43p615/tv.json": {
+    "mtime": 1792910399.7745943,
+    "seen": 1793001729.9797816,
+    "ast_hash": "965178e3c8e4f3acbf32bb827b3d3ca7",
+    "semantic_hash": ""
+  },
+  "examples/tcl-43p725/tv.json": {
+    "mtime": 1792910399.774742,
+    "seen": 1793001729.9797823,
+    "ast_hash": "d3fb214be72a4f9282e5a84aaa2c4a9d",
+    "semantic_hash": ""
+  },
+  "examples/tcl-43s450f-ca/tv.json": {
+    "mtime": 1792910399.7749493,
+    "seen": 1793001729.979783,
+    "ast_hash": "4e32d1db32ceea63d50a239b7c83bf3c",
+    "semantic_hash": ""
+  },
+  "examples/tcl-43s5400a/tv.json": {
+    "mtime": 1792910399.775224,
+    "seen": 1793001729.979784,
+    "ast_hash": "ce88e8dea8363ffa3976722a0735f94d",
+    "semantic_hash": ""
+  },
+  "examples/tcl-43s5k/tv.json": {
+    "mtime": 1792910399.7754347,
+    "seen": 1793001729.979785,
+    "ast_hash": "30150ac7d3217b12f7ea334ba89bb757",
+    "semantic_hash": ""
+  },
+  "examples/tcl-50c725k/tv.json": {
+    "mtime": 1792910399.7756133,
+    "seen": 1793001729.9797857,
+    "ast_hash": "c0105ca36b13cdb32273a81906e932df",
+    "semantic_hash": ""
+  },
+  "examples/tcl-50dp660/tv.json": {
+    "mtime": 1792910399.7758236,
+    "seen": 1793001729.9797864,
+    "ast_hash": "df68608730787cef101b15b0af5acc38",
+    "semantic_hash": ""
+  },
+  "examples/tcl-50ep680/tv.json": {
+    "mtime": 1792910399.775971,
+    "seen": 1793001729.9797873,
+    "ast_hash": "38866186006a024af50784b6217eeb3e",
+    "semantic_hash": ""
+  },
+  "examples/tcl-50j7000a/tv.json": {
+    "mtime": 1792910399.776098,
+    "seen": 1793001729.9797883,
+    "ast_hash": "3e939c2ce45fcf5d24ed5da31e43c3e0",
+    "semantic_hash": ""
+  },
+  "examples/tcl-50p615/tv.json": {
+    "mtime": 1792910399.776257,
+    "seen": 1793001729.979789,
+    "ast_hash": "978e4b12dba311b74dba1a3f229e4f4c",
+    "semantic_hash": ""
+  },
+  "examples/tcl-50p735/tv.json": {
+    "mtime": 1792910399.776368,
+    "seen": 1793001729.9797897,
+    "ast_hash": "b97dfce8b7728492d8009c2ad3a74cae",
+    "semantic_hash": ""
+  },
+  "examples/tcl-55c715/tv.json": {
+    "mtime": 1792910399.7765048,
+    "seen": 1793001729.9797907,
+    "ast_hash": "9a37652f0f6b2f5ac6bbc3c20e940211",
+    "semantic_hash": ""
+  },
+  "examples/tcl-55c725/tv.json": {
+    "mtime": 1792910399.7766724,
+    "seen": 1793001729.9797916,
+    "ast_hash": "202ff04314a702c4707b27b222b95f97",
+    "semantic_hash": ""
+  },
+  "examples/tcl-55c745/config.json": {
+    "mtime": 1792910399.7767885,
+    "seen": 1793001729.9797924,
+    "ast_hash": "52335dc15e14a2b662945b849863b1bf",
+    "semantic_hash": ""
+  },
+  "examples/tcl-55c745/tv.json": {
+    "mtime": 1792910399.7768633,
+    "seen": 1793001729.9797933,
+    "ast_hash": "3ddafb9bd56a6df11082b27694ea29ce",
+    "semantic_hash": ""
+  },
+  "examples/tcl-55c7k-uk/config.json": {
+    "mtime": 1792910399.776985,
+    "seen": 1793001729.9797943,
+    "ast_hash": "b614ece12fbb68c38a7ee63c206c9b69",
+    "semantic_hash": ""
+  },
+  "examples/tcl-55c7k-uk/tv.json": {
+    "mtime": 1792910399.7770593,
+    "seen": 1793001729.979795,
+    "ast_hash": "c29064e726489bf11dfd8f864846f671",
+    "semantic_hash": ""
+  },
+  "examples/tcl-55c815/tv.json": {
+    "mtime": 1792910399.7771924,
+    "seen": 1793001729.9797957,
+    "ast_hash": "c44356dbd0236ae48d5fb16118537cd5",
+    "semantic_hash": ""
+  },
+  "examples/tcl-55ep640/tv.json": {
+    "mtime": 1792910399.7773087,
+    "seen": 1793001729.9797966,
+    "ast_hash": "174a9267d67a687b23dcbb769d2b5c1f",
+    "semantic_hash": ""
+  },
+  "examples/tcl-55p638/config.json": {
+    "mtime": 1792910399.7774296,
+    "seen": 1793001729.9797976,
+    "ast_hash": "84a06d5b9dec7fa2b378da4258a7ae54",
+    "semantic_hash": ""
+  },
+  "examples/tcl-55p638/tv.json": {
+    "mtime": 1792910399.7775035,
+    "seen": 1793001729.9797983,
+    "ast_hash": "36a159c7c8cdca12731ac1eb50d97c4b",
+    "semantic_hash": ""
+  },
+  "examples/tcl-55p7k/tv.json": {
+    "mtime": 1792910399.7776165,
+    "seen": 1793001729.979799,
+    "ast_hash": "e69803737bbf2c3fa471e651ae8b7ec2",
+    "semantic_hash": ""
+  },
+  "examples/tcl-55p8ls/tv.json": {
+    "mtime": 1792910399.7777317,
+    "seen": 1793001729.9797997,
+    "ast_hash": "04f47550f9a5e4a43ad8ff29cae2766f",
+    "semantic_hash": ""
+  },
+  "examples/tcl-55s470g/tv.json": {
+    "mtime": 1792910399.7778404,
+    "seen": 1793001729.9798005,
+    "ast_hash": "46975a50958b38217a544e3fde22972c",
+    "semantic_hash": ""
+  },
+  "examples/tcl-55s546-us/tv.json": {
+    "mtime": 1792910399.7779682,
+    "seen": 1793001729.9798017,
+    "ast_hash": "ade879efc76e3ea39b287602565e21cd",
+    "semantic_hash": ""
+  },
+  "examples/tcl-58s571f-fire-tv/tv.json": {
+    "mtime": 1792910399.778079,
+    "seen": 1793001729.9798024,
+    "ast_hash": "c1b85fc49aac29abfb1f5039abf6009b",
+    "semantic_hash": ""
+  },
+  "examples/tcl-65c725/tv.json": {
+    "mtime": 1792910399.778204,
+    "seen": 1793001729.979803,
+    "ast_hash": "882b4844dbf470951db3750e64307296",
+    "semantic_hash": ""
+  },
+  "examples/tcl-65c735/config.json": {
+    "mtime": 1792910399.778274,
+    "seen": 1793001729.9798038,
+    "ast_hash": "40ff8507db1d714217137d1655feee95",
+    "semantic_hash": ""
+  },
+  "examples/tcl-65c735/tv.json": {
+    "mtime": 1792910399.778363,
+    "seen": 1793001729.979805,
+    "ast_hash": "eba22c396cbf210a719ba67a9c70c1bd",
+    "semantic_hash": ""
+  },
+  "examples/tcl-65c7k-google-tv/tv.json": {
+    "mtime": 1792910399.7784793,
+    "seen": 1793001729.9798057,
+    "ast_hash": "26ed8eea672c8ff76f8845005b4f2106",
+    "semantic_hash": ""
+  },
+  "examples/tcl-65c7l-google-tv/config.json": {
+    "mtime": 1792910399.7786005,
+    "seen": 1793001729.9798064,
+    "ast_hash": "487698b0ce883c6f96f6cea60dc23ecf",
+    "semantic_hash": ""
+  },
+  "examples/tcl-65c7l-google-tv/tv.json": {
+    "mtime": 1792910399.778681,
+    "seen": 1793001729.9798074,
+    "ast_hash": "ec0a86ee2e4fee2df291385560742c32",
+    "semantic_hash": ""
+  },
+  "examples/tcl-65ep640/config.json": {
+    "mtime": 1792910399.778751,
+    "seen": 1793001729.9798083,
+    "ast_hash": "32497515f583dfcfed12db989ac586ce",
+    "semantic_hash": ""
+  },
+  "examples/tcl-65ep640/tv.json": {
+    "mtime": 1792910399.7788372,
+    "seen": 1793001729.979809,
+    "ast_hash": "317a8e9a3af8876cc4e15efb2e9b6b42",
+    "semantic_hash": ""
+  },
+  "examples/tcl-65ep68/config.json": {
+    "mtime": 1792910399.7789493,
+    "seen": 1793001729.97981,
+    "ast_hash": "1eb67d0f945e34676548aca2864d3a31",
+    "semantic_hash": ""
+  },
+  "examples/tcl-65ep68/tv.json": {
+    "mtime": 1792910399.7790294,
+    "seen": 1793001729.9798107,
+    "ast_hash": "4ec049d60f95b5fc82829cf414ac8f8f",
+    "semantic_hash": ""
+  },
+  "examples/tcl-65q550g/tv.json": {
+    "mtime": 1792910399.7792435,
+    "seen": 1793001729.9798117,
+    "ast_hash": "25fd5ca6dc807db3f53083e5a7efaa87",
+    "semantic_hash": ""
+  },
+  "examples/tcl-65q650g/tv.json": {
+    "mtime": 1792910399.7794244,
+    "seen": 1793001729.9798124,
+    "ast_hash": "fc1c1b528250fbf2a93d463fdeed4f42",
+    "semantic_hash": ""
+  },
+  "examples/tcl-75p8k/tv.json": {
+    "mtime": 1792910399.7795706,
+    "seen": 1793001729.979813,
+    "ast_hash": "b37e37fc9227e998e9f987cfed4b2fb2",
+    "semantic_hash": ""
+  },
+  "examples/tcl-85rm7l-google-tv/tv.json": {
+    "mtime": 1792910399.7797475,
+    "seen": 1793001729.9798138,
+    "ast_hash": "ea83cd29ab4e1b8b2cfd8e586b259d47",
+    "semantic_hash": ""
+  },
+  "examples/tcl-ak30a5/tv.json": {
+    "mtime": 1792910399.7799194,
+    "seen": 1793001729.9798148,
+    "ast_hash": "fe404ce1d06c3b573f2cc4c4be3646e1",
+    "semantic_hash": ""
+  },
+  "examples/tcl-beyondtv-pl/tv.json": {
+    "mtime": 1792910399.7805629,
+    "seen": 1793001729.9798155,
+    "ast_hash": "0b9a4bf8764616623956a15d499c15a7",
+    "semantic_hash": ""
+  },
+  "examples/tcl-beyondtv-rt2851/tv.json": {
+    "mtime": 1792910399.7807012,
+    "seen": 1793001729.9798162,
+    "ast_hash": "b456f938fc4905c5a2e37a289073901f",
+    "semantic_hash": ""
+  },
+  "examples/tcl-beyondtv/tv.json": {
+    "mtime": 1792910399.78007,
+    "seen": 1793001729.9798172,
+    "ast_hash": "5e18a2f949ee919dabbf49afc2b49bc6",
+    "semantic_hash": ""
+  },
+  "examples/tcl-beyondtv2-android-11/tv.json": {
+    "mtime": 1792910399.78022,
+    "seen": 1793001729.9798179,
+    "ast_hash": "3157879b8c6f1ceec2288f920c4f6717",
+    "semantic_hash": ""
+  },
+  "examples/tcl-beyondtv2-latin-america/tv.json": {
+    "mtime": 1792910399.7803557,
+    "seen": 1793001729.979819,
+    "ast_hash": "f2560053efad2f289cce5a88f31a8e2d",
+    "semantic_hash": ""
+  },
+  "examples/tcl-c635/tv.json": {
+    "mtime": 1792910399.7808368,
+    "seen": 1793001729.9798217,
+    "ast_hash": "f93f663c5c3baf9222ca15f726930998",
+    "semantic_hash": ""
+  },
+  "examples/tcl-c755-google-tv/tv.json": {
+    "mtime": 1792910399.7809947,
+    "seen": 1793001729.9798224,
+    "ast_hash": "5c354c24228c1a0f43f2bf24ccb97750",
+    "semantic_hash": ""
+  },
+  "examples/tcl-c845x2-google-tv/tv.json": {
+    "mtime": 1792910399.7811913,
+    "seen": 1793001729.9798234,
+    "ast_hash": "25fd75836f01c0d0557a01b89b09cd70",
+    "semantic_hash": ""
+  },
+  "examples/tcl-c89b-google-tv/config.json": {
+    "mtime": 1792910399.7812817,
+    "seen": 1793001729.979824,
+    "ast_hash": "994d5ceb944f5c2c1e9b0548ab991b60",
+    "semantic_hash": ""
+  },
+  "examples/tcl-c89b-google-tv/tv.json": {
+    "mtime": 1792910399.781382,
+    "seen": 1793001729.9798248,
+    "ast_hash": "e50893f04e708e017d89f091c218f343",
+    "semantic_hash": ""
+  },
+  "examples/tcl-g03-google-tv/config.json": {
+    "mtime": 1792910399.7814698,
+    "seen": 1793001729.9798257,
+    "ast_hash": "e387d7b307593773c9eccbb9bdeac458",
+    "semantic_hash": ""
+  },
+  "examples/tcl-g03-google-tv/tv.json": {
+    "mtime": 1792910399.7815788,
+    "seen": 1793001729.9798265,
+    "ast_hash": "c308be8b97897492130bccc4f8442e5b",
+    "semantic_hash": ""
+  },
+  "examples/tcl-g05-google-tv/tv.json": {
+    "mtime": 1792910399.7817197,
+    "seen": 1793001729.9798272,
+    "ast_hash": "f3338eb7b084c6b997b1467f965fb776",
+    "semantic_hash": ""
+  },
+  "examples/tcl-g07-google-tv/tv.json": {
+    "mtime": 1792910399.7818727,
+    "seen": 1793001729.979828,
+    "ast_hash": "d6288f0e4b30afa57acf6cc18b5b4cc4",
+    "semantic_hash": ""
+  },
+  "examples/tcl-g08-au-android12/config.json": {
+    "mtime": 1792910399.7820234,
+    "seen": 1793001729.979829,
+    "ast_hash": "9eb66ed51ab52a07244f1a2ce0083178",
+    "semantic_hash": ""
+  },
+  "examples/tcl-g08-au-android12/tv.json": {
+    "mtime": 1792910399.782113,
+    "seen": 1793001729.9798298,
+    "ast_hash": "28814089b2d0ad08884560f61c8e38e1",
+    "semantic_hash": ""
+  },
+  "examples/tcl-g08-eu-android12/tv.json": {
+    "mtime": 1792910399.782311,
+    "seen": 1793001729.9798305,
+    "ast_hash": "ff8b81a2bf2bbee9eb7f5add82acc6a8",
+    "semantic_hash": ""
+  },
+  "examples/tcl-g08-us-google-tv/tv.json": {
+    "mtime": 1792910399.7825031,
+    "seen": 1793001729.9798312,
+    "ast_hash": "e05534ff1e6230c43d0046303ab26fd3",
+    "semantic_hash": ""
+  },
+  "examples/tcl-g09-google-tv/config.json": {
+    "mtime": 1792910399.7826474,
+    "seen": 1793001729.9798322,
+    "ast_hash": "a657a6b57b72675af29e22de228c419d",
+    "semantic_hash": ""
+  },
+  "examples/tcl-g09-google-tv/tv.json": {
+    "mtime": 1792910399.7827346,
+    "seen": 1793001729.979833,
+    "ast_hash": "63a1372e49670775fc85b48e46690afb",
+    "semantic_hash": ""
+  },
+  "examples/tcl-g10-google-tv/tv.json": {
+    "mtime": 1792910399.7828712,
+    "seen": 1793001729.9798336,
+    "ast_hash": "eb49ba2ecafcbebfe7d4bb4c6fe1e69d",
+    "semantic_hash": ""
+  },
+  "examples/tcl-l40s66e/tv.json": {
+    "mtime": 1792910399.783016,
+    "seen": 1793001729.9798346,
+    "ast_hash": "915be01c37025f53df9f8765cbed6604",
+    "semantic_hash": ""
+  },
+  "examples/tcl-mt9655-cn-android14/tv.json": {
+    "mtime": 1792910399.783168,
+    "seen": 1793001729.9798355,
+    "ast_hash": "181b24a8c4fd764908123a360227dca1",
+    "semantic_hash": ""
+  },
+  "examples/tcl-q10g-pro/tv.json": {
+    "mtime": 1792910399.7833102,
+    "seen": 1793001729.9798362,
+    "ast_hash": "b42b0ec0fe3384c9d16b6ea6f3f64f40",
+    "semantic_hash": ""
+  },
+  "examples/tcl-q7c-google-tv/config.json": {
+    "mtime": 1792910399.7836373,
+    "seen": 1793001729.979837,
+    "ast_hash": "7ad67be89620e35ea257deef7ffcf55b",
+    "semantic_hash": ""
+  },
+  "examples/tcl-q7c-google-tv/tv.json": {
+    "mtime": 1792910399.7837393,
+    "seen": 1793001729.9798377,
+    "ast_hash": "947d99e46e087ceb9f4115fb5592b7c2",
+    "semantic_hash": ""
+  },
+  "examples/tcl-qm6k-google-tv/config.json": {
+    "mtime": 1792910399.7838244,
+    "seen": 1793001729.9798384,
+    "ast_hash": "284714d55fa0a4ff13d078d2dc079827",
+    "semantic_hash": ""
+  },
+  "examples/tcl-qm6k-google-tv/tv.json": {
+    "mtime": 1792910399.783914,
+    "seen": 1793001729.9798393,
+    "ast_hash": "dbdfee10b50104cb057c5a5995dc430c",
+    "semantic_hash": ""
+  },
+  "examples/tcl-tc8000-ay30a2/config.json": {
+    "mtime": 1792910399.783993,
+    "seen": 1793001729.9798403,
+    "ast_hash": "1344c44bc857fce99aa8caf6df48c033",
+    "semantic_hash": ""
+  },
+  "examples/tcl-tc8000-ay30a2/tv.json": {
+    "mtime": 1792910399.7840848,
+    "seen": 1793001729.979841,
+    "ast_hash": "966f886697608558dcc9fd33fbc333a0",
+    "semantic_hash": ""
+  },
+  "examples/tcl-uniontv-latin-america/tv.json": {
+    "mtime": 1792910399.78423,
+    "seen": 1793001729.9798417,
+    "ast_hash": "23a4735f1a0931dc216977755abf646f",
+    "semantic_hash": ""
+  },
+  "examples/telesystem-ont2hd/tv.json": {
+    "mtime": 1792910399.7843616,
+    "seen": 1793001729.9798427,
+    "ast_hash": "1c6fa6666a5c062817863bed706119a5",
+    "semantic_hash": ""
+  },
+  "examples/thomson-32he5800/tv.json": {
+    "mtime": 1792910399.784494,
+    "seen": 1793001729.9798436,
+    "ast_hash": "d2f32f9acd4a1d3fa13a0a7f5c8cbacc",
+    "semantic_hash": ""
+  },
+  "examples/thomson-43rt1055/config.json": {
+    "mtime": 1792910399.7845802,
+    "seen": 1793001729.9798443,
+    "ast_hash": "cb3ef88bf775e4a7e4a81f99cc3a417f",
+    "semantic_hash": ""
+  },
+  "examples/thomson-43rt1055/tv.json": {
+    "mtime": 1792910399.784676,
+    "seen": 1793001729.9798453,
+    "ast_hash": "fec5cfa309d8919e29b8dedaf5626450",
+    "semantic_hash": ""
+  },
+  "examples/thomson-sppl-4k-sw6h/config.json": {
+    "mtime": 1792910399.7847626,
+    "seen": 1793001729.9798462,
+    "ast_hash": "5e65c04a7abb03e9646f78e8399d26f1",
+    "semantic_hash": ""
+  },
+  "examples/thomson-sppl-4k-sw6h/tv.json": {
+    "mtime": 1792910399.7848654,
+    "seen": 1793001729.979847,
+    "ast_hash": "f5ab4fc106dc0145c8e3868e59b0fe20",
+    "semantic_hash": ""
+  },
+  "examples/thomson-t32rtl6000/tv.json": {
+    "mtime": 1792910399.785002,
+    "seen": 1793001729.979848,
+    "ast_hash": "8e4349d67e8b37bc2fe49d221ce67991",
+    "semantic_hash": ""
+  },
+  "examples/tivo-stream-4k/theme/config.json": {
+    "mtime": 1792910399.7852519,
+    "seen": 1793001729.9798486,
+    "ast_hash": "d158da13dce4e5e81726101af7c57318",
+    "semantic_hash": ""
+  },
+  "examples/tivo-stream-4k/tv.json": {
+    "mtime": 1792910399.7859414,
+    "seen": 1793001729.9798496,
+    "ast_hash": "8760e3b4ae1a7ec2ba3804445917a27c",
+    "semantic_hash": ""
+  },
+  "examples/tornado-65ua1400e/tv.json": {
+    "mtime": 1792910399.7861056,
+    "seen": 1793001729.9798503,
+    "ast_hash": "3f576cf2119b28e595653647453362c5",
+    "semantic_hash": ""
+  },
+  "examples/toshiba-cosmos-android-tv/tv.json": {
+    "mtime": 1792910399.7862906,
+    "seen": 1793001729.979851,
+    "ast_hash": "a039628977e0bb456fa9d611948e2445",
+    "semantic_hash": ""
+  },
+  "examples/toshiba-fire-tv-aftha004/tv.json": {
+    "mtime": 1792910399.7864234,
+    "seen": 1793001729.979852,
+    "ast_hash": "24cb03af2c3a188ee03015953c53e676",
+    "semantic_hash": ""
+  },
+  "examples/turkcell-tv-plus-4k-box-dv6069y/tv.json": {
+    "mtime": 1792910399.7865682,
+    "seen": 1793001729.979853,
+    "ast_hash": "08575a54d07a0757573d041b9aec27ef",
+    "semantic_hash": ""
+  },
+  "examples/tuvio-td43ufbcv5/tv.json": {
+    "mtime": 1792910399.7867138,
+    "seen": 1793001729.9798536,
+    "ast_hash": "a39b2be8d9ea4ee276a05fb1fc1df866",
+    "semantic_hash": ""
+  },
+  "examples/verizon-stream-tv/tv.json": {
+    "mtime": 1792910399.7868416,
+    "seen": 1793001729.9798543,
+    "ast_hash": "083a3494a72f60e00ff0a81631ce7585",
+    "semantic_hash": ""
+  },
+  "examples/vidda-c1s-mt9669/tv.json": {
+    "mtime": 1792910399.7869663,
+    "seen": 1793001729.9798553,
+    "ast_hash": "e71e7666f6f3c1e101f73a661d55acd0",
+    "semantic_hash": ""
+  },
+  "examples/vidda-mt9653/tv.json": {
+    "mtime": 1792910399.7870982,
+    "seen": 1793001729.979856,
+    "ast_hash": "0f31a9c4fb07e9c14add7d7c830af4e3",
+    "semantic_hash": ""
+  },
+  "examples/vision-2024vision43stv/tv.json": {
+    "mtime": 1792910399.7872393,
+    "seen": 1793001729.979857,
+    "ast_hash": "eb0c6d2adaf9cf63b12ab70711f6ef36",
+    "semantic_hash": ""
+  },
+  "examples/vu-4k-lushan/tv.json": {
+    "mtime": 1792910399.787395,
+    "seen": 1793001729.9798577,
+    "ast_hash": "ef03158761f9e25e30e053de26b1c95b",
+    "semantic_hash": ""
+  },
+  "examples/vu-premium-fhd-43-hamamatsucho/tv.json": {
+    "mtime": 1792910399.7875419,
+    "seen": 1793001729.9798584,
+    "ast_hash": "81c6356fb759e603afbf2d24261336cd",
+    "semantic_hash": ""
+  },
+  "examples/vu-vibe-tv/config.json": {
+    "mtime": 1792910399.7877285,
+    "seen": 1793001729.979859,
+    "ast_hash": "fd1043f489da3bd1a120cfbed5507720",
+    "semantic_hash": ""
+  },
+  "examples/vu-vibe-tv/tv.json": {
+    "mtime": 1792910399.7878542,
+    "seen": 1793001729.97986,
+    "ast_hash": "4435b62fb4195cde71b4b338dcca2263",
+    "semantic_hash": ""
+  },
+  "examples/wanbo-x5-pro/tv.json": {
+    "mtime": 1792910399.788078,
+    "seen": 1793001729.9798608,
+    "ast_hash": "2b5e0ac0756dd7a9cc00601994acedcb",
+    "semantic_hash": ""
+  },
+  "examples/xgimi-horizon-s-pro/tv.json": {
+    "mtime": 1792910399.7883112,
+    "seen": 1793001729.9798617,
+    "ast_hash": "b6bd45a9e9d1cae69d36ca1cf0ac9b5a",
+    "semantic_hash": ""
+  },
+  "examples/xgimi-mogo-2/tv.json": {
+    "mtime": 1792910399.7885306,
+    "seen": 1793001729.9798625,
+    "ast_hash": "42cf73e9b9000e5ab0979fc3e5f5cea7",
+    "semantic_hash": ""
+  },
+  "examples/xgimi-mogo-3-pro/tv.json": {
+    "mtime": 1792910399.78877,
+    "seen": 1793001729.9798634,
+    "ast_hash": "a8b07a340c885a8e8f6ef061108108fb",
+    "semantic_hash": ""
+  },
+  "examples/xgimi-mogo-4/config.json": {
+    "mtime": 1792910399.7889328,
+    "seen": 1793001729.9798641,
+    "ast_hash": "2a9f2825dd68648634f3c2f2e416a70b",
+    "semantic_hash": ""
+  },
+  "examples/xgimi-mogo-4/tv.json": {
+    "mtime": 1792910399.7890363,
+    "seen": 1793001729.9798648,
+    "ast_hash": "5bb78929e9a98d6054107a0036d6bbf0",
+    "semantic_hash": ""
+  },
+  "examples/xiaomi-mi-box-3/tv.json": {
+    "mtime": 1792910399.7892227,
+    "seen": 1793001729.9798658,
+    "ast_hash": "94cc0077a45685a78a1c9eb8dbf0c59f",
+    "semantic_hash": ""
+  },
+  "examples/xiaomi-mi-box-s-2nd-gen/tv.json": {
+    "mtime": 1792910399.79011,
+    "seen": 1793001729.9798667,
+    "ast_hash": "f6a73e54a363ed22b6b1a6306d078f7d",
+    "semantic_hash": ""
+  },
+  "examples/xiaomi-mi-box-s-android12/tv.json": {
+    "mtime": 1792910399.7909646,
+    "seen": 1793001729.9798675,
+    "ast_hash": "51d09ee490aa3133662f791d07676e12",
+    "semantic_hash": ""
+  },
+  "examples/xiaomi-mi-box-s/theme/config.json": {
+    "mtime": 1792910399.7895746,
+    "seen": 1793001729.9798682,
+    "ast_hash": "166abc7dab3bfd03da135b726fed1136",
+    "semantic_hash": ""
+  },
+  "examples/xiaomi-mi-box-s/tv.json": {
+    "mtime": 1792910399.7897327,
+    "seen": 1793001729.979869,
+    "ast_hash": "717791cc1667d0f326a5ba48d1f31784",
+    "semantic_hash": ""
+  },
+  "examples/xiaomi-mi-tv-4a/tv.json": {
+    "mtime": 1792910399.7914162,
+    "seen": 1793001729.9798698,
+    "ast_hash": "527bf40044d006492668986b048b45f5",
+    "semantic_hash": ""
+  },
+  "examples/xiaomi-mitv-aesp0/tv.json": {
+    "mtime": 1792910399.791748,
+    "seen": 1793001729.9798708,
+    "ast_hash": "c8d4543d1d27c74dca8e6c5d71e51520",
+    "semantic_hash": ""
+  },
+  "examples/xiaomi-mitv-afmu0/tv.json": {
+    "mtime": 1792910399.792052,
+    "seen": 1793001729.9798715,
+    "ast_hash": "91e7229064fae6814dc1e1a966695412",
+    "semantic_hash": ""
+  },
+  "examples/xiaomi-mitv-afmu1/config.json": {
+    "mtime": 1792910399.792199,
+    "seen": 1793001729.9798722,
+    "ast_hash": "2aec660dc257a0c6ae4f8137c6aedff4",
+    "semantic_hash": ""
+  },
+  "examples/xiaomi-mitv-afmu1/tv.json": {
+    "mtime": 1792910399.7923405,
+    "seen": 1793001729.979873,
+    "ast_hash": "e10983c4fbadf6ce96f79c85f49a8be5",
+    "semantic_hash": ""
+  },
+  "examples/xiaomi-mitv-ansp0/tv.json": {
+    "mtime": 1792910399.7925265,
+    "seen": 1793001729.979874,
+    "ast_hash": "b26fa0e0ac698a94cd6083f880cf5547",
+    "semantic_hash": ""
+  },
+  "examples/xiaomi-mitv-astp0/tv.json": {
+    "mtime": 1792910399.7926693,
+    "seen": 1793001729.9798746,
+    "ast_hash": "a66eb578d0bb41990b68067cce387375",
+    "semantic_hash": ""
+  },
+  "examples/xiaomi-mitv-astp1/tv.json": {
+    "mtime": 1792910399.7928388,
+    "seen": 1793001729.9798753,
+    "ast_hash": "45bfd40829961c389f2ff23ac2bc3089",
+    "semantic_hash": ""
+  },
+  "examples/xiaomi-mitv-astr0/tv.json": {
+    "mtime": 1792910399.7929938,
+    "seen": 1793001729.979876,
+    "ast_hash": "996cb340f488a805de9e6f201bcfab43",
+    "semantic_hash": ""
+  },
+  "examples/xiaomi-mitv-axfr0/tv.json": {
+    "mtime": 1792910399.7931197,
+    "seen": 1793001729.9798768,
+    "ast_hash": "a006e9b3aa08aeecffa20205492d0cb4",
+    "semantic_hash": ""
+  },
+  "examples/xiaomi-mitv-axfr1/tv.json": {
+    "mtime": 1792910399.7932885,
+    "seen": 1793001729.9798777,
+    "ast_hash": "bd636756f6bcc5d9820ff0e41804e647",
+    "semantic_hash": ""
+  },
+  "examples/xiaomi-mitv-axso0/tv.json": {
+    "mtime": 1792910399.7934785,
+    "seen": 1793001729.9798784,
+    "ast_hash": "4ae1e69e6778ae110443dfdac6d7ff1b",
+    "semantic_hash": ""
+  },
+  "examples/xiaomi-mitv-axso2/tv.json": {
+    "mtime": 1792910399.7936459,
+    "seen": 1793001729.9798791,
+    "ast_hash": "e650c26a0cfe864ebea6de33f9a67809",
+    "semantic_hash": ""
+  },
+  "examples/xiaomi-mitv-ayfr0/tv.json": {
+    "mtime": 1792910399.7937794,
+    "seen": 1793001729.9798799,
+    "ast_hash": "6ee504ce7eda0961411e9cfb313fbb9f",
+    "semantic_hash": ""
+  },
+  "examples/xiaomi-mitv-mffu0/tv.json": {
+    "mtime": 1792910399.7942908,
+    "seen": 1793001729.9798808,
+    "ast_hash": "0232767e675b0b05857411e559b9bd85",
+    "semantic_hash": ""
+  },
+  "examples/xiaomi-mitv-mftr0/tv.json": {
+    "mtime": 1792910399.794432,
+    "seen": 1793001729.9798818,
+    "ast_hash": "6bbc46e3b3068caa6e1916a7a9da099a",
+    "semantic_hash": ""
+  },
+  "examples/xiaomi-mitv-moeu0/tv.json": {
+    "mtime": 1792910399.7945545,
+    "seen": 1793001729.9798825,
+    "ast_hash": "ac2da2280ce9ccf0f48d51208b33c04a",
+    "semantic_hash": ""
+  },
+  "examples/xiaomi-mitv-mooq0/tv.json": {
+    "mtime": 1792910399.7946956,
+    "seen": 1793001729.9798834,
+    "ast_hash": "ab1528a28835d71956b621bcc8e4c361",
+    "semantic_hash": ""
+  },
+  "examples/xiaomi-mitv-mooq2/config.json": {
+    "mtime": 1792910399.7947733,
+    "seen": 1793001729.9798844,
+    "ast_hash": "d9c678b0e93df8f48bf65fe800e3b499",
+    "semantic_hash": ""
+  },
+  "examples/xiaomi-mitv-mooq2/tv.json": {
+    "mtime": 1792910399.7948637,
+    "seen": 1793001729.979885,
+    "ast_hash": "8fe0bb954fda5d1576e3ca27ba82827e",
+    "semantic_hash": ""
+  },
+  "examples/xiaomi-mitv-moor2/tv.json": {
+    "mtime": 1792910399.7950363,
+    "seen": 1793001729.9798858,
+    "ast_hash": "1e524003524f068215aaf4a723ed4567",
+    "semantic_hash": ""
+  },
+  "examples/xiaomi-mitv-mosr4/config.json": {
+    "mtime": 1792910399.79513,
+    "seen": 1793001729.9798865,
+    "ast_hash": "8a47ebd6a6f2e839523e8552fb6e76a1",
+    "semantic_hash": ""
+  },
+  "examples/xiaomi-mitv-mosr4/tv.json": {
+    "mtime": 1792910399.7952168,
+    "seen": 1793001729.9798872,
+    "ast_hash": "feca1b34491f206a6c3ac87d4ef04841",
+    "semantic_hash": ""
+  },
+  "examples/xiaomi-mitv-mssp0/tv.json": {
+    "mtime": 1792910399.795344,
+    "seen": 1793001729.9798882,
+    "ast_hash": "26f81ef99fba295509d78006fe8892b2",
+    "semantic_hash": ""
+  },
+  "examples/xiaomi-mitv-mssp1/tv.json": {
+    "mtime": 1792910399.7955012,
+    "seen": 1793001729.979889,
+    "ast_hash": "d68ba65940eeb44fd5687e26c4ed5f36",
+    "semantic_hash": ""
+  },
+  "examples/xiaomi-mitv-mssp2/tv.json": {
+    "mtime": 1792910399.795654,
+    "seen": 1793001729.9798896,
+    "ast_hash": "5a7803626bb401309ebec9b623de1c6f",
+    "semantic_hash": ""
+  },
+  "examples/xiaomi-mitv-mssp3-android9/tv.json": {
+    "mtime": 1792910399.7959087,
+    "seen": 1793001729.9798906,
+    "ast_hash": "50da7b42cea327265afc4630d7685b6a",
+    "semantic_hash": ""
+  },
+  "examples/xiaomi-mitv-mssp3/tv.json": {
+    "mtime": 1792910399.7957811,
+    "seen": 1793001729.9798915,
+    "ast_hash": "d8323d43c1512289de630d1bdf8b9789",
+    "semantic_hash": ""
+  },
+  "examples/xiaomi-mitv-mteq0/tv.json": {
+    "mtime": 1792910399.7960708,
+    "seen": 1793001729.9798923,
+    "ast_hash": "867eb5050732eb541bde343bbfdb44b5",
+    "semantic_hash": ""
+  },
+  "examples/xiaomi-tv-a-pro-2026/tv.json": {
+    "mtime": 1792910399.7962792,
+    "seen": 1793001729.979893,
+    "ast_hash": "2b1e937ca86f32d0ae1bcde4878ff985",
+    "semantic_hash": ""
+  },
+  "docs/win81-m3-expressive-design.md": {
+    "mtime": 1793105851.4802303,
+    "seen": 1793109947.955069,
+    "ast_hash": "2689ba96f0025a4360fe1a1c2646b331",
+    "semantic_hash": ""
+  },
+  "examples/README.md": {
+    "mtime": 1792910399.7636492,
+    "seen": 1793001729.9799592,
+    "ast_hash": "14249a9b4702d608c4f49b1e4987f546",
+    "semantic_hash": ""
+  },
+  "examples/acer-ar55ar2851udpro/README.md": {
+    "mtime": 1792910399.7445319,
+    "seen": 1793001729.9799602,
+    "ast_hash": "9d2b8dda42d19300a84933d8af5051a7",
+    "semantic_hash": ""
+  },
+  "examples/acer-ar55ar2851udpro/debloat.txt": {
+    "mtime": 1792910399.7446928,
+    "seen": 1793001729.9799612,
+    "ast_hash": "04636c31a759efc8ec5b60f088a36fa9",
+    "semantic_hash": ""
+  },
+  "examples/aipro2k/debloat.txt": {
+    "mtime": 1792910399.7448425,
+    "seen": 1793001729.9799619,
+    "ast_hash": "d469438c4bb0f4698dac5b11061ef665",
+    "semantic_hash": ""
+  },
+  "examples/aiwa-ai-pont-sa/debloat.txt": {
+    "mtime": 1792910399.745039,
+    "seen": 1793001729.9799626,
+    "ast_hash": "666e2e08bfd75becb16066217194f0b8",
+    "semantic_hash": ""
+  },
+  "examples/amazon-fire-tv-aftdec012e/debloat.txt": {
+    "mtime": 1792910399.7451916,
+    "seen": 1793001729.9799633,
+    "ast_hash": "69c1629bca97aa41e10a34b1883cd213",
+    "semantic_hash": ""
+  },
+  "examples/amazon-fire-tv-afteu014/debloat.txt": {
+    "mtime": 1792910399.7453318,
+    "seen": 1793001729.9799643,
+    "ast_hash": "281b7bfb7b866ead0ea6f746a1dc8d07",
+    "semantic_hash": ""
+  },
+  "examples/amazon-fire-tv-afttiff43/debloat.txt": {
+    "mtime": 1792910399.7454789,
+    "seen": 1793001729.979965,
+    "ast_hash": "994ac8a03b22c0a8fd2c8730796c56b2",
+    "semantic_hash": ""
+  },
+  "examples/amazon-fire-tv-stick-4k-2018/debloat.txt": {
+    "mtime": 1792910399.745623,
+    "seen": 1793001729.9799657,
+    "ast_hash": "4a5ca567e9e528010e5ff81829567bf8",
+    "semantic_hash": ""
+  },
+  "examples/amazon-fire-tv-stick-4k-2023/debloat.txt": {
+    "mtime": 1792910399.7457716,
+    "seen": 1793001729.9799666,
+    "ast_hash": "21496f6a275ffd6d6b81d98f88bcce38",
+    "semantic_hash": ""
+  },
+  "examples/amazon-fire-tv-stick-4k-max-2021/debloat.txt": {
+    "mtime": 1792910399.7459238,
+    "seen": 1793001729.9799676,
+    "ast_hash": "4e31c5707c82f531c21c5ef210eaf815",
+    "semantic_hash": ""
+  },
+  "examples/amazon-fire-tv-stick-lite-2020/debloat.txt": {
+    "mtime": 1792910399.7460554,
+    "seen": 1793001729.9799683,
+    "ast_hash": "704994433b36a145a59f7326da90b5c0",
+    "semantic_hash": ""
+  },
+  "examples/anker-nebula-d2140/debloat.txt": {
+    "mtime": 1792910399.746199,
+    "seen": 1793001729.979969,
+    "ast_hash": "6341a07397d2bbbea6136e08c0166249",
+    "semantic_hash": ""
+  },
+  "examples/anker-nebula-d2426/README.md": {
+    "mtime": 1792910399.7463958,
+    "seen": 1793001729.9799697,
+    "ast_hash": "f03064adabb155845e1ac8f17abe5e44",
+    "semantic_hash": ""
+  },
+  "examples/anker-nebula-d2426/debloat.txt": {
+    "mtime": 1792910399.7465446,
+    "seen": 1793001729.9799705,
+    "ast_hash": "f8d839f082443afa97444faff65d3831",
+    "semantic_hash": ""
+  },
+  "examples/anker-nebula-mars-3-air/README.md": {
+    "mtime": 1792910399.7467237,
+    "seen": 1793001729.9799714,
+    "ast_hash": "3d64c77375098085ff3ac64a85f37599",
+    "semantic_hash": ""
+  },
+  "examples/anker-nebula-mars-3-air/debloat.txt": {
+    "mtime": 1792910399.7468336,
+    "seen": 1793001729.9799721,
+    "ast_hash": "5f4090e9679444fcc8bdd2767ed09eef",
+    "semantic_hash": ""
+  },
+  "examples/aqua-matrixtv-ee-50/README.md": {
+    "mtime": 1792910399.7469904,
+    "seen": 1793001729.9799728,
+    "ast_hash": "1a1c589e0a5b05d4d9904f647122db51",
+    "semantic_hash": ""
+  },
+  "examples/aqua-matrixtv-ee-50/debloat.txt": {
+    "mtime": 1792910399.7470925,
+    "seen": 1793001729.9799736,
+    "ast_hash": "4c07ea1e563a0408639baba7fcc9f7c2",
+    "semantic_hash": ""
+  },
+  "examples/artel-cvte-mt5863/debloat.txt": {
+    "mtime": 1792910399.7472482,
+    "seen": 1793001729.9799745,
+    "ast_hash": "cf28a0abf6be177afe497cf57ef84571",
+    "semantic_hash": ""
+  },
+  "examples/asus-m1g/debloat.txt": {
+    "mtime": 1792910399.7474089,
+    "seen": 1793001729.9799752,
+    "ast_hash": "fcbc7708159c30fa00e09c019536d1a5",
+    "semantic_hash": ""
+  },
+  "examples/beko-b43b880b/debloat.txt": {
+    "mtime": 1792910399.7475743,
+    "seen": 1793001729.9799762,
+    "ast_hash": "241a60a1385c324c0f993959b5e77268",
+    "semantic_hash": ""
+  },
+  "examples/benq-e55-735/debloat.txt": {
+    "mtime": 1792910399.7477384,
+    "seen": 1793001729.979977,
+    "ast_hash": "d42f9a65ed290b4789f90deb3518dbbc",
+    "semantic_hash": ""
+  },
+  "examples/benq-e55-750/debloat.txt": {
+    "mtime": 1792910399.747898,
+    "seen": 1793001729.9799778,
+    "ast_hash": "3fcaf3062dcadfda73137409dd35625a",
+    "semantic_hash": ""
+  },
+  "examples/benq-gv32/README.md": {
+    "mtime": 1792910399.7480595,
+    "seen": 1793001729.9799786,
+    "ast_hash": "ace133514a353fbf5c51a33279e45461",
+    "semantic_hash": ""
+  },
+  "examples/benq-gv32/debloat.txt": {
+    "mtime": 1792910399.7481878,
+    "seen": 1793001729.9799795,
+    "ast_hash": "a70833a76e9ca3483c3379a010ad941a",
+    "semantic_hash": ""
+  },
+  "examples/benq-qs01/debloat.txt": {
+    "mtime": 1792910399.7483408,
+    "seen": 1793001729.9799802,
+    "ast_hash": "7a43c0b8ecc5bfcae54c751c441256f7",
+    "semantic_hash": ""
+  },
+  "examples/byintek-t5-max/debloat.txt": {
+    "mtime": 1792910399.7484992,
+    "seen": 1793001729.979981,
+    "ast_hash": "9cd4bd687897bdd172e9c0bdf00c935e",
+    "semantic_hash": ""
+  },
+  "examples/byintek-u4/README.md": {
+    "mtime": 1792910399.7486567,
+    "seen": 1793001729.9799821,
+    "ast_hash": "89a5475fe6921ca216753c6375883482",
+    "semantic_hash": ""
+  },
+  "examples/byintek-u4/debloat.txt": {
+    "mtime": 1792910399.7487733,
+    "seen": 1793001729.9799829,
+    "ast_hash": "1288fd83c7c2b75ab0b7f9c516ceda16",
+    "semantic_hash": ""
+  },
+  "examples/caxium-58-realtek-rtk2851p/debloat.txt": {
+    "mtime": 1792910399.748896,
+    "seen": 1793001729.9799836,
+    "ast_hash": "062b98e2bc7edfd069e9c4fc4ff59fcb",
+    "semantic_hash": ""
+  },
+  "examples/cecotec-shandao/debloat.txt": {
+    "mtime": 1792910399.7490332,
+    "seen": 1793001729.9799843,
+    "ast_hash": "62210307e979388f05e2bc116b2b9c10",
+    "semantic_hash": ""
+  },
+  "examples/challenger-32t22bt/debloat.txt": {
+    "mtime": 1792910399.7491758,
+    "seen": 1793001729.9799852,
+    "ast_hash": "da4378944b304d812b0cb7b7ca877c33",
+    "semantic_hash": ""
+  },
+  "examples/chiq-ai-pont/debloat.txt": {
+    "mtime": 1792910399.7493098,
+    "seen": 1793001729.9799862,
+    "ast_hash": "d59b2feb516ac07ae3b843c4051f4091",
+    "semantic_hash": ""
+  },
+  "examples/chiq-gtvu65/debloat.txt": {
+    "mtime": 1792910399.749452,
+    "seen": 1793001729.979987,
+    "ast_hash": "9ed15e86ec33e936578bf989abcfb4ee",
+    "semantic_hash": ""
+  },
+  "examples/compac-atv-r2/debloat.txt": {
+    "mtime": 1792910399.7495947,
+    "seen": 1793001729.9799876,
+    "ast_hash": "03a2d99fb6ba3a263f963aba3f4ff250",
+    "semantic_hash": ""
+  },
+  "examples/coocaa-k3-pro-90p3d-max/debloat.txt": {
+    "mtime": 1792910399.7497416,
+    "seen": 1793001729.9799886,
+    "ast_hash": "a38ea8d86938e721a174bc98a0cfab73",
+    "semantic_hash": ""
+  },
+  "examples/dcolor-gd2/debloat.txt": {
+    "mtime": 1792910399.7498903,
+    "seen": 1793001729.9799893,
+    "ast_hash": "2eab38103afbb2b45d5395b9471814b0",
+    "semantic_hash": ""
+  },
+  "examples/dialog-viu-sei103dl/debloat.txt": {
+    "mtime": 1792910399.750035,
+    "seen": 1793001729.97999,
+    "ast_hash": "c646df1d8082a88e89bba074feaa9279",
+    "semantic_hash": ""
+  },
+  "examples/eko-2k-google-tv-tennoji/debloat.txt": {
+    "mtime": 1792910399.7501903,
+    "seen": 1793001729.979991,
+    "ast_hash": "8b09160a1dbf085bad5093516083c8f6",
+    "semantic_hash": ""
+  },
+  "examples/epson-ls800/README.md": {
+    "mtime": 1792910399.750343,
+    "seen": 1793001729.979992,
+    "ast_hash": "b4ae6f75e11f1826fc2a0da72b0a6bc6",
+    "semantic_hash": ""
+  },
+  "examples/epson-ls800/debloat.txt": {
+    "mtime": 1792910399.750437,
+    "seen": 1793001729.9799926,
+    "ast_hash": "ff029ead8fd30b60cba08f8a7ea7daa5",
+    "semantic_hash": ""
+  },
+  "examples/ffalcon-65s585c-pro/debloat.txt": {
+    "mtime": 1792910399.7506087,
+    "seen": 1793001729.9799933,
+    "ast_hash": "a830f53af32a9930c7a8efa06dcc26de",
+    "semantic_hash": ""
+  },
+  "examples/ffalcon-r34a0-cn/debloat.txt": {
+    "mtime": 1792910399.750781,
+    "seen": 1793001729.979994,
+    "ast_hash": "e909d397486110df0296e2afb0cce1f1",
+    "semantic_hash": ""
+  },
+  "examples/formovie-laser-4k-hanlla/debloat.txt": {
+    "mtime": 1792910399.7509212,
+    "seen": 1793001729.9799948,
+    "ast_hash": "e6ff159e2b4df004d661ee36b2c55a7c",
+    "semantic_hash": ""
+  },
+  "examples/formovie-mprojm05/debloat.txt": {
+    "mtime": 1792910399.7510715,
+    "seen": 1793001729.979996,
+    "ast_hash": "a59f39cee463c55586166f4de3e17b10",
+    "semantic_hash": ""
+  },
+  "examples/freebox-player-pop/README.md": {
+    "mtime": 1792910399.7512097,
+    "seen": 1793001729.9799967,
+    "ast_hash": "726b572428d2bc966a4708183a0618a4",
+    "semantic_hash": ""
+  },
+  "examples/freebox-player-pop/debloat.txt": {
+    "mtime": 1792910399.7512543,
+    "seen": 1793001729.9799974,
+    "ast_hash": "4bd8371582c2a3a6308e8c6ef53477d4",
+    "semantic_hash": ""
+  },
+  "examples/gadnic-proj100w/debloat.txt": {
+    "mtime": 1792910399.751383,
+    "seen": 1793001729.979998,
+    "ast_hash": "a8a7d436f2c85619830b75f6b3254020",
+    "semantic_hash": ""
+  },
+  "examples/google-chromecast-gtv-4k/debloat-keep-cast.txt": {
+    "mtime": 1792910399.7515233,
+    "seen": 1793001729.979999,
+    "ast_hash": "f6fe18d8658ea81cba966463111e59ff",
+    "semantic_hash": ""
+  },
+  "examples/google-chromecast-gtv-4k/debloat.txt": {
+    "mtime": 1792910399.7515697,
+    "seen": 1793001729.9799998,
+    "ast_hash": "b07ddfcf58e6f656a2c2c93245955c75",
+    "semantic_hash": ""
+  },
+  "examples/google-chromecast-gtv-hd/debloat.txt": {
+    "mtime": 1792910399.7517204,
+    "seen": 1793001729.9800005,
+    "ast_hash": "2aac863ad5a7f52751edb4e1190d93e9",
+    "semantic_hash": ""
+  },
+  "examples/google-tv-streamer-4k-kirkwood/debloat.txt": {
+    "mtime": 1792910399.751869,
+    "seen": 1793001729.9800012,
+    "ast_hash": "87a6e0a59bef067747198f440fabe44d",
+    "semantic_hash": ""
+  },
+  "examples/grundig-kunyang/README.md": {
+    "mtime": 1792910399.7520225,
+    "seen": 1793001729.9800024,
+    "ast_hash": "b4ec6dc48b340fb96c54718c25a04d29",
+    "semantic_hash": ""
+  },
+  "examples/grundig-kunyang/debloat.txt": {
+    "mtime": 1792910399.7520769,
+    "seen": 1793001729.980003,
+    "ast_hash": "79818423cf82fc070c83f6a302055083",
+    "semantic_hash": ""
+  },
+  "examples/haier-android-tv-dvb2k/debloat.txt": {
+    "mtime": 1792910399.752207,
+    "seen": 1793001729.9800038,
+    "ast_hash": "802e0be227c059dae6a29d0fb901851f",
+    "semantic_hash": ""
+  },
+  "examples/haier-h32s80efx/debloat.txt": {
+    "mtime": 1792910399.7523544,
+    "seen": 1793001729.9800045,
+    "ast_hash": "b5467d3dc1b0e64b6225de0273a80677",
+    "semantic_hash": ""
+  },
+  "examples/haier-hr9216eu/README.md": {
+    "mtime": 1792910399.7524993,
+    "seen": 1793001729.9800053,
+    "ast_hash": "a8e28c2aaf52290659516bec4ef8f871",
+    "semantic_hash": ""
+  },
+  "examples/haier-hr9216eu/debloat.txt": {
+    "mtime": 1792910399.7525923,
+    "seen": 1793001729.9800062,
+    "ast_hash": "2ab6626347bbd9a329a105f1f65813b9",
+    "semantic_hash": ""
+  },
+  "examples/hisense-65d62qh/README.md": {
+    "mtime": 1792910399.7527192,
+    "seen": 1793001729.980007,
+    "ast_hash": "51dfe423c59fd452fec69a163c637d1c",
+    "semantic_hash": ""
+  },
+  "examples/hisense-65d62qh/debloat.txt": {
+    "mtime": 1792910399.7528288,
+    "seen": 1793001729.980008,
+    "ast_hash": "97473e4b8d57142b082f5587ad325e4f",
+    "semantic_hash": ""
+  },
+  "examples/hisense-e5q-pro/debloat.txt": {
+    "mtime": 1792910399.7529633,
+    "seen": 1793001729.9800086,
+    "ast_hash": "6ffa124b05d046ccb891a8533b0cf4a0",
+    "semantic_hash": ""
+  },
+  "examples/hisense-fire-tv-aftcibfbd1/debloat.txt": {
+    "mtime": 1792910399.7531035,
+    "seen": 1793001729.9800096,
+    "ast_hash": "3f5678bae59d88a3fe7c68a78540d32b",
+    "semantic_hash": ""
+  },
+  "examples/hisense-hg9/debloat.txt": {
+    "mtime": 1792910399.7532527,
+    "seen": 1793001729.9800103,
+    "ast_hash": "bc5cd3233633c7c907997d8f93336ffe",
+    "semantic_hash": ""
+  },
+  "examples/hisense-hismarttv-a4-android11/debloat.txt": {
+    "mtime": 1792910399.7535536,
+    "seen": 1793001729.980011,
+    "ast_hash": "b3492d7829ae0393e7f9941a14f25002",
+    "semantic_hash": ""
+  },
+  "examples/hisense-hismarttv-a4/debloat.txt": {
+    "mtime": 1792910399.753402,
+    "seen": 1793001729.980012,
+    "ast_hash": "5a567edfd1dee81824210768e491206d",
+    "semantic_hash": ""
+  },
+  "examples/hisense-smarttv-4k-ffm-android11/debloat.txt": {
+    "mtime": 1792910399.7538583,
+    "seen": 1793001729.980013,
+    "ast_hash": "d28d6f1db08379bed53cf813a11f442b",
+    "semantic_hash": ""
+  },
+  "examples/hisense-smarttv-4k-ffm-lushan/debloat.txt": {
+    "mtime": 1792910399.7540255,
+    "seen": 1793001729.9800136,
+    "ast_hash": "d4305e43b36dca83cadecfea87078a1a",
+    "semantic_hash": ""
+  },
+  "examples/hisense-smarttv-4k-ffm/debloat.txt": {
+    "mtime": 1792910399.7537322,
+    "seen": 1793001729.9800143,
+    "ast_hash": "d06c4998af1702f4d1192b51c3baab0f",
+    "semantic_hash": ""
+  },
+  "examples/hisense-u75-hengshan/README.md": {
+    "mtime": 1792910399.7541833,
+    "seen": 1793001729.980015,
+    "ast_hash": "74ac1428ebda47c7ed1b330d59b3bc88",
+    "semantic_hash": ""
+  },
+  "examples/hisense-u75-hengshan/debloat.txt": {
+    "mtime": 1792910399.7542882,
+    "seen": 1793001729.9800158,
+    "ast_hash": "2ffcc50f75e57bada956570bab51c005",
+    "semantic_hash": ""
+  },
+  "examples/hitachi-65qledsm20/debloat.txt": {
+    "mtime": 1792910399.7544734,
+    "seen": 1793001729.980017,
+    "ast_hash": "7b423fe80fd29e2df6c39c50b6d032bf",
+    "semantic_hash": ""
+  },
+  "examples/hitachi-cdh-le32smart21/debloat.txt": {
+    "mtime": 1792910399.754635,
+    "seen": 1793001729.9800174,
+    "ast_hash": "359f477f91781b31c11e90b33c69e963",
+    "semantic_hash": ""
+  },
+  "examples/hotack-smart2kpjt/debloat.txt": {
+    "mtime": 1792910399.7548134,
+    "seen": 1793001729.9800184,
+    "ast_hash": "ddad228e99c4f771533a95f836e96ff7",
+    "semantic_hash": ""
+  },
+  "examples/inclo-google-tv-4k/debloat.txt": {
+    "mtime": 1792910399.7549853,
+    "seen": 1793001729.980019,
+    "ast_hash": "6546f1d171f92487d3cf80a61c6a13b1",
+    "semantic_hash": ""
+  },
+  "examples/insignia-ns55f301na25/debloat.txt": {
+    "mtime": 1792910399.755148,
+    "seen": 1793001729.98002,
+    "ast_hash": "1df61a0a6fb6393920ad86b727e7a051",
+    "semantic_hash": ""
+  },
+  "examples/jmgo-n1s-holan/debloat.txt": {
+    "mtime": 1792910399.7553308,
+    "seen": 1793001729.9800208,
+    "ast_hash": "dffe191d4a247f45495c0ecf104011c6",
+    "semantic_hash": ""
+  },
+  "examples/jvc-android-tv-menlo/debloat.txt": {
+    "mtime": 1792910399.7554777,
+    "seen": 1793001729.9800215,
+    "ast_hash": "c85ec07a19d1491d167fa9705791ec25",
+    "semantic_hash": ""
+  },
+  "examples/jvc-lt55mb508/debloat.txt": {
+    "mtime": 1792910399.7556202,
+    "seen": 1793001729.9800222,
+    "ast_hash": "3dd7d372e5b4d9ebe8a95ed79d15a52e",
+    "semantic_hash": ""
+  },
+  "examples/jvc-uk-4k-sadang/debloat.txt": {
+    "mtime": 1792910399.75577,
+    "seen": 1793001729.9800234,
+    "ast_hash": "666cca6f57b6e3a12374925e3697cc1d",
+    "semantic_hash": ""
+  },
+  "examples/kalley-43g200/debloat.txt": {
+    "mtime": 1792910399.7559385,
+    "seen": 1793001729.9800243,
+    "ast_hash": "c816f6dc7dac45e4a67ac268d5717cf0",
+    "semantic_hash": ""
+  },
+  "examples/kalley-r10g/debloat.txt": {
+    "mtime": 1792910399.7560952,
+    "seen": 1793001729.980025,
+    "ast_hash": "36b8a929d007e154f04c6b0f052bd7da",
+    "semantic_hash": ""
+  },
+  "examples/karbonn-swtv-20ae/debloat.txt": {
+    "mtime": 1792910399.7562628,
+    "seen": 1793001729.9800258,
+    "ast_hash": "2777d4a60db7223f62998d41c0e05f6d",
+    "semantic_hash": ""
+  },
+  "examples/kogan-g7/debloat.txt": {
+    "mtime": 1792910399.7564442,
+    "seen": 1793001729.9800267,
+    "ast_hash": "dd627ba2310e6c26794a1a3a203c66e0",
+    "semantic_hash": ""
+  },
+  "examples/kogan-gtvu65kg/debloat.txt": {
+    "mtime": 1792910399.7566054,
+    "seen": 1793001729.9800277,
+    "ast_hash": "d66cd086559b9a5a651004ca178def44",
+    "semantic_hash": ""
+  },
+  "examples/ktc-4k-smart-tv-hongkong/debloat.txt": {
+    "mtime": 1792910399.7567444,
+    "seen": 1793001729.9800284,
+    "ast_hash": "62088d63c8a15c9e740d96a51277f71f",
+    "semantic_hash": ""
+  },
+  "examples/liberton-ltv-24h01at/debloat.txt": {
+    "mtime": 1792910399.7569585,
+    "seen": 1793001729.980029,
+    "ast_hash": "1134d72736d43e98a197839dc65942e8",
+    "semantic_hash": ""
+  },
+  "examples/lumio-vision-7/README.md": {
+    "mtime": 1792910399.757088,
+    "seen": 1793001729.9800303,
+    "ast_hash": "914d3a4e6f9076f6273f0031ac146215",
+    "semantic_hash": ""
+  },
+  "examples/lumio-vision-7/debloat.txt": {
+    "mtime": 1792910399.757145,
+    "seen": 1793001729.980031,
+    "ast_hash": "1b4cef093e8ed768214547ed30bc19d0",
+    "semantic_hash": ""
+  },
+  "examples/magcubic-hy300-pro/debloat.txt": {
+    "mtime": 1792910399.7573657,
+    "seen": 1793001729.9800317,
+    "ast_hash": "13c9514d6eca84339e3c321cb4882def",
+    "semantic_hash": ""
+  },
+  "examples/master-g-mga3200/debloat.txt": {
+    "mtime": 1792910399.7575095,
+    "seen": 1793001729.9800324,
+    "ast_hash": "9056d38cfc744980dc05aa8c258bacc7",
+    "semantic_hash": ""
+  },
+  "examples/motorola-mt4310/README.md": {
+    "mtime": 1792910399.7576652,
+    "seen": 1793001729.9800336,
+    "ast_hash": "67efb40126c5035b07bdfb6a3e35e98c",
+    "semantic_hash": ""
+  },
+  "examples/motorola-mt4310/debloat.txt": {
+    "mtime": 1792910399.7577283,
+    "seen": 1793001729.980034,
+    "ast_hash": "5436b675a50bf12e3aca344976b91053",
+    "semantic_hash": ""
+  },
+  "examples/motorola-swtv-24ae-fhd/debloat.txt": {
+    "mtime": 1792910399.758028,
+    "seen": 1793001729.980035,
+    "ast_hash": "ced3ef15dea81397dcf2d3bfd82a1427",
+    "semantic_hash": ""
+  },
+  "examples/mtc-uk-2k-android-tv/debloat.txt": {
+    "mtime": 1792910399.758201,
+    "seen": 1793001729.9800358,
+    "ast_hash": "f3284b1c7188fb519cccf6ff9b00f93f",
+    "semantic_hash": ""
+  },
+  "examples/noblex-shinjuku/debloat.txt": {
+    "mtime": 1792910399.7583492,
+    "seen": 1793001729.9800365,
+    "ast_hash": "af420395be1505999d30b68a0c7c576b",
+    "semantic_hash": ""
+  },
+  "examples/nokia-streaming-box-8000/README.md": {
+    "mtime": 1792910399.7585194,
+    "seen": 1793001729.9800375,
+    "ast_hash": "f0265e87f99fcd047b8b48175565391e",
+    "semantic_hash": ""
+  },
+  "examples/nokia-streaming-box-8000/debloat.txt": {
+    "mtime": 1792910399.7585797,
+    "seen": 1793001729.9800384,
+    "ast_hash": "1c70fc5446d7b860e52c9efdd76325fc",
+    "semantic_hash": ""
+  },
+  "examples/nokia-streaming-box-8010/debloat.txt": {
+    "mtime": 1792910399.7587657,
+    "seen": 1793001729.9800391,
+    "ast_hash": "94bec56e5bd4f13eb08703964bb3092d",
+    "semantic_hash": ""
+  },
+  "examples/nvidia-shield-tv-2019/README.md": {
+    "mtime": 1792910399.7588947,
+    "seen": 1793001729.9800398,
+    "ast_hash": "9bf2c0166ab29fbcfaace9f0bd850d17",
+    "semantic_hash": ""
+  },
+  "examples/nvidia-shield-tv-2019/debloat.txt": {
+    "mtime": 1792910399.759035,
+    "seen": 1793001729.980041,
+    "ast_hash": "31f2e93363bba3946bbb939de25f93f9",
+    "semantic_hash": ""
+  },
+  "examples/nvidia-shield-tv-pro-2019/debloat.txt": {
+    "mtime": 1792910399.7591567,
+    "seen": 1793001729.9800417,
+    "ast_hash": "cde67f9745e28e2d5041940831608ede",
+    "semantic_hash": ""
+  },
+  "examples/ok-ai-pont-ikebukuro/debloat.txt": {
+    "mtime": 1792910399.7593074,
+    "seen": 1793001729.9800427,
+    "ast_hash": "bee25eb8def2e1f1a37151f1a9419f24",
+    "semantic_hash": ""
+  },
+  "examples/oneplus-tv-cebu/debloat.txt": {
+    "mtime": 1792910399.759472,
+    "seen": 1793001729.9800434,
+    "ast_hash": "988f00e26be7f6234fc8d0d800ce66fa",
+    "semantic_hash": ""
+  },
+  "examples/oneplus-tv-dosa/debloat.txt": {
+    "mtime": 1792910399.7596204,
+    "seen": 1793001729.9800444,
+    "ast_hash": "b7c87aacb9727106b7fb86ac39f19fa9",
+    "semantic_hash": ""
+  },
+  "examples/oneplus-tv-dubai/debloat.txt": {
+    "mtime": 1792910399.7597225,
+    "seen": 1793001729.9800448,
+    "ast_hash": "7259e7ce63bef2c90716fce76d59de4e",
+    "semantic_hash": ""
+  },
+  "examples/oneplus-tv-y1/debloat.txt": {
+    "mtime": 1792910399.7598352,
+    "seen": 1793001729.9800458,
+    "ast_hash": "2977c597bcd3ab5e798813cefb9cf087",
+    "semantic_hash": ""
+  },
+  "examples/onn-4k-plus-2025/debloat.txt": {
+    "mtime": 1792910399.7599487,
+    "seen": 1793001729.9800465,
+    "ast_hash": "61be57a2d0871e5f5af1df54ddf23e60",
+    "semantic_hash": ""
+  },
+  "examples/onn-4k-streaming-box-2023/debloat.txt": {
+    "mtime": 1792910399.760065,
+    "seen": 1793001729.9800475,
+    "ast_hash": "50737938c75497be9d6fcc1191c936d4",
+    "semantic_hash": ""
+  },
+  "examples/panasonic-4ktv-0su/debloat.txt": {
+    "mtime": 1792910399.760287,
+    "seen": 1793001729.9800482,
+    "ast_hash": "5b403d8943ed399b786abc68f7ff09f1",
+    "semantic_hash": ""
+  },
+  "examples/panasonic-4ktv-jup/debloat.txt": {
+    "mtime": 1792910399.7604017,
+    "seen": 1793001729.980049,
+    "ast_hash": "9cf6acedd414c89dcdc542a30044b501",
+    "semantic_hash": ""
+  },
+  "examples/panasonic-kowloon/debloat.txt": {
+    "mtime": 1792910399.7605073,
+    "seen": 1793001729.9800498,
+    "ast_hash": "950aed8a2f366e0374700e430124fb39",
+    "semantic_hash": ""
+  },
+  "examples/panasonic-th-40hs550k/debloat.txt": {
+    "mtime": 1792910399.760613,
+    "seen": 1793001729.9800508,
+    "ast_hash": "2cfd4784ca516dbbbdfdcfba66f3a50c",
+    "semantic_hash": ""
+  },
+  "examples/panavox-google-tv/debloat.txt": {
+    "mtime": 1792910399.760723,
+    "seen": 1793001729.9800515,
+    "ast_hash": "d0624b25b47c2c04f4379abf625a4ffc",
+    "semantic_hash": ""
+  },
+  "examples/peaq-ptv43aqu-5023c/debloat.txt": {
+    "mtime": 1792910399.7608688,
+    "seen": 1793001729.9800525,
+    "ast_hash": "afc3e0e03cc5c314db7f83792b579f92",
+    "semantic_hash": ""
+  },
+  "examples/philips-50pud7406/debloat.txt": {
+    "mtime": 1792910399.7609677,
+    "seen": 1793001729.9800532,
+    "ast_hash": "15ae512777ffa343eead9f27b20d9395",
+    "semantic_hash": ""
+  },
+  "examples/philips-50pus8517/debloat.txt": {
+    "mtime": 1792910399.7610905,
+    "seen": 1793001729.980054,
+    "ast_hash": "0ae374b3f396fd10b96c08162f26bad6",
+    "semantic_hash": ""
+  },
+  "examples/philips-55oled707/debloat.txt": {
+    "mtime": 1792910399.7612176,
+    "seen": 1793001729.9800549,
+    "ast_hash": "ad99140e277a7df1fa894405eecafd59",
+    "semantic_hash": ""
+  },
+  "examples/philips-55oled708/debloat.txt": {
+    "mtime": 1792910399.7613323,
+    "seen": 1793001729.9800556,
+    "ast_hash": "d3c771cae16a2c11804d6c1c89b9b780",
+    "semantic_hash": ""
+  },
+  "examples/philips-55pus7503/debloat.txt": {
+    "mtime": 1792910399.7614522,
+    "seen": 1793001729.9800565,
+    "ast_hash": "e6b4ce9a0d7029c15b55ee9d0e87e72a",
+    "semantic_hash": ""
+  },
+  "examples/philips-65oled706/debloat.txt": {
+    "mtime": 1792910399.761561,
+    "seen": 1793001729.9800572,
+    "ast_hash": "694d49e64d8be8697dd1c4bc5ad508cd",
+    "semantic_hash": ""
+  },
+  "examples/philips-65oled907/debloat.txt": {
+    "mtime": 1792910399.7616796,
+    "seen": 1793001729.9800582,
+    "ast_hash": "83bf2f598bb2b0fc4c7e03e761902240",
+    "semantic_hash": ""
+  },
+  "examples/philips-65pml9506/debloat.txt": {
+    "mtime": 1792910399.7617977,
+    "seen": 1793001729.980059,
+    "ast_hash": "4e97d4f9daebd63e5613949908d0828f",
+    "semantic_hash": ""
+  },
+  "examples/philips-65pus8102/debloat.txt": {
+    "mtime": 1792910399.7619102,
+    "seen": 1793001729.9800596,
+    "ast_hash": "82337b8a60c6c64ed1740742b6f892f9",
+    "semantic_hash": ""
+  },
+  "examples/philips-65pus9435/debloat.txt": {
+    "mtime": 1792910399.7620273,
+    "seen": 1793001729.9800603,
+    "ast_hash": "973c265eed75a0e1d64e09ead9304541",
+    "semantic_hash": ""
+  },
+  "examples/philips-75pus8505/debloat.txt": {
+    "mtime": 1792910399.762147,
+    "seen": 1793001729.9800613,
+    "ast_hash": "c865ff54bfa2dae546ed4bd5c4e12c7e",
+    "semantic_hash": ""
+  },
+  "examples/philips-google-tv-ta7/README.md": {
+    "mtime": 1792910399.7622638,
+    "seen": 1793001729.980062,
+    "ast_hash": "75c9b0810e78b406206a7fba70e66c0b",
+    "semantic_hash": ""
+  },
+  "examples/philips-google-tv-ta7/debloat.txt": {
+    "mtime": 1792910399.762309,
+    "seen": 1793001729.980063,
+    "ast_hash": "6055a7aaaf2da5625ade8f7925af4f56",
+    "semantic_hash": ""
+  },
+  "examples/philips-r8g-google-tv/debloat.txt": {
+    "mtime": 1792910399.7624862,
+    "seen": 1793001729.9800637,
+    "ast_hash": "fe6f9f48c228f5dd58cfcc91fd4efb0d",
+    "semantic_hash": ""
+  },
+  "examples/philips-smart-4k-google-tv/debloat.txt": {
+    "mtime": 1792910399.7626104,
+    "seen": 1793001729.9800646,
+    "ast_hash": "a57d847ce281e005d125c40383f9692e",
+    "semantic_hash": ""
+  },
+  "examples/philips-tpm191e/README.md": {
+    "mtime": 1792910399.762717,
+    "seen": 1793001729.9800653,
+    "ast_hash": "5da0db240ac5bc721c7724dcd2192022",
+    "semantic_hash": ""
+  },
+  "examples/philips-tpm191e/debloat.txt": {
+    "mtime": 1792910399.7627866,
+    "seen": 1793001729.980066,
+    "ast_hash": "382c5a9578aa925a5722099b47b2837e",
+    "semantic_hash": ""
+  },
+  "examples/polytron-2k-hayward/debloat.txt": {
+    "mtime": 1792910399.7628994,
+    "seen": 1793001729.980067,
+    "ast_hash": "39bf73b9be9a802d78f3d6f067667595",
+    "semantic_hash": ""
+  },
+  "examples/portronics-beem-470/debloat.txt": {
+    "mtime": 1792910399.7630086,
+    "seen": 1793001729.9800677,
+    "ast_hash": "970b03b8e3bcf6659476ee554eb3ffeb",
+    "semantic_hash": ""
+  },
+  "examples/prismplus-q65-ultra-r10g/debloat.txt": {
+    "mtime": 1792910399.7631211,
+    "seen": 1793001729.980069,
+    "ast_hash": "8ec3b6cec2a994fab52f9734a84e3e24",
+    "semantic_hash": ""
+  },
+  "examples/rca-ai-pont/debloat.txt": {
+    "mtime": 1792910399.7633338,
+    "seen": 1793001729.9800696,
+    "ast_hash": "0cb72c2c9fc87578aa37a9eaa7abd3c4",
+    "semantic_hash": ""
+  },
+  "examples/rca-rc50a21s-4ksm/README.md": {
+    "mtime": 1792910399.763441,
+    "seen": 1793001729.9800704,
+    "ast_hash": "38578141f8c811f9011cd4cde42a60a0",
+    "semantic_hash": ""
+  },
+  "examples/rca-rc50a21s-4ksm/debloat.txt": {
+    "mtime": 1792910399.7635205,
+    "seen": 1793001729.980071,
+    "ast_hash": "b1e55e278262aa7016779cc9c88f6c89",
+    "semantic_hash": ""
+  },
+  "examples/redmi-mitv-antl0/debloat.txt": {
+    "mtime": 1792910399.763746,
+    "seen": 1793001729.980072,
+    "ast_hash": "aba709c90abdd52457b7fa7615fe8933",
+    "semantic_hash": ""
+  },
+  "examples/redmi-mitv-mftp0/debloat.txt": {
+    "mtime": 1792910399.7638602,
+    "seen": 1793001729.980073,
+    "ast_hash": "c71fd0ca6d61e0f515a42f59d93651ae",
+    "semantic_hash": ""
+  },
+  "examples/rocktek-gb1/README.md": {
+    "mtime": 1792910399.7639785,
+    "seen": 1793001729.9800737,
+    "ast_hash": "24b1060bab237f7ff20f0eb55d986991",
+    "semantic_hash": ""
+  },
+  "examples/rocktek-gb1/debloat.txt": {
+    "mtime": 1792910399.76407,
+    "seen": 1793001729.9800744,
+    "ast_hash": "a61be8fa74dab8e9e162ae2868429de8",
+    "semantic_hash": ""
+  },
+  "examples/sankey-smart-tv-hi3751v350/README.md": {
+    "mtime": 1792910399.7642992,
+    "seen": 1793001729.9800754,
+    "ast_hash": "c906e10b764207b083cc98a805d6be5b",
+    "semantic_hash": ""
+  },
+  "examples/sankey-smart-tv-hi3751v350/debloat.txt": {
+    "mtime": 1792910399.7643845,
+    "seen": 1793001729.980076,
+    "ast_hash": "f5a000d6d89410762dd49dc6c2e5b3d3",
+    "semantic_hash": ""
+  },
+  "examples/sankey-smart2ktvse/debloat.txt": {
+    "mtime": 1792910399.7641811,
+    "seen": 1793001729.9800768,
+    "ast_hash": "02975a92cd85b3624344926cad01bfe3",
+    "semantic_hash": ""
+  },
+  "examples/sanyo-atv-r2/debloat.txt": {
+    "mtime": 1792910399.7644823,
+    "seen": 1793001729.9800775,
+    "ast_hash": "b12ceb071843bc737e3895845e3a2d77",
+    "semantic_hash": ""
+  },
+  "examples/sber-salute-tv-at30a6/README.md": {
+    "mtime": 1792910399.764639,
+    "seen": 1793001729.9800782,
+    "ast_hash": "e5fbbfc03d8bc705246719bb3bb18d2e",
+    "semantic_hash": ""
+  },
+  "examples/sber-salute-tv-at30a6/debloat.txt": {
+    "mtime": 1792910399.7647247,
+    "seen": 1793001729.9800794,
+    "ast_hash": "8a86b9df1855b2f9390d896eb6cd2926",
+    "semantic_hash": ""
+  },
+  "examples/sharp-2t-c32gh3000i/debloat.txt": {
+    "mtime": 1792910399.7648287,
+    "seen": 1793001729.9800801,
+    "ast_hash": "95069f548e648446e02b11358e90ad56",
+    "semantic_hash": ""
+  },
+  "examples/sharp-aquos-tve21f/debloat.txt": {
+    "mtime": 1792910399.7649388,
+    "seen": 1793001729.9800808,
+    "ast_hash": "268d41834ecfc9c58429c798feea84fe",
+    "semantic_hash": ""
+  },
+  "examples/sharp-aquos-tve23a/debloat.txt": {
+    "mtime": 1792910399.765048,
+    "seen": 1793001729.980082,
+    "ast_hash": "3e3671bc964ad04a0ec0abf259ec54ed",
+    "semantic_hash": ""
+  },
+  "examples/skyworth-65a3f/debloat.txt": {
+    "mtime": 1792910399.7651777,
+    "seen": 1793001729.9800828,
+    "ast_hash": "133168b4f5e0874cb98d361d6bf73e9f",
+    "semantic_hash": ""
+  },
+  "examples/skyworth-7s60-a5/README.md": {
+    "mtime": 1792910399.7652903,
+    "seen": 1793001729.9800835,
+    "ast_hash": "0e2ba6c8e373b9ac36244b76d7983af1",
+    "semantic_hash": ""
+  },
+  "examples/skyworth-7s60-a5/debloat.txt": {
+    "mtime": 1792910399.765369,
+    "seen": 1793001729.9800842,
+    "ast_hash": "261bf6e6c5c67c32134f6b99e54dc2f1",
+    "semantic_hash": ""
+  },
+  "examples/skyworth-8r40-k5c/debloat.txt": {
+    "mtime": 1792910399.7654738,
+    "seen": 1793001729.980085,
+    "ast_hash": "f8e9b808d51068a7a04e3dfe0746f98c",
+    "semantic_hash": ""
+  },
+  "examples/skyworth-sw-22sa/debloat.txt": {
+    "mtime": 1792910399.765586,
+    "seen": 1793001729.9800858,
+    "ast_hash": "291e02a45736e881526387394b5f9d53",
+    "semantic_hash": ""
+  },
+  "examples/skyworth-swtv-21ae/debloat.txt": {
+    "mtime": 1792910399.7657008,
+    "seen": 1793001729.9800868,
+    "ast_hash": "0e33c8bbf75e507af4326cf4868a58bf",
+    "semantic_hash": ""
+  },
+  "examples/skyworth-swtv-22ae-fhd/README.md": {
+    "mtime": 1792910399.7658708,
+    "seen": 1793001729.9800875,
+    "ast_hash": "302b8380ebcc27518c62b6b5e5c90a57",
+    "semantic_hash": ""
+  },
+  "examples/skyworth-swtv-22ae-fhd/debloat.txt": {
+    "mtime": 1792910399.765921,
+    "seen": 1793001729.9800882,
+    "ast_hash": "65ee8526afc367568eca4fdfc9dd4e05",
+    "semantic_hash": ""
+  },
+  "examples/skyworth-swtv-24ae-4k-nf/debloat.txt": {
+    "mtime": 1792910399.7660553,
+    "seen": 1793001729.9800892,
+    "ast_hash": "bea407d93b91a65b1ed27ab68dfeb886",
+    "semantic_hash": ""
+  },
+  "examples/skyworth-swtv-24na-4k-nf/debloat.txt": {
+    "mtime": 1792910399.7662172,
+    "seen": 1793001729.98009,
+    "ast_hash": "efd4ba7ee541758742ba0a2721829ad0",
+    "semantic_hash": ""
+  },
+  "examples/sony-bravia-4k-gb-us/debloat.txt": {
+    "mtime": 1792910399.7664964,
+    "seen": 1793001729.9800906,
+    "ast_hash": "e9385729b1f8c62993db5e194c07d993",
+    "semantic_hash": ""
+  },
+  "examples/sony-bravia-4k-gb/debloat.txt": {
+    "mtime": 1792910399.766362,
+    "seen": 1793001729.9800916,
+    "ast_hash": "027853211465cca8878ca0b437e495f7",
+    "semantic_hash": ""
+  },
+  "examples/sony-bravia-4k-ur2/debloat.txt": {
+    "mtime": 1792910399.7666297,
+    "seen": 1793001729.9800925,
+    "ast_hash": "922c7c520c15de959ccc1fef933c7245",
+    "semantic_hash": ""
+  },
+  "examples/sony-bravia-4k-ur3/debloat.txt": {
+    "mtime": 1792910399.7667623,
+    "seen": 1793001729.9800932,
+    "ast_hash": "b37d32c770f20e6af8050ee2127fd49e",
+    "semantic_hash": ""
+  },
+  "examples/sony-bravia-4k-vh1/debloat.txt": {
+    "mtime": 1792910399.7669067,
+    "seen": 1793001729.980094,
+    "ast_hash": "fa9d8c349edc77d6fd15910d1e016f88",
+    "semantic_hash": ""
+  },
+  "examples/sony-bravia-4k-vh2/debloat.txt": {
+    "mtime": 1792910399.7670493,
+    "seen": 1793001729.9800947,
+    "ast_hash": "163184f2d12433aae75185f2a58043b2",
+    "semantic_hash": ""
+  },
+  "examples/sony-bravia-4k-vh21-eu/debloat.txt": {
+    "mtime": 1792910399.7673664,
+    "seen": 1793001729.9800956,
+    "ast_hash": "50b47d3bf98f5b9b44a0e362235873c9",
+    "semantic_hash": ""
+  },
+  "examples/sony-bravia-4k-vh21/debloat.txt": {
+    "mtime": 1792910399.7671955,
+    "seen": 1793001729.9800966,
+    "ast_hash": "b03b6a368d6b881fffa85209a9fc3a6f",
+    "semantic_hash": ""
+  },
+  "examples/sony-bravia-9-ii/debloat.txt": {
+    "mtime": 1792910399.7675402,
+    "seen": 1793001729.9800973,
+    "ast_hash": "c2cfaf03675916e921aac1e01ba83e2d",
+    "semantic_hash": ""
+  },
+  "examples/sony-bravia-ae1/debloat.txt": {
+    "mtime": 1792910399.7677476,
+    "seen": 1793001729.980098,
+    "ast_hash": "b15c210934a7244531b9321ccacad6c8",
+    "semantic_hash": ""
+  },
+  "examples/sony-bravia-ae2/debloat.txt": {
+    "mtime": 1792910399.7678776,
+    "seen": 1793001729.9800987,
+    "ast_hash": "0a6335d2d9816d95e657cddfd89abf47",
+    "semantic_hash": ""
+  },
+  "examples/sony-bravia-bf1/debloat.txt": {
+    "mtime": 1792910399.7680326,
+    "seen": 1793001729.9800997,
+    "ast_hash": "93e18d5830939423527bf3239401c85c",
+    "semantic_hash": ""
+  },
+  "examples/sony-bravia-tl2/debloat.txt": {
+    "mtime": 1792910399.7682357,
+    "seen": 1793001729.9801004,
+    "ast_hash": "88deef5a32782b479a5210c9eed72626",
+    "semantic_hash": ""
+  },
+  "examples/sony-bravia-vu1/debloat.txt": {
+    "mtime": 1792910399.768397,
+    "seen": 1793001729.980101,
+    "ast_hash": "3a420aae7cea0610c46e8f80027c46f9",
+    "semantic_hash": ""
+  },
+  "examples/sony-bravia-vu3/debloat.txt": {
+    "mtime": 1792910399.7685409,
+    "seen": 1793001729.9801018,
+    "ast_hash": "328689df08fa6c7209a08be744cafec1",
+    "semantic_hash": ""
+  },
+  "examples/sony-bravia-vu31/debloat.txt": {
+    "mtime": 1792910399.7686718,
+    "seen": 1793001729.9801025,
+    "ast_hash": "6b783507a914e6b203540d04cecac9ca",
+    "semantic_hash": ""
+  },
+  "examples/sony-kd-43x8000g/README.md": {
+    "mtime": 1792910399.7688322,
+    "seen": 1793001729.9801037,
+    "ast_hash": "c723ab48726b4b6efd2bef6bb1b47358",
+    "semantic_hash": ""
+  },
+  "examples/sony-kd-43x8000g/debloat.txt": {
+    "mtime": 1792910399.768882,
+    "seen": 1793001729.9801044,
+    "ast_hash": "151e45346d48f31c25979d8ca72af621",
+    "semantic_hash": ""
+  },
+  "examples/sony-kd-43x80l/debloat.txt": {
+    "mtime": 1792910399.7690125,
+    "seen": 1793001729.9801052,
+    "ast_hash": "7f3d1286646da6bd9bd95beb89a55fb1",
+    "semantic_hash": ""
+  },
+  "examples/sony-kd-49x8307c/debloat.txt": {
+    "mtime": 1792910399.769167,
+    "seen": 1793001729.9801059,
+    "ast_hash": "7e81401e18ea0e924fe2b0ff6b7e76c0",
+    "semantic_hash": ""
+  },
+  "examples/sony-kd-55x7500-cn/debloat.txt": {
+    "mtime": 1792910399.7693088,
+    "seen": 1793001729.980107,
+    "ast_hash": "a090e2152b864e534661bf4c36898b1b",
+    "semantic_hash": ""
+  },
+  "examples/sony-kd-55x8000c/debloat.txt": {
+    "mtime": 1792910399.7694457,
+    "seen": 1793001729.9801078,
+    "ast_hash": "d1beb6e15016c207c21f0f2a493acf43",
+    "semantic_hash": ""
+  },
+  "examples/sony-kd-55x8509c/debloat.txt": {
+    "mtime": 1792910399.769583,
+    "seen": 1793001729.9801085,
+    "ast_hash": "237b239462002e64a02fbb8bcc7ed7c9",
+    "semantic_hash": ""
+  },
+  "examples/sony-kd-55x85j/debloat.txt": {
+    "mtime": 1792910399.7697167,
+    "seen": 1793001729.9801095,
+    "ast_hash": "d7b3def595a6e2fa45b8bc47f8f849d9",
+    "semantic_hash": ""
+  },
+  "examples/sony-kd-55xe8596/debloat.txt": {
+    "mtime": 1792910399.769861,
+    "seen": 1793001729.9801104,
+    "ast_hash": "dfc5e9fce90829dece07993b0d1899fe",
+    "semantic_hash": ""
+  },
+  "examples/sony-kd-55xf7596/README.md": {
+    "mtime": 1792910399.7699983,
+    "seen": 1793001729.9801114,
+    "ast_hash": "9da911868faee913c2a65ac80a038e83",
+    "semantic_hash": ""
+  },
+  "examples/sony-kd-55xf7596/debloat.txt": {
+    "mtime": 1792910399.7700489,
+    "seen": 1793001729.980112,
+    "ast_hash": "04af88743b331a76d352dac1ef1cdd65",
+    "semantic_hash": ""
+  },
+  "examples/sony-kd-55xf8096/debloat.txt": {
+    "mtime": 1792910399.7701852,
+    "seen": 1793001729.9801128,
+    "ast_hash": "0fc51faa624fe57dab47a9e9086e1421",
+    "semantic_hash": ""
+  },
+  "examples/sony-kd-65x80j/debloat.txt": {
+    "mtime": 1792910399.7703285,
+    "seen": 1793001729.9801137,
+    "ast_hash": "314e29c09054baeceef7bb702ba898b7",
+    "semantic_hash": ""
+  },
+  "examples/sony-kd-65x82l/debloat.txt": {
+    "mtime": 1792910399.7704637,
+    "seen": 1793001729.9801145,
+    "ast_hash": "ca8094605ffad63242ef82d11e3db1db",
+    "semantic_hash": ""
+  },
+  "examples/sony-kd-65x9300d/debloat.txt": {
+    "mtime": 1792910399.7706165,
+    "seen": 1793001729.9801152,
+    "ast_hash": "41c0e8a680eda2070d11dee03d4398a8",
+    "semantic_hash": ""
+  },
+  "examples/sony-kdl-43w950d/README.md": {
+    "mtime": 1792910399.7707536,
+    "seen": 1793001729.9801161,
+    "ast_hash": "2012ef60d5136dc78c772f62f9095c5a",
+    "semantic_hash": ""
+  },
+  "examples/sony-kdl-43w950d/debloat.txt": {
+    "mtime": 1792910399.7708528,
+    "seen": 1793001729.980117,
+    "ast_hash": "79d070ea27407aee8b3fcd4180688145",
+    "semantic_hash": ""
+  },
+  "examples/sony-x9000h-cn/debloat.txt": {
+    "mtime": 1792910399.7709992,
+    "seen": 1793001729.9801178,
+    "ast_hash": "7ad23babeec79713d54b02d06a8ef444",
+    "semantic_hash": ""
+  },
+  "examples/sony-xbr-55x850c/debloat.txt": {
+    "mtime": 1792910399.7711532,
+    "seen": 1793001729.9801185,
+    "ast_hash": "1689ba46a900994f9c9fb564ff56b519",
+    "semantic_hash": ""
+  },
+  "examples/sony-xbr-55x850d/README.md": {
+    "mtime": 1792910399.7713194,
+    "seen": 1793001729.9801192,
+    "ast_hash": "66654172a200286dd264cc08d295774e",
+    "semantic_hash": ""
+  },
+  "examples/sony-xbr-55x850d/debloat.txt": {
+    "mtime": 1792910399.7713797,
+    "seen": 1793001729.9801202,
+    "ast_hash": "62f3e8c5db6eed484ee5e43a36004027",
+    "semantic_hash": ""
+  },
+  "examples/sony-xbr-65x900f/debloat.txt": {
+    "mtime": 1792910399.7715075,
+    "seen": 1793001729.980121,
+    "ast_hash": "4777cafe2177cce2b4e3145b826bc075",
+    "semantic_hash": ""
+  },
+  "examples/sony-xbr-x900e/debloat.txt": {
+    "mtime": 1792910399.7716534,
+    "seen": 1793001729.9801219,
+    "ast_hash": "a5091b10d9b2cc80812a1551203c0c45",
+    "semantic_hash": ""
+  },
+  "examples/sony-xr-65a80j/debloat.txt": {
+    "mtime": 1792910399.7717943,
+    "seen": 1793001729.9801226,
+    "ast_hash": "403295d5c648135df57afb855a048af1",
+    "semantic_hash": ""
+  },
+  "examples/sony-xr-65x90j-cn/debloat.txt": {
+    "mtime": 1792910399.7719376,
+    "seen": 1793001729.9801233,
+    "ast_hash": "d65c593e31e40f8cddff82aedaf97f75",
+    "semantic_hash": ""
+  },
+  "examples/stellamore-t950s/debloat.txt": {
+    "mtime": 1792910399.7721176,
+    "seen": 1793001729.9801242,
+    "ast_hash": "caec9ec1c970c94612923e1ec25cb1b2",
+    "semantic_hash": ""
+  },
+  "examples/super-general-cvte-t972/README.md": {
+    "mtime": 1792910399.7722993,
+    "seen": 1793001729.980125,
+    "ast_hash": "8db3b2eb6a31306f34adb9a430e164e3",
+    "semantic_hash": ""
+  },
+  "examples/super-general-cvte-t972/debloat.txt": {
+    "mtime": 1792910399.772371,
+    "seen": 1793001729.9801257,
+    "ast_hash": "6f6ee6588b1b121d493ea293c90201b5",
+    "semantic_hash": ""
+  },
+  "examples/tcl-32l5a/README.md": {
+    "mtime": 1792910399.77255,
+    "seen": 1793001729.9801264,
+    "ast_hash": "6358c94616ac89519b0bdbfaae7bb3b7",
+    "semantic_hash": ""
+  },
+  "examples/tcl-32l5a/debloat.txt": {
+    "mtime": 1792910399.7726128,
+    "seen": 1793001729.9801273,
+    "ast_hash": "3f562168b37b80e7f0dcfaed23f98678",
+    "semantic_hash": ""
+  },
+  "examples/tcl-32s5400a/debloat.txt": {
+    "mtime": 1792910399.7728744,
+    "seen": 1793001729.9801283,
+    "ast_hash": "54812f217c20cfe933bf1b29e9972c07",
+    "semantic_hash": ""
+  },
+  "examples/tcl-32s5k/debloat.txt": {
+    "mtime": 1792910399.7731185,
+    "seen": 1793001729.980129,
+    "ast_hash": "96fff67401f1f1cf4cc967408be7d0a8",
+    "semantic_hash": ""
+  },
+  "examples/tcl-40s5400a/debloat.txt": {
+    "mtime": 1792910399.7733305,
+    "seen": 1793001729.9801297,
+    "ast_hash": "f0cf14f60c0cba2631b11a22c61a0110",
+    "semantic_hash": ""
+  },
+  "examples/tcl-43c645/README.md": {
+    "mtime": 1792910399.7736583,
+    "seen": 1793001729.9801307,
+    "ast_hash": "63828f22807ba654329b3f2089f9a564",
+    "semantic_hash": ""
+  },
+  "examples/tcl-43c645/debloat.txt": {
+    "mtime": 1792910399.7738721,
+    "seen": 1793001729.9801314,
+    "ast_hash": "85d0a87272995d09a7b07d4abb1858f2",
+    "semantic_hash": ""
+  },
+  "examples/tcl-43ep660/debloat.txt": {
+    "mtime": 1792910399.7741697,
+    "seen": 1793001729.980132,
+    "ast_hash": "f44612704990c92fe0f58d668e6c02ac",
+    "semantic_hash": ""
+  },
+  "examples/tcl-43p615/debloat.txt": {
+    "mtime": 1792910399.7743943,
+    "seen": 1793001729.980133,
+    "ast_hash": "50c2180d0dd450ba39cf03c8982f7bde",
+    "semantic_hash": ""
+  },
+  "examples/tcl-43p725/debloat.txt": {
+    "mtime": 1792910399.774684,
+    "seen": 1793001729.9801345,
+    "ast_hash": "f561864e7d2382379b45baaab99707eb",
+    "semantic_hash": ""
+  },
+  "examples/tcl-43s450f-ca/README.md": {
+    "mtime": 1792910399.774837,
+    "seen": 1793001729.9801352,
+    "ast_hash": "e2e95009f6ff63523113726e33009a28",
+    "semantic_hash": ""
+  },
+  "examples/tcl-43s450f-ca/debloat.txt": {
+    "mtime": 1792910399.7748942,
+    "seen": 1793001729.980136,
+    "ast_hash": "d22433dfcdc3d75e37e6d0d15830658c",
+    "semantic_hash": ""
+  },
+  "examples/tcl-43s5400a/debloat.txt": {
+    "mtime": 1792910399.7751145,
+    "seen": 1793001729.9801366,
+    "ast_hash": "167b41a70bdd01f0406ae786fe0ce7fb",
+    "semantic_hash": ""
+  },
+  "examples/tcl-43s5k/debloat.txt": {
+    "mtime": 1792910399.7753484,
+    "seen": 1793001729.9801376,
+    "ast_hash": "8cd14ab75555569363cd8c9cacc48224",
+    "semantic_hash": ""
+  },
+  "examples/tcl-50c725k/debloat.txt": {
+    "mtime": 1792910399.7755415,
+    "seen": 1793001729.9801385,
+    "ast_hash": "6aed1fe4e7fcbbc39de57f79bbadb46e",
+    "semantic_hash": ""
+  },
+  "examples/tcl-50dp660/debloat.txt": {
+    "mtime": 1792910399.7757452,
+    "seen": 1793001729.9801393,
+    "ast_hash": "1b326e3ae9c70cdf640edf3495c98502",
+    "semantic_hash": ""
+  },
+  "examples/tcl-50ep680/debloat.txt": {
+    "mtime": 1792910399.7759182,
+    "seen": 1793001729.98014,
+    "ast_hash": "2ce01cd1869c7c4e215101dfd5eb89e3",
+    "semantic_hash": ""
+  },
+  "examples/tcl-50j7000a/debloat.txt": {
+    "mtime": 1792910399.7760465,
+    "seen": 1793001729.9801407,
+    "ast_hash": "8e1f8de26bba3a072f02219e58a4f321",
+    "semantic_hash": ""
+  },
+  "examples/tcl-50p615/debloat.txt": {
+    "mtime": 1792910399.7762096,
+    "seen": 1793001729.9801416,
+    "ast_hash": "ede057080fc24bf3c556d477d65b3dd6",
+    "semantic_hash": ""
+  },
+  "examples/tcl-50p735/debloat.txt": {
+    "mtime": 1792910399.7763267,
+    "seen": 1793001729.9801426,
+    "ast_hash": "622972aacf5a90f910f787edad4455e6",
+    "semantic_hash": ""
+  },
+  "examples/tcl-55c715/debloat.txt": {
+    "mtime": 1792910399.7764537,
+    "seen": 1793001729.9801433,
+    "ast_hash": "d9163e18e5a52580501f73e105331e0d",
+    "semantic_hash": ""
+  },
+  "examples/tcl-55c725/README.md": {
+    "mtime": 1792910399.776577,
+    "seen": 1793001729.980144,
+    "ast_hash": "980a083da2719587936360b587a1c5db",
+    "semantic_hash": ""
+  },
+  "examples/tcl-55c725/debloat.txt": {
+    "mtime": 1792910399.7766366,
+    "seen": 1793001729.9801452,
+    "ast_hash": "1405144cd4eb1c1acc60902e5f300687",
+    "semantic_hash": ""
+  },
+  "examples/tcl-55c745/README.md": {
+    "mtime": 1792910399.776743,
+    "seen": 1793001729.980146,
+    "ast_hash": "5de1db6e336ad257cbbd92ae7f62b358",
+    "semantic_hash": ""
+  },
+  "examples/tcl-55c745/debloat.txt": {
+    "mtime": 1792910399.776825,
+    "seen": 1793001729.9801466,
+    "ast_hash": "7f4925db634c337bcc1ec2c9fd46c750",
+    "semantic_hash": ""
+  },
+  "examples/tcl-55c7k-uk/README.md": {
+    "mtime": 1792910399.7769365,
+    "seen": 1793001729.9801474,
+    "ast_hash": "ce147f2bbab1a154628d78ba9c761290",
+    "semantic_hash": ""
+  },
+  "examples/tcl-55c7k-uk/debloat.txt": {
+    "mtime": 1792910399.7770226,
+    "seen": 1793001729.9801483,
+    "ast_hash": "49a2f47094ae2e2be41fa065713bfa35",
+    "semantic_hash": ""
+  },
+  "examples/tcl-55c815/debloat.txt": {
+    "mtime": 1792910399.7771432,
+    "seen": 1793001729.980149,
+    "ast_hash": "62b22a97e17ed70bd3a1c5547e34d294",
+    "semantic_hash": ""
+  },
+  "examples/tcl-55ep640/debloat.txt": {
+    "mtime": 1792910399.7772622,
+    "seen": 1793001729.9801497,
+    "ast_hash": "1d8f283e8aafe374a0794f08fa8d162d",
+    "semantic_hash": ""
+  },
+  "examples/tcl-55p638/README.md": {
+    "mtime": 1792910399.7773855,
+    "seen": 1793001729.9801507,
+    "ast_hash": "2493e976bae3dbd79c500de4f316f83a",
+    "semantic_hash": ""
+  },
+  "examples/tcl-55p638/debloat.txt": {
+    "mtime": 1792910399.777468,
+    "seen": 1793001729.9801517,
+    "ast_hash": "233e8be6fc955645b14482220a172e44",
+    "semantic_hash": ""
+  },
+  "examples/tcl-55p7k/debloat.txt": {
+    "mtime": 1792910399.7775724,
+    "seen": 1793001729.9801524,
+    "ast_hash": "ed876e299fb261d38ab68cdf32e75730",
+    "semantic_hash": ""
+  },
+  "examples/tcl-55p8ls/debloat.txt": {
+    "mtime": 1792910399.7776868,
+    "seen": 1793001729.980153,
+    "ast_hash": "47e2bcc754740e04cabf2059140634fe",
+    "semantic_hash": ""
+  },
+  "examples/tcl-55s470g/debloat.txt": {
+    "mtime": 1792910399.777799,
+    "seen": 1793001729.9801538,
+    "ast_hash": "afe8bf44bcc205f41dda506c5267a252",
+    "semantic_hash": ""
+  },
+  "examples/tcl-55s546-us/debloat.txt": {
+    "mtime": 1792910399.7779217,
+    "seen": 1793001729.9801545,
+    "ast_hash": "c56202cddd6ad3407c396f339e418896",
+    "semantic_hash": ""
+  },
+  "examples/tcl-58s571f-fire-tv/debloat.txt": {
+    "mtime": 1792910399.7780328,
+    "seen": 1793001729.9801557,
+    "ast_hash": "5762b8f3db35e52e02f53c572d56c685",
+    "semantic_hash": ""
+  },
+  "examples/tcl-65c725/debloat.txt": {
+    "mtime": 1792910399.778157,
+    "seen": 1793001729.9801564,
+    "ast_hash": "028d2388d068005bf9d336c1323af495",
+    "semantic_hash": ""
+  },
+  "examples/tcl-65c735/debloat.txt": {
+    "mtime": 1792910399.7783191,
+    "seen": 1793001729.9801571,
+    "ast_hash": "70678d9ab1dc2641829681e7fedd0958",
+    "semantic_hash": ""
+  },
+  "examples/tcl-65c7k-google-tv/debloat.txt": {
+    "mtime": 1792910399.7784343,
+    "seen": 1793001729.9801579,
+    "ast_hash": "e9fbe3a6ca8a041c9a5fd3e7d5613c33",
+    "semantic_hash": ""
+  },
+  "examples/tcl-65c7l-google-tv/README.md": {
+    "mtime": 1792910399.7785475,
+    "seen": 1793001729.9801588,
+    "ast_hash": "e977bf9412c30a7b7389a37ad6353802",
+    "semantic_hash": ""
+  },
+  "examples/tcl-65c7l-google-tv/debloat.txt": {
+    "mtime": 1792910399.778644,
+    "seen": 1793001729.9801595,
+    "ast_hash": "204424daa583b7b8d6fe644278d3a69e",
+    "semantic_hash": ""
+  },
+  "examples/tcl-65ep640/debloat.txt": {
+    "mtime": 1792910399.7787988,
+    "seen": 1793001729.9801605,
+    "ast_hash": "f3c1155e685a1446b3ec740067808f52",
+    "semantic_hash": ""
+  },
+  "examples/tcl-65ep68/README.md": {
+    "mtime": 1792910399.7789066,
+    "seen": 1793001729.9801612,
+    "ast_hash": "15b47a0c71d6a40ddb3a7f6fae373cd1",
+    "semantic_hash": ""
+  },
+  "examples/tcl-65ep68/debloat.txt": {
+    "mtime": 1792910399.778991,
+    "seen": 1793001729.9801621,
+    "ast_hash": "9fdeea4ca27ecfdb831282c8994cb4bb",
+    "semantic_hash": ""
+  },
+  "examples/tcl-65q550g/debloat.txt": {
+    "mtime": 1792910399.7791486,
+    "seen": 1793001729.9801629,
+    "ast_hash": "9fad85c32ab2706a252077bbfae80df6",
+    "semantic_hash": ""
+  },
+  "examples/tcl-65q650g/debloat.txt": {
+    "mtime": 1792910399.7793531,
+    "seen": 1793001729.9801667,
+    "ast_hash": "466bc40af90f954068617d92cefce425",
+    "semantic_hash": ""
+  },
+  "examples/tcl-75p8k/debloat.txt": {
+    "mtime": 1792910399.7795198,
+    "seen": 1793001729.9801676,
+    "ast_hash": "7be76780356f1b7031c3737e76eded24",
+    "semantic_hash": ""
+  },
+  "examples/tcl-85rm7l-google-tv/debloat.txt": {
+    "mtime": 1792910399.7796931,
+    "seen": 1793001729.9801683,
+    "ast_hash": "8552069ac5ecd8bfe96b8f733a537be9",
+    "semantic_hash": ""
+  },
+  "examples/tcl-ak30a5/debloat.txt": {
+    "mtime": 1792910399.7798438,
+    "seen": 1793001729.9801693,
+    "ast_hash": "21c565159353f8d6f62b4fa21606f88c",
+    "semantic_hash": ""
+  },
+  "examples/tcl-beyondtv-pl/debloat.txt": {
+    "mtime": 1792910399.7805018,
+    "seen": 1793001729.98017,
+    "ast_hash": "72305dea1e557d16642abde432663bfc",
+    "semantic_hash": ""
+  },
+  "examples/tcl-beyondtv-rt2851/debloat.txt": {
+    "mtime": 1792910399.7806492,
+    "seen": 1793001729.9801707,
+    "ast_hash": "91e86b951393a709626f91da11d6f131",
+    "semantic_hash": ""
+  },
+  "examples/tcl-beyondtv/debloat.txt": {
+    "mtime": 1792910399.7800138,
+    "seen": 1793001729.9801717,
+    "ast_hash": "43a35b1031f4136472fd5a3b65bdb32a",
+    "semantic_hash": ""
+  },
+  "examples/tcl-beyondtv2-android-11/debloat.txt": {
+    "mtime": 1792910399.7801652,
+    "seen": 1793001729.9801726,
+    "ast_hash": "0ba0de3e8b64d74dd1e0d31ed5c16cdd",
+    "semantic_hash": ""
+  },
+  "examples/tcl-beyondtv2-latin-america/debloat.txt": {
+    "mtime": 1792910399.7803016,
+    "seen": 1793001729.9801733,
+    "ast_hash": "e6ce0c067be7a9cc5712a54b71b90fc0",
+    "semantic_hash": ""
+  },
+  "examples/tcl-c635/debloat.txt": {
+    "mtime": 1792910399.7807891,
+    "seen": 1793001729.980174,
+    "ast_hash": "94d929de8e94eff562390342b631cbfa",
+    "semantic_hash": ""
+  },
+  "examples/tcl-c755-google-tv/debloat.txt": {
+    "mtime": 1792910399.780939,
+    "seen": 1793001729.980175,
+    "ast_hash": "386a088f5669b722a47b7d7f91ebb2cb",
+    "semantic_hash": ""
+  },
+  "examples/tcl-c845x2-google-tv/README.md": {
+    "mtime": 1792910399.781081,
+    "seen": 1793001729.980176,
+    "ast_hash": "9807914fe81b009490ae25595709518a",
+    "semantic_hash": ""
+  },
+  "examples/tcl-c845x2-google-tv/debloat.txt": {
+    "mtime": 1792910399.7811396,
+    "seen": 1793001729.9801767,
+    "ast_hash": "1eaa92c021f7b910d4471db4df9cce33",
+    "semantic_hash": ""
+  },
+  "examples/tcl-c89b-google-tv/debloat.txt": {
+    "mtime": 1792910399.7813363,
+    "seen": 1793001729.9801774,
+    "ast_hash": "4e2062963688b1a9b9f855fe69084678",
+    "semantic_hash": ""
+  },
+  "examples/tcl-g03-google-tv/debloat.txt": {
+    "mtime": 1792910399.781527,
+    "seen": 1793001729.980178,
+    "ast_hash": "5ecbd4b3adaf2cf9564b7d29447582ac",
+    "semantic_hash": ""
+  },
+  "examples/tcl-g05-google-tv/debloat.txt": {
+    "mtime": 1792910399.7816653,
+    "seen": 1793001729.9801788,
+    "ast_hash": "4d66ff4c02be56ee5c63eb3c750e326f",
+    "semantic_hash": ""
+  },
+  "examples/tcl-g07-google-tv/debloat.txt": {
+    "mtime": 1792910399.7818031,
+    "seen": 1793001729.9801798,
+    "ast_hash": "c7ad7d34f75e3b59c260f30836b23e2f",
+    "semantic_hash": ""
+  },
+  "examples/tcl-g08-au-android12/README.md": {
+    "mtime": 1792910399.781965,
+    "seen": 1793001729.9801805,
+    "ast_hash": "9d90b0e5e9da8b3dcc076c929a478853",
+    "semantic_hash": ""
+  },
+  "examples/tcl-g08-au-android12/debloat.txt": {
+    "mtime": 1792910399.7820678,
+    "seen": 1793001729.9801812,
+    "ast_hash": "7c1ac8e226aa4d298b8826dcb0aeb6c2",
+    "semantic_hash": ""
+  },
+  "examples/tcl-g08-eu-android12/README.md": {
+    "mtime": 1792910399.7822106,
+    "seen": 1793001729.980182,
+    "ast_hash": "cfab4eb7109de20b12454495058eb970",
+    "semantic_hash": ""
+  },
+  "examples/tcl-g08-eu-android12/debloat.txt": {
+    "mtime": 1792910399.7822654,
+    "seen": 1793001729.980183,
+    "ast_hash": "fc38723936ee8cf69005a2b84da638ea",
+    "semantic_hash": ""
+  },
+  "examples/tcl-g08-us-google-tv/README.md": {
+    "mtime": 1792910399.7823992,
+    "seen": 1793001729.9801836,
+    "ast_hash": "ae72f7a40bcf9824a86cbd5d8ad249a5",
+    "semantic_hash": ""
+  },
+  "examples/tcl-g08-us-google-tv/debloat.txt": {
+    "mtime": 1792910399.78246,
+    "seen": 1793001729.9801843,
+    "ast_hash": "03951684096c2fee2fe4c4c970840c7b",
+    "semantic_hash": ""
+  },
+  "examples/tcl-g09-google-tv/README.md": {
+    "mtime": 1792910399.7825897,
+    "seen": 1793001729.9801853,
+    "ast_hash": "f2c13c2ef60d677df6808638f2b20926",
+    "semantic_hash": ""
+  },
+  "examples/tcl-g09-google-tv/debloat.txt": {
+    "mtime": 1792910399.782691,
+    "seen": 1793001729.9801862,
+    "ast_hash": "cf8f589d98cc47468e0a76cd1e33eca2",
+    "semantic_hash": ""
+  },
+  "examples/tcl-g10-google-tv/debloat.txt": {
+    "mtime": 1792910399.7828178,
+    "seen": 1793001729.980187,
+    "ast_hash": "27f9b3957742c821728c9cebc5db5672",
+    "semantic_hash": ""
+  },
+  "examples/tcl-l40s66e/debloat.txt": {
+    "mtime": 1792910399.7829585,
+    "seen": 1793001729.9801877,
+    "ast_hash": "a1a8f20fb89dea467910d09539f21b71",
+    "semantic_hash": ""
+  },
+  "examples/tcl-mt9655-cn-android14/debloat.txt": {
+    "mtime": 1792910399.7831035,
+    "seen": 1793001729.9801884,
+    "ast_hash": "9f72df979e8562e262488d796dc4a4c1",
+    "semantic_hash": ""
+  },
+  "examples/tcl-q10g-pro/debloat.txt": {
+    "mtime": 1792910399.7832575,
+    "seen": 1793001729.980189,
+    "ast_hash": "f8d51fb2c1c65cca3dfd1f010f86b3da",
+    "semantic_hash": ""
+  },
+  "examples/tcl-q7c-google-tv/README.md": {
+    "mtime": 1792910399.7835822,
+    "seen": 1793001729.9801903,
+    "ast_hash": "d96f163c49854febb6f95d72daca3132",
+    "semantic_hash": ""
+  },
+  "examples/tcl-q7c-google-tv/debloat.txt": {
+    "mtime": 1792910399.7836914,
+    "seen": 1793001729.980191,
+    "ast_hash": "74db56adad0c4087b9df6e61d9e2d75e",
+    "semantic_hash": ""
+  },
+  "examples/tcl-qm6k-google-tv/debloat.txt": {
+    "mtime": 1792910399.7838717,
+    "seen": 1793001729.9801917,
+    "ast_hash": "754157de67c14823925cb5d987214eae",
+    "semantic_hash": ""
+  },
+  "examples/tcl-tc8000-ay30a2/debloat.txt": {
+    "mtime": 1792910399.7840455,
+    "seen": 1793001729.9801924,
+    "ast_hash": "45e81f110d76dd4677fe6bd1932b4197",
+    "semantic_hash": ""
+  },
+  "examples/tcl-uniontv-latin-america/debloat.txt": {
+    "mtime": 1792910399.7841744,
+    "seen": 1793001729.9801934,
+    "ast_hash": "d5496d26515c21c2c1df297c1e83c9b1",
+    "semantic_hash": ""
+  },
+  "examples/telesystem-ont2hd/debloat.txt": {
+    "mtime": 1792910399.7843122,
+    "seen": 1793001729.980194,
+    "ast_hash": "e22473ebb1f7cd5b6c6c1d53250a947b",
+    "semantic_hash": ""
+  },
+  "examples/thomson-32he5800/debloat.txt": {
+    "mtime": 1792910399.7844434,
+    "seen": 1793001729.9801948,
+    "ast_hash": "9792283c8450853163c1520b44b25f83",
+    "semantic_hash": ""
+  },
+  "examples/thomson-43rt1055/debloat.txt": {
+    "mtime": 1792910399.7846315,
+    "seen": 1793001729.9801955,
+    "ast_hash": "b5e54714457d679d6cfa60c1e0fd0019",
+    "semantic_hash": ""
+  },
+  "examples/thomson-sppl-4k-sw6h/debloat.txt": {
+    "mtime": 1792910399.7848198,
+    "seen": 1793001729.9801962,
+    "ast_hash": "0d42c55d78771fcd9bf2ca060bbb33cf",
+    "semantic_hash": ""
+  },
+  "examples/thomson-t32rtl6000/debloat.txt": {
+    "mtime": 1792910399.7849517,
+    "seen": 1793001729.9801972,
+    "ast_hash": "e85ab887ddf60ddc5bcbbf44a2cf7a97",
+    "semantic_hash": ""
+  },
+  "examples/tivo-stream-4k/README.md": {
+    "mtime": 1792910399.7850854,
+    "seen": 1793001729.980198,
+    "ast_hash": "37374b4580eac946b9fcc718edf47cce",
+    "semantic_hash": ""
+  },
+  "examples/tivo-stream-4k/debloat.txt": {
+    "mtime": 1792910399.7851348,
+    "seen": 1793001729.9801986,
+    "ast_hash": "4d9b4dd8f043631a0f68206e1351117d",
+    "semantic_hash": ""
+  },
+  "examples/tornado-65ua1400e/debloat.txt": {
+    "mtime": 1792910399.7860467,
+    "seen": 1793001729.9801993,
+    "ast_hash": "31a94b1b6433106f15a34f64e01b7e5f",
+    "semantic_hash": ""
+  },
+  "examples/toshiba-cosmos-android-tv/debloat.txt": {
+    "mtime": 1792910399.786222,
+    "seen": 1793001729.9802003,
+    "ast_hash": "a7b6bf88bcba7a3307105a0ec0e37725",
+    "semantic_hash": ""
+  },
+  "examples/toshiba-fire-tv-aftha004/debloat.txt": {
+    "mtime": 1792910399.786373,
+    "seen": 1793001729.9802012,
+    "ast_hash": "21652a1084573a7fa9617c2c4f165ad5",
+    "semantic_hash": ""
+  },
+  "examples/turkcell-tv-plus-4k-box-dv6069y/debloat.txt": {
+    "mtime": 1792910399.78651,
+    "seen": 1793001729.980202,
+    "ast_hash": "a76bfc2b726232fe5d1e09c88fd32c40",
+    "semantic_hash": ""
+  },
+  "examples/tuvio-td43ufbcv5/debloat.txt": {
+    "mtime": 1792910399.7866633,
+    "seen": 1793001729.9802027,
+    "ast_hash": "12a326a0edb92e925d05ff7734f8f4d2",
+    "semantic_hash": ""
+  },
+  "examples/verizon-stream-tv/debloat.txt": {
+    "mtime": 1792910399.7867906,
+    "seen": 1793001729.9802036,
+    "ast_hash": "2b5098d1d8d84f90e3290225264c12ab",
+    "semantic_hash": ""
+  },
+  "examples/vidda-c1s-mt9669/debloat.txt": {
+    "mtime": 1792910399.7869134,
+    "seen": 1793001729.9802043,
+    "ast_hash": "86b7ba5d685200cb57fcc3742de390e3",
+    "semantic_hash": ""
+  },
+  "examples/vidda-mt9653/debloat.txt": {
+    "mtime": 1792910399.7870412,
+    "seen": 1793001729.980205,
+    "ast_hash": "c0f6bb7124292d5f5b50fc8a8310c417",
+    "semantic_hash": ""
+  },
+  "examples/vision-2024vision43stv/debloat.txt": {
+    "mtime": 1792910399.7871823,
+    "seen": 1793001729.9802058,
+    "ast_hash": "50e6bdbe1c3d2c044dc8523544f962d7",
+    "semantic_hash": ""
+  },
+  "examples/vu-4k-lushan/debloat.txt": {
+    "mtime": 1792910399.7873316,
+    "seen": 1793001729.9802065,
+    "ast_hash": "048b13d122db4209b2e6e667a42c1c24",
+    "semantic_hash": ""
+  },
+  "examples/vu-premium-fhd-43-hamamatsucho/debloat.txt": {
+    "mtime": 1792910399.7874875,
+    "seen": 1793001729.9802074,
+    "ast_hash": "5bc19ab4de2ce15ffee63b1b3ee5039b",
+    "semantic_hash": ""
+  },
+  "examples/vu-vibe-tv/README.md": {
+    "mtime": 1792910399.7876537,
+    "seen": 1793001729.9802082,
+    "ast_hash": "38443b3055317df02c4196529d9f3d2f",
+    "semantic_hash": ""
+  },
+  "examples/vu-vibe-tv/debloat.txt": {
+    "mtime": 1792910399.7877738,
+    "seen": 1793001729.980209,
+    "ast_hash": "61f0bf5a899160d325edd910264ccb88",
+    "semantic_hash": ""
+  },
+  "examples/wanbo-x5-pro/debloat.txt": {
+    "mtime": 1792910399.7879844,
+    "seen": 1793001729.9802098,
+    "ast_hash": "df93646628e8ea07a7d1e0402288de39",
+    "semantic_hash": ""
+  },
+  "examples/xgimi-horizon-s-pro/debloat.txt": {
+    "mtime": 1792910399.7882206,
+    "seen": 1793001729.9802108,
+    "ast_hash": "06b3167c486d39cf2830d2e3cf6057cc",
+    "semantic_hash": ""
+  },
+  "examples/xgimi-mogo-2/debloat.txt": {
+    "mtime": 1792910399.78843,
+    "seen": 1793001729.9802115,
+    "ast_hash": "eed9bfd6dd3d0fd6f368d7951723277a",
+    "semantic_hash": ""
+  },
+  "examples/xgimi-mogo-3-pro/debloat.txt": {
+    "mtime": 1792910399.7886791,
+    "seen": 1793001729.9802122,
+    "ast_hash": "d414efeb2c7ebc2a8d05b1ffd75de766",
+    "semantic_hash": ""
+  },
+  "examples/xgimi-mogo-4/README.md": {
+    "mtime": 1792910399.7888694,
+    "seen": 1793001729.9802132,
+    "ast_hash": "76432cd594a04282bcb537a92fc2eb21",
+    "semantic_hash": ""
+  },
+  "examples/xgimi-mogo-4/debloat.txt": {
+    "mtime": 1792910399.788983,
+    "seen": 1793001729.980214,
+    "ast_hash": "1e187250e8e1ecbb1fe80817ec465981",
+    "semantic_hash": ""
+  },
+  "examples/xiaomi-mi-box-3/debloat.txt": {
+    "mtime": 1792910399.7891378,
+    "seen": 1793001729.9802148,
+    "ast_hash": "b2329b64577a1ddee4e2af138abc74d2",
+    "semantic_hash": ""
+  },
+  "examples/xiaomi-mi-box-s-2nd-gen/debloat.txt": {
+    "mtime": 1792910399.7899241,
+    "seen": 1793001729.9802155,
+    "ast_hash": "7d28be2afcdb9dde9cbbfa69bd747fa4",
+    "semantic_hash": ""
+  },
+  "examples/xiaomi-mi-box-s-android12/README.md": {
+    "mtime": 1792910399.7904637,
+    "seen": 1793001729.9802163,
+    "ast_hash": "ceebf9920fa103e84326882273d403b2",
+    "semantic_hash": ""
+  },
+  "examples/xiaomi-mi-box-s-android12/debloat.txt": {
+    "mtime": 1792910399.7908473,
+    "seen": 1793001729.980217,
+    "ast_hash": "0861ee081cf92a3e2f0da11b69f5852d",
+    "semantic_hash": ""
+  },
+  "examples/xiaomi-mi-box-s/debloat.txt": {
+    "mtime": 1792910399.7893424,
+    "seen": 1793001729.980218,
+    "ast_hash": "cbb6ec301462969cf1e51e667bc99e96",
+    "semantic_hash": ""
+  },
+  "examples/xiaomi-mi-box-s/theme/README.md": {
+    "mtime": 1792910399.78947,
+    "seen": 1793001729.9802186,
+    "ast_hash": "709de9465211cfb148ea86414d795797",
+    "semantic_hash": ""
+  },
+  "examples/xiaomi-mi-tv-4a/debloat.txt": {
+    "mtime": 1792910399.7912781,
+    "seen": 1793001729.9802196,
+    "ast_hash": "d5663b39a9e93b705d3097db1931db47",
+    "semantic_hash": ""
+  },
+  "examples/xiaomi-mitv-aesp0/debloat.txt": {
+    "mtime": 1792910399.7916553,
+    "seen": 1793001729.9802203,
+    "ast_hash": "c809a5748de6978e8704dc631f6b0375",
+    "semantic_hash": ""
+  },
+  "examples/xiaomi-mitv-afmu0/debloat.txt": {
+    "mtime": 1792910399.791936,
+    "seen": 1793001729.9802213,
+    "ast_hash": "8cf943e7aa664ec8233bfdc883c9609d",
+    "semantic_hash": ""
+  },
+  "examples/xiaomi-mitv-afmu1/debloat.txt": {
+    "mtime": 1792910399.7922812,
+    "seen": 1793001729.980222,
+    "ast_hash": "2bebc93ecd1d4c4585cc0fae01ba8561",
+    "semantic_hash": ""
+  },
+  "examples/xiaomi-mitv-ansp0/debloat.txt": {
+    "mtime": 1792910399.7924619,
+    "seen": 1793001729.9802227,
+    "ast_hash": "d1c06bf80a60b0492d3188f05eb84b71",
+    "semantic_hash": ""
+  },
+  "examples/xiaomi-mitv-astp0/debloat.txt": {
+    "mtime": 1792910399.792615,
+    "seen": 1793001729.9802234,
+    "ast_hash": "ea59920340966e6784500c0c25234eb5",
+    "semantic_hash": ""
+  },
+  "examples/xiaomi-mitv-astp1/debloat.txt": {
+    "mtime": 1792910399.7927785,
+    "seen": 1793001729.9802244,
+    "ast_hash": "991b48fad4f81a19e7708488bd6caa63",
+    "semantic_hash": ""
+  },
+  "examples/xiaomi-mitv-astr0/debloat.txt": {
+    "mtime": 1792910399.7929373,
+    "seen": 1793001729.980225,
+    "ast_hash": "a1bc3cf8f210614d52e8e17e74fe4aac",
+    "semantic_hash": ""
+  },
+  "examples/xiaomi-mitv-axfr0/debloat.txt": {
+    "mtime": 1792910399.793073,
+    "seen": 1793001729.980226,
+    "ast_hash": "f95950e7b16685ae74b96c338d557b3a",
+    "semantic_hash": ""
+  },
+  "examples/xiaomi-mitv-axfr1/debloat.txt": {
+    "mtime": 1792910399.7932312,
+    "seen": 1793001729.9802268,
+    "ast_hash": "55687366a237214c3d53ddb74959256f",
+    "semantic_hash": ""
+  },
+  "examples/xiaomi-mitv-axso0/debloat.txt": {
+    "mtime": 1792910399.7934084,
+    "seen": 1793001729.9802275,
+    "ast_hash": "5b26a92e583f3a2bce52e91cafa5cc62",
+    "semantic_hash": ""
+  },
+  "examples/xiaomi-mitv-axso2/debloat.txt": {
+    "mtime": 1792910399.793592,
+    "seen": 1793001729.9802284,
+    "ast_hash": "9baddc5500083e92912b55cc09bcb5ae",
+    "semantic_hash": ""
+  },
+  "examples/xiaomi-mitv-ayfr0/debloat.txt": {
+    "mtime": 1792910399.793729,
+    "seen": 1793001729.9802291,
+    "ast_hash": "841397840cdff425aff7b9be0315c2e4",
+    "semantic_hash": ""
+  },
+  "examples/xiaomi-mitv-mffu0/debloat.txt": {
+    "mtime": 1792910399.7941737,
+    "seen": 1793001729.9802299,
+    "ast_hash": "1868880cf2c6ad9696330bc112dcc20e",
+    "semantic_hash": ""
+  },
+  "examples/xiaomi-mitv-mftr0/debloat.txt": {
+    "mtime": 1792910399.7943833,
+    "seen": 1793001729.9802306,
+    "ast_hash": "2924603ea656fc6d3c38e8913d149bef",
+    "semantic_hash": ""
+  },
+  "examples/xiaomi-mitv-moeu0/debloat.txt": {
+    "mtime": 1792910399.7945092,
+    "seen": 1793001729.9802318,
+    "ast_hash": "aa62e2f6641fc8c4d8a2d8807281e481",
+    "semantic_hash": ""
+  },
+  "examples/xiaomi-mitv-mooq0/debloat.txt": {
+    "mtime": 1792910399.7946405,
+    "seen": 1793001729.9802325,
+    "ast_hash": "bcdecd752b7fc1f1df37cb5143188399",
+    "semantic_hash": ""
+  },
+  "examples/xiaomi-mitv-mooq2/debloat.txt": {
+    "mtime": 1792910399.7948194,
+    "seen": 1793001729.9802332,
+    "ast_hash": "d761e2ae5ccc20bcea90697531eededa",
+    "semantic_hash": ""
+  },
+  "examples/xiaomi-mitv-moor2/README.md": {
+    "mtime": 1792910399.7949457,
+    "seen": 1793001729.980234,
+    "ast_hash": "1d8dd80fccc2ad2491226726cead1e7d",
+    "semantic_hash": ""
+  },
+  "examples/xiaomi-mitv-moor2/debloat.txt": {
+    "mtime": 1792910399.7949944,
+    "seen": 1793001729.9802349,
+    "ast_hash": "55a94748a0496016bce9fb957ae4927c",
+    "semantic_hash": ""
+  },
+  "examples/xiaomi-mitv-mosr4/debloat.txt": {
+    "mtime": 1792910399.7951784,
+    "seen": 1793001729.980236,
+    "ast_hash": "7082370585756bb55aa7fce5f520d394",
+    "semantic_hash": ""
+  },
+  "examples/xiaomi-mitv-mssp0/debloat.txt": {
+    "mtime": 1792910399.7952898,
+    "seen": 1793001729.9802368,
+    "ast_hash": "7fd867ba7b5e6fc06abcf241c03d3ae4",
+    "semantic_hash": ""
+  },
+  "examples/xiaomi-mitv-mssp1/debloat.txt": {
+    "mtime": 1792910399.795433,
+    "seen": 1793001729.9802377,
+    "ast_hash": "0f8c56182fb76c6ca8df542c9ac91f83",
+    "semantic_hash": ""
+  },
+  "examples/xiaomi-mitv-mssp2/debloat.txt": {
+    "mtime": 1792910399.7955966,
+    "seen": 1793001729.980239,
+    "ast_hash": "4a9dbb1c5d1a967d9a575b7945143169",
+    "semantic_hash": ""
+  },
+  "examples/xiaomi-mitv-mssp3-android9/debloat.txt": {
+    "mtime": 1792910399.795856,
+    "seen": 1793001729.9802396,
+    "ast_hash": "3b565f1e1904e3189e503f67ee4ee06d",
+    "semantic_hash": ""
+  },
+  "examples/xiaomi-mitv-mssp3/debloat.txt": {
+    "mtime": 1792910399.7957335,
+    "seen": 1793001729.9802406,
+    "ast_hash": "44cd6f19b16bf3e1963b8c87a0e00432",
+    "semantic_hash": ""
+  },
+  "examples/xiaomi-mitv-mteq0/debloat.txt": {
+    "mtime": 1792910399.7960107,
+    "seen": 1793001729.9802413,
+    "ast_hash": "23ec5aa6a2273f4ebfd1521a87c5224a",
+    "semantic_hash": ""
+  },
+  "examples/xiaomi-tv-a-pro-2026/debloat.txt": {
+    "mtime": 1792910399.7961867,
+    "seen": 1793001729.9802423,
+    "ast_hash": "0e2ca2bf848347b3c08fb3908e5786d1",
+    "semantic_hash": ""
+  },
+  "examples/tcl-43p615/home.jpg": {
+    "mtime": 1792910399.774509,
+    "seen": 1793001729.9802501,
+    "ast_hash": "0d7acfdfdf5fa498ab9e85febae26422",
+    "semantic_hash": ""
+  },
+  "examples/tcl-q7c-google-tv/65q7d-pro-home.png": {
+    "mtime": 1792910399.7833955,
+    "seen": 1793001729.980251,
+    "ast_hash": "bb9763c2d47b2d2bc38c864eef51597e",
+    "semantic_hash": ""
+  },
+  "images/tv/screenshot/home_screen_verified.png": {
+    "mtime": 1793105851.7192302,
+    "seen": 1793109947.9554539,
+    "ast_hash": "e575052f8a7762f23953dc50f0905882",
+    "semantic_hash": ""
+  },
+  "images/tv/screenshot/settings_screen_verified.png": {
+    "mtime": 1793105851.72023,
+    "seen": 1793109947.955457,
+    "ast_hash": "924b0435adb6f3088391c2a20c48e0bd",
+    "semantic_hash": ""
+  },
+  "images/tv/screenshot/tv_win8_mockup_baseline.png": {
+    "mtime": 1793105851.7422302,
+    "seen": 1793109947.9554605,
+    "ast_hash": "73f16e089810d2170be7c3aef7908ab0",
+    "semantic_hash": ""
+  },
+  "design-qa.md": {
+    "mtime": 1793105851.4782305,
+    "seen": 1793109947.9550626,
+    "ast_hash": "6441eae538204bcf11eb6d0ce9ac4561",
+    "semantic_hash": ""
+  },
+  "tasks/plan.md": {
+    "mtime": 1793105851.80023,
+    "seen": 1793109947.9554317,
+    "ast_hash": "fa12d35bb2c8d4891f6e48ca6631d001",
+    "semantic_hash": ""
+  },
+  "tasks/todo.md": {
+    "mtime": 1793105851.80023,
+    "seen": 1793109947.9554327,
+    "ast_hash": "ddd16586689ff3fcde2a9b88ed893f60",
+    "semantic_hash": ""
+  },
+  "images/tv/screenshot/tv_win8_engine_live.png": {
+    "mtime": 1793105851.7292302,
+    "seen": 1793109947.9554577,
+    "ast_hash": "3dea06ea7c99e95afa01c63caaf35b84",
+    "semantic_hash": ""
+  },
+  "images/tv/screenshot/tv_win8_focused.png": {
+    "mtime": 1793105851.73023,
+    "seen": 1793109947.9554589,
+    "ast_hash": "32e4642ac626f4eddcf184ae3ee8b260",
+    "semantic_hash": ""
+  },
+  "images/tv/screenshot/current_zoomed.png": {
+    "mtime": 1793105851.7032301,
+    "seen": 1793109947.9554503,
+    "ast_hash": "a9d2afec6e8f8aeb35ad6352f6292d66",
+    "semantic_hash": ""
+  },
+  "images/tv/screenshot/tv_win8_focused_test.png": {
+    "mtime": 1793105851.7352302,
+    "seen": 1793109947.9554596,
+    "ast_hash": "e3232e2c6c7e29141ac2ef1e0f58d0ef",
+    "semantic_hash": ""
+  },
+  "images/tv/screenshot/tv_win8_scaled_sharp.png": {
+    "mtime": 1793105851.7463315,
+    "seen": 1793109947.9554613,
+    "ast_hash": "0142c2973efcc0ae72ffabe29401fdaf",
+    "semantic_hash": ""
+  },
+  "launcher/app/src/main/assets/i18n/cs.json": {
+    "mtime": 1793105851.7542303,
+    "seen": 1793109947.954952,
+    "ast_hash": "ed19212d0cfe0be54968fc145417a89e",
+    "semantic_hash": ""
+  },
+  "launcher/app/src/main/assets/i18n/da.json": {
+    "mtime": 1793105851.75623,
+    "seen": 1793109947.954953,
+    "ast_hash": "43e342f317ede68fb2b174fceb68bc3a",
+    "semantic_hash": ""
+  },
+  "launcher/app/src/main/assets/i18n/de.json": {
+    "mtime": 1793105851.75723,
+    "seen": 1793109947.954954,
+    "ast_hash": "16a3e397392580771c93319684c7eb50",
+    "semantic_hash": ""
+  },
+  "launcher/app/src/main/assets/i18n/el.json": {
+    "mtime": 1793105851.75723,
+    "seen": 1793109947.9549553,
+    "ast_hash": "c4d26dae3f451c3a5c7e98e0d2d91987",
+    "semantic_hash": ""
+  },
+  "launcher/app/src/main/assets/i18n/en.json": {
+    "mtime": 1793105851.7582302,
+    "seen": 1793109947.954956,
+    "ast_hash": "b5840b9fdc4fb366cba25b4cfcbdc8b4",
+    "semantic_hash": ""
+  },
+  "launcher/app/src/main/assets/i18n/es.json": {
+    "mtime": 1793105851.7582302,
+    "seen": 1793109947.9549568,
+    "ast_hash": "e578136384e7c2498065e09de600cd12",
+    "semantic_hash": ""
+  },
+  "launcher/app/src/main/assets/i18n/fi.json": {
+    "mtime": 1793105851.7592301,
+    "seen": 1793109947.9549575,
+    "ast_hash": "4c9c9e7dc084756515742a513bb763bb",
+    "semantic_hash": ""
+  },
+  "launcher/app/src/main/assets/i18n/fr.json": {
+    "mtime": 1793105851.7592301,
+    "seen": 1793109947.9549587,
+    "ast_hash": "d914f5846a5ade0babc8304ac04d28ba",
+    "semantic_hash": ""
+  },
+  "launcher/app/src/main/assets/i18n/hi.json": {
+    "mtime": 1793105851.76023,
+    "seen": 1793109947.9549594,
+    "ast_hash": "ec4cefc4172a64c187ba46cd0f74369f",
+    "semantic_hash": ""
+  },
+  "launcher/app/src/main/assets/i18n/id.json": {
+    "mtime": 1793105851.76023,
+    "seen": 1793109947.95496,
+    "ast_hash": "c4fc97679f285de693655d1ebdb2ce60",
+    "semantic_hash": ""
+  },
+  "launcher/app/src/main/assets/i18n/it.json": {
+    "mtime": 1793105851.76023,
+    "seen": 1793109947.9549613,
+    "ast_hash": "4befe258c010f5dde5fd0770913a675f",
+    "semantic_hash": ""
+  },
+  "launcher/app/src/main/assets/i18n/ja.json": {
+    "mtime": 1793105851.7612302,
+    "seen": 1793109947.9549623,
+    "ast_hash": "4b20dfcad6521b0fa864c731cf7e0d56",
+    "semantic_hash": ""
+  },
+  "launcher/app/src/main/assets/i18n/ko.json": {
+    "mtime": 1793105851.7622302,
+    "seen": 1793109947.9549632,
+    "ast_hash": "bc0131d4007d7cd6054a38c924cb244d",
+    "semantic_hash": ""
+  },
+  "launcher/app/src/main/assets/i18n/nb.json": {
+    "mtime": 1793105851.7622302,
+    "seen": 1793109947.954964,
+    "ast_hash": "8745c8c2992e75d64ed1c915aae73f04",
+    "semantic_hash": ""
+  },
+  "launcher/app/src/main/assets/i18n/nl.json": {
+    "mtime": 1793105851.7622302,
+    "seen": 1793109947.9549649,
+    "ast_hash": "85faeef1beed4523a148750558062503",
+    "semantic_hash": ""
+  },
+  "launcher/app/src/main/assets/i18n/pl.json": {
+    "mtime": 1793105851.76323,
+    "seen": 1793109947.9549663,
+    "ast_hash": "bb392bfcbf1bbbf24457e10c044d2a87",
+    "semantic_hash": ""
+  },
+  "launcher/app/src/main/assets/i18n/pt.json": {
+    "mtime": 1793105851.76323,
+    "seen": 1793109947.9549673,
+    "ast_hash": "c5fc2bdb417e490341ef62dceaee31a9",
+    "semantic_hash": ""
+  },
+  "launcher/app/src/main/assets/i18n/ro.json": {
+    "mtime": 1793105851.7642303,
+    "seen": 1793109947.9549682,
+    "ast_hash": "2559f26b823a6c8dcca52feab11c42a3",
+    "semantic_hash": ""
+  },
+  "launcher/app/src/main/assets/i18n/ru.json": {
+    "mtime": 1793105851.7652302,
+    "seen": 1793109947.9549694,
+    "ast_hash": "eb72b47aae3c6d055eacf5f2f374e747",
+    "semantic_hash": ""
+  },
+  "launcher/app/src/main/assets/i18n/sv.json": {
+    "mtime": 1793105851.7652302,
+    "seen": 1793109947.9549701,
+    "ast_hash": "059150a8671740c398c605974eb54955",
+    "semantic_hash": ""
+  },
+  "launcher/app/src/main/assets/i18n/th.json": {
+    "mtime": 1793105851.7652302,
+    "seen": 1793109947.954971,
+    "ast_hash": "2500be5246cac4e4ab7c1e8e41ba2ccc",
+    "semantic_hash": ""
+  },
+  "launcher/app/src/main/assets/i18n/tr.json": {
+    "mtime": 1793105851.76723,
+    "seen": 1793109947.9549718,
+    "ast_hash": "430a2c740b376a3458de874e3911d6ec",
+    "semantic_hash": ""
+  },
+  "launcher/app/src/main/assets/i18n/uk.json": {
+    "mtime": 1793105851.7682302,
+    "seen": 1793109947.954973,
+    "ast_hash": "de9130c55965b5c292c9c7afebe89f58",
+    "semantic_hash": ""
+  },
+  "launcher/app/src/main/assets/i18n/vi.json": {
+    "mtime": 1793105851.7692301,
+    "seen": 1793109947.954974,
+    "ast_hash": "8657b76754ff804294e8a5378f950d22",
+    "semantic_hash": ""
+  },
+  "launcher/app/src/main/assets/i18n/zh-CN.json": {
+    "mtime": 1793105851.7692301,
+    "seen": 1793109947.9549751,
+    "ast_hash": "1206e1c2fbc3fb87245af18d0dc76596",
+    "semantic_hash": ""
+  },
+  "launcher/app/src/main/assets/i18n/zh-TW.json": {
+    "mtime": 1793105851.7692301,
+    "seen": 1793109947.954976,
+    "ast_hash": "eb80868c49a30716e15bf7938bb1cb12",
+    "semantic_hash": ""
+  },
+  "launcher/app/src/main/assets/zones.json": {
+    "mtime": 1793105851.7844038,
+    "seen": 1793109947.9549773,
+    "ast_hash": "cd72b7f27c875c8df10f336ee8fd4c00",
+    "semantic_hash": ""
+  },
+  "launcher/app/src/main/java/io/climintv/home/Adb.java": {
+    "mtime": 1793105851.7852302,
+    "seen": 1793109947.9549782,
+    "ast_hash": "8131b458bfe2434f914a3c16f2094ec1",
+    "semantic_hash": ""
+  },
+  "launcher/app/src/main/java/io/climintv/home/App.java": {
+    "mtime": 1793105851.7852302,
+    "seen": 1793109947.9549794,
+    "ast_hash": "7c1b6900718d16a0ba63e7f61229d48d",
+    "semantic_hash": ""
+  },
+  "launcher/app/src/main/java/io/climintv/home/AppLog.java": {
+    "mtime": 1793105851.7852302,
+    "seen": 1793109947.9549804,
+    "ast_hash": "1a1c8d8f471f6c22b8badba70663b321",
+    "semantic_hash": ""
+  },
+  "launcher/app/src/main/java/io/climintv/home/Backdrop.java": {
+    "mtime": 1793105851.7852302,
+    "seen": 1793109947.9549813,
+    "ast_hash": "c65e624d39dbbfe8c81fb082c99e5e0a",
+    "semantic_hash": ""
+  },
+  "launcher/app/src/main/java/io/climintv/home/Capabilities.java": {
+    "mtime": 1793105851.78623,
+    "seen": 1793109947.9549825,
+    "ast_hash": "12d0d0f88767e9d0d93966428b4c5b77",
+    "semantic_hash": ""
+  },
+  "launcher/app/src/main/java/io/climintv/home/Click.java": {
+    "mtime": 1793105851.78623,
+    "seen": 1793109947.9549835,
+    "ast_hash": "2dd09274256bce396dda890554fc19d5",
+    "semantic_hash": ""
+  },
+  "launcher/app/src/main/java/io/climintv/home/Config.java": {
+    "mtime": 1793105851.78623,
+    "seen": 1793109947.9549847,
+    "ast_hash": "9641ddcbe083f75edd0634961f4cc00a",
+    "semantic_hash": ""
+  },
+  "launcher/app/src/main/java/io/climintv/home/DreamView.java": {
+    "mtime": 1793105851.78623,
+    "seen": 1793109947.9549856,
+    "ast_hash": "2c11630c6ebb7c9521989538ae20433f",
+    "semantic_hash": ""
+  },
+  "launcher/app/src/main/java/io/climintv/home/FireHomeActivity.java": {
+    "mtime": 1793105851.78623,
+    "seen": 1793109947.9549868,
+    "ast_hash": "8679463828d70112f46b96211e5790e4",
+    "semantic_hash": ""
+  },
+  "launcher/app/src/main/java/io/climintv/home/Frost.java": {
+    "mtime": 1793105851.78623,
+    "seen": 1793109947.9549875,
+    "ast_hash": "ced9b319943440a0ec188435196f35c2",
+    "semantic_hash": ""
+  },
+  "launcher/app/src/main/java/io/climintv/home/Glyphs.java": {
+    "mtime": 1793105851.78623,
+    "seen": 1793109947.9549885,
+    "ast_hash": "b3bc9fbbb79b9a5836d03d2dab55408a",
+    "semantic_hash": ""
+  },
+  "launcher/app/src/main/java/io/climintv/home/HomeActivity.java": {
+    "mtime": 1793105851.78723,
+    "seen": 1793109947.9549897,
+    "ast_hash": "ae41c3372afab103845d06c03852c670",
+    "semantic_hash": ""
+  },
+  "launcher/app/src/main/java/io/climintv/home/HomeApps.java": {
+    "mtime": 1793105851.78723,
+    "seen": 1793109947.9549904,
+    "ast_hash": "0b93c5538dd282e3bf065f946315422e",
+    "semantic_hash": ""
+  },
+  "launcher/app/src/main/java/io/climintv/home/HomeData.java": {
+    "mtime": 1793105851.7882302,
+    "seen": 1793109947.9549913,
+    "ast_hash": "58e98e6387ca5137d388473c47579862",
+    "semantic_hash": ""
+  },
+  "launcher/app/src/main/java/io/climintv/home/HomeMode.java": {
+    "mtime": 1793105851.78923,
+    "seen": 1793109947.9549925,
+    "ast_hash": "bfb6bf0affc431315a20793a879da793",
+    "semantic_hash": ""
+  },
+  "launcher/app/src/main/java/io/climintv/home/HomeReceiver.java": {
+    "mtime": 1793105851.78923,
+    "seen": 1793109947.9549935,
+    "ast_hash": "04b001e97c359e6bb14015bf9d50092d",
+    "semantic_hash": ""
+  },
+  "launcher/app/src/main/java/io/climintv/home/HomeView.java": {
+    "mtime": 1793105851.79023,
+    "seen": 1793109947.9549944,
+    "ast_hash": "95bdded336d3bdf53899d6e48149210e",
+    "semantic_hash": ""
+  },
+  "launcher/app/src/main/java/io/climintv/home/ModeJob.java": {
+    "mtime": 1793105851.79023,
+    "seen": 1793109947.954998,
+    "ast_hash": "cf12c4894d10e5477bbd6878797d9260",
+    "semantic_hash": ""
+  },
+  "launcher/app/src/main/java/io/climintv/home/PhotoInbox.java": {
+    "mtime": 1793105851.79023,
+    "seen": 1793109947.955,
+    "ast_hash": "5c4b527b319195082cd9b4d39435fef9",
+    "semantic_hash": ""
+  },
+  "launcher/app/src/main/java/io/climintv/home/Photos.java": {
+    "mtime": 1793110139.925935,
+    "seen": 1793110328.7818334,
+    "ast_hash": "79f6e2f4949a9c677ac6aa712f8380b9",
+    "semantic_hash": ""
+  },
+  "launcher/app/src/main/java/io/climintv/home/Place.java": {
+    "mtime": 1793105851.79023,
+    "seen": 1793109947.955002,
+    "ast_hash": "982b19d1a9706edea7cbd0a0fe74c1d6",
+    "semantic_hash": ""
+  },
+  "launcher/app/src/main/java/io/climintv/home/Prefs.java": {
+    "mtime": 1793105851.7912302,
+    "seen": 1793109947.955003,
+    "ast_hash": "8db103d8ef95574beee07baa848bbbb7",
+    "semantic_hash": ""
+  },
+  "launcher/app/src/main/java/io/climintv/home/Recording.java": {
+    "mtime": 1793105851.7912302,
+    "seen": 1793109947.9550042,
+    "ast_hash": "c02b16577e4149a1012c538347d8fee6",
+    "semantic_hash": ""
+  },
+  "launcher/app/src/main/java/io/climintv/home/Recs.java": {
+    "mtime": 1793105851.7922301,
+    "seen": 1793109947.9550052,
+    "ast_hash": "50ab0418cac943fbbdca965cc679d82a",
+    "semantic_hash": ""
+  },
+  "launcher/app/src/main/java/io/climintv/home/RemoteKeyService.java": {
+    "mtime": 1793105851.7922301,
+    "seen": 1793109947.9550061,
+    "ast_hash": "c39b6e8725108693d2c20ac5a943b008",
+    "semantic_hash": ""
+  },
+  "launcher/app/src/main/java/io/climintv/home/RemoteKeys.java": {
+    "mtime": 1793105851.7922301,
+    "seen": 1793109947.955007,
+    "ast_hash": "246f523b914028dd3382912928edf878",
+    "semantic_hash": ""
+  },
+  "launcher/app/src/main/java/io/climintv/home/Scene.java": {
+    "mtime": 1793105851.7922301,
+    "seen": 1793109947.955008,
+    "ast_hash": "93aa282e5bb7de927dce23cefc2a609f",
+    "semantic_hash": ""
+  },
+  "launcher/app/src/main/java/io/climintv/home/Screensaver.java": {
+    "mtime": 1793105851.7922301,
+    "seen": 1793109947.955009,
+    "ast_hash": "ac0e5f69f16b6985a904e0ed35da7cdb",
+    "semantic_hash": ""
+  },
+  "launcher/app/src/main/java/io/climintv/home/ScreensaverAlone.java": {
+    "mtime": 1793105851.7922301,
+    "seen": 1793109947.95501,
+    "ast_hash": "f68bea8bd3cd8d0962308f48aea0d18f",
+    "semantic_hash": ""
+  },
+  "launcher/app/src/main/java/io/climintv/home/SettingsActivity.java": {
+    "mtime": 1793105851.79323,
+    "seen": 1793109947.9550111,
+    "ast_hash": "8dcb969876a2ec682549830151ea8ccf",
+    "semantic_hash": ""
+  },
+  "launcher/app/src/main/java/io/climintv/home/Shaders.java": {
+    "mtime": 1793105851.79423,
+    "seen": 1793109947.9550118,
+    "ast_hash": "53442cd5d088a56fbc19940385699cb6",
+    "semantic_hash": ""
+  },
+  "launcher/app/src/main/java/io/climintv/home/Shadows.java": {
+    "mtime": 1793105851.79423,
+    "seen": 1793109947.9550128,
+    "ast_hash": "56fa000e57a2a169f51bc380220d7d3c",
+    "semantic_hash": ""
+  },
+  "launcher/app/src/main/java/io/climintv/home/SleepOverlay.java": {
+    "mtime": 1793105851.79423,
+    "seen": 1793109947.955014,
+    "ast_hash": "dbcbbfe174b7423d53da4cc6811cf0b4",
+    "semantic_hash": ""
+  },
+  "launcher/app/src/main/java/io/climintv/home/SleepTimer.java": {
+    "mtime": 1793105851.7952302,
+    "seen": 1793109947.955015,
+    "ast_hash": "0026107425d6fe64fa8fee6258fed9af",
+    "semantic_hash": ""
+  },
+  "launcher/app/src/main/java/io/climintv/home/Spoken.java": {
+    "mtime": 1793105851.7952302,
+    "seen": 1793109947.9550161,
+    "ast_hash": "fd3de64ff2f3e053dc59793df1cf9374",
+    "semantic_hash": ""
+  },
+  "launcher/app/src/main/java/io/climintv/home/Spring.java": {
+    "mtime": 1793105851.7952302,
+    "seen": 1793109947.9550169,
+    "ast_hash": "6aa30b3108f96e9c27f66d2f089c67c8",
+    "semantic_hash": ""
+  },
+  "launcher/app/src/main/java/io/climintv/home/Symbols.java": {
+    "mtime": 1793105851.7952302,
+    "seen": 1793109947.955019,
+    "ast_hash": "fc4f263d50161e57095dcb55f061da6c",
+    "semantic_hash": ""
+  },
+  "launcher/app/src/main/java/io/climintv/home/Ui.java": {
+    "mtime": 1793105851.79623,
+    "seen": 1793109947.9550197,
+    "ast_hash": "ebd3d35d37a7f508bcbfebcea9d5fbdb",
+    "semantic_hash": ""
+  },
+  "launcher/app/src/main/java/io/climintv/home/Watchdog.java": {
+    "mtime": 1793105851.79623,
+    "seen": 1793109947.955021,
+    "ast_hash": "258c45cc816f4b0fcd339865c3ec135b",
+    "semantic_hash": ""
+  },
+  "launcher/app/src/main/assets/fonts/OFL.txt": {
+    "mtime": 1793105851.7542303,
+    "seen": 1793109947.9554298,
+    "ast_hash": "082d8cc7db39783f598b7eda8c911f9d",
+    "semantic_hash": ""
+  },
+  "launcher/app/src/main/assets/symbols/LICENSE-material-symbols.txt": {
+    "mtime": 1793105851.77023,
+    "seen": 1793109947.955431,
+    "ast_hash": "175792518e4ac015ab6696d16c4f607e",
+    "semantic_hash": ""
+  },
+  "images/tv/screenshot/climin_all_apps.png": {
+    "mtime": 1793105851.6712303,
+    "seen": 1793109947.9554436,
+    "ast_hash": "b299e296f2fa1880f60309d9e1388ad5",
+    "semantic_hash": ""
+  },
+  "images/tv/screenshot/climin_freemytv_screen.png": {
+    "mtime": 1793105851.6802301,
+    "seen": 1793109947.9554448,
+    "ast_hash": "59293f06cbada8d017cb92a2b03d4149",
+    "semantic_hash": ""
+  },
+  "images/tv/screenshot/climin_settings.png": {
+    "mtime": 1793105851.68723,
+    "seen": 1793109947.9554472,
+    "ast_hash": "bf9a9bddb4659f9407ab6b86524ca0e9",
+    "semantic_hash": ""
+  },
+  "images/tv/screenshot/climin_shelf.png": {
+    "mtime": 1793105851.6932302,
+    "seen": 1793109947.9554484,
+    "ast_hash": "01b6a282106651dcb3e68cc569efab50",
+    "semantic_hash": ""
+  },
+  "images/tv/screenshot/freemytv_down.png": {
+    "mtime": 1793105851.7042303,
+    "seen": 1793109947.9554513,
+    "ast_hash": "75036dab23b568258154d0b54d33dbdf",
+    "semantic_hash": ""
+  },
+  "images/tv/screenshot/freemytv_screen.png": {
+    "mtime": 1793105851.7112303,
+    "seen": 1793109947.9554522,
+    "ast_hash": "710e5036c3b7114fe8d0718e23e0e445",
+    "semantic_hash": ""
+  },
+  "launcher/app/src/main/assets/symbols/apps.png": {
+    "mtime": 1793105851.7712302,
+    "seen": 1793109947.9554625,
+    "ast_hash": "776e43ff552862fb0ce16393fe55dcef",
+    "semantic_hash": ""
+  },
+  "launcher/app/src/main/assets/symbols/bedtime.png": {
+    "mtime": 1793105851.7712302,
+    "seen": 1793109947.9554632,
+    "ast_hash": "04baf8c3d9312c9874c8024b07a09efb",
+    "semantic_hash": ""
+  },
+  "launcher/app/src/main/assets/symbols/bell.png": {
+    "mtime": 1793105851.7722301,
+    "seen": 1793109947.9554641,
+    "ast_hash": "735360f5e5114dcce7a35ba199a5f189",
+    "semantic_hash": ""
+  },
+  "launcher/app/src/main/assets/symbols/bitcoin.png": {
+    "mtime": 1793105851.7722301,
+    "seen": 1793109947.955465,
+    "ast_hash": "23a7ae0dcaf7b1e1eaa04190f55fff1b",
+    "semantic_hash": ""
+  },
+  "launcher/app/src/main/assets/symbols/cast.png": {
+    "mtime": 1793105851.77323,
+    "seen": 1793109947.955467,
+    "ast_hash": "4dbc0d2598d2f7759028d680778c4278",
+    "semantic_hash": ""
+  },
+  "launcher/app/src/main/assets/symbols/check.png": {
+    "mtime": 1793105851.7742302,
+    "seen": 1793109947.955468,
+    "ast_hash": "10d5054cfead48a4472f2cc6d30a1261",
+    "semantic_hash": ""
+  },
+  "launcher/app/src/main/assets/symbols/chevron_down.png": {
+    "mtime": 1793105851.7742302,
+    "seen": 1793109947.9554691,
+    "ast_hash": "2276ebf6e50759c5bb7cb593f99a7d9b",
+    "semantic_hash": ""
+  },
+  "launcher/app/src/main/assets/symbols/chevron_right.png": {
+    "mtime": 1793105851.7742302,
+    "seen": 1793109947.9554698,
+    "ast_hash": "25413d72dad73eea34566e85c45303a8",
+    "semantic_hash": ""
+  },
+  "launcher/app/src/main/assets/symbols/clear_night.png": {
+    "mtime": 1793105851.7742302,
+    "seen": 1793109947.955471,
+    "ast_hash": "04baf8c3d9312c9874c8024b07a09efb",
+    "semantic_hash": ""
+  },
+  "launcher/app/src/main/assets/symbols/cloud.png": {
+    "mtime": 1793105851.7742302,
+    "seen": 1793109947.9554722,
+    "ast_hash": "3117a607546e5ed4acbf7ecfef683a6c",
+    "semantic_hash": ""
+  },
+  "launcher/app/src/main/assets/symbols/foggy.png": {
+    "mtime": 1793105851.7742302,
+    "seen": 1793109947.9554732,
+    "ast_hash": "eea059fbeb0f2268a469d728860afb26",
+    "semantic_hash": ""
+  },
+  "launcher/app/src/main/assets/symbols/gamepad.png": {
+    "mtime": 1793105851.7742302,
+    "seen": 1793109947.955474,
+    "ast_hash": "7012dccb02c9c1c7fa93a0d68b5be590",
+    "semantic_hash": ""
+  },
+  "launcher/app/src/main/assets/symbols/hdmi.png": {
+    "mtime": 1793105851.7752302,
+    "seen": 1793109947.9554746,
+    "ast_hash": "3d7c4653e91690b7c54b5aed91ba9642",
+    "semantic_hash": ""
+  },
+  "launcher/app/src/main/assets/symbols/home.png": {
+    "mtime": 1793105851.7752302,
+    "seen": 1793109947.9554758,
+    "ast_hash": "d22610f2c8f0def949528b88aa473831",
+    "semantic_hash": ""
+  },
+  "launcher/app/src/main/assets/symbols/keystone.png": {
+    "mtime": 1793105851.7752302,
+    "seen": 1793109947.9554768,
+    "ast_hash": "e651d180d2a697eb4c7e3081c690cac5",
+    "semantic_hash": ""
+  },
+  "launcher/app/src/main/assets/symbols/live_tv.png": {
+    "mtime": 1793105851.77623,
+    "seen": 1793109947.9554775,
+    "ast_hash": "25ddabc440376e944314786b425329f8",
+    "semantic_hash": ""
+  },
+  "launcher/app/src/main/assets/symbols/partly_cloudy_day.png": {
+    "mtime": 1793105851.77623,
+    "seen": 1793109947.9554784,
+    "ast_hash": "6e020634c844bd39c1b3170a3a12182e",
+    "semantic_hash": ""
+  },
+  "launcher/app/src/main/assets/symbols/partly_cloudy_night.png": {
+    "mtime": 1793105851.77623,
+    "seen": 1793109947.9554796,
+    "ast_hash": "c3d3e1a9de5ac79e447beb2b188b3b60",
+    "semantic_hash": ""
+  },
+  "launcher/app/src/main/assets/symbols/play.png": {
+    "mtime": 1793105851.77623,
+    "seen": 1793109947.9554803,
+    "ast_hash": "ce96e54862346b0f8cfe90163efeef37",
+    "semantic_hash": ""
+  },
+  "launcher/app/src/main/assets/symbols/rainy.png": {
+    "mtime": 1793105851.77723,
+    "seen": 1793109947.9554813,
+    "ast_hash": "280323e7f19bbab4b0aa899ea5e34c37",
+    "semantic_hash": ""
+  },
+  "launcher/app/src/main/assets/symbols/settings.png": {
+    "mtime": 1793105851.7782302,
+    "seen": 1793109947.955482,
+    "ast_hash": "6a9d86d396cae30d89143f8482e50aca",
+    "semantic_hash": ""
+  },
+  "launcher/app/src/main/assets/symbols/snowflake.png": {
+    "mtime": 1793105851.7782302,
+    "seen": 1793109947.9554832,
+    "ast_hash": "9d0cf9324ba8fcb24d20ed2c148fe41f",
+    "semantic_hash": ""
+  },
+  "launcher/app/src/main/assets/symbols/sparkles.png": {
+    "mtime": 1793105851.7782302,
+    "seen": 1793109947.9554842,
+    "ast_hash": "716ce1901120a91f706b2f14e65130d4",
+    "semantic_hash": ""
+  },
+  "launcher/app/src/main/assets/symbols/speaker.png": {
+    "mtime": 1793105851.77923,
+    "seen": 1793109947.955485,
+    "ast_hash": "1ccf81992c4f5acb4e08756b68347b4e",
+    "semantic_hash": ""
+  },
+  "launcher/app/src/main/assets/symbols/sunny.png": {
+    "mtime": 1793105851.78023,
+    "seen": 1793109947.955486,
+    "ast_hash": "865524fa5f4570de2704efa84879c481",
+    "semantic_hash": ""
+  },
+  "launcher/app/src/main/assets/symbols/sunrise.png": {
+    "mtime": 1793105851.7820454,
+    "seen": 1793109947.9554868,
+    "ast_hash": "16a84a486d6bb328f9cf931c0da4832a",
+    "semantic_hash": ""
+  },
+  "launcher/app/src/main/assets/symbols/sunset.png": {
+    "mtime": 1793105851.7820454,
+    "seen": 1793109947.9554877,
+    "ast_hash": "16a84a486d6bb328f9cf931c0da4832a",
+    "semantic_hash": ""
+  },
+  "launcher/app/src/main/assets/symbols/sync.png": {
+    "mtime": 1793105851.7822301,
+    "seen": 1793109947.9554887,
+    "ast_hash": "4a51d4a170f88ee841fd0197ca8eacf1",
+    "semantic_hash": ""
+  },
+  "launcher/app/src/main/assets/symbols/thunderstorm.png": {
+    "mtime": 1793105851.7829201,
+    "seen": 1793109947.9554896,
+    "ast_hash": "d5b5bb6b464d338a58b321c44a44893b",
+    "semantic_hash": ""
+  },
+  "launcher/app/src/main/assets/symbols/tv.png": {
+    "mtime": 1793105851.7829201,
+    "seen": 1793109947.9554906,
+    "ast_hash": "e97e3c7e56edc63b9564a9b026a187d7",
+    "semantic_hash": ""
+  },
+  "launcher/app/src/main/assets/symbols/tv_settings.png": {
+    "mtime": 1793105851.78323,
+    "seen": 1793109947.9554913,
+    "ast_hash": "0de2e90ee48eecaafae7df988d4ba24a",
+    "semantic_hash": ""
+  },
+  "launcher/app/src/main/res/drawable-nodpi/banner.png": {
+    "mtime": 1793105851.79623,
+    "seen": 1793109947.9554932,
+    "ast_hash": "8b4520925ed7691b9106594e01197cdf",
+    "semantic_hash": ""
+  },
+  "launcher/app/src/main/res/drawable-nodpi/icon.png": {
+    "mtime": 1793105851.7972422,
+    "seen": 1793109947.955494,
+    "ast_hash": "3b03cab912aa58a29f674bd48b74650c",
+    "semantic_hash": ""
+  },
+  "images/tv/screenshot/climin_home_clean.png": {
+    "mtime": 1793105851.6862302,
+    "seen": 1793109947.9554465,
+    "ast_hash": "81d3d1cb76b0bd6ed0facc750101088c",
+    "semantic_hash": ""
+  },
+  "images/tv/screenshot/climin_ui_settings.png": {
+    "mtime": 1793105851.6942303,
+    "seen": 1793109947.955449,
+    "ast_hash": "cb107ed37f087cda666b2d8dcaebee78",
+    "semantic_hash": ""
+  },
+  "RULES.md": {
+    "mtime": 1793105851.4772305,
+    "seen": 1793109947.9550593,
+    "ast_hash": "e9a8cbb2229b316d05fe6c78685115be",
+    "semantic_hash": ""
+  },
+  "UI_MAP.md": {
+    "mtime": 1793106750.3327365,
+    "seen": 1793109947.9550605,
+    "ast_hash": "49c3ec9be42f7bdd78e3fbfd7da9eab4",
+    "semantic_hash": ""
+  },
+  "launcher/app/src/main/assets/symbols/brightness_auto.png": {
+    "mtime": 1793105851.77323,
+    "seen": 1793109947.955466,
+    "ast_hash": "2262e9927d6bbf625be178280e3505ba",
+    "semantic_hash": ""
+  },
+  "launcher/app/src/main/assets/symbols/wifi.png": {
+    "mtime": 1793105851.78423,
+    "seen": 1793109947.955492,
+    "ast_hash": "50fa65f6ba7b9925d2f8683924180565",
+    "semantic_hash": ""
+  },
+  "launcher/app/src/main/java/io/climintv/home/Look.java": {
+    "mtime": 1793106950.9947093,
+    "seen": 1793109947.9549959,
+    "ast_hash": "1845c59760179c46cacec0f536f3d74c",
+    "semantic_hash": ""
+  },
+  "launcher/app/src/main/java/io/climintv/home/Palette.java": {
+    "mtime": 1793105851.79023,
+    "seen": 1793109947.9549987,
+    "ast_hash": "02eddaf66b3a53417f76f070bc4ff535",
+    "semantic_hash": ""
+  },
+  "launcher/app/src/main/java/io/climintv/home/Surfaces.java": {
+    "mtime": 1793105851.7952302,
+    "seen": 1793109947.955018,
+    "ast_hash": "37cf4343b1db386166101569b852c9d2",
+    "semantic_hash": ""
+  },
+  "tools/photos.py": {
+    "mtime": 1793109845.5396807,
+    "seen": 1793109947.9550393,
+    "ast_hash": "67ddf776ad63c8c47b91d4e91a3da91c",
+    "semantic_hash": ""
+  },
+  "docs/releases/v0.0.2.md": {
+    "mtime": 1793110314.6952686,
+    "seen": 1793110328.781902,
+    "ast_hash": "c60725e7d89e570a22eb7b370cb28f36",
+    "semantic_hash": ""
+  }
+}
