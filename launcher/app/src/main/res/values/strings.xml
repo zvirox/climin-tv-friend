@@ -1,15 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">Climin UI</string>
-    <string name="remote_key_service">Lets the app buttons on the remote (Netflix, YouTube, Prime Video, TCL Channel) open the apps you picked in Climin UI, from any app. It only reads those buttons.</string>
-    <string name="launcher_title">Climin UI</string>
+    <string name="app_name">Your UI</string>
+    <string name="remote_key_service">Lets the app buttons on the remote (Netflix, YouTube, Prime Video, TCL Channel) open the apps you picked in Your UI, from any app. It only reads those buttons.</string>
+    <string name="launcher_title">Your UI</string>
     <string name="hero_dock_title">Favorites</string>
     <string name="app_grid_title">All Applications</string>
     <string name="inputs_title">Inputs</string>
-    <string name="dream_name">Climin Ambient Clock</string>
-    <string name="home_key_name">CliminTV Home Button Helper</string>
-    <string name="home_key_description">Intercepts Xiaomi and OEM remote Home keycodes to return to CliminTV Home.</string>
-    <string name="input_key_name">CliminTV Input Button Helper</string>
+    <string name="dream_name">Your Ambient Clock</string>
+    <string name="home_key_name">Your TV Home Button Helper</string>
+    <string name="home_key_description">Intercepts Xiaomi and OEM remote Home keycodes to return to Your TV Home.</string>
+    <string name="input_key_name">Your TV Input Button Helper</string>
     <string name="input_key_service_description">Opens the TV Input switcher when the remote TV or Input button is pressed.</string>
 
     <!-- Greetings -->

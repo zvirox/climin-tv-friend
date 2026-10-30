@@ -1,9 +1,40 @@
 # Changelog
 
-All notable changes to the **Climin TV Friend** project and the **Climin UI** native Android TV launcher will be documented in this file.
+All notable changes to the **Your TV Friend** project and the **Your UI** native Android TV launcher will be documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
+
+---
+
+## [0.0.3] - 2026-10-30
+
+The rename release. **Climin TV Friend** becomes **Your TV Friend**, and the launcher **Climin UI**
+becomes **Your UI**. Nothing about the launcher's behaviour changed: same screens, motion, geometry,
+icons, navigation, settings and features — only the names and the Android package.
+
+### Changed
+- The project is **Your TV Friend** and the launcher is **Your UI** throughout the README, docs,
+  rules, UI map, app label, Settings › About, screensaver and remote-key helper names, and the 26
+  translations.
+- Android package `io.climintv.home` → `io.yourtv.home` (`versionCode` 3, `versionName` 0.0.3).
+  The photo provider authority follows it: `io.yourtv.home.photos`.
+- `tools/photos.py`, `tools/manage.py`, `tools/theme.sh`, `tools/trace.py` and the update/restore
+  scripts default to the new package; data lives under
+  `/sdcard/Android/data/io.yourtv.home/files/`.
+- The logcat tag is `YourUI` (`adb logcat -s YourUI`), and release assets are named
+  `Your-UI-<tag>.apk`.
+- The screenshot files under `images/tv/screenshot/` are named `yourtv_*`; the six old `climin_*`
+  captures are the same images under their new names.
+
+### Renaming notes
+- **This is a new Android app.** `io.yourtv.home` cannot upgrade `io.climintv.home`, and Android
+  will not carry over its settings, pinned apps, photos or Home role. Install it fresh, set it as
+  Home, then uninstall the old app; photos have to be sent again with `tools/photos.py`.
+- **0.0.2 stays as published.** Its release, tag and assets keep the name **Climin UI** —
+  `Climin-UI-v0.0.2.apk` — because that is what the release actually contained. The release notes
+  carry a note that the project has since been renamed.
+- Historical notes that name Climin UI through 0.0.2 are kept, since they describe what shipped.
 
 ---
 
@@ -97,7 +128,7 @@ through every step.
 ## [0.0.1] - 2026-10-25 (Initial Stable Release)
 
 The first stable release: the non-destructive debloat tools under `tools/`, and the **Glass UI**
-launcher (`io.climintv.home`) as the TV's home screen.
+launcher (`io.yourtv.home`) as the TV's home screen.
 
 ### Added
 

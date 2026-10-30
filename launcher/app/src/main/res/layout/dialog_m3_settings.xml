@@ -55,7 +55,7 @@
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/outfit_medium"
                     android:letterSpacing="0.02"
-                    android:text="Climin UI • Win 8.1 Expressive"
+                    android:text="Your UI • Win 8.1 Expressive"
                     android:textColor="#8E8E93"
                     android:textSize="11sp" />
             </LinearLayout>
@@ -431,7 +431,7 @@
                         android:textColor="#FFFFFF"
                         android:textSize="11sp" />
 
-                    <io.climintv.home.view.M3Switch
+                    <io.yourtv.home.view.M3Switch
                         android:id="@+id/switch_home_layout"
                         android:layout_width="58dp"
                         android:layout_height="28dp" />
@@ -462,7 +462,7 @@
                         android:textColor="#FFFFFF"
                         android:textSize="11sp" />
 
-                    <io.climintv.home.view.M3Switch
+                    <io.yourtv.home.view.M3Switch
                         android:id="@+id/switch_dark_mode"
                         android:layout_width="58dp"
                         android:layout_height="28dp" />
@@ -545,7 +545,7 @@
                         android:textColor="#FFFFFF"
                         android:textSize="11sp" />
 
-                    <io.climintv.home.view.M3Switch
+                    <io.yourtv.home.view.M3Switch
                         android:id="@+id/switch_adaptive_color"
                         android:layout_width="58dp"
                         android:layout_height="28dp" />
@@ -628,7 +628,7 @@
                         android:textColor="#FFFFFF"
                         android:textSize="11sp" />
 
-                    <io.climintv.home.view.M3Switch
+                    <io.yourtv.home.view.M3Switch
                         android:id="@+id/switch_24h_clock"
                         android:layout_width="58dp"
                         android:layout_height="28dp" />
@@ -659,7 +659,7 @@
                     android:textColor="#FFFFFF"
                     android:textSize="12sp" />
 
-                <io.climintv.home.view.M3Switch
+                <io.yourtv.home.view.M3Switch
                     android:id="@+id/switch_weather_temp"
                     android:layout_width="58dp"
                     android:layout_height="28dp" />

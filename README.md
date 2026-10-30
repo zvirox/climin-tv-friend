@@ -1,21 +1,21 @@
-# Climin TV Friend: Android TV Debloater & Climin UI Launcher
+# Your TV Friend: Android TV Debloater & Your UI Launcher
 
 [![License](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
-[![Version](https://img.shields.io/badge/Version-0.0.2-success.svg)](docs/changelog.md)
+[![Version](https://img.shields.io/badge/Version-0.0.3-success.svg)](docs/changelog.md)
 [![APK Size](https://img.shields.io/badge/APK_Size-1.4_MB-informational.svg)](launcher/app/build/outputs/apk/release/app-release.apk)
 [![Target SDK](https://img.shields.io/badge/Target_SDK-34_(Android_14)-orange.svg)](launcher/app/build.gradle)
 [![Min SDK](https://img.shields.io/badge/Min_SDK-26_(Android_8.0)-purple.svg)](launcher/app/build.gradle)
 [![Styles](https://img.shields.io/badge/Styles-5_selectable_looks-indigo.svg)](UI_MAP.md)
 [![Languages](https://img.shields.io/badge/Languages-26-brightgreen.svg)](launcher/app/src/main/assets/i18n)
 
-A non-destructive Android TV cleanup tool and a native television launcher, **Climin UI**, written in
+A non-destructive Android TV cleanup tool and a native television launcher, **Your UI**, written in
 plain Java (no Kotlin, no web views) for 1080p and 4K televisions down to Android 8.0.
 
 The launcher ships **five selectable looks** — Glass UI (the default), Material 3 Expressive, Win UI,
 Cyberpunk and Retro UI — switched live from **Settings › Theme**, and every one of them is the same
 launcher: same motion, same geometry, same icons, same navigation.
 
-![Climin UI home screen in the Retro UI look](docs/images/home-retro-ui.png)
+![Your UI home screen in the Retro UI look](docs/images/home-retro-ui.png)
 
 **Retro UI home theme** — For You picks, the shelf and the five top buttons in the flat beige look.
 Every look draws this same screen: only the palette, surfaces and shape change.
@@ -37,7 +37,7 @@ This project is inspired by CleanYourTV and FreeMyTV.
 │           DEBLOAT SUBSYSTEM           │   │               CLIMIN UI               │
 │               (tools/)                │   │              (launcher/)              │
 ├───────────────────────────────────────┤   ├───────────────────────────────────────┤
-│ • Pure-Python ADB client (tv.py)      │   │ • Package: io.climintv.home           │
+│ • Pure-Python ADB client (tv.py)      │   │ • Package: io.yourtv.home           │
 │ • Recovery ledger (recovery.py)       │   │ • Five looks, one behaviour           │
 │ • Drift check after TV updates        │   │ • Liquid-glass home (Glass UI)        │
 │ • Privacy / ACR / telemetry audit     │   │ • TMDB picks from installed apps      │
@@ -105,9 +105,9 @@ TV_HOST=<YOUR_TV_IP> tools/venv/bin/python -I tools/photos.py ~/Pictures/holiday
 It takes JPEG, PNG, WebP and (where the TV decodes it) HEIC, skips anything under 640 px on the short
 side, and gets each file there by the first path that works:
 
-- **the app's own folder**, `/sdcard/Android/data/io.climintv.home/files/photos`, which adb may write
+- **the app's own folder**, `/sdcard/Android/data/io.yourtv.home/files/photos`, which adb may write
   on Android 8–10;
-- **the photo inbox**, the app's content provider (`content://io.climintv.home.photos`), where
+- **the photo inbox**, the app's content provider (`content://io.yourtv.home.photos`), where
   Android 11+ and Fire OS 8 keep adb out of that folder. Only adb's shell may write there, and a send
   cut short is discarded instead of imported.
 
@@ -163,7 +163,7 @@ Romanian, Russian, Swedish, Thai, Turkish, Ukrainian, Vietnamese, Chinese (Simpl
 
 ### Safety
 
-- Climin UI is installed as a normal app; it only takes the Home role when the install script asks.
+- Your UI is installed as a normal app; it only takes the Home role when the install script asks.
 - A watchdog counts crashes: three within five minutes and the TV's original home screen is given
   back automatically.
 - The debloat half never uninstalls anything (see below), and the tool refuses lists that would
@@ -190,11 +190,11 @@ button cannot be taken over safely, and the launcher says so instead of trying.
 
 ## 4. Installation
 
-### Method 1: Build and install as the home screen (Climin UI mode)
+### Method 1: Build and install as the home screen (Your UI mode)
 
 ```bash
-git clone https://github.com/zvirox/climin-tv-friend.git
-cd climin-tv-friend
+git clone https://github.com/zvirox/your-tv-friend.git
+cd your-tv-friend
 
 # 1. Python environment for the tools (once)
 python3 -m venv tools/venv
@@ -210,7 +210,7 @@ TV_HOST=<YOUR_TV_IP> ./launcher/build-and-install.sh
 The script checks the TV's SDK against the app's `minSdk`, pushes the APK over the TV's own shell
 (no `adb install` needed), starts it once and only accepts **Status: ok**, and only then disables a
 *recognised* stock launcher (`tvlauncher`, `launcherx`, `leanbacklauncher`, `mitv.tvhome`) and sets
-`io.climintv.home/.MainActivity` as Home. Anything unexpected (the setup wizard, another launcher,
+`io.yourtv.home/.MainActivity` as Home. Anything unexpected (the setup wizard, another launcher,
 Android's chooser) stops it with an explanation and changes nothing.
 
 ### Method 2: Normal app mode (test without touching Home)
@@ -219,7 +219,7 @@ Android's chooser) stops it with an explanation and changes nothing.
 cd launcher
 ./gradlew assembleRelease
 adb install -r app/build/outputs/apk/release/app-release.apk
-adb shell am start -n io.climintv.home/.MainActivity
+adb shell am start -n io.yourtv.home/.MainActivity
 ```
 
 ### Method 3: Debloat first, launcher later
@@ -237,10 +237,11 @@ TV_HOST=<YOUR_TV_IP> ./tools/restore.sh examples/xiaomi-mitv-aetp0-dofus/debloat
 
 ### Method 4: Sideload the APK
 
-Take `launcher/app/build/outputs/apk/release/app-release.apk` from a build (or the APK attached to
-the v0.0.2 release, once published — size and SHA-256 in
-[`docs/releases/v0.0.2.md`](docs/releases/v0.0.2.md)), copy it to a USB stick, install it with any TV
-file manager and launch **Climin UI** from the app drawer.
+Take `launcher/app/build/outputs/apk/release/app-release.apk` from a build (or
+`Your-UI-v0.0.3.apk` from the latest release — size and SHA-256 in
+[`docs/releases/v0.0.3.md`](docs/releases/v0.0.3.md)), copy it to a USB stick, install it with any TV
+file manager and launch **Your UI** from the app drawer. 0.0.3 is a new package: it does not upgrade
+**Climin UI** (`io.climintv.home`), and its settings and photos start fresh.
 
 ---
 
@@ -286,7 +287,7 @@ themselves do not need the `adb` binary — only Python 3 and a reachable TV wit
 
 The safety rules are shared by every entry point: system-critical and launcher-critical packages are
 refused by pattern (`CORE`), packages owning the saved Wi-Fi network (Google's and OEM `setupwraith`)
-are protected so a TV cannot lose its network, and a stock launcher is only disabled once Climin UI
+are protected so a TV cannot lose its network, and a stock launcher is only disabled once Your UI
 has proven it answers Home.
 
 ---
@@ -311,8 +312,9 @@ tools/venv/bin/python tools/screendiff.py before.png after.png
 
 ## 8. Documentation
 
-- [`docs/changelog.md`](docs/changelog.md) — every release, including **v0.0.2**.
-- [`docs/releases/v0.0.2.md`](docs/releases/v0.0.2.md) — release notes and asset checksums.
+- [`docs/changelog.md`](docs/changelog.md) — every release, including **v0.0.3**.
+- [`docs/releases/v0.0.3.md`](docs/releases/v0.0.3.md) — the rename release, install and upgrade steps.
+- [`docs/releases/v0.0.2.md`](docs/releases/v0.0.2.md) — the last release published as **Climin UI**.
 - [`docs/architecture.md`](docs/architecture.md) — process model, springs, the theme seam, the drawing
   pipeline and the measured size and memory.
 - [`docs/testing.md`](docs/testing.md) — remote navigation matrix and ADB runbooks.
@@ -325,7 +327,7 @@ tools/venv/bin/python tools/screendiff.py before.png after.png
 
 ## 9. Legal
 
-Climin TV Friend and Climin UI are independent open-source projects. They are not affiliated with,
+Your TV Friend and Your UI are independent open-source projects. They are not affiliated with,
 endorsed by or sponsored by any TV maker, platform or streaming service. Brand, model, service and
 app names are used only to say which TV a list was tested on or what the launcher works with, and
 remain the trademarks of their owners.
@@ -336,7 +338,7 @@ do not root the TV, flash firmware, or bypass any lock, DRM or copy protection, 
 no manufacturer software, firmware or APKs.
 
 Nothing on the TV is uninstalled: the debloat tools only disable packages, and `tools/restore.sh`
-replays the record it made, so undo means undo. Climin UI is installed as a normal app and is removed
+replays the record it made, so undo means undo. Your UI is installed as a normal app and is removed
 the same way. You run this on a TV you own, at your own risk, and changing a TV's software may
 affect its warranty or support.
 

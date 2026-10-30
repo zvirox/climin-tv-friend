@@ -1,4 +1,4 @@
-name: Release Climin UI
+name: Release Your UI
 
 on:
   push:
@@ -29,7 +29,7 @@ jobs:
       - name: Grant Execute Permission for Gradlew
         run: chmod +x launcher/gradlew
 
-      - name: Compile Climin UI Release APK
+      - name: Compile Your UI Release APK
         run: |
           cd launcher
           ./gradlew assembleRelease --console=plain
@@ -46,7 +46,7 @@ jobs:
             exit 1
           fi
 
-          NAMED_APK="Climin-UI-${TAG_NAME}.apk"
+          NAMED_APK="Your-UI-${TAG_NAME}.apk"
           cp "$RAW_APK" "$NAMED_APK"
 
           # Generate SHA256 checksum
@@ -76,9 +76,9 @@ jobs:
               if match:
                   notes = match.group(1).strip()
               else:
-                  notes = f"Release {version} of Climin UI and Climin TV Friend."
+                  notes = f"Release {version} of Your UI and Your TV Friend."
           except Exception:
-              notes = f"Release {version} of Climin UI and Climin TV Friend."
+              notes = f"Release {version} of Your UI and Your TV Friend."
 
           with open("RELEASE_BODY.md", "w") as out:
               out.write(notes + "\n")
@@ -87,7 +87,7 @@ jobs:
       - name: Publish GitHub Release
         uses: softprops/action-gh-release@v2
         with:
-          name: Climin UI ${{ github.ref_name }} (Stable Release)
+          name: Your UI ${{ github.ref_name }} (Stable Release)
           body_path: RELEASE_BODY.md
           draft: false
           prerelease: false

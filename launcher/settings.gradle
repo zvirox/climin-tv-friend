@@ -12,5 +12,5 @@ dependencyResolutionManagement {
         mavenCentral()
     }
 }
-rootProject.name = "climin-tv-friend"
+rootProject.name = "your-tv-friend"
 include ':app'

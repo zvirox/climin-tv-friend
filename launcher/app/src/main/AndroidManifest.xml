@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="io.climintv.home">
+    package="io.yourtv.home">
 
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
@@ -63,7 +63,7 @@
 
     <application
         android:name=".App"
-        android:label="Climin UI"
+        android:label="Your UI"
         android:icon="@drawable/icon"
         android:banner="@drawable/banner"
         android:allowBackup="false"
@@ -74,7 +74,7 @@
             android:name=".MainActivity"
             android:process=":home"
             android:exported="true"
-            android:label="Climin UI"
+            android:label="Your UI"
             android:launchMode="singleTask"
             android:taskAffinity=""
             android:stateNotNeeded="true"
@@ -83,7 +83,7 @@
             android:excludeFromRecents="true"
             android:screenOrientation="landscape"
             android:configChanges="keyboard|keyboardHidden|navigation|orientation|screenSize|screenLayout|smallestScreenSize|uiMode|density|fontScale|locale|layoutDirection"
-            android:theme="@style/CliminUI.Home">
+            android:theme="@style/YourUI.Home">
             <intent-filter android:priority="2">
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.HOME" />
@@ -100,7 +100,7 @@
             android:name=".HomeActivity"
             android:process=":home"
             android:exported="false"
-            android:label="Climin UI"
+            android:label="Your UI"
             android:launchMode="singleTask"
             android:taskAffinity=""
             android:stateNotNeeded="true"
@@ -109,33 +109,33 @@
             android:excludeFromRecents="true"
             android:screenOrientation="landscape"
             android:configChanges="keyboard|keyboardHidden|navigation|orientation|screenSize|screenLayout|smallestScreenSize|uiMode|density|fontScale|locale|layoutDirection"
-            android:theme="@style/CliminUI.Home" />
+            android:theme="@style/YourUI.Home" />
 
         <!-- Settings Screen -->
         <activity
             android:name=".SettingsActivity"
             android:process=":home"
             android:exported="true"
-            android:label="Climin UI"
+            android:label="Your UI"
             android:launchMode="singleTask"
-            android:taskAffinity="io.climintv.home.settings"
+            android:taskAffinity="io.yourtv.home.settings"
             android:excludeFromRecents="true"
             android:screenOrientation="landscape"
             android:configChanges="keyboard|keyboardHidden|navigation|orientation|screenSize|screenLayout|smallestScreenSize|uiMode|density|fontScale|locale|layoutDirection"
-            android:theme="@style/CliminUI.Home" />
+            android:theme="@style/YourUI.Home" />
 
         <!-- Fire TV variant -->
         <activity
             android:name=".FireHomeActivity"
             android:process=":home"
             android:exported="false"
-            android:label="Climin UI"
+            android:label="Your UI"
             android:launchMode="singleTask"
-            android:taskAffinity="io.climintv.home.settings"
+            android:taskAffinity="io.yourtv.home.settings"
             android:excludeFromRecents="true"
             android:screenOrientation="landscape"
             android:configChanges="keyboard|keyboardHidden|navigation|orientation|screenSize|screenLayout|smallestScreenSize|uiMode|density|fontScale|locale|layoutDirection"
-            android:theme="@style/CliminUI.Home" />
+            android:theme="@style/YourUI.Home" />
 
         <!-- Screensaver on Android 8-10 and 13+ -->
         <service
@@ -143,7 +143,7 @@
             android:process=":home"
             android:enabled="@bool/dream_in_home"
             android:exported="true"
-            android:label="Climin UI"
+            android:label="Your UI"
             android:permission="android.permission.BIND_DREAM_SERVICE">
             <intent-filter>
                 <action android:name="android.service.dreams.DreamService" />
@@ -156,7 +156,7 @@
             android:name=".ScreensaverAlone"
             android:enabled="@bool/dream_alone"
             android:exported="true"
-            android:label="Climin UI"
+            android:label="Your UI"
             android:permission="android.permission.BIND_DREAM_SERVICE">
             <intent-filter>
                 <action android:name="android.service.dreams.DreamService" />
@@ -175,7 +175,7 @@
             android:name=".RemoteKeyService"
             android:process=":keys"
             android:exported="true"
-            android:label="Climin UI"
+            android:label="Your UI"
             android:permission="android.permission.BIND_ACCESSIBILITY_SERVICE">
             <intent-filter>
                 <action android:name="android.accessibilityservice.AccessibilityService" />
@@ -188,7 +188,7 @@
         <!-- Photo inbox provider -->
         <provider
             android:name=".PhotoInbox"
-            android:authorities="io.climintv.home.photos"
+            android:authorities="io.yourtv.home.photos"
             android:exported="true" />
 
         <!-- Sleep overlay service -->

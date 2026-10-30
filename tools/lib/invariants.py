@@ -1,5 +1,5 @@
 """
-Invariants and Safety Rules for CliminTV Debloat Subsystem.
+Invariants and Safety Rules for Your TV Debloat Subsystem.
 Strictly prevents disabling critical system packages, Wi-Fi dropping, and bootloops.
 """
 
@@ -39,7 +39,7 @@ STOCK_LAUNCHERS = {
 }
 
 # The replacement launcher package
-OUR_LAUNCHER_PKG = "io.climintv.home"
+OUR_LAUNCHER_PKG = "io.yourtv.home"
 
 
 def is_core_package(pkg: str) -> bool:

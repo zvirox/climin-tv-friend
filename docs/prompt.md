@@ -1,19 +1,19 @@
-# Climin TV Friend: AI Agent Prompting Directives & System Prompts
+# Your TV Friend: AI Agent Prompting Directives & System Prompts
 <!-- Historical design brief. It records the plan the launcher was built from, not the shipped
      architecture: several internals named here (FocusAnimator, M3Switch, TvScrollView,
      HomeKeyService) were never implemented. docs/architecture.md is authoritative. -->
 
-This document serves as the master engineering prompt specification for AI agents, developers, and autonomous assistants contributing to the **Climin TV Friend** repository (`climin-tv-friend`) and its native Android TV launcher, **Climin UI** (`io.climintv.home`).
+This document serves as the master engineering prompt specification for AI agents, developers, and autonomous assistants contributing to the **Your TV Friend** repository (`your-tv-friend`) and its native Android TV launcher, **Your UI** (`io.yourtv.home`).
 
 ---
 
 ## 1. Project Identity & Invariants
 
 ```yaml
-project_name: climin-tv-friend
-launcher_app_name: Climin UI
-package_name: io.climintv.home
-main_activity: io.climintv.home.MainActivity
+project_name: your-tv-friend
+launcher_app_name: Your UI
+package_name: io.yourtv.home
+main_activity: io.yourtv.home.MainActivity
 target_environment: Android TV & Google TV (API 26+)
 design_system: Material 3 Expressive (Tactile Motion & Solid Tokens)
 apk_size_budget: "< 512 KB" (Target: ~248 KB)
@@ -46,7 +46,7 @@ ram_budget: "< 35 MB" active RSS
 - Automated snapshotting (`recovery.py`) that generates a rollback ledger before making any device changes.
 - Chunked 48 KB binary streaming pipeline (`b64push.py`) capable of sideloading APKs over restricted Android TV debug shells.
 
-### Subsystem B: Climin UI Launcher (`launcher/`)
+### Subsystem B: Your UI Launcher (`launcher/`)
 - **Top Header**: Big live clock with separate accent seconds, AM/PM, full date, and circular shortcut actions.
 - **Super Mode (TMDB Recommendations)**: Mixed 16:9 and square streaming cards with TMDb ratings, providers, and deep links.
 - **App Carousel**: Full 16:9 widescreen tiles with banner-priority display, anti-aliased bitmap filtering, and drag-to-reorder via long-press OK.
@@ -63,7 +63,7 @@ When an AI agent is instructed to perform tasks on this codebase, follow these p
 ### Pattern 1: Implementing a New UI Feature
 ```markdown
 ROLE: Android TV System Engineer & Material 3 UI/UX Designer
-TASK: Implement [feature] in Climin UI.
+TASK: Implement [feature] in Your UI.
 RULES:
 1. Preserve the 512 KB APK limit. Inspect build output after compilation.
 2. Keep all card dimensions compact to prevent zoomed appearances on 42"+ 1080p TVs.
@@ -103,7 +103,7 @@ RULES:
 | 2026-10-25 14:00 | Add TMDB Super Mode & Weather | Integrated TMDB API key, Open-Meteo 6-slot forecast, settings dialog | Streaming recommendations live |
 | 2026-10-25 16:00 | Fix TV remote freeze & unstyled switches | Reverse engineered FreeMyTV; built `M3Switch`, `TvScrollView`, hold OK to drag apps | Flawless navigation on Xiaomi TV |
 | 2026-10-25 21:00 | Fix zoomed 1.5x scaling & blurry icons on 42" 1080p | Scaled dimensions down 1.33x–1.5x; loaded 480dpi XXHIGH assets; RGBA_8888 window format | Razor-sharp compact UI on physical TV |
-| 2026-10-25 22:35 | Rebrand to Climin UI / Climin TV Friend & publish docs | Updated strings, gradle, README, created docs hub & pushed to GitHub | Up-to-date repository |
+| 2026-10-25 22:35 | Rebrand to Your UI / Your TV Friend & publish docs | Updated strings, gradle, README, created docs hub & pushed to GitHub | Up-to-date repository |
 
 ---
 

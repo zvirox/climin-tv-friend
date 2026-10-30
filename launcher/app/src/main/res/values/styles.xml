@@ -2,7 +2,7 @@
 <resources>
     <color name="home_background">#EBEBF0</color>
 
-    <style name="CliminUI.Home" parent="@android:style/Theme.DeviceDefault.NoActionBar.Fullscreen">
+    <style name="YourUI.Home" parent="@android:style/Theme.DeviceDefault.NoActionBar.Fullscreen">
         <item name="android:windowBackground">@color/home_background</item>
         <item name="android:windowContentOverlay">@null</item>
         <item name="android:windowShowWallpaper">false</item>
@@ -25,7 +25,7 @@
         <item name="android:contentDescription">@null</item>
     </style>
     <!-- Base Material 3 Expressive TV Theme -->
-    <style name="Theme.CliminTv.Expressive" parent="@android:style/Theme.NoTitleBar.Fullscreen">
+    <style name="Theme.YourTv.Expressive" parent="@android:style/Theme.NoTitleBar.Fullscreen">
         <item name="android:windowBackground">@color/m3_surface_container_lowest</item>
         <item name="android:colorBackground">@color/m3_surface_container_lowest</item>
         <item name="android:textColor">@color/m3_on_surface</item>

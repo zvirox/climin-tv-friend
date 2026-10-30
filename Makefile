@@ -1,4 +1,4 @@
-# CliminTV - Android TV Architecture & Material 3 Expressive Launcher
+# Your TV - Android TV Architecture & Material 3 Expressive Launcher
 # Build, Deployment, Debloating, and Security Hardening Automation
 
 SHELL := /usr/bin/env bash
@@ -8,11 +8,11 @@ SHELL := /usr/bin/env bash
 all: help
 
 help:
-	@echo "CliminTV - Android TV Toolkit & Material 3 Expressive Launcher"
+	@echo "Your TV - Android TV Toolkit & Material 3 Expressive Launcher"
 	@echo ""
 	@echo "Usage commands:"
-	@echo "  make build                     Build release APK for CliminTV Home"
-	@echo "  make install TV_HOST=<ip>       Build & install CliminTV Home on target TV"
+	@echo "  make build                     Build release APK for Your TV Home"
+	@echo "  make install TV_HOST=<ip>       Build & install Your TV Home on target TV"
 	@echo "  make disable TV_HOST=<ip> LIST=<path>  Run non-destructive debloat list"
 	@echo "  make restore TV_HOST=<ip> LIST=<path>  Revert and restore disabled packages"
 	@echo "  make check LIST=<path>         Verify package safety invariants against CORE_RE"

@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Send photos from this computer to the TV, for Climin UI's screensaver and home backdrop.
+"""Send photos from this computer to the TV, for Your UI's screensaver and home backdrop.
 
 Usage:
     TV_HOST=192.168.1.50 tools/venv/bin/python -I tools/photos.py ~/Pictures/holiday/*.jpg
@@ -7,7 +7,7 @@ Usage:
     TV_HOST=192.168.1.50 tools/venv/bin/python -I tools/photos.py --via inbox beach.jpg
 
 Options:
-    --package PKG   the installed launcher (default io.climintv.home; use io.climintv.home.debug
+    --package PKG   the installed launcher (default io.yourtv.home; use io.yourtv.home.debug
                     for a debug install)
     --via PATH      auto (default), direct or inbox
     --keep-names    keep the files' own names instead of a send-time prefix
@@ -20,7 +20,7 @@ How a photo gets there
        through the app for it.
     2. inbox: where Android 11+ (and Fire OS 8) keeps adb out of that folder, the file is pushed to
        /data/local/tmp and streamed into PhotoInbox, the app's content provider:
-       content write --uri content://io.climintv.home.photos/<name>?size=<bytes>
+       content write --uri content://io.yourtv.home.photos/<name>?size=<bytes>
        Only adb's shell may write there; the provider keeps a partial send out of the way and
        renames the file only when all of it arrived.
 
@@ -41,7 +41,7 @@ import time
 
 # The content provider's authority is fixed in the manifest (`android:authorities`), the same in a
 # debug and a release build; --package only changes where the direct path writes.
-AUTHORITY = "io.climintv.home.photos"
+AUTHORITY = "io.yourtv.home.photos"
 # Photos.image() accepts these; .heic/.heif only where the TV can decode them (API 28+).
 EXTENSIONS = (".jpg", ".jpeg", ".png", ".webp", ".heic", ".heif")
 SOF = {0xC0, 0xC1, 0xC2, 0xC3, 0xC5, 0xC6, 0xC7, 0xC9, 0xCA, 0xCB, 0xCD, 0xCE, 0xCF}
@@ -52,7 +52,7 @@ SAFE = re.compile(r"[^A-Za-z0-9._-]+")
 
 def parse_args(argv):
     ap = argparse.ArgumentParser(
-        prog="photos.py", description="Send photos to Climin UI on the TV.",
+        prog="photos.py", description="Send photos to Your UI on the TV.",
         formatter_class=argparse.RawDescriptionHelpFormatter,
         epilog="""\
 How a photo gets there
@@ -60,7 +60,7 @@ How a photo gets there
      /sdcard/Android/data/<pkg>/files/photos.
   2. inbox: where Android 11+ (and Fire OS 8) keeps adb out of that folder, the file is pushed to
      /data/local/tmp and streamed into PhotoInbox, the app's content provider
-     (content://io.climintv.home.photos/<name>?size=<bytes>). Only adb's shell may write there, and
+     (content://io.yourtv.home.photos/<name>?size=<bytes>). Only adb's shell may write there, and
      the provider renames the file only when all of it arrived.
 
 With --via auto the direct folder is tried first; the inbox is used from the first file adb cannot
@@ -68,7 +68,7 @@ write, for the rest of the run. The launcher imports what is waiting the next ti
 the screensaver or Settings opens: 16:9, 2112x1188 JPEG, at most 100.""")
     ap.add_argument("paths", nargs="+", help="photos, or folders of them")
     ap.add_argument("-r", "--recursive", action="store_true", help="look inside folders, too")
-    ap.add_argument("--package", default="io.climintv.home", help="installed launcher package")
+    ap.add_argument("--package", default="io.yourtv.home", help="installed launcher package")
     ap.add_argument("--via", choices=("auto", "direct", "inbox"), default="auto",
                     help="how to get the file to the app (default auto)")
     ap.add_argument("--keep-names", action="store_true",
@@ -184,7 +184,7 @@ def q(value):
 
 
 def package_installed(dev, package):
-    # Exact lines: `pm list packages io.climintv.home` also matches a debug build, and the direct
+    # Exact lines: `pm list packages io.yourtv.home` also matches a debug build, and the direct
     # path would then write the release folder that the debug build never reads.
     out = dev.shell(f"pm list packages {q(package)}", read_timeout_s=30.0)
     return f"package:{package}" in out.splitlines()
@@ -209,7 +209,7 @@ def push_direct(dev, send, folder, local, name):
 
 def push_inbox(dev, send, local, name, size):
     """Stream the photo into PhotoInbox. Returns None on success, or the reason."""
-    tmp = f"{TMP_DIR}/climin-photo-{os.getpid()}-{name}"
+    tmp = f"{TMP_DIR}/yourui-photo-{os.getpid()}-{name}"
     uri = f"content://{AUTHORITY}/{name}?size={size}"
     try:
         result = send(dev, local, tmp)

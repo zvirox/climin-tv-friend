@@ -115,7 +115,7 @@ def parse(argv):
     p.add_argument("scenario", choices=["cold", "coldsys", "home", "nav", "custom"])
     p.add_argument("--runs", type=int, default=5, help="how many traces to record (default 5)")
     p.add_argument("--out", default="traces", help="folder for the traces (default traces/)")
-    p.add_argument("--package", default="io.climintv.home", help="the launcher's package (default io.climintv.home)")
+    p.add_argument("--package", default="io.yourtv.home", help="the launcher's package (default io.yourtv.home)")
     p.add_argument("--app", metavar="COMPONENT",
                    help="the other app for cold and home, as package/activity (default: found on the TV)")
     p.add_argument("--setup", action="append", default=[], metavar="CMD", help="custom: a setup command")

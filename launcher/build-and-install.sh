@@ -37,6 +37,14 @@ if [ -z "${JAVA_HOME:-}" ]; then
   fi
   if [ -n "$JH" ] && [ ! -x "$JH/bin/jlink" ]; then JH=""; fi
   if [ -z "$JH" ] && [ -d /opt/homebrew/opt/openjdk@17 ]; then JH=/opt/homebrew/opt/openjdk@17; fi
+  # Linux: a JDK 17 beside the SDK (Android Studio's jbr, a hand-installed one) or the distro's
+  # openjdk-17. The Android Gradle plugin needs a full JDK with jlink; a newer default java fails it.
+  if [ -z "$JH" ]; then
+    for d in "$HOME/Android/jdk-17" "$HOME/android-studio/jbr" /usr/lib/jvm/*-17-* /usr/lib/jvm/java-17-*; do
+      [ -x "$d/bin/jlink" ] || continue
+      case "$("$d/bin/java" -version 2>&1 || true)" in *'version "17.'*) JH="$d"; break ;; esac
+    done
+  fi
   if [ -z "$JH" ]; then JH="$(java -XshowSettings:properties -version 2>&1 | awk '/java.home/ {print $3}')"; fi
   JAVA_HOME="$JH"
 fi
@@ -65,7 +73,7 @@ if [ -z "${STOCK_LAUNCHER:-}" ]; then
   case " $KNOWN_STOCK_LAUNCHERS " in
     *" $HOME_PKG "*) STOCK_LAUNCHER=$HOME_PKG ;;
     *)
-      if [ "$HOME_PKG" = io.climintv.home ]; then
+      if [ "$HOME_PKG" = io.yourtv.home ]; then
         STOCK_LAUNCHER=none; echo "Home already belongs to this launcher; nothing will be disabled."
       elif [ "$HOME_PKG" = android ]; then
         # Android's chooser: two or more launchers tie and no default is set, which is where a TV lands
@@ -97,10 +105,10 @@ HOME_QUERY='cmd package resolve-activity --brief -a android.intent.action.MAIN -
 if [ "$STOCK_LAUNCHER" = none ]; then DISABLE_STOCK="echo stock launcher left alone"
 else DISABLE_STOCK="pm disable-user --user 0 $STOCK_LAUNCHER"; fi
 APK=app/build/outputs/apk/release/app-release.apk
-"$PY" -I ../tools/b64push.py "$APK" /data/local/tmp/climintv-home.apk
+"$PY" -I ../tools/b64push.py "$APK" /data/local/tmp/yourtv-home.apk
 # Install on its own: in the batch below a failed install (e.g. "not enough space" on a full /data)
 # would not stop the stock launcher from being disabled.
-OUT=$("$PY" -I ../tools/tv.py 'pm install -r /data/local/tmp/climintv-home.apk; rm -f /data/local/tmp/climintv-home.apk')
+OUT=$("$PY" -I ../tools/tv.py 'pm install -r /data/local/tmp/yourtv-home.apk; rm -f /data/local/tmp/yourtv-home.apk')
 echo "$OUT"
 case "$OUT" in
   *Success*) ;;
@@ -117,12 +125,12 @@ esac
 # HDMI picture on screen (#1101). `am start` below would only reuse it, so stop it first; the start
 # then creates a fresh one. A force stop also takes the key helpers off the enabled list, so a helper
 # that was on is written back (cleared first: Android binds again only when the list changes).
-"$PY" -I ../tools/tv.py 's=$(settings get secure enabled_accessibility_services); a=$(settings get secure accessibility_enabled); am force-stop io.climintv.home; case "$s" in *io.climintv.home*) settings put secure enabled_accessibility_services ""; settings put secure enabled_accessibility_services "$s"; settings put secure accessibility_enabled "$a" ;; esac' >/dev/null
+"$PY" -I ../tools/tv.py 's=$(settings get secure enabled_accessibility_services); a=$(settings get secure accessibility_enabled); am force-stop io.yourtv.home; case "$s" in *io.yourtv.home*) settings put secure enabled_accessibility_services ""; settings put secure enabled_accessibility_services "$s"; settings put secure accessibility_enabled "$a" ;; esac' >/dev/null
 # Start the launcher on its own, before the stock Home is touched. In the batch below a start that
 # fails only prints an "Error:" line, and the stock launcher would be disabled anyway, leaving the TV
 # with no usable Home (#239). "Status: ok" from `am start -W` means the activity really came up;
 # the HOME resolution further down only names a component, it does not prove the activity starts.
-START_OUT=$("$PY" -I ../tools/tv.py 'am start -W -a android.intent.action.MAIN -c android.intent.category.HOME -n io.climintv.home/.MainActivity')
+START_OUT=$("$PY" -I ../tools/tv.py 'am start -W -a android.intent.action.MAIN -c android.intent.category.HOME -n io.yourtv.home/.MainActivity')
 echo "$START_OUT"
 # Both halves matter: some builds answer "Status: ok" for a task that was merely brought to the
 # front, and an activity that cannot start still prints "Error: Activity not started".
@@ -131,10 +139,10 @@ if ! printf '%s' "$START_OUT" | grep -qF 'Status: ok' || printf '%s' "$START_OUT
   exit 1
 fi
 printf '%s\n' \
-  "pm grant io.climintv.home android.permission.ACCESS_FINE_LOCATION 2>/dev/null; echo location-granted" \
-  "cmd package compile -m speed -f io.climintv.home" \
+  "pm grant io.yourtv.home android.permission.ACCESS_FINE_LOCATION 2>/dev/null; echo location-granted" \
+  "cmd package compile -m speed -f io.yourtv.home" \
   "$DISABLE_STOCK" \
-  "cmd package set-home-activity --user 0 io.climintv.home/.MainActivity" \
+  "cmd package set-home-activity --user 0 io.yourtv.home/.MainActivity" \
   | "$PY" -I ../tools/tv.py --batch
 
 # Home's owner, or an empty string when the TV cannot be reached (pipefail would otherwise make a
@@ -178,7 +186,7 @@ rollback_home() {
 # stock launcher back if it is not ours.
 HOME_NOW=$(query_home)
 case "$HOME_NOW" in
-  io.climintv.home/*) echo "Home now resolves to $HOME_NOW" ;;
+  io.yourtv.home/*) echo "Home now resolves to $HOME_NOW" ;;
   *)
     if [ -z "$HOME_NOW" ]; then
       echo "ERROR: the TV stopped answering while Home was being switched, so the outcome is unknown." >&2
@@ -210,12 +218,12 @@ esac
 # already listed was refused while the APK was replaced, and binds again only once the list changes, so clear it,
 # switch accessibility off and write it back (as tools/theme.sh does).
 enable_service() {   # appends to enabled_accessibility_services without dropping other services
-  svc=io.climintv.home/.$1
-  "$PY" -I ../tools/tv.py "cmd appops set io.climintv.home AUTO_START allow 2>/dev/null; cmd appops set io.climintv.home APP_AUTO_START allow 2>/dev/null; appops write-settings 2>/dev/null; s=\$(settings get secure enabled_accessibility_services); case \"\$s\" in *$1*) settings put secure enabled_accessibility_services ''; settings put secure accessibility_enabled 0; sleep 1; settings put secure enabled_accessibility_services \"\$s\" ;; null|'') settings put secure enabled_accessibility_services $svc ;; *) settings put secure enabled_accessibility_services \"\$s:$svc\" ;; esac; settings put secure accessibility_enabled 1; echo $1 enabled"
+  svc=io.yourtv.home/.$1
+  "$PY" -I ../tools/tv.py "cmd appops set io.yourtv.home AUTO_START allow 2>/dev/null; cmd appops set io.yourtv.home APP_AUTO_START allow 2>/dev/null; appops write-settings 2>/dev/null; s=\$(settings get secure enabled_accessibility_services); case \"\$s\" in *$1*) settings put secure enabled_accessibility_services ''; settings put secure accessibility_enabled 0; sleep 1; settings put secure enabled_accessibility_services \"\$s\" ;; null|'') settings put secure enabled_accessibility_services $svc ;; *) settings put secure enabled_accessibility_services \"\$s:$svc\" ;; esac; settings put secure accessibility_enabled 1; echo $1 enabled"
 }
 if [ "${INPUT_KEY_SERVICE:-0}" = 1 ]; then enable_service InputKeyService; fi
 if [ "${HOME_KEY_SERVICE:-0}" = 1 ]; then enable_service HomeKeyService; fi
 if [ "${RESTORE_KEY_SERVICES:-0}" = 1 ]; then
-  "$PY" -I ../tools/tv.py "pm grant io.climintv.home android.permission.WRITE_SECURE_SETTINGS && echo restore-granted"
+  "$PY" -I ../tools/tv.py "pm grant io.yourtv.home android.permission.WRITE_SECURE_SETTINGS && echo restore-granted"
 fi
 echo "Installed. Press Home on the remote to see it."

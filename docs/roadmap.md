@@ -1,6 +1,6 @@
-# Climin TV Friend: Product Roadmap & Future Milestones
+# Your TV Friend: Product Roadmap & Future Milestones
 
-This document tracks upcoming features, engineering milestones, and optimization targets for **Climin TV Friend** and **Climin UI**.
+This document tracks upcoming features, engineering milestones, and optimization targets for **Your TV Friend** and **Your UI**.
 
 ---
 

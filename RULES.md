@@ -1,4 +1,4 @@
-# Climin TV — Project Rule Book
+# Your TV — Project Rule Book
 
 **Status: active from 2026-10-27.**
 This rule book overrides convenience. Read it before touching code. When in doubt, stop and ask.
@@ -112,7 +112,7 @@ Impact:      visuals only / changes behaviour: <what>
 
 Known-good references (2026-10-27):
 - branch `backup/pre-ui-tweaks-20261027`, tag `backup-pre-ui-tweaks-20261027`
-- archive `../climin-tv-friend-backups/climin-tv-friend-pre-ui-tweaks-20261027.tar.gz`
+- archive `../climin-tv-friend-backups/climin-tv-friend-pre-ui-tweaks-20261027.tar.gz` (made before the rename)
 - verified APK `../climin-tv-friend-backups/app-release-verified-20261026.apk`
 
 Work happens on `ui-tweaks`. Never rewrite or delete a backup branch/tag.

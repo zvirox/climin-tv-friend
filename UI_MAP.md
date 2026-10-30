@@ -1,4 +1,4 @@
-# Climin UI — Screen Map
+# Your UI — Screen Map
 
 Section-by-section map of every UI surface, with coordinates, states and the code that
 draws it. Use the **section IDs** (e.g. `HOME.CARDS.WIDE`, `SHEET.GRID`,
@@ -9,7 +9,7 @@ draws it. Use the **section IDs** (e.g. `HOME.CARDS.WIDE`, `SHEET.GRID`,
 > colour, glass tint, a brand-new surface) can be tweaked directly.
 
 Verified 2026-10-27 against source (`HomeView.java`, `HomeApps.java`, `SettingsActivity.java`)
-and the running APK `io.climintv.home.debug` v0.0.1 on the Xiaomi TV (1280×720).
+and the running APK `io.yourtv.home.debug` v0.0.1 on the Xiaomi TV (1280×720).
 
 ---
 
@@ -318,12 +318,12 @@ panels, a menu on the left and that item's settings on the right.
 - TalkBack ids: 1–9 the menu, 10+ the panel's visible rows. A panel the TV can't use exposes no rows.
 
 ### SETTINGS.RAIL — the menu
-- Wordmark "Climin UI" 28 px baseline **178** at x **128**; the number alone (`v0.0.1`) right-aligned
+- Wordmark "Your UI" 28 px baseline **178** at x **128**; the number alone (`v0.0.1`) right-aligned
   at **536**; hairline at **202**.
 - Rows: top **252**, height **68**, gap **4** (pitch 72), full width 104 → 536; label 28 px at x 128.
 - Order: Home Settings, Greetings, Theme, Screensaver, Shelf, Top Buttons, Remote Buttons,
   Sleep Timer, About. Unavailable items (Remote Buttons, Sleep Timer) stay listed at 45 % and their
-  panel shows the reason in words instead of rows. "Home Screen" (the Climin UI / Original switch)
+  panel shows the reason in words instead of rows. "Home Screen" (the Your UI / Original launcher switch)
   and "TV Settings" are not in the menu: the mode choice is gone, and TV Settings is a home button.
 - Focused row: white pill (scale 1.02, 8 px lift, 16 px radius) with a 28 % / 34 % shadow; the label
   turns ink. With the focus in the panel, the chosen menu row is a faint fill (`0x14` ink by day,
@@ -356,10 +356,10 @@ panels, a menu on the left and that item's settings on the right.
   UI (`Prefs.look`, default `glass`); ← → or OK cycles it and the screen changes live. Footer
   "Applies to the whole launcher." Look names are brand names and are not translated.
 
-### SETTINGS.ABOUT — about Climin UI
-- Heading "About"; wordmark "Climin UI" 46 px at `LIST_TOP + 56` (292), "Version 0.0.1" 23 px at
+### SETTINGS.ABOUT — about Your UI
+- Heading "About"; wordmark "Your UI" 46 px at `LIST_TOP + 56` (292), "Version 0.0.1" 23 px at
   `LIST_TOP + 104` (340); hairline at `LIST_TOP + 132` (368).
-- One paragraph, 23 px, wrapped to 1020 px (`StaticLayout`), from `LIST_TOP + 168` (404): "Climin UI
+- One paragraph, 23 px, wrapped to 1020 px (`StaticLayout`), from `LIST_TOP + 168` (404): "Your UI
   is a home screen for Android TV: no ads, your own photos, the weather, and a screensaver."
 - No rows: the menu can't enter it, as with Greetings.
 
@@ -385,11 +385,11 @@ panels, a menu on the left and that item's settings on the right.
 ### SETTINGS.REMOTE_KEYS — remote buttons
 - Heading "Remote Buttons"; row set depends on the TV brand (`RemoteKeys`, `keyLabels()`); all rows
   visible, a brand-specific hint at the foot. On a TV without known app buttons the panel shows
-  "This TV's remote has no app buttons that Climin UI knows." instead of rows.
+  "This TV's remote has no app buttons that Your UI knows." instead of rows.
 
 ### SETTINGS.POWER — Sleep Timer
 - Heading "Sleep Timer"; 2–3 rows: Sleep Timer (duration), Show Time Left, Position (when shown).
-- Values change with ← → or OK (opens `PICKER` for duration / placement). Needs Climin UI mode; when
+- Values change with ← → or OK (opens `PICKER` for duration / placement). Needs Your UI mode; when
   off, the panel explains it and the menu won't enter.
 
 ---

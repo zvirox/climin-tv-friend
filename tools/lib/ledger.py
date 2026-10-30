@@ -1,5 +1,5 @@
 """
-State Snapshot & Recovery Ledger for CliminTV.
+State Snapshot & Recovery Ledger for Your TV.
 Maintains reversible transaction history of package state modifications.
 """
 

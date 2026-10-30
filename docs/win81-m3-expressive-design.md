@@ -7,7 +7,7 @@
 
 ## Understanding and scope
 
-- Redesign Climin TV Friend as a remote-first Android TV launcher using the supplied mockups as the visual baseline and the attached plan for behavior and content.
+- Redesign Your TV Friend as a remote-first Android TV launcher using the supplied mockups as the visual baseline and the attached plan for behavior and content.
 - Use a dedicated top header for the vertical clock/date/greeting and quick-action circles, followed by the horizontally scrolling app/content grid.
 - Keep hardware input cards and menu/utility cards in a separate bottom row below the app/content grid. The header's TV, palette, Wi-Fi, Bluetooth, and TV Settings circles remain available as quick actions.
 - All installed applications remain directly available on Home as icon-only tiles. Selecting an app launches it; no separate All Apps page or modal is part of the target experience.

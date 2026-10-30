@@ -1,7 +1,7 @@
 # Implementation Plan: Win 8.1 Start Menu + M3 Expressive (climin_tv_win81_m3_expressive_plan.md)
 
 ## Overview
-Finish the in-progress redesign of the Climin TV launcher into a Windows 8.1-style
+Finish the in-progress redesign of the Your TV launcher into a Windows 8.1-style
 horizontally scrolling Start screen: dedicated header band, 3-row spanned grid with
 interleaved app / content / weather / input tiles, full-card icons, 3D flip content
 refresh, and the three attached palettes.

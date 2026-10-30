@@ -1,6 +1,6 @@
-# Climin TV Friend: Systems & Software Architecture
+# Your TV Friend: Systems & Software Architecture
 
-This document describes the architecture of **Climin TV Friend** and **Climin UI** as the code is
+This document describes the architecture of **Your TV Friend** and **Your UI** as the code is
 today (v0.0.2): the process model, how the launcher draws and moves, the theme seam added in 0.0.2,
 and the measured size and memory numbers. Where something is not measured, it says so instead of
 quoting a target as a result.
@@ -20,7 +20,7 @@ quoting a target as a result.
 │           DEBLOAT SUBSYSTEM           │   │               CLIMIN UI               │
 │               (tools/)                │   │              (launcher/)              │
 ├───────────────────────────────────────┼───┼───────────────────────────────────────┤
-│ • Pure-Python ADB client (tv.py)      │   │ • Package: io.climintv.home           │
+│ • Pure-Python ADB client (tv.py)      │   │ • Package: io.yourtv.home           │
 │ • Recovery ledger (recovery.py)       │   │ • Plain Java, no Kotlin, no WebView   │
 │ • Drift check after TV updates        │   │ • One ViewGroup drawn on a Canvas     │
 │   (check.py, --fix)                   │   │ • Five looks behind one Surfaces seam │
@@ -55,24 +55,24 @@ State that has to cross a process boundary is a file or a `SharedPreferences` en
 each process re-reads what it needs when the version changes — that is how a look chosen in
 Settings reaches the home screen without an Intent.
 
-### 2.1 Climin UI mode (`HomeMode`)
+### 2.1 Your UI mode (`HomeMode`)
 
 `HomeMode` is the only code that changes the TV: it connects to the TV's own ADB (`Adb.java`,
 `127.0.0.1:5555`), disables the packages in its lists with `pm disable-user`, sets this app as Home
 and reverses all of it on request. It runs as `ModeJob` jobs (APPLY, REVERT, VERIFY, REMOTE,
 MEMORY) so nothing blocks the UI thread, and it writes a state file the settings pane follows.
 
-- **Original ⇄ Climin UI** is therefore not a switch inside the app: the app is put into Climin UI
+- **Original ⇄ Your UI** is therefore not a switch inside the app: the app is put into Your UI
   mode by `launcher/build-and-install.sh` (or by `HomeMode.request`, which currently has no caller
   in the UI). With another launcher owning Home, the Sleep Timer pane correctly says
-  *"Needs Climin UI mode."* (`Capabilities.java`).
+  *"Needs Your UI mode."* (`Capabilities.java`).
 - **Watchdog** (`Watchdog.java`): every crash of `:home` is recorded in `files/home-crashes.txt`;
   three within five minutes and `HomeMode.requestRevertHome` gives Home back to the TV's own
   launcher. The count survives process death, which is the point.
 
 ---
 
-## 3. Component Design: Climin UI
+## 3. Component Design: Your UI
 
 ### 3.1 One ViewGroup, drawn on a Canvas
 
@@ -112,7 +112,7 @@ Data arrives from three helpers, each of which notifies the view when it has som
   without a network.
 - **`HomeData`** — Open-Meteo weather (current, hourly, daily, geocoding) and Binance prices.
 - **`HomeApps`** — installed apps, TV inputs (`TvInputManager` / `TvContract`), and the shortcuts
-  (All Apps, Home Settings, TV Settings, Climin UI settings).
+  (All Apps, Home Settings, TV Settings, Your UI settings).
 
 ### 3.2 Input and focus
 
@@ -279,7 +279,7 @@ have been replaced with the measurements above.
 | Picks offline or no TMDB key | cached picks if any, else the clock/weather/price view |
 | No pick photos | the user's own photos, else a light gradient |
 | TV refuses "draw over other apps" | the sleep pill falls back to the minute count on the home screen |
-| TV's ADB is off | `Capabilities` reports *"Needs Climin UI mode."*; nothing is attempted |
+| TV's ADB is off | `Capabilities` reports *"Needs Your UI mode."*; nothing is attempted |
 | Debugging switched off after setup | `tools/adb-closed.py` verifies port 5555 is closed again |
 
 ---

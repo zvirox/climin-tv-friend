@@ -1,6 +1,6 @@
-# Climin TV Friend: Testing & Verification Runbook
+# Your TV Friend: Testing & Verification Runbook
 
-End-to-end verification for the **Climin UI** launcher and the `tools/` debloat engine on Android TV
+End-to-end verification for the **Your UI** launcher and the `tools/` debloat engine on Android TV
 and Google TV hardware. The launcher draws everything itself and keeps focus in its own code, so
 most of this is done by pressing a remote (or the same keycodes over ADB) and looking at the screen.
 
@@ -28,7 +28,7 @@ are on the shelf, so treat the counts below as a starting point and watch the sc
 ```bash
 DEVICE_IP="192.168.31.247:5555"
 adb connect "$DEVICE_IP"
-adb -s "$DEVICE_IP" shell am start -n io.climintv.home/.MainActivity
+adb -s "$DEVICE_IP" shell am start -n io.yourtv.home/.MainActivity
 ```
 
 ```bash
@@ -53,7 +53,7 @@ sleep 1
 adb -s "$DEVICE_IP" shell input keyevent 4     # BACK closes the sheet
 
 # Settings: top button "Home Settings"
-adb -s "$DEVICE_IP" shell am start -n io.climintv.home/.SettingsActivity
+adb -s "$DEVICE_IP" shell am start -n io.yourtv.home/.SettingsActivity
 sleep 1
 # D-pad through the nine panes, then Back to the home screen
 for i in 1 2 3 4 5 6 7 8 9 10; do adb -s "$DEVICE_IP" shell input keyevent 20; sleep 0.3; done
