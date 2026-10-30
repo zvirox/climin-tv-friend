@@ -65,8 +65,9 @@ closed drawer is drawn at y 1100–1568, below the 1080 canvas. Never edit a rec
 
 ```
 ┌──────────────────────────────────────────────────────────────┐ 1920×1080
-│  For You  (HOME.TITLE)           ◯ ◯ ◯ ◯ ◯  (HOME.BUTTONS)  │ ← y 103
-│  [Explore] Movies Shows (HOME.TABS)          BTC ETH … QUOTES │ ← y 158–226
+│  Good morning[, {name}!] (HOME.GREET)                             │ ← y 60
+│  For You (HOME.TITLE)            ◯ ◯ ◯ ◯ ◯  (HOME.BUTTONS)  │ ← y 103
+│  [Explore] Movies Shows (HOME.TABS)          BTC ETH … QUOTES │ ← y 172–240
 │                                                              │
 │  ┌──────────────────────┐ ┌───────┐ ┌───────┐                │ ← y 262
 │  │  HOME.CARDS.WIDE     │ │ TALL1 │ │ TALL2 │                │
@@ -80,15 +81,25 @@ closed drawer is drawn at y 1100–1568, below the 1080 canvas. Never edit a rec
 └──────────────────────────────────────────────────────────────┘
 ```
 
+### HOME.GREET — the greeting above "For You"
+- "Good morning/afternoon/night[, {name}]" by the hour (night < 5 and ≥ 21, morning 5–12,
+  afternoon 12–17, evening 17–21); with a name in Settings › Greetings: "Good morning, {name}!".
+- Box: baseline at (80, **60**); family `Ui.semibold`, **27 px**; colour `L_DIM` (day and night blend).
+- Source: `updateGreeting()` — keyed on the day part, the name and the language, recomputed once a
+  minute by `updateClock()` and on `resume()`; drawn first in `drawLightTop()`; night column name.
+- Only in the picks mode ("For You"; see `HOME.TITLE`); not drawn without a TMDB key.
+- Name enters like the city dialog: `askName()`, 15 characters hard cap (`InputFilter.LengthFilter`).
+- 720p: baseline ≈ (53, 40), 18 px.
+
 ### HOME.TITLE — "For You"
-- Box: baseline at (80, **130**); family `Ui.displaySemibold`, **76 px**; colour `L_INK` (day) / `WHITE` (night).
+- Box: baseline at (80, **144**); family `Ui.displaySemibold`, **76 px**; colour `L_INK` (day) / `WHITE` (night).
 - Source: `drawLightTop()` first line; paint `lTitle` in `makePaints()`.
 - 720p: baseline ≈ (53, 87), 51 px.
 - Not drawn when there is no TMDB key (see `HOME.FALLBACK`).
 - **Open** (typography/colour). Text itself is translated via `Ui.tr`.
 
 ### HOME.TABS — Explore / Movies / Shows
-- Capsule band: **y 158 → 226** (height 68). First pill starts at x 54 (text at 80); each
+- Capsule band: **y 172 → 240** (height 68). First pill starts at x 54 (text at 80); each
   pill = text width + 26 px padding each side; 4 px between pills.
 - Text: 30 px; selected `lTabOn` semibold `L_INK`, others `lTab` medium `L_DIM`.
 - Focus: selected tab gets a **white pill**, +5 %, shadow; text turns `L_INK`.
@@ -343,9 +354,15 @@ panels, a menu on the left and that item's settings on the right.
 - Locked rows render "Unavailable" at 35 % opacity. **Frozen:** row set/order, semantics, persistence.
   Theme moved to `SETTINGS.THEME`.
 
-### SETTINGS.GREETINGS — placeholder
-- Heading "Greetings", one line "Coming soon." at `LIST_TOP + 64`; no rows (the menu can't enter it).
-  Reserved for the greetings feature.
+### SETTINGS.GREETINGS — the greeting's name
+- Heading "Greetings"; one row (**64/6** pitch, like everywhere): **Your name** (left) with the name,
+  or **None** when empty (right).
+- OK (or Enter on the keyboard) opens `askName()` — a device-default dialog with an EditText, the
+  name prefilled and cursor at the end, hint "Type your name", buttons **Cancel · Save**.
+  15 characters hard cap (`InputFilter.LengthFilter`).
+- Saving stores `Prefs.greetingName` (put() bump → HomeActivity recreates on return), the row shows
+  the name at once (`saveGreetingName()`), and Home reads it in `updateGreeting()` (see `HOME.GREET`).
+- Footer: "OK opens the keyboard."
 
 ### SETTINGS.THEME — mode and look
 - Heading "Theme"; two rows at the shared 64/6 pitch.

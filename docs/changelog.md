@@ -7,6 +7,17 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ---
 
+## [Unreleased]
+
+### Added
+- **Greetings** on the home screen: "Good morning / Good afternoon / Good evening / Good night"
+  above "For You", chosen by the hour (night before 5 and from 21, morning 5–12, afternoon 12–17,
+  evening 17–21), with an optional name from a new setting — **Settings › Greetings › Your name**
+  (15 characters max; empty = none). The name turns it into "Good morning, {name}!". Translated
+  into all 26 catalogues; TalkBack reads the row's name in the Greetings pane.
+
+---
+
 ## [0.0.3] - 2026-10-30
 
 The rename release. **Climin TV Friend** becomes **Your TV Friend**, and the launcher **Climin UI**

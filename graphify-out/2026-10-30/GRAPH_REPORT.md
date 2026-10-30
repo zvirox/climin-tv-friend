@@ -1,7 +1,7 @@
 # Graph Report - your-tv-friend  (2026-10-30)
 
 ## Corpus Check
-- 529 files · ~446,400 words
+- 529 files · ~446,449 words
 - Verdict: corpus is large enough that graph structure adds value.
 - Unclassified: 77 file(s) not represented in the graph (top: .xml 67, (none) 3, .ttf 2)
 
@@ -11,7 +11,7 @@
 - Token cost: 0 input · 0 output
 
 ## Graph Freshness
-- Built from commit: `6788975f`
+- Built from commit: `9e09211f`
 - Run `git rev-parse HEAD` and compare to check if the graph is stale.
 - Run `graphify update .` after code changes (no API cost).
 
@@ -535,16 +535,16 @@ Nodes (5): 1. Quick Test Matrix, 2. Remote Navigation Checks, 3. Visual Quality 
 _Questions this graph is uniquely positioned to answer:_
 
 - **Why does `HOME.BUTTONS — round glass buttons (top right)` connect `Item` to `sys`, `SettingsActivity`, `android.graphics.Canvas`, `Prefs`, `.onSizeChanged`?**
-  _High betweenness centrality (0.168) - this node is a cross-community bridge._
+  _High betweenness centrality (0.165) - this node is a cross-community bridge._
 - **What connects `JAVA_HOME`, `ANDROID_HOME`, `PATH` to the rest of the system?**
   _15 weakly-connected nodes found - possible documentation gaps or missing edges._
 - **Should `trace_report.py` be split into smaller, more focused modules?**
   _Cohesion score 0.08985200845665962 - nodes in this community are weakly interconnected._
 - **Why does `tv()` connect `sys` to `Item`?**
-  _High betweenness centrality (0.168) - this node is a cross-community bridge._
+  _High betweenness centrality (0.164) - this node is a cross-community bridge._
 - **Should `bench.py` be split into smaller, more focused modules?**
   _Cohesion score 0.05584415584415584 - nodes in this community are weakly interconnected._
 - **Why does `HomeView` connect `HomeView` to `Click`, `android.graphics.Canvas`, `Spring`, `Prefs`, `HomeApps`, `Recs.java`, `DreamView`, `Recs`, `Item`, `HomeView.java`, `.drawContent`, `Spoken.java`, `HomeApps.java`, `SleepOverlay.java`, `Ui`, `HomeData`, `.resume`, `Pick`, `Backdrop`, `.retarget`, `.activate`, `.tr`, `.datePattern`, `.onSizeChanged`, `.HomeView`?**
-  _High betweenness centrality (0.131) - this node is a cross-community bridge._
+  _High betweenness centrality (0.132) - this node is a cross-community bridge._
 - **Should `scenes_wallpapers.py` be split into smaller, more focused modules?**
   _Cohesion score 0.09796806966618288 - nodes in this community are weakly interconnected._

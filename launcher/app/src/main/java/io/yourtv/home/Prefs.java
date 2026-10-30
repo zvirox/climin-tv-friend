@@ -157,6 +157,12 @@ final class Prefs {
         version++;
     }
 
+    // MARK: - Greetings
+
+    /** The name the greeting says: "Good morning, {name}!"; empty = none. At home only (put() wakes HomeActivity). */
+    static String greetingName() { return sp().getString("greetingName", "").trim(); }
+    static void setGreetingName(String name) { put("greetingName", name.trim()); }
+
     /** The home screen's soft click when moving and opening. */
     static boolean sounds() { return sp().getBoolean("sounds", true); }
     static void setSounds(boolean on) { put("sounds", on); }

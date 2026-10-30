@@ -30,6 +30,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.accessibility.AccessibilityManager;
 import android.view.accessibility.AccessibilityNodeProvider;
+import java.util.Calendar;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -93,7 +94,8 @@ final class HomeView extends ViewGroup implements Choreographer.FrameCallback, H
     private static final ExecutorService LOADER = Executors.newSingleThreadExecutor();
     // Light design (the L_ constants): title, tab bar, three recommendation cards and the shelf.
     // The tab bar is a 68 px capsule; the cards sit on the 5-column grid (the wide one spans 3).
-    private static final float L_TITLE_BASE = 130, L_TABBAR_TOP = 158, L_TABBAR_H = 68, L_CARDS_TOP = 262, L_CARD_H = 442;
+    private static final float L_GREET_BASE = 60, L_TITLE_BASE = 144, L_TABBAR_TOP = 172;
+    private static final float L_TABBAR_H = 68, L_CARDS_TOP = 262, L_CARD_H = 442;
     private static final float L_TALL_W = 320, L_CARD_GAP = 40, L_BUTTON = 68, L_BUTTON_GAP = 20, L_BUTTON_CY = 103;
     private static final float L_PLATTER_TOP = 814, L_TILE_H = 126;
     private static final float L_DATE_BASE = 330, L_CLOCK_BASE = 540, L_WEATHER_BASE = 626, L_QUOTES_BASE = 694;
@@ -148,7 +150,7 @@ final class HomeView extends ViewGroup implements Choreographer.FrameCallback, H
     private final Spring[] cardFocus = new Spring[3];
     private final RectF[] cardRects = new RectF[3];
     private final List<HomeApps.Item> lightButtons = new ArrayList<>();
-    private Paint lTitle, lTab, lTabOn, lCardTitle, lCardMeta, lQuote, lTip, lDate, lClock, lWeather, lClockQuote;
+    private Paint lTitle, lTab, lTabOn, lCardTitle, lCardMeta, lQuote, lTip, lDate, lClock, lWeather, lClockQuote, lGreet;
     private Shader lightGradient;
 
     // Shelf
@@ -240,6 +242,8 @@ final class HomeView extends ViewGroup implements Choreographer.FrameCallback, H
     private int w, h;
     private float k = 1;
     private String clockText = "", dateText = "", weatherLine = "";
+    // The greeting above the title: rebuilt only when the day part, the name or the language changes.
+    private String greetText = "", greetKey = "";
     /** "Off in 42 min" next to the round buttons while the sleep timer runs (Settings > Sleep Timer); "" otherwise. */
     private String sleepText = "";
     private long weatherLineAt = -1;
@@ -448,6 +452,7 @@ final class HomeView extends ViewGroup implements Choreographer.FrameCallback, H
         updatePalette();
         updatePicks();
         updateSleep();      // a timer just set in Settings shows at once, not at the next tick
+        updateGreeting();   // a name typed while Settings ran (the key above keeps it at one rebuild)
         if (allAppsOnResume) {
             allAppsOnResume = false;
             reset(false);
@@ -624,6 +629,7 @@ final class HomeView extends ViewGroup implements Choreographer.FrameCallback, H
         for (Paint p : new Paint[] {labelPaint, titlePaint, metaPaint, clockPaint}) p.setShadowLayer(22 * k, 0, 2 * k, 0x59000000);
         lTitle = Ui.text(Ui.displaySemibold, 76 * k, L_INK);
         lTitle.setLetterSpacing(0.004f);
+        lGreet = Ui.text(Ui.semibold, 27 * k, L_DIM);
         lTab = Ui.text(Ui.medium, 30 * k, L_DIM);
         lTabOn = Ui.text(Ui.semibold, 30 * k, L_INK);
         lCardTitle = Ui.text(Ui.semibold, 31 * k, L_INK);
@@ -796,7 +802,25 @@ final class HomeView extends ViewGroup implements Choreographer.FrameCallback, H
         clockMinute = minute;
         clockText = Ui.clock(now);
         dateText = Ui.date(now);
+        updateGreeting();   // the day part changes at most once an hour
         return true;
+    }
+
+    /**
+     * The greeting above the title: "Good morning, {name}!", by the hour (night before 5 and from 21). Keyed on the
+     * day part, the name and the language, so the text is rebuilt only when one changes (once a minute at most).
+     */
+    private void updateGreeting() {
+        Calendar cal = Calendar.getInstance();
+        int hour = cal.get(Calendar.HOUR_OF_DAY);
+        String part = (hour < 5 || hour >= 21) ? "night" : hour < 12 ? "morning" : hour < 17 ? "afternoon" : "evening";
+        String name = Prefs.greetingName();
+        String key = part + " " + Ui.language + " " + name;
+        if (key.equals(greetKey)) return;
+        greetKey = key;
+        greetText = name.isEmpty() ? Ui.tr("Good " + part)
+                : Ui.trf("Good " + part + ", {name}!", "name", name);
+        heroLayer.invalidate();   // it sits in the hero layer with the title and the tabs
     }
 
     private void updatePalette() {
@@ -1014,6 +1038,7 @@ final class HomeView extends ViewGroup implements Choreographer.FrameCallback, H
     /** Text colors for the current night value (dark by day, white at night). */
     private void applyTone() {
         lTitle.setColor(pal.ink.at(night));
+        lGreet.setColor(pal.dim.at(night));
         lTab.setColor(pal.tab.at(night));
         lTabOn.setColor(pal.ink.at(night));
         lCardTitle.setColor(pal.ink.at(night));
@@ -2998,6 +3023,8 @@ final class HomeView extends ViewGroup implements Choreographer.FrameCallback, H
             return;
         }
         String hello = Ui.tr("For You");
+        if (!greetText.isEmpty())
+            c.drawText(greetText, MARGIN * k - Ui.leftBearing(lGreet, greetText), L_GREET_BASE * k, lGreet);
         c.drawText(hello, MARGIN * k - Ui.leftBearing(lTitle, hello), L_TITLE_BASE * k, lTitle);
         // Text tabs (the selected one in bold, in the main text color); with focus on the tabs, the selected one gets
         // the white pill with a shadow and grows a little (the tvOS focus).

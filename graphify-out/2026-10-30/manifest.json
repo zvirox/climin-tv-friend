@@ -228,15 +228,15 @@
     "semantic_hash": ""
   },
   "README.md": {
-    "mtime": 1793332633.824446,
-    "seen": 1793332655.6931376,
-    "ast_hash": "c9cac78ee31239b46612ecc4b2784916",
+    "mtime": 1793333514.3494875,
+    "seen": 1793333531.15527,
+    "ast_hash": "d8ba9cbc2df05d2131176a3ec7eeeae4",
     "semantic_hash": ""
   },
   "docs/architecture.md": {
-    "mtime": 1793332423.0011983,
-    "seen": 1793332655.6931424,
-    "ast_hash": "1413a2cd5e722d042d4168da933fdbb6",
+    "mtime": 1793333521.8665206,
+    "seen": 1793333531.1552818,
+    "ast_hash": "06ff651cbe68800bbedd22528f273ad8",
     "semantic_hash": ""
   },
   "docs/changelog.md": {
@@ -4980,9 +4980,9 @@
     "semantic_hash": ""
   },
   "RULES.md": {
-    "mtime": 1793332423.0003157,
-    "seen": 1793332655.6931393,
-    "ast_hash": "fa91f6f1896f0c71deb357f568aa9afe",
+    "mtime": 1793332672.7823975,
+    "seen": 1793333531.155275,
+    "ast_hash": "424b8e2ab12e3889abe5471229980e67",
     "semantic_hash": ""
   },
   "UI_MAP.md": {
@@ -5274,9 +5274,9 @@
     "semantic_hash": ""
   },
   "docs/releases/v0.0.3.md": {
-    "mtime": 1793332628.8219197,
-    "seen": 1793332655.6931462,
-    "ast_hash": "974c2e93df6b62442fc65eaf2592f5d3",
+    "mtime": 1793333477.5010362,
+    "seen": 1793333531.155289,
+    "ast_hash": "d9e621d406452990f6b0035e17c973ef",
     "semantic_hash": ""
   },
   "docs/images/home-retro-ui.png": {

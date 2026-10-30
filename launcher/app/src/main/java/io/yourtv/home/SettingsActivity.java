@@ -19,6 +19,7 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
 import android.os.SystemClock;
+import android.text.InputFilter;
 import android.text.StaticLayout;
 import android.text.TextPaint;
 import android.text.TextUtils;
@@ -287,8 +288,10 @@ public class SettingsActivity extends Activity {
 
         private String rowValueText(int row) {
             switch (screen) {
-                case GREETINGS:
-                    return Ui.tr("Coming soon.");
+                case GREETINGS: {
+                    String name = Prefs.greetingName();
+                    return Ui.tr("Your name") + ", " + (name.isEmpty() ? Ui.tr("None") : name);
+                }
                 case SCREENSAVER:
                     return Ui.tr("Screensaver") + ", " + Ui.tr("Preview");
                 case THEME:
@@ -414,7 +417,7 @@ public class SettingsActivity extends Activity {
 
         private int rowCount() {
             switch (screen) {
-                case GREETINGS: return 0;
+                case GREETINGS: return 1;
                 case HOME_SETTINGS: return Math.min(SETTINGS_VISIBLE, settingLabels().length);
                 case PICKER: return Math.min(PICK_VISIBLE, pickLabels.size());
                 case SHELF_EDIT: return Math.min(PICK_VISIBLE, shelfRows.size());
@@ -632,10 +635,19 @@ public class SettingsActivity extends Activity {
             c.restore();
         }
 
-        /** Greetings: not built yet; the empty panel says so instead of showing nothing. */
+        /** Greetings: the name the home screen greets ("Good morning, {name}!"). */
         private void drawGreetings(Canvas c) {
             drawPaneTitle(c, Ui.tr("Greetings"));
-            c.drawText(Ui.tr("Coming soon."), LIST_X * k + 30 * k, (LIST_TOP + 64) * k, subtitle);
+            String name = Prefs.greetingName();
+            float y = (LIST_TOP + 20) * k;
+            rowRect.set(LIST_X * k, y, LIST_R * k, y + LIST_ROW_H * k);
+            float f = drawRowBackground(c, 0);
+            rowLabel.setColor(blend(inkBase(0xF2), col(pal.focusInkPanel), f));
+            rowValue.setColor(inkValue(f));
+            float base = rowRect.centerY() + Ui.halfCap(rowLabel);
+            c.drawText(Ui.tr("Your name"), rowRect.left + 30 * k, base, rowLabel);
+            c.drawText(name.isEmpty() ? Ui.tr("None") : name, rowRect.right - 30 * k, base, rowValue);
+            c.drawText(Ui.tr("OK opens the keyboard."), LIST_X * k + 30 * k, (PANEL_BOTTOM - 60) * k, subtitle);
         }
 
         /** Theme: the light/night mode (moved out of Home Settings) and the look of the whole launcher. */
@@ -1185,6 +1197,7 @@ public class SettingsActivity extends Activity {
         /** Changes the focused row's value one step (OK and → go forward, ← goes back). */
         private void adjust(int dir) {
             if (unavailable(focus) != null) return;
+            if (screen == GREETINGS) return;   // the name is typed with OK, not stepped through
             if (screen == THEME) {
                 if (focus == 0) {
                     int at = java.util.Arrays.asList(THEMES).indexOf(Prefs.theme());
@@ -1269,6 +1282,39 @@ public class SettingsActivity extends Activity {
                 return true;
             });
             dialog.show();
+        }
+
+        /** OK on Your name: like the city's dialog, but the name has to stay short (15 characters). */
+        private void askName() {
+            EditText field = new EditText(activity);
+            field.setSingleLine(true);
+            field.setHint(Ui.tr("Type your name"));
+            field.setText(Prefs.greetingName());
+            field.setSelection(field.getText().length());
+            field.setFilters(new InputFilter[] {new InputFilter.LengthFilter(15)});
+            field.setImeOptions(EditorInfo.IME_ACTION_DONE);
+            AlertDialog dialog = new AlertDialog.Builder(activity, android.R.style.Theme_DeviceDefault_Dialog_Alert)
+                    .setTitle(Ui.tr("Your name"))
+                    .setView(field)
+                    .setPositiveButton(Ui.tr("Save"), (d, which) -> saveGreetingName(field.getText().toString()))
+                    .setNegativeButton(Ui.tr("Cancel"), null)
+                    .create();
+            field.setOnEditorActionListener((v, action, event) -> {
+                dialog.dismiss();
+                saveGreetingName(field.getText().toString());
+                return true;
+            });
+            dialog.show();
+        }
+
+        /** The typed name becomes the greeting: trimmed, single-spaced; empty = the greeting's None. */
+        private void saveGreetingName(String typed) {
+            String name = typed.trim().replaceAll(" +", " ");
+            if (!name.equals(Prefs.greetingName())) {
+                Prefs.setGreetingName(name);
+                invalidate();       // the pane shows it at once
+                spoken.focusMoved();
+            }
         }
 
         // MARK: - My Photos (sent from a computer: tools/photos.py)
@@ -1573,6 +1619,9 @@ public class SettingsActivity extends Activity {
             } else if (screen == HOME_SETTINGS || screen == THEME) {
                 adjust(1);
                 invalidate();
+                return;
+            } else if (screen == GREETINGS) {
+                askName();
                 return;
             } else if (screen == SCREENSAVER) {
                 pause();
